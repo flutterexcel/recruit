@@ -7,6 +7,7 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../app_colors.dart';
+import '../timeline.dart';
 import 'hiring_team.dart';
 import 'main_jobdes.dart';
 
@@ -40,9 +41,34 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
         elevation: 0,
         title: Text(
           'Jobs Overview',
-          style: TextStyle(color: AppColors.Black, fontSize: 30),
+          style: TextStyle(color: AppColors.Black, fontSize: 23),
           textAlign: TextAlign.left,
         ),
+        actions: [
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: TextButton.icon(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(color: AppColors.white),
+                backgroundColor: AppColors.Primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+              ),
+              onPressed: () => {},
+              icon: Icon(Icons.add, color: AppColors.white),
+              label: Text('Add jobs', style: TextStyle(color: AppColors.white)),
+            ),
+          ),
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TrackTimeLine()),
+                );
+              },
+              icon: Icon(Icons.notifications, size: 32)),
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(

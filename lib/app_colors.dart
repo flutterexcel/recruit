@@ -22,6 +22,7 @@ class AppColors {
   static const Color Voilet = Color(0xFF9964E3);
 
   static const Color LIght_Voilet = Color(0xFFCFB8F2);
+  static const Color white = Color(0xFFffffff);
   static const Color Green = Color(0xFF3ABF94);
   static const Color Light_Green = Color(0xFFBBEBD1);
 }
