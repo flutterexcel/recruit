@@ -61,18 +61,22 @@ class _JobTitleState extends State<JobTitle> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      getData[index].candidateProfile,
-                      style: TextStyle(color: AppColors.Black, fontSize: 22),
+                    Expanded(
+                      child: Text(
+                        getData[index].candidateProfile,
+                        style: TextStyle(color: AppColors.Black, fontSize: 18),
+                      ),
                     ),
                     Spacer(),
-                    Text(
-                      "${getData[index].unreadEmails.toString()} new  ",
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                          color: AppColors.Grey_Font,
-                          fontSize: 16,
-                          fontFamily: "RobotRegular"),
+                    Expanded(
+                      child: Text(
+                        "${getData[index].unreadEmails.toString()} new  ",
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                            color: AppColors.Grey_Font,
+                            fontSize: 16,
+                            fontFamily: "RobotRegular"),
+                      ),
                     ),
                     IconButton(
                         icon: Icon(isTitleTap[index]

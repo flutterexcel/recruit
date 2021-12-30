@@ -11,8 +11,6 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial());
-
-  
   AuthenticationService authenticationService = new AuthenticationService();
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {

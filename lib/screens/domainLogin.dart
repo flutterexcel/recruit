@@ -98,7 +98,7 @@ class _DomainLoginState extends State<DomainLogin> {
                                     child: Container(
                                       padding: EdgeInsets.only(left: 5),
                                       child: Text(
-                                        "It looks like your account is not active. Please contact support to get it activated. ",
+                                        " It looks like your account is not active. Please contact support to get it activated. ",
                                         style: TextStyle(
                                             color: AppColors.Orange),
                                       ),

@@ -35,6 +35,7 @@ dependencies:
   percent_indicator: ^2.1.9
   step_progress_indicator: ^0.2.5+8
   intl: ^0.16.1
+  timelines:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -60,6 +61,7 @@ flutter_icons:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
+# mfnsdb
 flutter:
   fonts:
     - family: Roboto

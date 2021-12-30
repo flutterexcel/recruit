@@ -1,7 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=C:\flutter"
+<<<<<<< HEAD
 export "FLUTTER_APPLICATION_PATH=C:\Users\excel\Downloads\recruit-main\recruit-main"
+=======
+export "FLUTTER_APPLICATION_PATH=C:\Users\mahim\Downloads\recruit-main\recruit-main"
+>>>>>>> ed5e7360d95365d53076cf872e013f2b01f954f6
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
