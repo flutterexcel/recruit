@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/services/jobs_overview/jobtagservice.dart';
-<<<<<<< HEAD
-=======
-import 'package:flutter_product_recruit/services/storage_service.dart';
-import 'package:flutter_product_recruit/widgets/loader.dart';
->>>>>>> e7012c2f060769aa30d67591a4668e90f6ce8b56
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../app_colors.dart';
