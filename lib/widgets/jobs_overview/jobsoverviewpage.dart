@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -55,7 +56,7 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
-              onPressed: () => {},
+              onPressed: () => {  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Step1())),},
               icon: Icon(Icons.add, color: AppColors.white),
               label: Text('Add jobs', style: TextStyle(color: AppColors.white)),
             ),
