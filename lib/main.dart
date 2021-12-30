@@ -8,6 +8,7 @@ import 'package:flutter_product_recruit/services/storage_service.dart';
 
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
+import 'bloc/user_logs_bloc/user_log_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +39,10 @@ class _MainState extends State<Main> {
           ),
           BlocProvider(
             create: (context) => KanbanBloc(),
-          )
+          ),
+          BlocProvider<UserLogBloc>(
+            create: (context) => UserLogBloc(),
+          ),
         ], child: RecruiterApp()),
       ),
     );

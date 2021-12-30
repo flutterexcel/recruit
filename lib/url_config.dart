@@ -23,6 +23,7 @@ class UrlConfig {
   UrlConfig.jobsListCalling({this.action, this.endPoints});
   UrlConfig.jobsOverviewCalling({this.action, this.endPoints});
   UrlConfig.hiringTeam({this.action, this.endPoints});
+  UrlConfig.userLogs({this.action, this.endPoints});
   UrlConfig.getJobTagData({this.action, this.jobToken, this.endPoints});
   UrlConfig.getCandididateCvInfo(
       {this.action,
@@ -53,6 +54,8 @@ class UrlConfig {
       url = json['baseUrl'] + json['devUrl'] + json['port'] + endPoints;
     } else if (action.contains('getJobTagData')) {
       url = json['aiBaseUrl'] + json['aiUrl'] + jobToken + endPoints;
+    } else if (action.contains('userlogs')) {
+      url = json['baseUrl'] + json['devUrl'] + json['port'] + endPoints;
     } else if (action.contains('getCandididateCvInfo')) {
       url = json['aiBaseUrl'] +
           json['cvAiUrl'] +

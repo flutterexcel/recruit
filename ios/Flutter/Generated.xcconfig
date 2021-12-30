@@ -1,14 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=C:\flutter
-<<<<<<< HEAD
-<<<<<<< HEAD
-FLUTTER_APPLICATION_PATH=C:\Users\excel\Downloads\recruit-main\recruit-main
-=======
-FLUTTER_APPLICATION_PATH=C:\Users\mahim\Downloads\recruit-main\recruit-main
->>>>>>> ed5e7360d95365d53076cf872e013f2b01f954f6
-=======
 FLUTTER_APPLICATION_PATH=D:\workspace\recruit-main
->>>>>>> e7012c2f060769aa30d67591a4668e90f6ce8b56
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
