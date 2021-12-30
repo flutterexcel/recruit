@@ -98,18 +98,6 @@ class _DomainLoginState extends State<DomainLogin> {
                                     child: Container(
                                       padding: EdgeInsets.only(left: 5),
                                       child: Text(
-<<<<<<< HEAD
-                                        " It looks like your account is not active. Please contact support to get it activated. ",
-                                        style: TextStyle(
-                                            color: AppColors.Orange),
-                                      ),
-                                    ),
-                                  )),
-                                  const SizedBox(height: 10),
-                              FlatButton(
-                                  color: Color(0xFF7CACFB),
-                                  
-=======
                                         "It looks like your account is not active. Please contact support to get it activated. ",
                                         style:
                                             TextStyle(color: AppColors.Orange),
@@ -119,7 +107,6 @@ class _DomainLoginState extends State<DomainLogin> {
                               const SizedBox(height: 10),
                               FlatButton(
                                   color: Color(0xFF7CACFB),
->>>>>>> e7012c2f060769aa30d67591a4668e90f6ce8b56
                                   child: Text(
                                     'Login Again',
                                     style: TextStyle(
