@@ -10,7 +10,6 @@ import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
 
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await StorageUtil.getInstance();
   runApp(Main());
@@ -49,7 +48,6 @@ class _MainState extends State<Main> {
 class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     return DomainLogin();
   }
 }
