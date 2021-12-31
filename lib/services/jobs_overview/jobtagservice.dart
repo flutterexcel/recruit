@@ -7,7 +7,6 @@ import '../../url_config.dart';
 import 'package:http/http.dart' as http;
 
 class JobTagService {
-  
   List<JobTag> jobTag = new List();
   Future<List<JobTag>> getJobList(String jobToken, String token) async {
     String url = await UrlConfig.jobsListCalling(
