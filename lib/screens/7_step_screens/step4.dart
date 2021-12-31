@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step3.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 
 // ignore: must_be_immutable
-class Step3 extends StatelessWidget {
-  String b =
-      'The subject which you put here, gets matched with source from income emails.\nSo you can put in some unique keyword which will be found in incoming email from candidate.\nThis will help us to automatically match that candidate to a job profile.\ne.g if your email from a job portal come as "python developer" your keyword should be "python".';
-  String a =
-      'You can also search subject using these operators like "+" and "|" . "+" allows you to search multiple words together and "|" allows you to match either one of the work\n\ne.g\na) php + mysql : this will match resumes having both php and mysql in their subject like \n\nb) email marketing | lead generation : this will match resumes having either email marketing or lead generation in their subject \n\nc) flutter | java : this will match subjects having either flutter or java in their subject. you can try out different combinations to setup your filter accordingly. ';
-  final TextEditingController tfController = TextEditingController();
-
+class Step4 extends StatelessWidget {
+  final List<String> names = <String>['govind', 'text', 'Test', 'test123'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +20,10 @@ class Step3 extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height,
+                    height: 700,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(color: Colors.grey),
                       shape: BoxShape.rectangle,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
@@ -40,12 +34,12 @@ class Step3 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Source Matching",
+                            "Manage Job Roles!",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "Step 3/7",
+                            "Step 4/7",
                             style: TextStyle(fontSize: 10),
                           ),
 
@@ -58,38 +52,16 @@ class Step3 extends StatelessWidget {
                           Row(
                             children: const [
                               Text(
-                                "Add ",
+                                "Assign ",
                                 style: TextStyle(fontSize: 13),
                               ),
                               Text(
-                                "Keyword ",
+                                "user ",
                                 style: TextStyle(
                                     fontSize: 13, color: Colors.orange),
                               ),
                               Text(
-                                "to match email from your inbox",
-                                style: TextStyle(fontSize: 13),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(
-                            height: 1,
-                          ),
-
-                          Row(
-                            children: const [
-                              Text(
-                                "Candidate who ",
-                                style: TextStyle(fontSize: 13),
-                              ),
-                              Text(
-                                "email subject ",
-                                style: TextStyle(
-                                    fontSize: 13, color: Colors.orange),
-                              ),
-                              Text(
-                                "matches this keyword",
+                                "who would be working on this job profile",
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -100,72 +72,101 @@ class Step3 extends StatelessWidget {
                           ),
 
                           Text(
-                            "automatically get assigned to the job profile",
+                            "by default all users are assigned to a job profile",
                             style: TextStyle(fontSize: 13),
                           ),
 
                           const SizedBox(
-                            height: 20,
-                          ),
-
-                          const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Subject",
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-
-                          TextField(
-                            controller: tfController,
-                            autocorrect: true,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                hintText: "something unique Eg. python senior"),
-                          ),
-
-                          const SizedBox(
-                            height: 10,
+                            height: 30,
                           ),
 
                           Container(
-                            height: 315,
+                            height: 310,
+                            width: 250,
                             decoration: BoxDecoration(
-                              color: Colors.orangeAccent,
                               border: Border.all(color: Colors.grey),
                               shape: BoxShape.rectangle,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(2)),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(a),
+                              padding: const EdgeInsets.all(25.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "HRs",
+                                    style: TextStyle(fontSize: 13),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  for (int i = 0; i < 4; i++)
+                                    Column(
+                                      children: [
+                                        Container(
+                                          height: 40,
+                                          width: 140,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: AppColors.orange12),
+                                            shape: BoxShape.rectangle,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(20)),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 15.0),
+                                                child: CircleAvatar(
+                                                  backgroundImage: AssetImage(
+                                                      'assets/images/default.png'),
+                                                  radius: 18,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 15,
+                                              ),
+                                              Text(names[i]),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        )
+                                      ],
+                                    ),
+                                ],
+                              ),
                             ),
                           ),
+
                           const SizedBox(
                             height: 20,
                           ),
+
                           Container(
-                            height: 180,
+                            height: 100,
+                            width: 250,
                             decoration: BoxDecoration(
-                              color: AppColors.purple,
-                              border: Border.all(color: Colors.grey),
+                              border: Border.all(color: AppColors.grey),
                               shape: BoxShape.rectangle,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(2)),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(b),
+                              padding: const EdgeInsets.all(27.0),
+                              child: Text(
+                                "Interviewee",
+                                style: TextStyle(color: Colors.grey),
+                              ),
                             ),
                           ),
 
                           const SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
 
                           Row(
@@ -188,7 +189,7 @@ class Step3 extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => Step2()));
+                                            builder: (context) => Step3()));
                                   },
                                 ),
                               ),
@@ -209,7 +210,7 @@ class Step3 extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => Step4()));
+                                            builder: (context) => Step5()));
                                   },
                                 ),
                               ),

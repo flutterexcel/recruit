@@ -28,44 +28,28 @@ packages:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "6.1.3"
-=======
-    version: "6.1.1"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   characters:
     dependency: transitive
     description:
       name: characters
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.2.0"
-=======
-    version: "1.1.0-nullsafety.5"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   charcode:
     dependency: transitive
     description:
       name: charcode
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.3.1"
-=======
-    version: "1.2.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   collection:
     dependency: transitive
     description:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.15.0"
-=======
-    version: "1.15.0-nullsafety.5"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   convert:
     dependency: transitive
     description:
@@ -100,22 +84,14 @@ packages:
       name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.1.2"
-=======
-    version: "0.1.3"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   file:
     dependency: transitive
     description:
       name: file
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "6.1.2"
-=======
-    version: "5.2.1"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   flutter:
     dependency: "direct main"
     description: flutter
@@ -127,11 +103,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "6.1.3"
-=======
-    version: "6.1.2"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   flutter_launcher_icons:
     dependency: "direct main"
     description:
@@ -145,11 +117,7 @@ packages:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.19.3"
-=======
-    version: "0.18.1"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -161,11 +129,7 @@ packages:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "8.12.0"
-=======
-    version: "8.11.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   getwidget:
     dependency: "direct main"
     description:
@@ -207,11 +171,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.6.3"
-=======
-    version: "0.6.3-nullsafety.3"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   json_annotation:
     dependency: transitive
     description:
@@ -232,11 +192,7 @@ packages:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.7.0"
-=======
-    version: "1.3.0-nullsafety.6"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   nested:
     dependency: transitive
     description:
@@ -250,11 +206,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.8.1"
-=======
-    version: "1.8.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   path_drawing:
     dependency: transitive
     description:
@@ -289,22 +241,14 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.0.5"
-=======
-    version: "0.0.4+3"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   pedantic:
     dependency: transitive
     description:
       name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.11.1"
-=======
-    version: "1.10.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   percent_indicator:
     dependency: "direct main"
     description:
@@ -325,11 +269,7 @@ packages:
       name: platform
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "3.1.0"
-=======
-    version: "3.0.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -350,11 +290,7 @@ packages:
       name: process
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "4.2.4"
-=======
-    version: "3.0.13"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   provider:
     dependency: transitive
     description:
@@ -415,11 +351,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.8.1"
-=======
-    version: "1.7.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   step_progress_indicator:
     dependency: "direct main"
     description:
@@ -433,11 +365,7 @@ packages:
       name: string_scanner
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.1.0"
-=======
-    version: "1.0.5"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   term_glyph:
     dependency: transitive
     description:
@@ -445,7 +373,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-<<<<<<< HEAD
   timelines:
     dependency: "direct main"
     description:
@@ -453,41 +380,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0"
-=======
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   typed_data:
     dependency: transitive
     description:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.3.0"
-=======
-    version: "1.3.0-nullsafety.5"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   vector_math:
     dependency: transitive
     description:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.1.1"
-=======
-    version: "2.1.0-nullsafety.5"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   win32:
     dependency: transitive
     description:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.3.3"
-=======
-    version: "1.7.4+1"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   xdg_directories:
     dependency: transitive
     description:
@@ -510,10 +423,5 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-<<<<<<< HEAD
   dart: ">=2.14.0 <3.0.0"
   flutter: ">=1.20.0"
-=======
-  dart: ">=2.12.0-0 <3.0.0"
-  flutter: ">=1.18.0-6.0.pre <2.0.0"
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a

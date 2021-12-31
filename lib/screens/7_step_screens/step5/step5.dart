@@ -1,17 +1,21 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/dob_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/education_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/experience_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/gender_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/location_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/passout_year_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/skills_widget.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 
 // ignore: must_be_immutable
-class Step3 extends StatelessWidget {
-  String b =
-      'The subject which you put here, gets matched with source from income emails.\nSo you can put in some unique keyword which will be found in incoming email from candidate.\nThis will help us to automatically match that candidate to a job profile.\ne.g if your email from a job portal come as "python developer" your keyword should be "python".';
-  String a =
-      'You can also search subject using these operators like "+" and "|" . "+" allows you to search multiple words together and "|" allows you to match either one of the work\n\ne.g\na) php + mysql : this will match resumes having both php and mysql in their subject like \n\nb) email marketing | lead generation : this will match resumes having either email marketing or lead generation in their subject \n\nc) flutter | java : this will match subjects having either flutter or java in their subject. you can try out different combinations to setup your filter accordingly. ';
-  final TextEditingController tfController = TextEditingController();
+class Step5 extends StatelessWidget {
+  final List<String> names = <String>['govind', 'text', 'Test', 'test123'];
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +30,8 @@ class Step3 extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(color: Colors.grey),
                       shape: BoxShape.rectangle,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
@@ -40,12 +42,12 @@ class Step3 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Source Matching",
+                            "Automated Resume Scoring",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "Step 3/7",
+                            "Step 5/7",
                             style: TextStyle(fontSize: 10),
                           ),
 
@@ -58,16 +60,16 @@ class Step3 extends StatelessWidget {
                           Row(
                             children: const [
                               Text(
-                                "Add ",
+                                "Specify your ",
                                 style: TextStyle(fontSize: 13),
                               ),
                               Text(
-                                "Keyword ",
+                                "criteria ",
                                 style: TextStyle(
                                     fontSize: 13, color: Colors.orange),
                               ),
                               Text(
-                                "to match email from your inbox",
+                                "for candidate shortlisting.",
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -80,16 +82,16 @@ class Step3 extends StatelessWidget {
                           Row(
                             children: const [
                               Text(
-                                "Candidate who ",
+                                "Our ",
                                 style: TextStyle(fontSize: 13),
                               ),
                               Text(
-                                "email subject ",
+                                "AI ",
                                 style: TextStyle(
                                     fontSize: 13, color: Colors.orange),
                               ),
                               Text(
-                                "matches this keyword",
+                                "system will automatically score resumes for you",
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -99,73 +101,105 @@ class Step3 extends StatelessWidget {
                             height: 1,
                           ),
 
+                          Row(
+                            children: const [
+                              Text(
+                                "based on these criteria and help you with much ",
+                                style: TextStyle(fontSize: 13),
+                              ),
+                              Text(
+                                "faster ",
+                                style: TextStyle(
+                                    fontSize: 13, color: Colors.orange),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(
+                            height: 1,
+                          ),
+
                           Text(
-                            "automatically get assigned to the job profile",
-                            style: TextStyle(fontSize: 13),
+                            "shortlisting",
+                            style:
+                                TextStyle(fontSize: 13, color: Colors.orange),
+                          ),
+
+                          const SizedBox(
+                            height: 30,
+                          ),
+
+                          Row(
+                            children: const [
+                              Text(
+                                "I am looking for a candidate",
+                                style:
+                                    TextStyle(fontSize: 11, color: Colors.grey),
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              Text(
+                                "Basic ",
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey,
+                                    fontStyle: FontStyle.italic),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Switch(
+                                value: true,
+                                activeTrackColor: const Color(0xFFf6a609),
+                                activeColor: const Color(0xFFf6a609),
+                              ),
+                            ],
                           ),
 
                           const SizedBox(
                             height: 20,
                           ),
 
-                          const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Subject",
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          Skills(),
 
-                          TextField(
-                            controller: tfController,
-                            autocorrect: true,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                hintText: "something unique Eg. python senior"),
-                          ),
-
-                          const SizedBox(
-                            height: 10,
-                          ),
-
-                          Container(
-                            height: 315,
-                            decoration: BoxDecoration(
-                              color: Colors.orangeAccent,
-                              border: Border.all(color: Colors.grey),
-                              shape: BoxShape.rectangle,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(2)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(a),
-                            ),
-                          ),
                           const SizedBox(
                             height: 20,
                           ),
-                          Container(
-                            height: 180,
-                            decoration: BoxDecoration(
-                              color: AppColors.purple,
-                              border: Border.all(color: Colors.grey),
-                              shape: BoxShape.rectangle,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(2)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(b),
-                            ),
+
+                          Exp(),
+                          const SizedBox(
+                            height: 20,
                           ),
 
+                          Edu(),
+
                           const SizedBox(
-                            height: 10,
+                            height: 20,
+                          ),
+
+                          Gender(),
+
+                          const SizedBox(
+                            height: 20,
+                          ),
+
+                          Passout(),
+
+                          const SizedBox(
+                            height: 20,
+                          ),
+
+                          Location(),
+
+                          const SizedBox(
+                            height: 20,
+                          ),
+
+                          Dob(),
+
+                          const SizedBox(
+                            height: 20,
                           ),
 
                           Row(
@@ -188,7 +222,7 @@ class Step3 extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => Step2()));
+                                            builder: (context) => Step4()));
                                   },
                                 ),
                               ),
@@ -209,11 +243,26 @@ class Step3 extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => Step4()));
+                                            builder: (context) => Step5()));
                                   },
                                 ),
                               ),
                             ],
+                          ),
+
+                          const SizedBox(
+                            height: 20,
+                          ),
+
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: Text(
+                              "*specify at least 4 skills as skills field is mandatory",
+                              style: TextStyle(fontSize: 11, color: Colors.red),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
                           ),
                         ],
                       ),

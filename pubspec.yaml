@@ -35,12 +35,9 @@ dependencies:
   percent_indicator: ^2.1.9
   step_progress_indicator: ^0.2.5+8
   intl: ^0.16.1
-<<<<<<< HEAD
   timelines: ^0.1.0
 
 
-=======
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -54,11 +51,8 @@ dependencies:
 #     sdk: flutter
 
   flutter_launcher_icons: any
-<<<<<<< HEAD
 dependency_overrides:
   flutter_svg: ^0.19.3
-=======
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
 
 flutter_icons:
   android: true
@@ -69,10 +63,7 @@ flutter_icons:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-<<<<<<< HEAD
 # mfnsdb
-=======
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
 flutter:
   fonts:
     - family: Roboto
@@ -100,10 +91,7 @@ flutter:
   assets:
     - assets/config/
     - assets/icons/
-<<<<<<< HEAD
     - assets/images/
-=======
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
