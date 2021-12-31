@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 
@@ -152,7 +153,7 @@ const  Align(
                         decoration:   InputDecoration(
                           
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0),),
-                        fillColor: Colors.grey,
+                        fillColor: AppColors.veryLightGrey,
                         filled: true,
                         ),
               
