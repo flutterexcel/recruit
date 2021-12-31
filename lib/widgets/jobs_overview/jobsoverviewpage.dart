@@ -68,7 +68,10 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                     ),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Step1()))
+                    },
                     icon: Icon(Icons.add, color: AppColors.white),
                     label: Text('Add jobs',
                         style: TextStyle(color: AppColors.white)),

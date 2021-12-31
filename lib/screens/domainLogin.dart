@@ -99,15 +99,14 @@ class _DomainLoginState extends State<DomainLogin> {
                                       padding: EdgeInsets.only(left: 5),
                                       child: Text(
                                         " It looks like your account is not active. Please contact support to get it activated. ",
-                                        style: TextStyle(
-                                            color: AppColors.Orange),
+                                        style:
+                                            TextStyle(color: AppColors.Orange),
                                       ),
                                     ),
                                   )),
-                                  const SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               FlatButton(
                                   color: Color(0xFF7CACFB),
-                                  
                                   child: Text(
                                     'Login Again',
                                     style: TextStyle(

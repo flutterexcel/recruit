@@ -74,7 +74,6 @@ class _LoginFormState extends State<LoginForm> {
                         StorageUtil.setUserEmail(emailController.text);
                         StorageUtil.setPassword(passwordController.text);
                       } else if (!value) {
-                        
                         StorageUtil.setUserEmail("");
                         StorageUtil.setPassword("");
                       }
