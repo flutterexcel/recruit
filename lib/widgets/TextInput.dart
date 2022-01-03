@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextInput extends StatelessWidget {
@@ -7,22 +6,38 @@ class TextInput extends StatelessWidget {
   Key key;
   TextEditingController controller;
   String hintText;
-  TextInput({this.controller, this.hintText, this.key, this.obscureText,this.labelText});
+  bool autocorrect;
+  double borderRadius;
+  int maxLines;
+
+  TextInput({
+    this.controller,
+    this.hintText,
+    this.key,
+    this.obscureText = false,
+    this.labelText,
+    this.autocorrect,
+    this.borderRadius = 10.0,
+    this.maxLines = 1,
+  });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
+      //keyboardType: TextInputType.multiline,
       controller: controller,
+      maxLines: maxLines,
       decoration: InputDecoration(
         labelText: labelText,
         hintStyle: TextStyle(
           fontFamily: 'RobotRegular',
         ),
         hintText: hintText,
-        enabledBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.grey[400],
           ),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),

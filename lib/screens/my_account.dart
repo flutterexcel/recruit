@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
+import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
+import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
 class MyAccount extends StatelessWidget {
@@ -36,9 +40,9 @@ class MyAccount extends StatelessWidget {
                       activeColor: const Color(0xFF00E5FF),
                     ),
                   ),
-                  const Text(
-                    "Don't show quick message during shortlist",
-                    style: TextStyle(fontSize: 10),
+                  Textt(
+                    text: "Don't show quick message during shortlist",
+                    size: 10,
                   ),
                 ],
               ),
@@ -48,12 +52,15 @@ class MyAccount extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: Row(
-                  children: const [
-                    Text("PERSONAL ", style: TextStyle(fontSize: 15)),
-                    Text(
-                      "PROFILE",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  children: [
+                    Textt(
+                      text: "PERSONAL ",
+                      size: 15,
+                    ),
+                    Textt(
+                      text: "PROFILE ",
+                      size: 15,
+                      fweight: FontWeight.bold,
                     ),
                   ],
                 ),
@@ -83,14 +90,8 @@ class MyAccount extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    TextField(
-                      //  controller: companyNameController,
+                    TextInput(
                       autocorrect: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -107,14 +108,9 @@ class MyAccount extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    TextField(
-                      //   controller: userNameController,
+                    TextInput(
+                      hintText: "phone number",
                       autocorrect: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          hintText: "phone number"),
                     ),
                     const SizedBox(height: 15),
                   ],
@@ -157,32 +153,36 @@ class MyAccount extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    TextFormField(
-                      keyboardType: TextInputType.multiline,
+                    TextInput(
+                      hintText: "Write your signature here...",
                       maxLines: 6,
-                      maxLength: null,
-                      decoration: const InputDecoration(
-                        hintText: 'Write your signature here...',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    )
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 9),
-              Buttonn(),
+              Buttonn(
+                text: "Save",
+                bgcolor: AppColors.Blue,
+                leftPadding: 15.0,
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Step5()));
+                },
+              ),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: Row(
-                  children: const [
-                    Text("CHANGE ", style: TextStyle(fontSize: 15)),
-                    Text(
-                      "PASSWORD",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  children: [
+                    Textt(
+                      text: "CHANGE ",
+                      size: 15,
+                    ),
+                    Textt(
+                      text: "PASSWORD",
+                      size: 15,
+                      fweight: FontWeight.bold,
                     ),
                   ],
                 ),
@@ -199,14 +199,9 @@ class MyAccount extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    TextField(
-                      //  controller: companyNameController,
+                    TextInput(
+                      hintText: "Old Password",
                       autocorrect: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          hintText: "Old Password"),
                     ),
                   ],
                 ),
@@ -223,14 +218,9 @@ class MyAccount extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    TextField(
-                      //   controller: userNameController,
+                    TextInput(
+                      hintText: "New Password",
                       autocorrect: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          hintText: "New Password"),
                     ),
                     const SizedBox(height: 15),
                   ],
@@ -247,20 +237,23 @@ class MyAccount extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    TextField(
-                      //   controller: userNameController,
+                    TextInput(
+                      hintText: "Confirm Password",
                       autocorrect: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          hintText: "Confirm Password"),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 15),
-              Buttonn(),
+              Buttonn(
+                text: "Save",
+                bgcolor: AppColors.Blue,
+                leftPadding: 15.0,
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Step1()));
+                },
+              ),
               const SizedBox(height: 15),
             ],
           ),
