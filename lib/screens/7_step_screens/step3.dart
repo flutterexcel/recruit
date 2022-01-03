@@ -9,12 +9,20 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
-class Step3 extends StatelessWidget {
+class Step3 extends StatefulWidget {
+  @override
+  State<Step3> createState() => _Step3State();
+}
+
+class _Step3State extends State<Step3> {
   String b =
       'The subject which you put here, gets matched with source from income emails.\nSo you can put in some unique keyword which will be found in incoming email from candidate.\nThis will help us to automatically match that candidate to a job profile.\ne.g if your email from a job portal come as "python developer" your keyword should be "python".';
+
   String a =
       'You can also search subject using these operators like "+" and "|" . "+" allows you to search multiple words together and "|" allows you to match either one of the work\n\ne.g\na) php + mysql : this will match resumes having both php and mysql in their subject like \n\nb) email marketing | lead generation : this will match resumes having either email marketing or lead generation in their subject \n\nc) flutter | java : this will match subjects having either flutter or java in their subject. you can try out different combinations to setup your filter accordingly. ';
+
   TextEditingController tfController = TextEditingController();
+  bool isPressed = true;
 
   @override
   Widget build(BuildContext context) {
@@ -123,14 +131,34 @@ class Step3 extends StatelessWidget {
                           height: 10,
                         ),
 
-                        Contain(
-                          height: 315,
-                          backcolor: AppColors.orange12,
-                          outlinecolor: AppColors.grey,
-                          borderrad: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(a),
+                        Visibility(
+                          visible: isPressed ? true : false,
+                          child: Contain(
+                            // height: 315,
+                            backcolor: AppColors.orange12,
+                            outlinecolor: AppColors.grey,
+                            borderrad: 2,
+                            child: Column(
+                              children: [
+                                Align(
+                                    alignment: Alignment.centerRight,
+                                    child: InkWell(
+                                      child: Icon(
+                                        Icons.close,
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          isPressed = false;
+                                        });
+                                      },
+                                    )),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, bottom: 8.0),
+                                  child: Text(a),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
 
@@ -174,6 +202,7 @@ class Step3 extends StatelessWidget {
                             ),
                           ],
                         ),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   ),

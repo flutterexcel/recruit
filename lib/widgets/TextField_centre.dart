@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TextInput extends StatelessWidget {
+class TextField_Centre extends StatelessWidget {
   String labelText;
   bool obscureText;
   Key key;
@@ -10,7 +10,7 @@ class TextInput extends StatelessWidget {
   double borderRadius;
   int maxLines;
 
-  TextInput({
+  TextField_Centre({
     this.controller,
     this.hintText,
     this.key,
@@ -27,7 +27,7 @@ class TextInput extends StatelessWidget {
       //keyboardType: TextInputType.multiline,
       // keyboardType: TextInputType.number,
       controller: controller,
-      //textAlign: TextAlign.center,
+      textAlign: TextAlign.center,
       maxLines: maxLines,
 
       decoration: InputDecoration(

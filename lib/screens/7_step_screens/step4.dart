@@ -99,7 +99,9 @@ class Step4 extends StatelessWidget {
                                   Column(
                                     children: [
                                       Container(
-                                        height: 40,
+                                        // constraints: BoxConstraints(
+                                        //     minWidth: 100, maxWidth: 200),
+                                        // height: 40,
                                         width: 140,
                                         decoration: BoxDecoration(
                                           border: Border.all(
@@ -180,6 +182,7 @@ class Step4 extends StatelessWidget {
                             ),
                           ],
                         ),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   ),

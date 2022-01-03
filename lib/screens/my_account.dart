@@ -8,8 +8,13 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
-class MyAccount extends StatelessWidget {
-  bool isSwitched = false;
+class MyAccount extends StatefulWidget {
+  @override
+  State<MyAccount> createState() => _MyAccountState();
+}
+
+class _MyAccountState extends State<MyAccount> {
+  bool isSwitched = true;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +36,9 @@ class MyAccount extends StatelessWidget {
                     child: Switch(
                       value: isSwitched,
                       onChanged: (value) {
-                        //  setState(() {
-                        //    isSwitched = value;
-
-                        //  });
+                        setState(() {
+                          isSwitched = !isSwitched;
+                        });
                       },
                       activeTrackColor: const Color(0xFF00E5FF),
                       activeColor: const Color(0xFF00E5FF),

@@ -202,6 +202,7 @@ class Step2 extends StatelessWidget {
                             ),
                           ],
                         ),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   ),

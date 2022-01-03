@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/dob_widget.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/education_widget.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/experience_widget.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/gender_widget.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/location_widget.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/passout_year_widget.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/skills_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_dob_widget_advance.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_education_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_experience_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_gender_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_location_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_passout_year_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_skills_widget.dart';
+
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
+import 'basic_widgets/dob_widget.dart';
+import 'basic_widgets/education_widget.dart';
+import 'basic_widgets/experience_widget.dart';
+import 'basic_widgets/gender_widget.dart';
+import 'basic_widgets/location_widget.dart';
+import 'basic_widgets/passout_year_widget.dart';
+import 'basic_widgets/skills_widget.dart';
+
 // ignore: must_be_immutable
-class Step5 extends StatelessWidget {
+class Step5 extends StatefulWidget {
+  @override
+  State<Step5> createState() => _Step5State();
+}
+
+class _Step5State extends State<Step5> {
   final List<String> names = <String>['govind', 'text', 'Test', 'test123'];
-  bool isSwitched = false;
+
+  bool isSwitched = true;
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +153,7 @@ class Step5 extends StatelessWidget {
                               width: 30,
                             ),
                             Textt(
-                              text: "Basic",
+                              text: isSwitched ? "Basic" : "Advanced",
                               size: 11,
                               tcolor: AppColors.grey,
                               fstyle: FontStyle.italic,
@@ -147,53 +162,83 @@ class Step5 extends StatelessWidget {
                               width: 10,
                             ),
                             Switch(
-                              value: true,
+                              value: isSwitched,
                               activeTrackColor: const Color(0xFFf6a609),
                               activeColor: const Color(0xFFf6a609),
+                              onChanged: (value) {
+                                setState(() {
+                                  isSwitched = !isSwitched;
+                                });
+                              },
                             ),
                           ],
                         ),
 
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Skills(),
-
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Exp(),
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Edu(),
-
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Gender(),
-
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Passout(),
-
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Location(),
-
-                        const SizedBox(
-                          height: 20,
-                        ),
-
-                        Dob(),
+                        isSwitched
+                            ? Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Skills(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Exp(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Edu(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Gender(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Passout(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Location(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Dob(),
+                                ],
+                              )
+                            : Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Skills(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Exp(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Edu(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Gender(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Passout(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Location(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Adv_Dob(),
+                                ],
+                              ),
 
                         const SizedBox(
                           height: 20,
