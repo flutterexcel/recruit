@@ -31,7 +31,7 @@ class TextInput extends StatelessWidget {
       maxLines: maxLines,
 
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.zero,
+        // contentPadding: EdgeInsets.zero,
         labelText: labelText,
         hintStyle: TextStyle(
           fontFamily: 'RobotRegular',

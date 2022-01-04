@@ -12,9 +12,12 @@ class Adv_Skills extends StatefulWidget {
 
 class _SkillsState extends State<Adv_Skills> {
   final _controller = TextEditingController();
+  final _controllerNumber = TextEditingController();
   bool isPressed = false;
+  bool isIconPressed = true;
 
   final List<String> names = <String>[];
+  final List<String> number = <String>[];
   @override
   Widget build(BuildContext context) {
     return Contain(
@@ -90,59 +93,101 @@ class _SkillsState extends State<Adv_Skills> {
                                 : const SizedBox(
                                     height: 15,
                                   ),
-                            Container(
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    names.length > 0
-                                        ? SizedBox(
-                                            // width: 110,
-                                            height: 60,
-                                            child: ListView.separated(
-                                              scrollDirection: Axis.horizontal,
-                                              //  physics: NeverScrollableScrollPhysics(),
-                                              separatorBuilder:
-                                                  (BuildContext context,
-                                                      int index) {
-                                                return const SizedBox(
-                                                  width: 15,
-                                                );
-                                              },
-                                              itemCount: names.length,
-                                              itemBuilder: (context, index) {
-                                                return Contain(
-                                                  borderrad: 20,
-                                                  //  height: 60,
-                                                  width: 110,
-                                                  outlinecolor: AppColors.grey,
-                                                  child: ListTile(
-                                                    title: Text(
-                                                      '${names[index]}',
-                                                      style: TextStyle(
-                                                          color: Colors.black),
-                                                    ),
-                                                    trailing: InkWell(
-                                                      child: Icon(Icons.close),
-                                                      onTap: () {
-                                                        setState(() {
-                                                          names.removeAt(index);
-                                                        });
-                                                      },
+                            names.length > 0
+                                ? SizedBox(
+                                    child: GridView.builder(
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 8,
+                                        mainAxisSpacing: 9,
+                                        childAspectRatio:
+                                            MediaQuery.of(context).size.width /
+                                                (MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    4),
+                                      ),
+                                      itemCount: names.length,
+                                      itemBuilder: (context, index) {
+                                        return Center(
+                                          child: Contain(
+                                            borderrad: 20,
+                                            outlinecolor: AppColors.grey,
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: SingleChildScrollView(
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          '${names[index]}',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.black),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
-                                                );
-                                              },
-                                              shrinkWrap: true,
+                                                ),
+                                                const SizedBox(
+                                                  width: 15,
+                                                ),
+                                                InkWell(
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    child: Container(
+                                                      child: isIconPressed
+                                                          ? Text(
+                                                              number[index]
+                                                                      .isNotEmpty
+                                                                  ? '${number[index]}'
+                                                                  : 'NaN',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                            )
+                                                          : InkWell(
+                                                              child: Icon(
+                                                                Icons.close,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  names.removeAt(
+                                                                      index);
+                                                                  isIconPressed =
+                                                                      true;
+                                                                });
+                                                              },
+                                                            ),
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: AppColors
+                                                              .lightGrey),
+                                                    ),
+                                                  ),
+                                                  onTap: () {
+                                                    setState(() {
+                                                      isIconPressed =
+                                                          !isIconPressed;
+                                                    });
+                                                  },
+                                                ),
+                                              ],
                                             ),
-                                          )
-                                        : const SizedBox(
-                                            height: 20,
-                                          )
-                                  ],
-                                ),
-                              ),
-                            ),
+                                          ),
+                                        );
+                                      },
+                                      shrinkWrap: true,
+                                    ),
+                                  )
+                                : const SizedBox(
+                                    height: 20,
+                                  ),
                           ],
                         ),
                         names.isEmpty
@@ -190,6 +235,7 @@ class _SkillsState extends State<Adv_Skills> {
                               width: 45,
                               height: 30,
                               child: TextField_Centre(
+                                controller: _controllerNumber,
                                 autocorrect: true,
                               ),
                             ),
@@ -225,7 +271,11 @@ class _SkillsState extends State<Adv_Skills> {
                                 setState(() {
                                   names.insert(0, _controller.text);
 
+                                  number.insert(
+                                      0, _controllerNumber.text.toString());
+
                                   _controller.clear();
+                                  _controllerNumber.clear();
                                 });
                               },
                             ),

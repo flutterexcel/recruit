@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
-import 'package:flutter_product_recruit/widgets/drop_down.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 class Edu extends StatefulWidget {

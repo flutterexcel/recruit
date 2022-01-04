@@ -11,6 +11,13 @@ class Adv_Location extends StatefulWidget {
 
 class _Adv_LocationState extends State<Adv_Location> {
   bool isPressed = false;
+  final _controller = TextEditingController();
+  final _controllerNumber = TextEditingController();
+
+  bool isIconPressed = true;
+
+  final List<String> names = <String>[];
+  final List<String> number = <String>[];
   @override
   Widget build(BuildContext context) {
     return Contain(
@@ -68,12 +75,129 @@ class _Adv_LocationState extends State<Adv_Location> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              isPressed
+                  ? const SizedBox(
+                      height: 1,
+                    )
+                  : const SizedBox(
+                      height: 20,
+                    ),
               isPressed
                   ? Column(
                       children: [
+                        Column(
+                          children: [
+                            names.isEmpty
+                                ? const SizedBox(
+                                    height: 1,
+                                  )
+                                : const SizedBox(
+                                    height: 15,
+                                  ),
+                            names.length > 0
+                                ? SizedBox(
+                                    child: GridView.builder(
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 8,
+                                        mainAxisSpacing: 9,
+                                        childAspectRatio:
+                                            MediaQuery.of(context).size.width /
+                                                (MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    4),
+                                      ),
+                                      itemCount: names.length,
+                                      itemBuilder: (context, index) {
+                                        return Center(
+                                          child: Contain(
+                                            borderrad: 20,
+                                            outlinecolor: AppColors.grey,
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: SingleChildScrollView(
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          '${names[index]}',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.black),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 15,
+                                                ),
+                                                InkWell(
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    child: Container(
+                                                      child: isIconPressed
+                                                          ? Text(
+                                                              number[index]
+                                                                      .isNotEmpty
+                                                                  ? '${number[index]}'
+                                                                  : 'NaN',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                            )
+                                                          : InkWell(
+                                                              child: Icon(
+                                                                Icons.close,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  names.removeAt(
+                                                                      index);
+                                                                  isIconPressed =
+                                                                      true;
+                                                                });
+                                                              },
+                                                            ),
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: AppColors
+                                                              .lightGrey),
+                                                    ),
+                                                  ),
+                                                  onTap: () {
+                                                    setState(() {
+                                                      isIconPressed =
+                                                          !isIconPressed;
+                                                    });
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      shrinkWrap: true,
+                                    ),
+                                  )
+                                : const SizedBox(
+                                    height: 20,
+                                  ),
+                          ],
+                        ),
+                        names.isEmpty
+                            ? const SizedBox(
+                                height: 1,
+                              )
+                            : const SizedBox(
+                                height: 20,
+                              ),
                         Row(
                           children: [
                             Textt(
@@ -89,6 +213,7 @@ class _Adv_LocationState extends State<Adv_Location> {
                                 width: 250,
                                 height: 35,
                                 child: TextField_Centre(
+                                  controller: _controller,
                                   autocorrect: true,
                                 ),
                               ),
@@ -111,6 +236,7 @@ class _Adv_LocationState extends State<Adv_Location> {
                               width: 45,
                               height: 30,
                               child: TextField_Centre(
+                                controller: _controllerNumber,
                                 autocorrect: true,
                               ),
                             ),
@@ -137,9 +263,22 @@ class _Adv_LocationState extends State<Adv_Location> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Icon(
-                              Icons.add,
-                              color: AppColors.orange12,
+                            InkWell(
+                              child: Icon(
+                                Icons.add,
+                                color: AppColors.orange12,
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  names.insert(0, _controller.text);
+
+                                  number.insert(
+                                      0, _controllerNumber.text.toString());
+
+                                  _controller.clear();
+                                  _controllerNumber.clear();
+                                });
+                              },
                             ),
                           ],
                         ),

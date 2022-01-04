@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextInput.dart';
+import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
@@ -11,6 +11,12 @@ class Dob extends StatefulWidget {
 
 class _DobState extends State<Dob> {
   bool isPressed = false;
+  final List<String> names = <String>[];
+  final _controller = TextEditingController();
+  final _controller2 = TextEditingController();
+  final List<String> number = <String>[];
+  bool isIconPressed = true;
+
   @override
   Widget build(BuildContext context) {
     return Contain(
@@ -41,12 +47,108 @@ class _DobState extends State<Dob> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              isPressed
+                  ? const SizedBox(
+                      height: 1,
+                    )
+                  : const SizedBox(
+                      height: 20,
+                    ),
               isPressed
                   ? Column(
                       children: [
+                        Column(
+                          children: [
+                            names.isEmpty
+                                ? const SizedBox(
+                                    height: 1,
+                                  )
+                                : const SizedBox(
+                                    height: 15,
+                                  ),
+                            names.length > 0
+                                ? ListView.separated(
+                                    shrinkWrap: true,
+                                    physics: ScrollPhysics(),
+                                    separatorBuilder: (context, index) {
+                                      return const SizedBox(
+                                        height: 30,
+                                      );
+                                    },
+                                    itemCount: names.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Container(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Textt(
+                                                      text: "between",
+                                                      tcolor: AppColors.grey,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                SizedBox(
+                                                    width: 150,
+                                                    height: 35,
+                                                    child: Contain(
+                                                      borderrad: 1,
+                                                      outlinecolor:
+                                                          AppColors.grey,
+                                                      child: Align(
+                                                        alignment: Alignment
+                                                            .centerLeft,
+                                                        child: Text(
+                                                            '${names[index]}' +
+                                                                ' to ' +
+                                                                '${number[index]}'),
+                                                      ),
+                                                    )),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            InkWell(
+                                              child: Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Transform.scale(
+                                                  scale: 0.7,
+                                                  child: Icon(
+                                                    Icons.close,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                              onTap: () {
+                                                setState(() {
+                                                  names.removeAt(index);
+                                                  isIconPressed = true;
+                                                });
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    })
+                                : const SizedBox(
+                                    height: 20,
+                                  ),
+                          ],
+                        ),
+                        names.isEmpty
+                            ? const SizedBox(
+                                height: 1,
+                              )
+                            : const SizedBox(
+                                height: 20,
+                              ),
                         Row(
                           children: [
                             Textt(
@@ -61,7 +163,8 @@ class _DobState extends State<Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextInput(
+                                child: TextField_Centre(
+                                  controller: _controller,
                                   autocorrect: true,
                                 ),
                               ),
@@ -81,14 +184,10 @@ class _DobState extends State<Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField(
-                                  //   controller: userNameController,
+                                child: TextField_Centre(
+                                  controller: _controller2,
                                   autocorrect: true,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                  ),
+                                  borderRadius: 10,
                                 ),
                               ),
                             ),
@@ -121,9 +220,20 @@ class _DobState extends State<Dob> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Icon(
-                              Icons.add,
-                              color: AppColors.orange12,
+                            InkWell(
+                              child: Icon(
+                                Icons.add,
+                                color: AppColors.orange12,
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  names.insert(0, _controller.text);
+                                  number.insert(0, _controller2.text);
+
+                                  _controller.clear();
+                                  _controller2.clear();
+                                });
+                              },
                             ),
                           ],
                         ),
