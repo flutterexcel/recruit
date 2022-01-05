@@ -2,11 +2,8 @@
 //  Generated file. Do not edit.
 //
 
-<<<<<<< HEAD
 // clang-format off
 
-=======
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
 #ifndef GeneratedPluginRegistrant_h
 #define GeneratedPluginRegistrant_h
 
