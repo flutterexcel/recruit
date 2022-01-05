@@ -24,14 +24,9 @@ class TextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
-      //keyboardType: TextInputType.multiline,
-      // keyboardType: TextInputType.number,
       controller: controller,
-      //textAlign: TextAlign.center,
       maxLines: maxLines,
-
       decoration: InputDecoration(
-        // contentPadding: EdgeInsets.zero,
         labelText: labelText,
         hintStyle: TextStyle(
           fontFamily: 'RobotRegular',

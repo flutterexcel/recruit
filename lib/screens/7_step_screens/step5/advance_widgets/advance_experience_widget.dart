@@ -305,6 +305,24 @@ class _Adv_ExpState extends State<Adv_Exp> {
                               const SizedBox(
                                 height: 20,
                               ),
+                              Row(
+                                children: [
+                                  Textt(
+                                    text: "add",
+                                    tcolor: AppColors.grey,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Icon(
+                                    Icons.add,
+                                    color: AppColors.orange12,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
                             ],
                           )
                         else

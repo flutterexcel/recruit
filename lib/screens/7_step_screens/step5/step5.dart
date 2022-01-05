@@ -8,6 +8,7 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_wid
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_location_widget.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_passout_year_widget.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_skills_widget.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step6/step6.dart';
 
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
@@ -261,7 +262,7 @@ class _Step5State extends State<Step5> {
                               borderRadius: 2,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Step5()));
+                                    builder: (context) => Step6()));
                               },
                             ),
                           ],

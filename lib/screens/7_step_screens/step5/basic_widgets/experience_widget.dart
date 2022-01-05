@@ -331,9 +331,11 @@ class _ExpState extends State<Exp> {
                                           .toString()
                                           .contains(items[3])) {
                                     names.insert(0, _selectedExperience);
-                                  } else {
+                                  } else if (_selectedExperience
+                                      .toString()
+                                      .contains(items[4])) {
                                     names.insert(0, _controller.text);
-                                    number.insert(0, _controller2.text);
+                                    names.insert(0, _controller2.text);
                                     _controller.clear();
                                     _controller2.clear();
                                   }

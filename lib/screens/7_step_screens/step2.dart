@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step3.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
@@ -9,8 +9,14 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
-class Step2 extends StatelessWidget {
-  String dropdownvalue = 'HR Recruitment';
+class Step2 extends StatefulWidget {
+  @override
+  State<Step2> createState() => _Step2State();
+}
+
+class _Step2State extends State<Step2> {
+  String dropdownvalue;
+
   var items = [
     'HR Recruitment',
     'Sales',
@@ -88,25 +94,51 @@ class Step2 extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           outlinecolor: Colors.black,
                           borderrad: 10,
-                          child: DropdownButton(
-                            hint: Textt(text: "data"),
-                            isExpanded: true,
-                            underline: SizedBox(),
-                            value: dropdownvalue,
-                            icon: Icon(Icons.keyboard_arrow_down),
-                            items: items.map((String items) {
-                              return DropdownMenuItem(
-                                  value: items,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(items),
-                                  ));
-                            }).toList(),
-                            onChanged: (newValue) {
-                              // setState(() {
-                              //   dropdownvalue = newValue;
-                              // });
+                          child: DropdownButton<String>(
+                            onChanged: (value) {
+                              setState(() {
+                                dropdownvalue = value;
+                              });
                             },
+                            value: dropdownvalue,
+
+                            // Hide the default underline
+                            underline: SizedBox(),
+                            hint: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Select Domain',
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black),
+                              ),
+                            ),
+
+                            isExpanded: true,
+
+                            // The list of options
+                            items: items
+                                .map((e) => DropdownMenuItem(
+                                      child: Container(
+                                        child: Text(
+                                          e,
+                                          style: TextStyle(fontSize: 13),
+                                        ),
+                                      ),
+                                      value: e,
+                                    ))
+                                .toList(),
+
+                            // Customize the selected item
+                            selectedItemBuilder: (BuildContext context) => items
+                                .map((e) => Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        e,
+                                        style: TextStyle(
+                                            fontSize: 13, color: Colors.grey),
+                                      ),
+                                    ))
+                                .toList(),
                           ),
                         ),
                         const SizedBox(
