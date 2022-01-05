@@ -22,7 +22,7 @@ class _MyAccountState extends State<MyAccount> {
         appBar: AppBar(
           title: const Text("My Account"),
         ),
-        drawer: NavigationList(),
+        // drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [

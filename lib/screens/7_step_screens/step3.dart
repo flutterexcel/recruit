@@ -30,7 +30,7 @@ class _Step3State extends State<Step3> {
         appBar: AppBar(
           title: const Text("Create Job"),
         ),
-        drawer: NavigationList(),
+        // drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [

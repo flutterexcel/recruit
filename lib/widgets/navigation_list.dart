@@ -5,24 +5,46 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_state.dart';
+import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
+import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
+import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
+import 'package:flutter_product_recruit/screens/conversation.dart';
+import 'package:flutter_product_recruit/screens/jobsoverview.dart';
 import 'package:flutter_product_recruit/screens/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
+import 'jobs_overview/jobsoverviewpage.dart';
+
 class NavigationList extends StatefulWidget {
-  NavigationList();
+  List<JobList> getData;
+  List<JobsOverviewModel> jobsOverViewModel;
+  List<ListJobTag> listJobTag;
+
+  NavigationList(this.getData, this.jobsOverViewModel, this.listJobTag);
   @override
-  _NavigationListState createState() => _NavigationListState();
+  _NavigationListState createState() =>
+      _NavigationListState(getData, jobsOverViewModel, listJobTag);
 }
 
 class _NavigationListState extends State<NavigationList> {
-  _NavigationListState();
+  List<JobList> getData;
+  List<ListJobTag> listJobTag;
+  List<JobsOverviewModel> jobsOverViewModel;
+
+  _NavigationListState(
+    this.getData,
+    this.jobsOverViewModel,
+    this.listJobTag,
+  );
   var currentPage;
   File _image;
 
   @override
   Widget build(BuildContext context) {
     // final LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
+    // print(
+    //     "getdata---${getData},joboverviewmodel----${jobsOverViewModel} and listjobtag----${listJobTag}");
     var container;
 
     return Drawer(
@@ -79,10 +101,43 @@ class _NavigationListState extends State<NavigationList> {
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Icon(Icons.person, color: Colors.black),
                 ))),
-        menuItem(1, "JOBS", Icons.work,
-            currentPage == DrawerSections.JOBS ? true : false),
-        menuItem(2, "CONVERSATION", Icons.inbox,
-            currentPage == DrawerSections.CONVERSATION ? true : false),
+        GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => JobsOverview()));
+            },
+            child: ListTile(
+                // leading: Icon(Icons.ac_unit),
+                title: Text(
+                  "JOBS",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Icon(Icons.shopping_bag_outlined, color: Colors.black),
+                ))),
+
+        GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => Conversation()));
+            },
+            child: ListTile(
+                // leading: Icon(Icons.ac_unit),
+                title: Text(
+                  "CONVERSATION",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Icon(Icons.inbox, color: Colors.black),
+                ))),
         menuItem(3, "STATISTICS", Icons.star_outline,
             currentPage == DrawerSections.STATISTICS ? true : false),
         menuItem(4, "CANDIDATE DATABASE", Icons.file_copy,
@@ -96,7 +151,7 @@ class _NavigationListState extends State<NavigationList> {
             child: ListTile(
                 // leading: Icon(Icons.ac_unit),
                 title: Text(
-                  "Settings",
+                  "SETTINGS",
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,

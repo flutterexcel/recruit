@@ -11,6 +11,7 @@ class UserLogsAuth {
   List<UserLog> userLog = [];
   
   Future<List<UserLog>> getUserLogList(String token) async {
+    
     String url = await UrlConfig.userLogs(
             action: "userlogs", endPoints: "dashboard/userLogs/1/100")
         .forFirstEnvironment();

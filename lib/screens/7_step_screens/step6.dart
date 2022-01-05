@@ -11,7 +11,7 @@ class Step6 extends StatefulWidget {
 }
 
 class _Step6State extends State<Step6> {
-   TextEditingController tfController = TextEditingController();
+  TextEditingController tfController = TextEditingController();
   bool isPressed = true;
 
   @override
@@ -20,7 +20,7 @@ class _Step6State extends State<Step6> {
         appBar: AppBar(
           title: const Text("Create Job"),
         ),
-        drawer: NavigationList(),
+        // drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -72,8 +72,6 @@ class _Step6State extends State<Step6> {
                         const SizedBox(
                           height: 30,
                         ),
-
-                        
                       ],
                     ),
                   ),

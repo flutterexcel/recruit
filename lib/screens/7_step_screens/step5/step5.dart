@@ -39,7 +39,7 @@ class _Step5State extends State<Step5> {
         appBar: AppBar(
           title: const Text("Create Job"),
         ),
-        drawer: NavigationList(),
+        // drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [

@@ -29,7 +29,7 @@ class Step2 extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Create Job"),
         ),
-        drawer: NavigationList(),
+        // drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [

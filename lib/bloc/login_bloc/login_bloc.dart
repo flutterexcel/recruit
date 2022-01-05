@@ -46,6 +46,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginState> _mapLoginWithEmailToState(LoginWithEmail event) async* {
+    
     try {
       var res = await authenticationService.signInWithEmailAndPassword(
           event.email, event.password);

@@ -54,7 +54,11 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             leading: Icon(Icons.language_outlined),
             title: Text("MANAGE SOURCES"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ManageSources()),
+              );
+              // Navigator.pop(context);
             },
           ),
           ListTile(
@@ -119,7 +123,7 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             leading: Icon(Icons.logout),
             title: Text("LOGOUT"),
             onTap: () {
-              // loginstate.add(LogOutEvent);m,m,,                                                         
+              // loginstate.add(LogOutEvent);m,m,,
               Navigator.pop(context);
             },
           ),

@@ -32,4 +32,5 @@ class AppColors {
 
   static const Color lightGrey = Color(0xFFE0E2E7);
   static const Color veryLightGrey = Color(0xFFE8E9EC);
+  static const Color darkGrey = Color(0xFFF5e5e5e);
 }
