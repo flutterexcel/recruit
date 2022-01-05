@@ -20,7 +20,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is LoginWithEmail) {
       yield* _mapLoginWithEmailToState(event);
     }
-    if (event is LogOutEvent) {}
+    if (event is LogOutEvent) {
+      print("mbmb");
+      yield* _mapLogOutToState(event);
+    }
   }
 
   Stream<LoginState> _mapLoginInitialEvent(LoginInitialEvent event) async* {

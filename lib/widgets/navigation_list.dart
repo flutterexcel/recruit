@@ -1,20 +1,28 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
+import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_state.dart';
+import 'package:flutter_product_recruit/screens/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
 class NavigationList extends StatefulWidget {
+  NavigationList();
   @override
   _NavigationListState createState() => _NavigationListState();
 }
 
 class _NavigationListState extends State<NavigationList> {
+  _NavigationListState();
   var currentPage;
   File _image;
 
   @override
   Widget build(BuildContext context) {
+    // final LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
     var container;
 
     return Drawer(
@@ -69,10 +77,7 @@ class _NavigationListState extends State<NavigationList> {
                 ),
                 leading: Padding(
                   padding: const EdgeInsets.only(left: 20.0),
-                  child: CircleAvatar(
-                      radius: 14,
-                      backgroundImage:
-                          NetworkImage(StorageUtil.getUserProfileImage())),
+                  child: Icon(Icons.person, color: Colors.black),
                 ))),
         menuItem(1, "JOBS", Icons.work,
             currentPage == DrawerSections.JOBS ? true : false),
@@ -83,14 +88,15 @@ class _NavigationListState extends State<NavigationList> {
         menuItem(4, "CANDIDATE DATABASE", Icons.file_copy,
             currentPage == DrawerSections.CANDIDATEDATABASE ? true : false),
 
-        menuItem(5, "Settings", Icons.settings_outlined,
-            currentPage == DrawerSections.settings ? true : false),
         GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => ManageSources()));
+            },
             child: ListTile(
                 // leading: Icon(Icons.ac_unit),
                 title: Text(
-                  "Log Out",
+                  "Settings",
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
@@ -98,8 +104,26 @@ class _NavigationListState extends State<NavigationList> {
                 ),
                 leading: Padding(
                   padding: const EdgeInsets.only(left: 20.0),
-                  child: Icon(Icons.logout),
+                  child: Icon(Icons.settings, color: Colors.black),
                 ))),
+
+        // GestureDetector(
+        //     onTap: () {
+        //       // loginBloc.add(LogOutEvent());
+        //     },
+        //     child: ListTile(
+        //         // leading: Icon(Icons.ac_unit),
+        //         title: Text(
+        //           "Log Out",
+        //           style: const TextStyle(
+        //             color: Colors.black,
+        //             fontSize: 16,
+        //           ),
+        //         ),
+        //         leading: Padding(
+        //           padding: const EdgeInsets.only(left: 20.0),
+        //           child: Icon(Icons.logout, color: Colors.black),
+        //         ))),
         // menuItem(6, StorageUtil.getUserName(),Icons.verified_user_outlined,
         //     currentPage == DrawerSections.USERNAME ? true : false),
       ],
