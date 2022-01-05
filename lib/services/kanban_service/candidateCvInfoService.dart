@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/url_config.dart';
 import 'package:http/http.dart';
-
 import '../storage_service.dart';
 
 class CandidateCvInfoService {

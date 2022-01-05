@@ -1,35 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/widgets/container.dart';
 
 class Buttonn extends StatelessWidget {
-  
+  final String text;
+  Function onTap;
+  double leftPadding;
+  double rightPadding;
+  final bgcolor;
+  double borderRadius;
+
+  Buttonn(
+      {this.text,
+      this.onTap,
+      this.leftPadding = 0.0,
+      this.rightPadding = 15.0,
+      this.bgcolor,
+      this.borderRadius = 8.0});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-                    padding: const EdgeInsets.only(left:15.0,right: 15.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        height: 35,
-                        decoration: const BoxDecoration( color: AppColors.blue,
-                                    shape: BoxShape.rectangle, borderRadius: BorderRadius.all(Radius.circular(8)),
-                                  ),
-                       
-                        child: FlatButton(
-                                       
-                                                    child: const Text(
-                                                     "Save",style:TextStyle(color: Colors.white,fontSize: 20),
-                                                     
-                                                    ),
-                                                    onPressed: ()
-                                                    {
-                                                      
-                    },
-                                              
-                                                  ),
-                      ),
-                    ),
-                  );
+      padding: EdgeInsets.only(left: leftPadding, right: rightPadding),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Contain(
+          height: 35,
+          backcolor: bgcolor,
+          borderrad: borderRadius,
+          child: FlatButton(
+              child: Text(
+                text,
+                style: TextStyle(color: Colors.white, fontSize: 13),
+              ),
+              onPressed: onTap),
+        ),
+      ),
+    );
   }
 }
