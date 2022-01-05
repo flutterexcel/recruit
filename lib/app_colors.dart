@@ -33,4 +33,15 @@ class AppColors {
   static const Color lightGrey = Color(0xFFE0E2E7);
   static const Color veryLightGrey = Color(0xFFE8E9EC);
   static const Color darkGrey = Color(0xFFF5e5e5e);
+
+  // ignore: non_constant_identifier_names
+  static Color purple_opacity = Color(0xFF9964e3).withOpacity(0.5);
+  // ignore: non_constant_identifier_names
+  static Color purple_opacity_max = Color(0xFF9964e3).withOpacity(0.5);
+  // ignore: non_constant_identifier_names
+  static Color purple_opacity_min = Color(0xFF9964e3).withOpacity(0.5);
+
+  static Color Green_opacity = Color(0xFF3ABF94).withOpacity(0.5);
+  static Color Green_opacity_max = Color(0xFF3ABF94).withOpacity(0.5);
+  static Color Green_opacity_min = Color(0xFF3ABF94).withOpacity(0.5);
 }

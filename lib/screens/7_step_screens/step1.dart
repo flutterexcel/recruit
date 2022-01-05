@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/add_source.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
@@ -115,7 +116,8 @@ class Step1 extends StatelessWidget {
                                   onTap: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => Step2()));
+                                            builder: (context) =>
+                                                Add_Source_C()));
                                   },
                                 ),
                                 Buttonn(

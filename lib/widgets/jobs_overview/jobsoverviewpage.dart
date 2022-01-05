@@ -48,8 +48,7 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
           print("job overview----${state}");
           // return UserLogView(state.userLog);
           return Scaffold(
-            drawer: NavigationList(
-                widget.getData, widget.jobsOverViewModel, widget.listJobTag),
+            drawer: NavigationList(),
             appBar: AppBar(
               iconTheme: IconThemeData(color: AppColors.Black),
               backgroundColor: Colors.transparent,

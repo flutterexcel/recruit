@@ -21,10 +21,9 @@ class NavigationList extends StatefulWidget {
   List<JobsOverviewModel> jobsOverViewModel;
   List<ListJobTag> listJobTag;
 
-  NavigationList(this.getData, this.jobsOverViewModel, this.listJobTag);
+  NavigationList();
   @override
-  _NavigationListState createState() =>
-      _NavigationListState(getData, jobsOverViewModel, listJobTag);
+  _NavigationListState createState() => _NavigationListState();
 }
 
 class _NavigationListState extends State<NavigationList> {
@@ -32,11 +31,7 @@ class _NavigationListState extends State<NavigationList> {
   List<ListJobTag> listJobTag;
   List<JobsOverviewModel> jobsOverViewModel;
 
-  _NavigationListState(
-    this.getData,
-    this.jobsOverViewModel,
-    this.listJobTag,
-  );
+  _NavigationListState();
   var currentPage;
   File _image;
 

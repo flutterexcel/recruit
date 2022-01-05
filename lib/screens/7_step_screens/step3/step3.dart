@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step3/confirm_dialouge.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
@@ -26,6 +27,14 @@ class _Step3State extends State<Step3> {
 
   @override
   Widget build(BuildContext context) {
+    void _popupDialog(BuildContext context) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return Dialog(child: Confirm_Dialouge());
+          });
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: const Text("Create Job"),
@@ -68,7 +77,7 @@ class _Step3State extends State<Step3> {
                               size: 13,
                             ),
                             Textt(
-                              text: "Keyword",
+                              text: "Keyword ",
                               size: 13,
                               tcolor: AppColors.orange12,
                             ),
@@ -122,9 +131,30 @@ class _Step3State extends State<Step3> {
                         const SizedBox(
                           height: 5,
                         ),
-                        TextInput(
-                          hintText: "something unique Eg. python senior",
-                          autocorrect: true,
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 110,
+                              child: TextInput(
+                                hintText: "Something unique Eg. python senior",
+                                autocorrect: true,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Align(
+                                alignment: Alignment.centerRight,
+                                child: InkWell(
+                                  child: Transform.scale(
+                                    scale: 1.6,
+                                    child: Icon(
+                                      Icons.info,
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                )),
+                          ],
                         ),
 
                         const SizedBox(
@@ -165,6 +195,7 @@ class _Step3State extends State<Step3> {
                         const SizedBox(
                           height: 20,
                         ),
+
                         Contain(
                           height: 180,
                           backcolor: AppColors.purple,
@@ -196,8 +227,9 @@ class _Step3State extends State<Step3> {
                               bgcolor: AppColors.blue,
                               borderRadius: 2,
                               onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Step4()));
+                                _popupDialog(context);
+                                // Navigator.of(context).push(MaterialPageRoute(
+                                //     builder: (context) => Step4()));
                               },
                             ),
                           ],
