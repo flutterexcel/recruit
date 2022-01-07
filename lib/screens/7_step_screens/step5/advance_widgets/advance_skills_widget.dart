@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 class Adv_Skills extends StatefulWidget {
   @override
@@ -57,7 +58,7 @@ class _SkillsState extends State<Adv_Skills> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Centre(
+                      child: TextField_Int(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -234,7 +235,7 @@ class _SkillsState extends State<Adv_Skills> {
                             SizedBox(
                               width: 45,
                               height: 30,
-                              child: TextField_Centre(
+                              child: TextField_Int(
                                 controller: _controllerNumber,
                                 autocorrect: true,
                               ),

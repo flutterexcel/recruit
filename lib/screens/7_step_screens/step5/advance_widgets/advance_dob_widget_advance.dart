@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
 
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 class Adv_Dob extends StatefulWidget {
   @override
@@ -76,7 +77,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Centre(
+                      child: TextField_Int(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -128,7 +129,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField_Centre(
+                                child: TextField_Int(
                                   autocorrect: true,
                                 ),
                               ),
@@ -148,7 +149,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField_Centre(
+                                child: TextField_Int(
                                   autocorrect: true,
                                 ),
                               ),
@@ -177,7 +178,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                             SizedBox(
                               width: 45,
                               height: 30,
-                              child: TextField_Centre(
+                              child: TextField_Int(
                                 autocorrect: true,
                               ),
                             ),

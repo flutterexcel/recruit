@@ -4,7 +4,6 @@ import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/screens/domainLogin.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
-
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
 import 'bloc/user_logs_bloc/user_log_bloc.dart';

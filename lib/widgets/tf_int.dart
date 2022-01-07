@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class TextInput extends StatelessWidget {
+class TextField_Int extends StatelessWidget {
   String labelText;
   bool obscureText;
   Key key;
@@ -11,7 +10,7 @@ class TextInput extends StatelessWidget {
   double borderRadius;
   int maxLines;
 
-  TextInput({
+  TextField_Int({
     this.controller,
     this.hintText,
     this.key,
@@ -27,7 +26,10 @@ class TextInput extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       maxLines: maxLines,
+      textAlign: TextAlign.center,
+      keyboardType: TextInputType.number,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.zero,
         labelText: labelText,
         hintStyle: TextStyle(
           fontFamily: 'RobotRegular',

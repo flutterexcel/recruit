@@ -9,7 +9,6 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
-// ignore: must_be_immutable
 class Step6 extends StatefulWidget {
   @override
   State<Step6> createState() => _Step6State();

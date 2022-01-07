@@ -11,11 +11,12 @@ class HiringTeam extends StatelessWidget {
   JobAuthService jobAuthService = new JobAuthService();
   List<HiringTeamModel> hirinTeam;
   List<HiringTeamModel> _adminpanelsize = new List();
-  List<HiringTeamModel> _hrpanelsize= new List();
-  List<HiringTeamModel> _intervieweepanelsize= new List();
+  List<HiringTeamModel> _hrpanelsize = new List();
+  List<HiringTeamModel> _intervieweepanelsize = new List();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<JobsOverviewBlocBloc, JobsOverviewState>(
+      // ignore: missing_return
       builder: (context, state) {
         if (state is JobsOvervViewPageState) {
           hirinTeam = state.hirinTeam;
@@ -66,13 +67,14 @@ class HiringTeam extends StatelessWidget {
                       return GestureDetector(
                         child: _adminpanelsize[index].imageUrl.contains(".jpg")
                             ? CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(_adminpanelsize[index].imageUrl,scale: 1.0),
+                                backgroundImage: NetworkImage(
+                                    _adminpanelsize[index].imageUrl,
+                                    scale: 1.0),
                               )
                             : SvgPicture.network(hirinTeam[index].imageUrl),
                       );
                     }),
-                    SizedBox(
+                SizedBox(
                   height: 15,
                 ),
                 Text(

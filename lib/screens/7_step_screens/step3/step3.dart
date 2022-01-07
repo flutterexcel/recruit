@@ -228,8 +228,8 @@ class _Step3State extends State<Step3> {
                               borderRadius: 2,
                               onTap: () {
                                 _popupDialog(context);
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => Step4()));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Step4()));
                               },
                             ),
                           ],

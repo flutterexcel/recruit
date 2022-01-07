@@ -1,11 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
+
 import 'package:flutter_product_recruit/screens/manage_sources.dart';
-import 'package:flutter_product_recruit/screens/my_account.dart';
+import 'package:flutter_product_recruit/screens/users_list.dart';
+
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
 class SecondNavigationList extends StatefulWidget {
@@ -65,7 +64,8 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             leading: Icon(Icons.group),
             title: Text("USERS LIST"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => User_List()));
             },
           ),
           ListTile(

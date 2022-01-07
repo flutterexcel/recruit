@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_bloc.dart';
-import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_event.dart';
-import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_state.dart';
-import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:intl/intl.dart';
-import 'package:timelines/timelines.dart';
-
 import '../app_colors.dart';
 
+// ignore: must_be_immutable
 class TrackTimeLine extends StatelessWidget {
   var data;
 

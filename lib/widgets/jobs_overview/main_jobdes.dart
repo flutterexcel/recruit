@@ -6,6 +6,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 class MainJobDescprition extends StatelessWidget {
   List<JobsOverviewModel> getData;
   MainJobDescprition({this.getData});
+
   Widget jobTile(String quantity, String title, String subTitle) {
     return Column(
       children: [

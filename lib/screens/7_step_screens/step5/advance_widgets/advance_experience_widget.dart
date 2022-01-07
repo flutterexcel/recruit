@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
 
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 class Adv_Exp extends StatefulWidget {
   @override
@@ -62,7 +63,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Centre(
+                      child: TextField_Int(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -287,7 +288,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                   SizedBox(
                                     width: 45,
                                     height: 30,
-                                    child: TextField_Centre(
+                                    child: TextField_Int(
                                       autocorrect: true,
                                     ),
                                   ),

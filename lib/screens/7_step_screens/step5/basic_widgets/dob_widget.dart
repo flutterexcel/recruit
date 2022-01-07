@@ -3,6 +3,7 @@ import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 class Dob extends StatefulWidget {
   @override
@@ -163,7 +164,7 @@ class _DobState extends State<Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField_Centre(
+                                child: TextField_Int(
                                   controller: _controller,
                                   autocorrect: true,
                                 ),
@@ -184,7 +185,7 @@ class _DobState extends State<Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField_Centre(
+                                child: TextField_Int(
                                   controller: _controller2,
                                   autocorrect: true,
                                   borderRadius: 10,

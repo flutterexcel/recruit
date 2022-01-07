@@ -42,6 +42,7 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
     return BlocBuilder<UserLogBloc, UserLogState>(
       builder: (context, state) {
         if (state is UserLogStateInitial) {
+          // ignore: deprecated_member_use
           context.bloc<UserLogBloc>().add(UserLogBlocEventInitial());
           return Loader();
         } else if (state is UserLogViewState) {
