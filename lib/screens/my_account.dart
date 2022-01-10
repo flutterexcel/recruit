@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
-import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable

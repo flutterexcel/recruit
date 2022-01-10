@@ -68,7 +68,7 @@ class Add_Referal extends StatelessWidget {
                         children: [
                           Textt(
                             text: "Add Referral Domain",
-                            size: 20,
+                            size: 18,
                             fweight: FontWeight.bold,
                           ),
                           const SizedBox(
@@ -77,7 +77,7 @@ class Add_Referal extends StatelessWidget {
                           Textt(
                             text:
                                 "Excellence RMS automatically takes all emails details from your Referral domain.",
-                            size: 20,
+                            size: 15,
                           ),
                           const SizedBox(
                             height: 25,
@@ -92,9 +92,11 @@ class Add_Referal extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 5),
-                          TextInput(
-                            hintText: "Enter Referral Domain",
-                            autocorrect: true,
+                          SizedBox(
+                            child: TextInput(
+                              hintText: "Enter Referral Domain",
+                              autocorrect: true,
+                            ),
                           ),
                           const SizedBox(
                             height: 10,
@@ -107,13 +109,16 @@ class Add_Referal extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Buttonn(
-                            text: "Add",
-                            bgcolor: AppColors.blue,
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Step2()));
-                            },
+                          SizedBox(
+                            width: 75,
+                            child: Buttonn(
+                              text: "Add",
+                              bgcolor: AppColors.blue,
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Step2()));
+                              },
+                            ),
                           ),
                           const SizedBox(
                             height: 15,

@@ -2,9 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/Manage_Referral.dart';
-import 'package:flutter_product_recruit/screens/manage_emails.dart';
+import 'package:flutter_product_recruit/screens/Notifications/setup_slack.dart';
+import 'package:flutter_product_recruit/screens/jobsoverview.dart';
+import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
 
 import 'package:flutter_product_recruit/screens/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
+import 'package:flutter_product_recruit/screens/permissions.dart';
 import 'package:flutter_product_recruit/screens/users_list.dart';
 
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -78,25 +82,35 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.error_outline_rounded),
-            title: Text("MANAGE SPAMS"),
+            leading: Icon(Icons.refresh_sharp),
+            title: Text("MANAGE Referrals"),
             onTap: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => Manage_Referral()));
             },
           ),
           ListTile(
+            leading: Icon(Icons.error_outline_rounded),
+            title: Text("MANAGE SPAMS"),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Manage_Spams()));
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.lock),
             title: Text("PERMISSIONS"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Permis()));
             },
           ),
           ListTile(
             leading: Icon(Icons.notifications_active_outlined),
             title: Text("NOTIFICATION"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Notificationss()));
             },
           ),
           ListTile(
@@ -120,7 +134,8 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             onTap: () {
               // Navigator.of(context).pushReplacement(MaterialPageRoute(
               //     builder: (BuildContext context) => ManageSources()));
-              Navigator.pop(context);
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => JobsOverview()));
             },
           ),
           ListTile(
