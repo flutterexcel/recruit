@@ -1,10 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
-import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_state.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
@@ -14,8 +9,7 @@ import 'package:flutter_product_recruit/screens/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
-import 'jobs_overview/jobsoverviewpage.dart';
-
+// ignore: must_be_immutable
 class NavigationList extends StatefulWidget {
   List<JobList> getData;
   List<JobsOverviewModel> jobsOverViewModel;

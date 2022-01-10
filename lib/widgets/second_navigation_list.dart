@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_product_recruit/screens/Manage%20Referrals/Manage_Referral.dart';
+import 'package:flutter_product_recruit/screens/manage_emails.dart';
 
 import 'package:flutter_product_recruit/screens/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/users_list.dart';
@@ -79,7 +81,8 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             leading: Icon(Icons.error_outline_rounded),
             title: Text("MANAGE SPAMS"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Manage_Referral()));
             },
           ),
           ListTile(
@@ -100,7 +103,8 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
             leading: Icon(Icons.email_sharp),
             title: Text("MANAGE EMAILS"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Manage_Emails()));
             },
           ),
           ListTile(

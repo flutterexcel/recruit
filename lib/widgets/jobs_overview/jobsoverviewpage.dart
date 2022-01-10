@@ -7,6 +7,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
+import 'package:flutter_product_recruit/screens/manage_emails.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -71,8 +72,8 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
                       ),
                     ),
                     onPressed: () => {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Step1()))
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Manage_Emails()))
                     },
                     icon: Icon(Icons.add, color: AppColors.white),
                     label: Text('Add jobs',

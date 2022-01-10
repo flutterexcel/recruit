@@ -6,6 +6,7 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
+// ignore: camel_case_types
 class Add_Source_C extends StatelessWidget {
   bool isSwitched = false;
 

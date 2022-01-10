@@ -10,6 +10,7 @@ class TextInput extends StatelessWidget {
   bool autocorrect;
   double borderRadius;
   int maxLines;
+  FontStyle fstyle;
 
   TextInput({
     this.controller,
@@ -20,12 +21,14 @@ class TextInput extends StatelessWidget {
     this.autocorrect,
     this.borderRadius = 10.0,
     this.maxLines = 1,
+    this.fstyle,
   });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
       controller: controller,
+      style: TextStyle(fontStyle: fstyle),
       maxLines: maxLines,
       decoration: InputDecoration(
         labelText: labelText,
