@@ -52,6 +52,5 @@ class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DomainLogin();
-    //return User_List();
   }
 }
