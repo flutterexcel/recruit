@@ -12,6 +12,8 @@ class TextInput extends StatelessWidget {
   int maxLines;
   FontStyle fstyle;
 
+  TextInputType keyboardtype;
+
   TextInput({
     this.controller,
     this.hintText,
@@ -22,10 +24,12 @@ class TextInput extends StatelessWidget {
     this.borderRadius = 10.0,
     this.maxLines = 1,
     this.fstyle,
+    this.keyboardtype,
   });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardtype,
       obscureText: obscureText,
       controller: controller,
       style: TextStyle(fontStyle: fstyle),
@@ -45,12 +49,12 @@ class TextInput extends StatelessWidget {
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
       ),
-      validator: (value) {
-        if (value.isEmpty) {
-          return 'Enter $hintText';
-        }
-        return null;
-      },
+      // validator: (value) {
+      //   if (value.isEmpty) {
+      //     return 'Enter $hintText';
+      //   }
+      //   return null;
+      // },
     );
   }
 }

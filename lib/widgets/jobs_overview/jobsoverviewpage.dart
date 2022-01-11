@@ -8,6 +8,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
 import 'package:flutter_product_recruit/screens/manage_emails.dart';
+import 'package:flutter_product_recruit/services/login_apis/login_authentication_services.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -24,6 +25,7 @@ class JobsOverviewPage extends StatefulWidget {
 
   List<ListJobTag> listJobTag;
   JobsOverviewPage({this.getData, this.jobsOverViewModel, this.listJobTag});
+
   @override
   _JobsOverviewPageState createState() => _JobsOverviewPageState(
       getData: getData,
@@ -38,6 +40,12 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
   _JobsOverviewPageState(
       {this.getData, this.jobsOverViewModel, this.listJobTag});
   bool isHiringPage = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserLogBloc, UserLogState>(
@@ -72,8 +80,8 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
                       ),
                     ),
                     onPressed: () => {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Manage_Emails()))
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Step1()))
                     },
                     icon: Icon(Icons.add, color: AppColors.white),
                     label: Text('Add jobs',
