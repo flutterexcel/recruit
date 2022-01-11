@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/services/manage_spam/add_spam_email_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
+import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types
 class Add_New_Spam extends StatelessWidget {
-  TextEditingController textEditingController;
-  Add_New_Spam({this.textEditingController});
+  final TextEditingController textEditingController =
+      new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,6 +48,7 @@ class Add_New_Spam extends StatelessWidget {
                 height: 5,
               ),
               TextInput(
+                controller: textEditingController,
                 borderRadius: 1,
                 autocorrect: true,
                 hintText: "E-mail",
@@ -66,7 +69,17 @@ class Add_New_Spam extends StatelessWidget {
                   style: TextStyle(fontSize: 13),
                 ),
                 textColor: Colors.white,
-                onPressed: () {}),
+                onPressed: () async {
+                  //print(textEditingController.text);
+                  var res = await Add_Spam_Email_Service.addManageSpamEmail(
+                      textEditingController.text);
+
+                  print(res.message);
+                  if (res.message == null) {
+                    Utils.showSnackBar(
+                        context, "Added Successfully", AppColors.Orange);
+                  }
+                }),
           ),
           SizedBox(
             height: 5,

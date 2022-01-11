@@ -35,7 +35,6 @@ dependencies:
   percent_indicator: ^2.1.9
   step_progress_indicator: ^0.2.5+8
   intl: ^0.16.1
-  html_editor_enhanced: ^2.4.0+1
   timelines: 
   
 

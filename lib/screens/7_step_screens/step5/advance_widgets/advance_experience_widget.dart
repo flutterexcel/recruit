@@ -6,11 +6,13 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
+// ignore: camel_case_types
 class Adv_Exp extends StatefulWidget {
   @override
   State<Adv_Exp> createState() => _Adv_ExpState();
 }
 
+// ignore: camel_case_types
 class _Adv_ExpState extends State<Adv_Exp> {
   String _selectedExperience;
 

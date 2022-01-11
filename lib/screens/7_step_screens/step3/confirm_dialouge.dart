@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class Confirm_Dialouge extends StatelessWidget {
   TextEditingController textEditingController;
   Confirm_Dialouge({this.textEditingController});
