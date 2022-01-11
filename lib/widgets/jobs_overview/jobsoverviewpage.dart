@@ -6,9 +6,8 @@ import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_state.dart'
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
-import 'package:flutter_product_recruit/screens/manage_emails.dart';
-import 'package:flutter_product_recruit/services/login_apis/login_authentication_services.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
+import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';

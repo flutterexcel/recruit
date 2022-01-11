@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/Notifications/browser_notification.dart';
+import 'package:flutter_product_recruit/screens/Notifications/daily_reports.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
@@ -40,7 +41,7 @@ class _NotificationssState extends State<Notificationss> {
                 padding: const EdgeInsets.all(15.0),
                 child: Contain(
                   outlinecolor: AppColors.grey,
-                  borderrad: 10,
+                  borderrad: 3,
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
@@ -99,17 +100,23 @@ class _NotificationssState extends State<Notificationss> {
                                 child: Textt(
                                     text: "Add our app to your slack channel"),
                               ),
-                              Expanded(
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: AppColors.grey),
+                                  shape: BoxShape.rectangle,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(1)),
+                                ),
                                 child: Row(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.only(left: 15.0),
-                                      child: Transform.scale(
-                                        scale: 0.6,
-                                        child: CircleAvatar(
-                                          backgroundImage: AssetImage(
-                                              'assets/images/naukri.png'),
-                                          radius: 18,
+                                      padding: EdgeInsets.only(left: 5.0),
+                                      child: Expanded(
+                                        child: Transform.scale(
+                                          scale: 0.7,
+                                          child: Image.asset(
+                                            'assets/images/slack.png',
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -119,13 +126,21 @@ class _NotificationssState extends State<Notificationss> {
                                     Align(
                                         alignment: Alignment.center,
                                         child: Container(
-                                          child: Textt(
-                                            text: "Add to Slack",
-                                            //  size: 10,
+                                          child: Expanded(
+                                            child: Textt(
+                                              text: "Add to Slack",
+                                              //  size: 10,
+                                            ),
                                           ),
                                         )),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                   ],
                                 ),
+                              ),
+                              SizedBox(
+                                width: 10,
                               ),
                             ],
                           ),
@@ -163,7 +178,7 @@ class _NotificationssState extends State<Notificationss> {
                               Expanded(
                                 child: Textt(
                                     text:
-                                        "select a slack channel for notification"),
+                                        "Select a slack channel for notification"),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -265,7 +280,7 @@ class _NotificationssState extends State<Notificationss> {
                                 borderRadius: 2,
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => Step2()));
+                                      builder: (context) => Step1()));
                                 },
                               ),
                             ],
@@ -280,6 +295,10 @@ class _NotificationssState extends State<Notificationss> {
                 ),
               ),
               Browser_Notificationss(),
+              const SizedBox(
+                height: 5,
+              ),
+              Daily_Reports(),
             ],
           ),
         ));

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step6/source_matching_dialouge.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';

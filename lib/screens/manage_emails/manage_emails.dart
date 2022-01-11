@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
-import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 // ignore: must_be_immutable
 class Manage_Emails extends StatefulWidget {
@@ -24,17 +22,17 @@ class _Manage_EmailsState extends State<Manage_Emails> {
       'This will automatically send remainder of this email to the candidate for 3 days on different times of the day. If a candidate replies to this email then a remainder will not be sent anymore.';
   String selectedJob;
   bool _isChecked = false;
-  bool _isChecked2 = false;
   bool _isBoldClicked = false;
   bool _isItalicClicked = false;
-  bool _isUnderlineClicked = false;
+  bool _isChecked2 = false;
+
   List<String> items = [
-    'New',
-    'Shortlist',
-    'Interview',
-    'Hired',
-    'Hold',
-    'Reject',
+    'ReactJs Developer',
+    'Angular Developer',
+    'JavaScript Frontend Developer',
+    'NodeJS Developer',
+    'UX/UI Graphic Designer',
+    'PHP Developer',
   ];
 
   @override
@@ -61,20 +59,22 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Textt(
-                                  text: "Manage your email messages",
-                                  fweight: FontWeight.bold,
-                                  size: 16,
-                                ),
-                                Textt(
-                                  text:
-                                      "Add/edit your messages which you can reuse later on.",
-                                  size: 10,
-                                ),
-                              ],
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Textt(
+                                    text: "Manage your email messages",
+                                    fweight: FontWeight.bold,
+                                    size: 16,
+                                  ),
+                                  Textt(
+                                    text:
+                                        "Add/edit your messages which you can reuse later on.",
+                                    size: 10,
+                                  ),
+                                ],
+                              ),
                             ),
                             Buttonn(
                               text: "New Message",
@@ -152,6 +152,7 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                         ),
                         const SizedBox(height: 5),
                         TextInput(
+                          borderRadius: 1,
                           autocorrect: true,
                           hintText: "This is a short label that you will see",
                         ),
@@ -167,6 +168,7 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                         ),
                         const SizedBox(height: 5),
                         TextInput(
+                          borderRadius: 1,
                           autocorrect: true,
                           hintText: "This is the subject of the email message",
                         ),
@@ -329,6 +331,7 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                             ),
                             const SizedBox(height: 5),
                             TextInput(
+                              borderRadius: 1,
                               hintText: "Add a small message for sms",
                             ),
                           ],
@@ -354,10 +357,10 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                               title: const Text('set as Default'),
                               activeColor: const Color(0xFF00E5FF),
                               checkColor: Colors.white,
-                              value: _isChecked,
+                              value: _isChecked2,
                               onChanged: (value) {
                                 setState(() {
-                                  _isChecked = value;
+                                  _isChecked2 = value;
                                 });
                               }),
                         ),
@@ -395,7 +398,7 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                         ),
                         const SizedBox(height: 20),
                         Align(
-                          alignment: Alignment.bottomRight,
+                          alignment: Alignment.centerLeft,
                           child: Buttonn(
                             text: "Save",
                             bgcolor: AppColors.blue,

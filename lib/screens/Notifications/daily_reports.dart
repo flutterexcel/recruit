@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
+import 'package:flutter_product_recruit/screens/Notifications/browser_notification.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable, camel_case_types
-class Browser_Notificationss extends StatefulWidget {
+class Daily_Reports extends StatefulWidget {
   @override
-  State<Browser_Notificationss> createState() => _Browser_NotificationssState();
+  State<Daily_Reports> createState() => _Daily_ReportsState();
 }
 
 // ignore: camel_case_types
-class _Browser_NotificationssState extends State<Browser_Notificationss> {
+class _Daily_ReportsState extends State<Daily_Reports> {
   bool isSwitched = false;
 
   @override
@@ -30,7 +31,7 @@ class _Browser_NotificationssState extends State<Browser_Notificationss> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Textt(
-                  text: "Browser Notifications",
+                  text: "Daily Reports",
                   size: 20,
                   fweight: FontWeight.bold,
                 ),
@@ -38,7 +39,7 @@ class _Browser_NotificationssState extends State<Browser_Notificationss> {
                   height: 1,
                 ),
                 Textt(
-                  text: "turn on browser notifications",
+                  text: "get daily reports on your email",
                   size: 13,
                   tcolor: AppColors.grey,
                 ),
@@ -46,7 +47,7 @@ class _Browser_NotificationssState extends State<Browser_Notificationss> {
                   height: 25,
                 ),
                 Textt(
-                  text: "Enable desktop notifications for your team.",
+                  text: "Email to get report summaries",
                   size: 20,
                   tcolor: AppColors.grey,
                   // fweight: FontWeight.bold,
@@ -101,5 +102,3 @@ class _Browser_NotificationssState extends State<Browser_Notificationss> {
     );
   }
 }
-
-Step2() {}

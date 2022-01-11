@@ -19,7 +19,12 @@ class Manage_Referral extends StatelessWidget {
               child: Container(
                 // margin: EdgeInsets.symmetric(vertical: 10),
                 child: InkWell(
-                  child: Icon(Icons.add, color: AppColors.white),
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, color: AppColors.white),
+                      Text("Add Referral")
+                    ],
+                  ),
                   onTap: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => Add_Referal()));
