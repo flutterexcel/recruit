@@ -24,6 +24,7 @@ class JobsOverviewPage extends StatefulWidget {
 
   List<ListJobTag> listJobTag;
   JobsOverviewPage({this.getData, this.jobsOverViewModel, this.listJobTag});
+
   @override
   _JobsOverviewPageState createState() => _JobsOverviewPageState(
       getData: getData,
@@ -38,6 +39,12 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
   _JobsOverviewPageState(
       {this.getData, this.jobsOverViewModel, this.listJobTag});
   bool isHiringPage = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserLogBloc, UserLogState>(
