@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class ShortlistJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();

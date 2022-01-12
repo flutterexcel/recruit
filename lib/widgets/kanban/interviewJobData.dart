@@ -4,7 +4,7 @@ import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 import 'package:intl/intl.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class InterviewJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();

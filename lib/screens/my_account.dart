@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/utils.dart';
+import 'package:flutter_product_recruit/model/profile/update_profile.dart';
+import 'package:flutter_product_recruit/model/profile/update_profile.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step6/source_matching_dialouge.dart';
+import 'package:flutter_product_recruit/services/profile/update_profile_service.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
-import 'package:flutter_product_recruit/widgets/dialog_helper.dart';
+import 'package:flutter_product_recruit/widgets/loader.dart';
+import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
@@ -18,6 +23,7 @@ class MyAccount extends StatefulWidget {
 
 class _MyAccountState extends State<MyAccount> {
   final _formKey = GlobalKey<FormState>();
+  UserProfileUpdate updateprofile = new UserProfileUpdate();
 
   _popupDialog(BuildContext context) {
     showDialog(
@@ -139,9 +145,9 @@ class _MyAccountState extends State<MyAccount> {
                       ),
                       const SizedBox(height: 5),
                       TextInput(
-                          autocorrect: true,
-                          controller: nameController,
-                          keyboardtype: TextInputType.phone),
+                        autocorrect: true,
+                        controller: nameController,
+                      ),
                     ],
                   ),
                 ),
@@ -250,12 +256,20 @@ class _MyAccountState extends State<MyAccount> {
                   text: "Save",
                   bgcolor: AppColors.Blue,
                   leftPadding: 15.0,
-                  onTap: () {
+                  onTap: () async {
                     if (_formKey.currentState.validate()) {
                       print("validated");
                       print("name--${nameController.text}");
                       print("phone--${phoneNumber.text}");
                       print("sign--${sign.text}");
+
+                      var p = await updateprofile.userprofileUpdate(
+                          nameController.text, phoneNumber.text, sign.text);
+                      // Loader1(radius: 20.0, dotRadius: 6.0);
+                      if (p.message != null) {
+                        Utils.showSnackBar(
+                            context, p.message, AppColors.Orange);
+                      }
                     }
                   },
                 ),

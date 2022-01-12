@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/services/manage_spam/add_spam_email_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';

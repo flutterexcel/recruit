@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../app_colors.dart';
+import '../UiConstant/app_colors.dart';
 
 // ignore: must_be_immutable
 class TrackTimeLine extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 
 // ignore: must_be_immutable

@@ -3,7 +3,7 @@ import 'package:flutter_product_recruit/services/post_service.dart';
 
 import '../../url_config.dart';
 
-class UpdateProfile {
+class UserProfileUpdate {
   PostService postService = new PostService();
 
   Future<ProfileUpdate> userprofileUpdate(

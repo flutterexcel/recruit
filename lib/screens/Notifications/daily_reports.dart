@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/Notifications/browser_notification.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
