@@ -115,6 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                   textColor: Colors.white,
                   onPressed: () {
                     if (_loginFormKey.currentState.validate()) {
+                      // ignore: deprecated_member_use
                       context.bloc<LoginBloc>().add(LoginWithEmail(
                           emailController.text, passwordController.text));
                     }

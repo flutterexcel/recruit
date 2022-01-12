@@ -7,7 +7,7 @@ import 'package:flutter_product_recruit/widgets/TextInput.dart';
 // ignore: camel_case_types
 class Update_Contact extends StatelessWidget {
   TextEditingController textEditingController;
-  Update_Contact({this.textEditingController});
+  //Update_Contact({this.textEditingController});
   @override
   Widget build(BuildContext context) {
     return Container(

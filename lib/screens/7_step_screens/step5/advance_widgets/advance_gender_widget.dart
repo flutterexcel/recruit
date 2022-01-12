@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
+=======
+import 'package:flutter_product_recruit/app_colors.dart';
+>>>>>>> 724fa5013d2bcbfe325f78ffb9e197cce36a230d
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
+// ignore: camel_case_types
 class Adv_Gender extends StatefulWidget {
   @override
   State<Adv_Gender> createState() => _Adv_GenderState();
 }
 
+// ignore: camel_case_types
 class _Adv_GenderState extends State<Adv_Gender> {
   String _selectedGender;
 

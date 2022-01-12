@@ -1,16 +1,15 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/model/drop_down_model.dart';
+
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart';
+
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
-import 'package:http/http.dart' as http;
 
 // ignore: must_be_immutable
 class Step2 extends StatefulWidget {
@@ -20,49 +19,26 @@ class Step2 extends StatefulWidget {
 
 class _Step2State extends State<Step2> {
   String dropdownvalue;
-  //Future<DomainDropDown> futureAlbum;
 
-  // ignore: deprecated_member_use
-  List<dynamic> data = List();
-
-  // ignore: missing_return
-  Future<DomainDropDown> fetchDropdoen() async {
-    final response = await http.get(Uri.parse(
-        'https://aiapi-1.exweb.in/skill/domain_list?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYwY2IyNjc0ZGM4YjhmMDAzYTgyM2YxYyIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAxLTA3VDA5OjE2OjU5LjU1OVoiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQxNTQ3MDE5LCJleHAiOjE2NzMwODMwMTl9.kW-6K1HFG7gNLGZC8RWdTrYiM2ft9qnZTh-kD-zfgv4&account-name=devrecruit'));
-
-    if (response.statusCode == 200) {
-      print("success");
-      var resBody = json.decode(response.body);
-      setState(() {
-        data = resBody;
-        print(data);
-      });
-
-      // return DomainDropDown.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to load album');
-    }
-  }
+  var data;
 
   @override
   void initState() {
     super.initState();
-    this.fetchDropdoen();
-    //  futureAlbum = DomainService1.fetchDropdoen();
+    //this.fetchDropdown();
   }
-  // ignore: non_constant_identifier_names
 
-  // var items = [
-  //   'HR Recruitment',
-  //   'Sales',
-  //   'Education',
-  //   'Accounts',
-  //   'Customer Service',
-  //   'Legal',
-  //   'Marketing',
-  //   'Others',
-  //   'Software Development'
-  // ];
+  var items = [
+    'HR Recruitment',
+    'Sales',
+    'Education',
+    'Accounts',
+    'Customer Service',
+    'Legal',
+    'Marketing',
+    'Others',
+    'Software Development'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -151,8 +127,9 @@ class _Step2State extends State<Step2> {
                             isExpanded: true,
 
                             // The list of options
-                            items: data
-                                .map((e) => DropdownMenuItem<String>(
+                            //items: data
+                            items: items
+                                .map((e) => DropdownMenuItem(
                                       child: Container(
                                         child: Text(
                                           e,
@@ -164,7 +141,7 @@ class _Step2State extends State<Step2> {
                                 .toList(),
 
                             // Customize the selected item
-                            selectedItemBuilder: (BuildContext context) => data
+                            selectedItemBuilder: (BuildContext context) => items
                                 .map((e) => Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(

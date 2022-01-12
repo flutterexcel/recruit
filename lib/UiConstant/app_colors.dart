@@ -41,7 +41,10 @@ class AppColors {
   // ignore: non_constant_identifier_names
   static Color purple_opacity_min = Color(0xFF9964e3).withOpacity(0.5);
 
+  // ignore: non_constant_identifier_names
   static Color Green_opacity = Color(0xFF3ABF94).withOpacity(0.5);
+  // ignore: non_constant_identifier_names
   static Color Green_opacity_max = Color(0xFF3ABF94).withOpacity(0.5);
+  // ignore: non_constant_identifier_names
   static Color Green_opacity_min = Color(0xFF3ABF94).withOpacity(0.5);
 }
