@@ -4,7 +4,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/kanban_screen.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/job_description.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class JobTitle extends StatefulWidget {
   List<JobList> getData;

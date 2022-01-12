@@ -5,7 +5,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/hiring_team_model.da
 import 'package:flutter_product_recruit/services/jobs_overview/jobs_auth.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class HiringTeam extends StatelessWidget {
   JobAuthService jobAuthService = new JobAuthService();

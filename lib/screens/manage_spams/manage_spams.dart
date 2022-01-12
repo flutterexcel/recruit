@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/confirm_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';

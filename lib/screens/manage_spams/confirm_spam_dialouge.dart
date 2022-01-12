@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 
 class Confirm_Spam_Dialouge extends StatelessWidget {
   TextEditingController textEditingController;

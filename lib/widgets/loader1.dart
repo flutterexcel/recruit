@@ -1,19 +1,19 @@
 import "package:flutter/material.dart";
 import 'dart:math';
 
-import '../app_colors.dart';
+import '../UiConstant/app_colors.dart';
 
-class DialogHelper extends StatefulWidget {
+class Loader1 extends StatefulWidget {
   final double radius;
   final double dotRadius;
 
-  DialogHelper({this.radius = 30.0, this.dotRadius = 20.0});
+  Loader1({this.radius = 30.0, this.dotRadius = 20.0});
 
   @override
-  _DialogHelperState createState() => _DialogHelperState();
+  _Loader1State createState() => _Loader1State();
 }
 
-class _DialogHelperState extends State<DialogHelper>
+class _Loader1State extends State<Loader1>
     with SingleTickerProviderStateMixin {
   Animation<double> animation_rotation;
   Animation<double> animation_radius_in;

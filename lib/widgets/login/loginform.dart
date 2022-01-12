@@ -5,7 +5,7 @@ import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/forgot_dialogue.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 final _loginFormKey = GlobalKey<FormState>();
 

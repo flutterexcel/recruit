@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_dob_widget_advance.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_education_widget.dart';
