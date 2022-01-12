@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/utils.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
+import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
@@ -9,6 +11,8 @@ import 'package:flutter_product_recruit/widgets/text.dart';
 // ignore: must_be_immutable, camel_case_types
 class Add_Referal extends StatelessWidget {
   bool isSwitched = false;
+  final TextEditingController textEditingController =
+      new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +98,7 @@ class Add_Referal extends StatelessWidget {
                           const SizedBox(height: 5),
                           SizedBox(
                             child: TextInput(
+                              controller: textEditingController,
                               hintText: "Enter Referral Domain",
                               autocorrect: true,
                             ),
@@ -114,9 +119,16 @@ class Add_Referal extends StatelessWidget {
                             child: Buttonn(
                               text: "Add",
                               bgcolor: AppColors.blue,
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Step2()));
+                              onTap: () async {
+                                var res = await Add_Referral_Email_Service
+                                    .addReferralEmail(
+                                        textEditingController.text);
+
+                                print(res.message);
+                                if (res.message != null) {
+                                  Utils.showSnackBar(context,
+                                      "Added Successfully", AppColors.Orange);
+                                }
                               },
                             ),
                           ),

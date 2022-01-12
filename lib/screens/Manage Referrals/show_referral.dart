@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/screens/Manage%20Referrals/add_referal.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/confirm_delete_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
-import 'package:flutter_product_recruit/services/manage_spam/get_spam_email_services.dart';
+import 'package:flutter_product_recruit/services/manage_referral/get_referal.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:intl/intl.dart';
 
-// ignore: must_be_immutable
-class Manage_Spams extends StatefulWidget {
+// ignore: must_be_immutable, camel_case_types
+class Get_Referrals extends StatefulWidget {
   @override
-  State<Manage_Spams> createState() => _Manage_SpamsState();
+  State<Get_Referrals> createState() => _Get_ReferralsState();
 }
 
 // ignore: camel_case_types
-class _Manage_SpamsState extends State<Manage_Spams> {
+class _Get_ReferralsState extends State<Get_Referrals> {
   List data = [];
 
   @override
   void initState() {
     super.initState();
-    getspam();
+    getReferral();
   }
 
-  void getspam() async {
-    var res = await Get_Spam_Email_Service.getManageSpamEmail();
+  void getReferral() async {
+    var res = await Get_Referral_Email_Service.getReferralEmail();
     data = res;
-    // print(res[1].email);
+    // print(res[1].);
   }
 
   void _popupDialog(BuildContext context) {
@@ -45,21 +47,13 @@ class _Manage_SpamsState extends State<Manage_Spams> {
         });
   }
 
-  void _popupAddNewSpamDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(child: Add_New_Spam());
-        });
-  }
-
   bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Manage Spams"),
+        title: const Text("Manage Referral"),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
@@ -69,12 +63,13 @@ class _Manage_SpamsState extends State<Manage_Spams> {
                 child: Row(
                   children: [
                     Icon(Icons.add, color: AppColors.white),
-                    Text("Add Spam"),
+                    Text("Add Referral"),
                   ],
                 ),
                 onTap: () {
                   setState(() {
-                    _popupAddNewSpamDialog(context);
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Add_Referal()));
                   });
                 },
               ),
@@ -87,6 +82,7 @@ class _Manage_SpamsState extends State<Manage_Spams> {
         shrinkWrap: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
+          var dater = data[index].createdAt;
           return Padding(
             padding: const EdgeInsets.all(15.0),
             child: Contain(
@@ -105,7 +101,7 @@ class _Manage_SpamsState extends State<Manage_Spams> {
                       shape: BoxShape.circle,
                       color: AppColors.orange12,
                     ),
-                    child: Text(data[index].email[0]),
+                    child: Text(data[index].email[0].toString().toUpperCase()),
                   ),
                   const SizedBox(
                     height: 10,
@@ -114,7 +110,10 @@ class _Manage_SpamsState extends State<Manage_Spams> {
                     text: data[index].email,
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 5,
+                  ),
+                  Textt(
+                    text: DateFormat('dd:MM:yyyy').format(dater),
                   ),
                   const SizedBox(
                     height: 30,
