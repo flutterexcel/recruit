@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/services/manage_spam/delete_spam.dart';
+import 'package:flutter_product_recruit/services/manage_spam/delete_spam_services.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types, must_be_immutable
-class Confirm_Spam_Dialouge extends StatelessWidget {
+class DeleteReferral extends StatelessWidget {
   String id;
   TextEditingController textEditingController;
-  Confirm_Spam_Dialouge({this.id});
+  DeleteReferral({this.id});
 
   @override
   Widget build(BuildContext context) {

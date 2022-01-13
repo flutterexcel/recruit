@@ -10,10 +10,15 @@ class JobsOverview extends StatelessWidget {
     return BlocBuilder<JobsOverviewBlocBloc, JobsOverviewState>(
       builder: (context, state) {
         if (state is JobsOverviewBlocInitial) {
+          // ignore: deprecated_member_use
           context.bloc<JobsOverviewBlocBloc>().add(JobsOverviewInitial());
           return Loader();
         } else if (state is JobsOvervViewPageState) {
-          return JobsOverviewPage(getData: state.getData,jobsOverViewModel: state.jobsOverViewModel,listJobTag: state.listJobTag,);
+          return JobsOverviewPage(
+            getData: state.getData,
+            jobsOverViewModel: state.jobsOverViewModel,
+            listJobTag: state.listJobTag,
+          );
         }
         return Loader();
       },

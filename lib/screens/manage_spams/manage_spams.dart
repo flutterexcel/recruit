@@ -5,9 +5,9 @@ import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.d
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
-import 'package:flutter_product_recruit/screens/manage_spams/confirm_spam_dialouge.dart';
+import 'package:flutter_product_recruit/screens/manage_spams/confirm_delete_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
-import 'package:flutter_product_recruit/services/manage_spam/get_spam_email.dart';
+import 'package:flutter_product_recruit/services/manage_spam/get_spam_email_services.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
@@ -49,7 +49,7 @@ class _Manage_SpamsState extends State<Manage_Spams> {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Confirm_Spam_Dialouge(id: id));
+          return Dialog(child: DeleteSpam(id: id));
         });
   }
 

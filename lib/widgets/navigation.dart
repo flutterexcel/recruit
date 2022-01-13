@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/Manage_Referral.dart';
+import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
 import 'package:flutter_product_recruit/screens/Notifications/setup_slack.dart';
 import 'package:flutter_product_recruit/screens/conversation.dart';
 import 'package:flutter_product_recruit/screens/jobsoverview.dart';
@@ -118,7 +119,7 @@ class _NavigationListState extends State<NavigationList> {
             title: Text("MANAGE Referrals"),
             onTap: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => Manage_Referral()));
+                  MaterialPageRoute(builder: (context) => Get_Referrals()));
             },
           ),
           ListTile(
