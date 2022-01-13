@@ -39,13 +39,13 @@ class Add_New_Spam extends StatelessWidget {
               Text(
                 'E-mail',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 13,
                   fontFamily: 'RobotRegular',
                 ),
                 textDirection: TextDirection.ltr,
               ),
               SizedBox(
-                height: 5,
+                height: 6,
               ),
               TextInput(
                 controller: textEditingController,

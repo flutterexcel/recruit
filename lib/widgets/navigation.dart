@@ -3,26 +3,28 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/Manage_Referral.dart';
 import 'package:flutter_product_recruit/screens/Notifications/setup_slack.dart';
+import 'package:flutter_product_recruit/screens/conversation.dart';
 import 'package:flutter_product_recruit/screens/jobsoverview.dart';
 import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
 
-import 'package:flutter_product_recruit/screens/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
+import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
 import 'package:flutter_product_recruit/screens/users_list.dart';
 
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
-class SecondNavigationList extends StatefulWidget {
+class NavigationList extends StatefulWidget {
   var loginstate;
 
-  SecondNavigationList();
+  NavigationList();
   @override
-  _SecondNavigationListState createState() => _SecondNavigationListState();
+  _NavigationListState createState() => _NavigationListState();
 }
 
-class _SecondNavigationListState extends State<SecondNavigationList> {
-  _SecondNavigationListState();
+class _NavigationListState extends State<NavigationList> {
+  _NavigationListState();
   File _image;
 
   @override
@@ -55,6 +57,36 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
               // ),
             ),
           ),
+
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text("MY ACCOUNT"),
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => MyAccount()));
+              // Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.shopping_bag_outlined),
+            title: Text("JOBS"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => JobsOverview()));
+              // Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.inbox),
+            title: Text("CONVERSATION "),
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => Conversation()));
+              // Navigator.pop(context);
+            },
+          ),
+
+          ///////////////////////////
           ListTile(
             leading: Icon(Icons.language_outlined),
             title: Text("MANAGE SOURCES"),
@@ -128,16 +160,7 @@ class _SecondNavigationListState extends State<SecondNavigationList> {
               Navigator.pop(context);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.shopping_bag_outlined),
-            title: Text("MY JOBS"),
-            onTap: () {
-              // Navigator.of(context).pushReplacement(MaterialPageRoute(
-              //     builder: (BuildContext context) => ManageSources()));
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => JobsOverview()));
-            },
-          ),
+
           ListTile(
             leading: Icon(Icons.logout),
             title: Text("LOGOUT"),

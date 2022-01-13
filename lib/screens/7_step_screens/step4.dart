@@ -4,7 +4,6 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart'
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
-import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable

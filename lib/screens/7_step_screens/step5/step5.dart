@@ -12,7 +12,6 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step6/step6.dart'
 
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
-import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 import 'basic_widgets/dob_widget.dart';

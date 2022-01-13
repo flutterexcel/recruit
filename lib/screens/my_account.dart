@@ -12,7 +12,7 @@ import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
-import 'package:flutter_product_recruit/widgets/navigation_list.dart';
+import 'package:flutter_product_recruit/widgets/navigation.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable

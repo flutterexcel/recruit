@@ -3,7 +3,9 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
 
 class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
-  SecondAppBar({this.text, this.title});
+  Function onPressed;
+
+  SecondAppBar({this.text, this.title, this.onPressed});
   var text;
   var title;
 
@@ -31,10 +33,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                 borderRadius: BorderRadius.circular(24.0),
               ),
             ),
-            onPressed: () => {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Add_Source_C()))
-            },
+            onPressed: onPressed,
             icon: Icon(Icons.add, color: AppColors.white),
             label: Text(text, style: TextStyle(color: AppColors.white)),
           ),

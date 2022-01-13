@@ -20,7 +20,7 @@ class Add_Spam_Email_Service {
       return UpdateEmail.fromJson(jsonDecode(response.body));
     } else {
       print("error");
-      throw Exception('Failed to create album.');
+      throw Exception('Failed to create  spam.');
     }
   }
 }

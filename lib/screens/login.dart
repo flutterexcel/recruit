@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
+import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/login/login_page.dart';
 
 import 'jobsoverview.dart';
+import 'manage_spams/manage_spams.dart';
 
 class Login extends StatelessWidget {
   String url;
@@ -17,11 +19,12 @@ class Login extends StatelessWidget {
         if (state is LoginInitial) {
           // ignore: deprecated_member_use
           context.bloc<LoginBloc>().add(LoginInitialEvent());
-          return Loader();
+          return Loader1();
         } else if (state is LoginPageState || state is LoginFailure) {
           return LoginPage();
         } else if (state is LoginSuccess) {
-          return MyAccount();
+          return JobsOverview();
+          // return Manage_Spams();
         }
         return Loader();
       },

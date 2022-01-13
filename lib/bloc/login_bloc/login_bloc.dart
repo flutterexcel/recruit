@@ -20,7 +20,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield* _mapLoginWithEmailToState(event);
     }
     if (event is LogOutEvent) {
-      print("mbmb");
+      // print("mbmb");
       yield* _mapLogOutToState(event);
     }
   }
