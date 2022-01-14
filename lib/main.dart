@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
+<<<<<<< HEAD
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
+=======
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
+>>>>>>> 1c38bdf07f1881af61c3de80336afa37a745f5a5
 
 import 'package:flutter_product_recruit/screens/domainLogin.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
