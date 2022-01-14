@@ -1,17 +1,19 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
+// ignore: camel_case_types
 class Add_Source extends StatefulWidget {
   TextEditingController textEditingController;
-  Add_Source({this.textEditingController});
+  //Add_Source({this.textEditingController});
 
   @override
   State<Add_Source> createState() => _Add_SourceState();
 }
 
+// ignore: camel_case_types
 class _Add_SourceState extends State<Add_Source> {
   String _selectedPutAfter;
   String _selectedInhertedFrom;

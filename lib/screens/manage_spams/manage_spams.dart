@@ -1,3 +1,5 @@
+// ignore_for_file: missing_return
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
@@ -68,8 +70,8 @@ class _Manage_SpamsState extends State<Manage_Spams> {
     return BlocBuilder<ManageSpamBloc, MangeSpamState>(
         builder: (context, state) {
       if (state is MangeSpamInitial) {
+        // ignore: deprecated_member_use
         context.bloc<ManageSpamBloc>().add(ManageSpamInitialEvent());
-        return Loader1();
       } else if (state is GetSpamList) {
         // print("state${state.managelist.length}");
         return Scaffold(

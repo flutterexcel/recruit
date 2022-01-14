@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 
 import 'package:flutter_product_recruit/screens/domainLogin.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -57,6 +58,7 @@ class _MainState extends State<Main> {
 class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DomainLogin();
+    // return DomainLogin();
+    return Step1();
   }
 }

@@ -7,12 +7,15 @@ abstract class DomainEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class DomainInitialEvenet extends DomainEvent{}
+class DomainInitialEvenet extends DomainEvent {}
+
+// ignore: must_be_immutable
 class LoginWIthDomain extends DomainEvent {
   String domain;
   LoginWIthDomain({this.domain});
   List<Object> get props => [domain];
 }
 
-class ReLoginWithDomain extends DomainEvent{}
-class DomainLogOut extends DomainEvent{}
+class ReLoginWithDomain extends DomainEvent {}
+
+class DomainLogOut extends DomainEvent {}

@@ -10,6 +10,7 @@ abstract class MangeSpamState extends Equatable {
 
 class MangeSpamInitial extends MangeSpamState {}
 
+// ignore: must_be_immutable
 class GetSpamList extends MangeSpamState {
   List<ManageSpamList> managelist;
 
