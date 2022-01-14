@@ -12,7 +12,7 @@ class MangeSpamInitial extends MangeSpamState {}
 
 // ignore: must_be_immutable
 class GetSpamList extends MangeSpamState {
-  List<ManageSpamList> managelist;
+  List<SpamListModel> managelist;
 
   GetSpamList({this.managelist});
 }

@@ -9,10 +9,7 @@ import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/confirm_delete_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
-import 'package:flutter_product_recruit/services/manage_spam/get_spam_email_services.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
-import 'package:flutter_product_recruit/widgets/loader.dart';
-import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/navigation.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
@@ -27,17 +24,17 @@ class Manage_Spams extends StatefulWidget {
 class _Manage_SpamsState extends State<Manage_Spams> {
   List data = [];
 
-  @override
-  void initState() {
-    super.initState();
-    getspam();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getspam();
+  // }
 
-  void getspam() async {
-    var res = await GetEmailSpamService.getManageSpamEmail();
-    data = res;
-    print(data);
-  }
+  // void getspam() async {
+  //   var res = await GetEmailSpamService.getSpamEmail();
+  //   //  data = res;
+  //   print(data);
+  // }
 
   void _popupDialog(BuildContext context) {
     showDialog(

@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-List<ManageSpamList> manageSpamListFromJson(String str) =>
-    List<ManageSpamList>.from(
-        json.decode(str).map((x) => ManageSpamList.fromJson(x)));
+List<SpamListModel> manageSpamListFromJson(String str) =>
+    List<SpamListModel>.from(
+        json.decode(str).map((x) => SpamListModel.fromJson(x)));
 
 //String manageSpamListToJson(List<ManageSpamList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ManageSpamList {
-  ManageSpamList({
+class SpamListModel {
+  SpamListModel({
     this.id,
     this.email,
     this.createdAt,
@@ -27,7 +27,7 @@ class ManageSpamList {
   int v;
   String manageSpamListId;
 
-  factory ManageSpamList.fromJson(Map<String, dynamic> json) => ManageSpamList(
+  factory SpamListModel.fromJson(Map<String, dynamic> json) => SpamListModel(
         id: json["_id"],
         email: json["email"],
         createdAt: DateTime.parse(json["createdAt"]),

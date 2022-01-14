@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
-<<<<<<< HEAD
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
-=======
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
->>>>>>> 1c38bdf07f1881af61c3de80336afa37a745f5a5
-
-import 'package:flutter_product_recruit/screens/domainLogin.dart';
+import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_bloc.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
+import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -49,6 +45,9 @@ class _MainState extends State<Main> {
         BlocProvider<ManageSpamBloc>(
           create: (context) => ManageSpamBloc(),
         ),
+        BlocProvider<ManageReferralBloc>(
+          create: (context) => ManageReferralBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -63,6 +62,7 @@ class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return DomainLogin();
-    return Step1();
+    // return Step1();
+    return AddSource();
   }
 }

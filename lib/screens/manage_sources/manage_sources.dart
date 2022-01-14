@@ -17,7 +17,7 @@ class _ManageSourcesState extends State<ManageSources> {
 
     void OnPressed() {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Add_Source_C()));
+          .push(MaterialPageRoute(builder: (context) => AddSource()));
     }
 
     return Scaffold(
