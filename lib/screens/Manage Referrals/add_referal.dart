@@ -143,6 +143,7 @@ class Add_Referal extends StatelessWidget {
                                   //   Utils.showSnackBar(context,
                                   //       "Added Successfully", AppColors.Orange);
                                   // }
+                                  Navigator.pop(context);
                                 },
                               ),
                             );

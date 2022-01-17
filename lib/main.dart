@@ -4,7 +4,10 @@ import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_bloc.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
+import 'package:flutter_product_recruit/screens/jobs_overview/empty_job.dart';
+import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
+import 'package:flutter_product_recruit/screens/statistics.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -63,6 +66,6 @@ class RecruiterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // return DomainLogin();
     // return Step1();
-    return AddSource();
+    return Stats();
   }
 }

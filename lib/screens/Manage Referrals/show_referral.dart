@@ -49,10 +49,13 @@ class _GetReferralsState extends State<GetReferrals> {
         builder: (context, state) {
       if (state is ManageReferralInitialState) {
         context.bloc<ManageReferralBloc>().add(ManageReferralInitialEvent());
+      } else if (state is ManageReferralLoadingState) {
+        return Center(child: CircularProgressIndicator());
       } else if (state is GetReferralList) {
         // if (state.referralList.length == 0) {
-        //   Manage_Referral();
-        // } else
+        //   return Manage_Referral();
+        // }
+        // else
         return Scaffold(
           appBar: AppBar(
             title: const Text("Manage Referral"),

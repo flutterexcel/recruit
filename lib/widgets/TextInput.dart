@@ -27,6 +27,7 @@ class TextInput extends StatelessWidget {
     this.fstyle,
     this.keyboardtype,
     this.img = null,
+    String Function(dynamic value) validateText,
   });
   @override
   Widget build(BuildContext context) {

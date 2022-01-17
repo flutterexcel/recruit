@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_event.dart';
 import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_state.dart';
-import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
 import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 
@@ -13,6 +12,7 @@ class ManageReferralBloc
   Stream<ManageReferralState> mapEventToState(
       ManagerReferralEvent event) async* {
     if (event is ManageReferralInitialEvent) {
+      yield ManageReferralLoadingState();
       yield* _mapManageReferralInitialEvent(event);
     } else if (event is AddReferralEvent) {
       yield* _mapAddReferralEvent(event);
