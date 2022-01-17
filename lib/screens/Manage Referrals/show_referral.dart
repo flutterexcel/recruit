@@ -57,27 +57,26 @@ class _GetReferralsState extends State<GetReferrals> {
           appBar: AppBar(
             title: const Text("Manage Referral"),
             actions: [
-              if (state is AddManageReferral)
-                Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
-                  child: Container(
-                    // margin: EdgeInsets.symmetric(vertical: 10),
-                    child: InkWell(
-                      child: Row(
-                        children: [
-                          Icon(Icons.add, color: AppColors.white),
-                          Text("Add Referral"),
-                        ],
-                      ),
-                      onTap: () {
-                        setState(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Add_Referal()));
-                        });
-                      },
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: Container(
+                  // margin: EdgeInsets.symmetric(vertical: 10),
+                  child: InkWell(
+                    child: Row(
+                      children: [
+                        Icon(Icons.add, color: AppColors.white),
+                        Text("Add Referral"),
+                      ],
                     ),
+                    onTap: () {
+                      setState(() {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Add_Referal()));
+                      });
+                    },
                   ),
                 ),
+              ),
             ],
           ),
           // drawer: NavigationList(),s
