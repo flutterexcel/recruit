@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_bloc.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
-import 'package:flutter_product_recruit/screens/jobs_overview/empty_job.dart';
-import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
+import 'package:flutter_product_recruit/screens/domainLogin.dart';
+import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/statistics.dart';
+import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
+import 'package:provider/provider.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
 import 'bloc/manage_spam_bloc/manage_spam_bloc.dart';
@@ -48,9 +50,9 @@ class _MainState extends State<Main> {
         BlocProvider<ManageSpamBloc>(
           create: (context) => ManageSpamBloc(),
         ),
-        BlocProvider<ManageReferralBloc>(
-          create: (context) => ManageReferralBloc(),
-        ),
+        // BlocProvider<ManageReferralBloc>(
+        //   create: (context) => ManageReferralBloc(),
+        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -58,6 +60,18 @@ class _MainState extends State<Main> {
         home: RecruiterApp(),
       ),
     );
+    // return MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider<GetReferralEmailService>(
+    //       create: (BuildContext context) => GetReferralEmailService(),
+    //     )
+    //   ],
+    //   child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     title: 'Recruit AI',
+    //     home: RecruiterApp(),
+    //   ),
+    // );
   }
 }
 
@@ -66,6 +80,6 @@ class RecruiterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // return DomainLogin();
     // return Step1();
-    return Stats();
+    return Login();
   }
 }

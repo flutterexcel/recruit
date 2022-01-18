@@ -1,3 +1,5 @@
+// ignore_for_file: missing_required_param
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -13,8 +15,10 @@ import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
 import 'package:flutter_product_recruit/screens/users_list.dart';
+import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 
 import 'package:flutter_product_recruit/services/storage_service.dart';
+import 'package:provider/provider.dart';
 
 class NavigationList extends StatefulWidget {
   var loginstate;
@@ -118,10 +122,21 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.refresh_sharp),
             title: Text("MANAGE Referrals"),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => GetReferrals()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                        create: (context) => GetReferralEmailService(),
+                        child: GetReferrals(),
+                      )));
             },
           ),
+          // ListTile(
+          //   leading: Icon(Icons.refresh_sharp),
+          //   title: Text("MANAGE Referrals"),
+          //   onTap: () {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //         builder: (context) => GetReferrals()));
+          //   },
+          // ),
           ListTile(
             leading: Icon(Icons.error_outline_rounded),
             title: Text("MANAGE SPAMS"),
