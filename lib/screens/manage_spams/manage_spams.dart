@@ -9,7 +9,6 @@ import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/confirm_delete_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
-import 'package:flutter_product_recruit/services/manage_spam/manage_spam.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
@@ -18,14 +17,15 @@ import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
-class Manage_Spams extends StatefulWidget {
+class ManageSpam extends StatefulWidget {
   @override
-  State<Manage_Spams> createState() => _Manage_SpamsState();
+  State<ManageSpam> createState() => _ManageSpamState();
 }
 
 // ignore: camel_case_types
-class _Manage_SpamsState extends State<Manage_Spams> {
+class _ManageSpamState extends State<ManageSpam> {
   List data = [];
+
   @override
   void initState() {
     super.initState();
@@ -37,11 +37,6 @@ class _Manage_SpamsState extends State<Manage_Spams> {
   //   print(data);
   // }
 
-  // void getspam() async {
-  //   var res = await GetEmailSpamService.getManageSpamEmail();
-  //   data = res;
-  //   print(data);
-  // }
   void _popupDialog(BuildContext context) {
     showDialog(
         context: context,
@@ -67,6 +62,7 @@ class _Manage_SpamsState extends State<Manage_Spams> {
   }
 
   bool isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ManageSpamBloc, MangeSpamState>(

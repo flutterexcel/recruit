@@ -4,9 +4,8 @@
 
 import 'dart:convert';
 
-List<ReferralListModel> getReferralFromJson(String str) =>
-    List<ReferralListModel>.from(
-        json.decode(str).map((x) => ReferralListModel.fromJson(x)));
+List<ReferralListModel> getReferralFromJson(String str) => List<ReferralListModel>.from(
+    json.decode(str).map((x) => ReferralListModel.fromJson(x)));
 
 String getReferralToJson(List<ReferralListModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -26,8 +25,7 @@ class ReferralListModel {
   DateTime updatedAt;
   int v;
 
-  factory ReferralListModel.fromJson(Map<String, dynamic> json) =>
-      ReferralListModel(
+  factory ReferralListModel.fromJson(Map<String, dynamic> json) => ReferralListModel(
         id: json["_id"],
         email: json["email"] == null ? "null" : json["email"],
         createdAt: DateTime.parse(json["createdAt"]),

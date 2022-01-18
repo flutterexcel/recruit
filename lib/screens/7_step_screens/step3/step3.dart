@@ -21,7 +21,7 @@ class _Step3State extends State<Step3> {
   String a =
       'You can also search subject using these operators like "+" and "|" . "+" allows you to search multiple words together and "|" allows you to match either one of the work\n\ne.g\na) php + mysql : this will match resumes having both php and mysql in their subject like \n\nb) email marketing | lead generation : this will match resumes having either email marketing or lead generation in their subject \n\nc) flutter | java : this will match subjects having either flutter or java in their subject. you can try out different combinations to setup your filter accordingly. ';
 
-  TextEditingController subjectController = TextEditingController();
+  TextEditingController tfController = TextEditingController();
   bool isPressed = true;
 
   @override
@@ -135,7 +135,6 @@ class _Step3State extends State<Step3> {
                             SizedBox(
                               width: MediaQuery.of(context).size.width - 110,
                               child: TextInput(
-                                controller: subjectController,
                                 hintText: "Something unique Eg. python senior",
                                 autocorrect: true,
                               ),
@@ -160,37 +159,41 @@ class _Step3State extends State<Step3> {
                         const SizedBox(
                           height: 10,
                         ),
-                        isPressed && subjectController.text.isEmpty
-                            ? Contain(
-                                // height: 315,
-                                backcolor: AppColors.orange12,
-                                outlinecolor: AppColors.grey,
-                                borderrad: 2,
-                                child: Column(
-                                  children: [
-                                    Align(
-                                        alignment: Alignment.centerRight,
-                                        child: InkWell(
-                                          child: Icon(
-                                            Icons.close,
-                                          ),
-                                          onTap: () {
-                                            setState(() {
-                                              isPressed = false;
-                                            });
-                                          },
-                                        )),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, bottom: 8.0),
-                                      child: Text(a),
-                                    ),
-                                  ],
+
+                        Visibility(
+                          visible: isPressed ? true : false,
+                          child: Contain(
+                            // height: 315,
+                            backcolor: AppColors.orange12,
+                            outlinecolor: AppColors.grey,
+                            borderrad: 2,
+                            child: Column(
+                              children: [
+                                Align(
+                                    alignment: Alignment.centerRight,
+                                    child: InkWell(
+                                      child: Icon(
+                                        Icons.close,
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          isPressed = false;
+                                        });
+                                      },
+                                    )),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, bottom: 8.0),
+                                  child: Text(a),
                                 ),
-                              )
-                            : const SizedBox(
-                                height: 20,
-                              ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(
+                          height: 20,
+                        ),
 
                         Contain(
                           height: 180,
@@ -218,26 +221,16 @@ class _Step3State extends State<Step3> {
                                     builder: (context) => Step2()));
                               },
                             ),
-                            subjectController.text.isNotEmpty
-                                ? Buttonn(
-                                    text: "Next",
-                                    bgcolor: AppColors.blue,
-                                    borderRadius: 2,
-                                    onTap: () {
-                                      _popupDialog(context);
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) => Step4()));
-                                    },
-                                  )
-                                : Opacity(
-                                    opacity: 0.6,
-                                    child: Buttonn(
-                                        text: "Next",
-                                        bgcolor: AppColors.blue,
-                                        borderRadius: 2,
-                                        onTap: null),
-                                  ),
+                            Buttonn(
+                              text: "Next",
+                              bgcolor: AppColors.blue,
+                              borderRadius: 2,
+                              onTap: () {
+                                _popupDialog(context);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Step4()));
+                              },
+                            ),
                           ],
                         ),
                         const SizedBox(height: 10),

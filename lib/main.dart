@@ -8,11 +8,6 @@ import 'package:flutter_product_recruit/screens/domainLogin.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
-import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_bloc.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
-import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
-import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
-import 'package:flutter_product_recruit/screens/statistics.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -52,9 +47,6 @@ class _MainState extends State<Main> {
         ),
         BlocProvider<ManageSpamBloc>(
           create: (context) => ManageSpamBloc(),
-        ),
-        BlocProvider<ManageReferralBloc>(
-          create: (context) => ManageReferralBloc(),
         ),
       ],
       child: MaterialApp(

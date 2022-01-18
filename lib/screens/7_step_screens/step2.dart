@@ -19,12 +19,6 @@ class Step2 extends StatefulWidget {
 
 class _Step2State extends State<Step2> {
   String dropdownvalue;
-  TextEditingController jobTitleController = new TextEditingController();
-  TextEditingController jobDesccriptionController = new TextEditingController();
-  TextEditingController candidateProfileController =
-      new TextEditingController();
-  TextEditingController numberofOpeningsController =
-      new TextEditingController();
 
   var data;
 
@@ -173,7 +167,6 @@ class _Step2State extends State<Step2> {
                         ),
                         const SizedBox(height: 5),
                         TextInput(
-                          controller: jobTitleController,
                           autocorrect: true,
                           hintText: "Eg. PHP Developer",
                         ),
@@ -191,7 +184,6 @@ class _Step2State extends State<Step2> {
                             ),
                             const SizedBox(height: 5),
                             TextInput(
-                              controller: jobDesccriptionController,
                               hintText:
                                   "Eg. Job Brief, Responsibility, Skill Required",
                               maxLines: 6,
@@ -212,7 +204,6 @@ class _Step2State extends State<Step2> {
                         ),
                         const SizedBox(height: 5),
                         TextInput(
-                          controller: candidateProfileController,
                           hintText: "Describe Candidate Skill set here...",
                           maxLines: 5,
                         ),
@@ -230,8 +221,6 @@ class _Step2State extends State<Step2> {
                         ),
                         const SizedBox(height: 5),
                         TextField_Int(
-                          textAlign: TextAlign.left,
-                          controller: numberofOpeningsController,
                           hintText: "Number of openings",
                           autocorrect: true,
                         ),
@@ -247,28 +236,6 @@ class _Step2State extends State<Step2> {
                                     builder: (context) => Step1()));
                               },
                             ),
-                            //  dropdownvalue.length > 0 &&
-                            // jobTitleController.text.isNotEmpty &&
-                            //         jobDesccriptionController.text.isNotEmpty &&
-                            //         candidateProfileController
-                            //             .text.isNotEmpty &&
-                            //         numberofOpeningsController.text.isNotEmpty
-                            //     ? Buttonn(
-                            //         text: "Next",
-                            //         bgcolor: AppColors.blue,
-                            //         onTap: () {
-                            //           Navigator.of(context).push(
-                            //               MaterialPageRoute(
-                            //                   builder: (context) => Step3()));
-                            //         },
-                            //       )
-                            //     : Opacity(
-                            //         opacity: 0.6,
-                            //         child: Buttonn(
-                            //             text: "Next",
-                            //             bgcolor: AppColors.blue,
-                            //             onTap: null),
-                            //       ),
                             Buttonn(
                               text: "Next",
                               bgcolor: AppColors.blue,
@@ -276,7 +243,7 @@ class _Step2State extends State<Step2> {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => Step3()));
                               },
-                            )
+                            ),
                           ],
                         ),
                         const SizedBox(height: 10),

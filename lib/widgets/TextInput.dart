@@ -11,7 +11,6 @@ class TextInput extends StatelessWidget {
   double borderRadius;
   int maxLines;
   FontStyle fstyle;
-  Container img;
 
   TextInputType keyboardtype;
 
@@ -28,8 +27,7 @@ class TextInput extends StatelessWidget {
     this.maxLines = 1,
     this.fstyle,
     this.keyboardtype,
-    this.img = null,
-    String Function(dynamic value) validateText,
+    this.validateText,
   });
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,6 @@ class TextInput extends StatelessWidget {
       style: TextStyle(fontStyle: fstyle),
       maxLines: maxLines,
       decoration: InputDecoration(
-        suffixIcon: img,
         labelText: labelText,
         hintStyle: TextStyle(
           fontFamily: 'RobotRegular',

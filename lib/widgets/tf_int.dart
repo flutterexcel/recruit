@@ -9,7 +9,6 @@ class TextField_Int extends StatelessWidget {
   bool autocorrect;
   double borderRadius;
   int maxLines;
-  TextAlign textAlign;
 
   TextField_Int({
     this.controller,
@@ -20,7 +19,6 @@ class TextField_Int extends StatelessWidget {
     this.autocorrect,
     this.borderRadius = 10.0,
     this.maxLines = 1,
-    this.textAlign = TextAlign.center,
   });
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class TextField_Int extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       maxLines: maxLines,
-      textAlign: textAlign,
+      textAlign: TextAlign.center,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
@@ -46,13 +44,12 @@ class TextField_Int extends StatelessWidget {
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
       ),
-      // validator: (value) {
-      //   if (value.isEmpty) {
-      //     //  Text("Entr $hintText");
-      //     //return 'Enter $hintText';
-      //   }
-      //   return null;
-      // },
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Enter $hintText';
+        }
+        return null;
+      },
     );
   }
 }
