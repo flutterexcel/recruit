@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
+import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
-// ignore: camel_case_types
 class Add_Source_C extends StatelessWidget {
   bool isSwitched = false;
 
@@ -80,26 +79,23 @@ class Add_Source_C extends StatelessWidget {
                               borderrad: 2,
                               child: Row(
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 2.0),
-                                    child: Transform.scale(
-                                      scale: 0.6,
-                                      child: Image.asset(
-                                        'assets/images/gmaill.png',
-                                      ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 15.0),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          'assets/images/gmaill.png'),
+                                      radius: 18,
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 3,
+                                    width: 5,
                                   ),
                                   Align(
                                       alignment: Alignment.center,
                                       child: Container(
-                                        child: Expanded(
-                                          child: Textt(
-                                            text: "Connect Your Gmail",
-                                            size: 13,
-                                          ),
+                                        child: Textt(
+                                          text: "Connect Your Gmail",
+                                          size: 13,
                                         ),
                                       )),
                                 ],

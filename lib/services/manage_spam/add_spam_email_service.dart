@@ -13,7 +13,7 @@ class Add_Spam_Email_Service {
       body: jsonEncode(<String, String>{
         'email': email,
       }),
-    );
+    ); 
 
     if (response.statusCode == 200) {
       print("Success");

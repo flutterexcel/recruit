@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
@@ -10,10 +12,9 @@ import 'package:flutter_product_recruit/services/profile/update_profile_service.
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
-import 'package:flutter_product_recruit/widgets/loader.dart';
-import 'package:flutter_product_recruit/widgets/loader1.dart';
-import 'package:flutter_product_recruit/widgets/navigation.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:image_picker/image_picker.dart';
 
 // ignore: must_be_immutable
 class MyAccount extends StatefulWidget {
@@ -39,6 +40,7 @@ class _MyAccountState extends State<MyAccount> {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController sign = TextEditingController();
+  File _image;
   // AuthenticationService authenticationService = new AuthenticationService();
   // var name, email;
 
@@ -122,14 +124,73 @@ class _MyAccountState extends State<MyAccount> {
                 const SizedBox(
                   height: 15,
                 ),
-                const CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.teal,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/def.png'),
-                    radius: 38,
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      chooseImage();
+                      print("jj");
+                    },
+                    child: Stack(
+                      children: [
+                        Opacity(
+                          opacity: 0.8,
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 4,
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor),
+                                boxShadow: [
+                                  BoxShadow(
+                                      spreadRadius: 2,
+                                      blurRadius: 10,
+                                      color: Colors.black.withOpacity(0.2),
+                                      offset: Offset(0, 10))
+                                ],
+                                shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: _image == null
+                                        ? AssetImage(
+                                            "assets/images/def.png",
+                                          )
+                                        : FileImage(_image))),
+                          ),
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              height: 38,
+                              width: 38,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 4,
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                ),
+                                color: AppColors.blue,
+                              ),
+                              child: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ),
+                            )),
+                      ],
+                    ),
                   ),
                 ),
+                // const CircleAvatar(
+                //   radius: 30,
+                //   backgroundColor: Colors.teal,
+                //   child: CircleAvatar(
+                //     backgroundImage: AssetImage('assets/images/def.png'),
+                //     radius: 38,
+                //   ),
+                // ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -182,6 +243,7 @@ class _MyAccountState extends State<MyAccount> {
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.blue)),
                         ),
+                        // ignore: missing_return
                         validator: (value) {
                           if (value.isEmpty) {
                             return "Phone number is required";
@@ -267,8 +329,7 @@ class _MyAccountState extends State<MyAccount> {
                           nameController.text, phoneNumber.text, sign.text);
                       // Loader1(radius: 20.0, dotRadius: 6.0);
                       if (p.message != null) {
-                        Utils.showSnackBar(
-                            context, p.message, AppColors.Orange);
+                        Utils.showSnackBar(context, p.message, AppColors.pink);
                       }
                     }
                   },
@@ -385,5 +446,16 @@ class _MyAccountState extends State<MyAccount> {
         ),
       ],
     );
+  }
+
+  chooseImage() async {
+    ImagePicker imagePicker = ImagePicker();
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    // print("image-" + image.path);
+//  _image = File(image.path);
+    setState(() {
+      _image = image;
+      print(_image);
+    });
   }
 }

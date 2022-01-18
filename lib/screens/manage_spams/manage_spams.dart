@@ -9,12 +9,12 @@ import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/confirm_delete_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
-import 'package:flutter_product_recruit/services/manage_spam/get_spam_email_services.dart';
+import 'package:flutter_product_recruit/services/manage_spam/manage_spam.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
-import 'package:flutter_product_recruit/widgets/navigation.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
@@ -30,14 +30,13 @@ class _Manage_SpamsState extends State<Manage_Spams> {
   @override
   void initState() {
     super.initState();
-    getspam();
   }
 
-  void getspam() async {
-    var res = await GetEmailSpamService.getManageSpamEmail();
-    data = res;
-    print(data);
-  }
+  // void getspam() async {
+  //   var res = await GetEmailSpamService.getManageSpamEmail();
+  //   data = res;
+  //   print(data);
+  // }
 
   void _popupDialog(BuildContext context) {
     showDialog(
@@ -55,11 +54,11 @@ class _Manage_SpamsState extends State<Manage_Spams> {
         });
   }
 
-  void _popupAddNewSpamDialog(BuildContext context) {
+  void _popupAddNewSpamDialog(BuildContext context, state) {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Add_New_Spam());
+          return Dialog(child: Add_New_Spam(state: state));
         });
   }
 
@@ -72,7 +71,7 @@ class _Manage_SpamsState extends State<Manage_Spams> {
       if (state is MangeSpamInitial) {
         context.bloc<ManageSpamBloc>().add(ManageSpamInitialEvent());
         return Loader1();
-      } else if (state is GetSpamList) {
+      } else if (state is GetSpamList || state is AddEmailSuccess) {
         // print("state${state.managelist.length}");
         return Scaffold(
           drawer: NavigationList(),
@@ -80,87 +79,89 @@ class _Manage_SpamsState extends State<Manage_Spams> {
               text: "Add Spam",
               title: "Manage Spams",
               onPressed: () {
-                _popupAddNewSpamDialog(context);
+                _popupAddNewSpamDialog(context, state);
               }),
-          body: ListView.builder(
-            shrinkWrap: true,
-            itemCount: state.managelist.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Contain(
-                  outlinecolor: AppColors.grey,
-                  borderrad: 8,
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        height: 60,
-                        width: 60,
-                        padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.orange12,
+          body: state is GetSpamList
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.managelist.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Contain(
+                        outlinecolor: AppColors.grey,
+                        borderrad: 8,
+                        child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 60,
+                              width: 60,
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.orange12,
+                              ),
+                              child: Text(
+                                state.managelist[index].email[0].toUpperCase(),
+                                style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Textt(
+                              text: state.managelist[index].email,
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Transform.scale(
+                                    scale: 0.6,
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            _popupDialog(context);
+                                          });
+                                        },
+                                        child: Icon(Icons.edit))),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Transform.scale(
+                                  scale: 0.6,
+                                  child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          _popupConfirmDialog(
+                                              context, data[index].id);
+                                        });
+                                      },
+                                      child: Icon(Icons.delete)),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
                         ),
-                        child: Text(
-                          state.managelist[index].email[0].toUpperCase(),
-                          style: TextStyle(
-                            color: AppColors.white,
-                            fontSize: 20,
-                          ),
-                        ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Textt(
-                        text: state.managelist[index].email,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Transform.scale(
-                              scale: 0.6,
-                              child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      _popupDialog(context);
-                                    });
-                                  },
-                                  child: Icon(Icons.edit))),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Transform.scale(
-                            scale: 0.6,
-                            child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    _popupConfirmDialog(
-                                        context, data[index].id);
-                                  });
-                                },
-                                child: Icon(Icons.delete)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
+                    );
+                  },
+                )
+              : Text(""),
         );
       }
     });

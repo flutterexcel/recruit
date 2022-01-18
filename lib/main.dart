@@ -5,6 +5,9 @@ import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bl
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 
 import 'package:flutter_product_recruit/screens/domainLogin.dart';
+import 'package:flutter_product_recruit/screens/login.dart';
+import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
+import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -59,6 +62,6 @@ class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return DomainLogin();
-    return Step5();
+    return Login();
   }
 }

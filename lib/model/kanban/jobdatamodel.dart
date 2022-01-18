@@ -107,7 +107,7 @@ class Datum {
   String id;
   AutomationMail automationMail;
   String automationProcess;
-  List<dynamic> callingDetails;
+  List<dynamic> callingDetails;   
   bool candidate;
   double candidateScore;
   CandidateSubTagsMovement candidateSubTagsMovement;

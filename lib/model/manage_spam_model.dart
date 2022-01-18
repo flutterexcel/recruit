@@ -45,3 +45,34 @@ class ManageSpamList {
   //     "id": manageSpamListId,
   // };
 }
+
+//**** add spam model ****//
+
+// To parse this JSON data, do
+//
+//     final addSpamModel = addSpamModelFromJson(jsonString);
+
+AddSpamModel addSpamModelFromJson(String str) =>
+    AddSpamModel.fromJson(json.decode(str));
+
+String addSpamModelToJson(AddSpamModel data) => json.encode(data.toJson());
+
+class AddSpamModel {
+  AddSpamModel({
+    this.error,
+    this.message,
+  });
+
+  int error;
+  String message;
+
+  factory AddSpamModel.fromJson(Map<String, dynamic> json) => AddSpamModel(
+        error: json["error"],
+        message: json["message"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "error": error,
+        "message": message,
+      };
+}

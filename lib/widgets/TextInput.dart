@@ -14,6 +14,8 @@ class TextInput extends StatelessWidget {
 
   TextInputType keyboardtype;
 
+  Function validateText;
+
   TextInput({
     this.controller,
     this.hintText,
@@ -25,10 +27,12 @@ class TextInput extends StatelessWidget {
     this.maxLines = 1,
     this.fstyle,
     this.keyboardtype,
+    this.validateText,
   });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: keyboardtype,
       obscureText: obscureText,
       controller: controller,
@@ -49,12 +53,7 @@ class TextInput extends StatelessWidget {
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
       ),
-      // validator: (value) {
-      //   if (value.isEmpty) {
-      //     return 'Enter $hintText';
-      //   }
-      //   return null;
-      // },
+      validator: validateText,
     );
   }
 }

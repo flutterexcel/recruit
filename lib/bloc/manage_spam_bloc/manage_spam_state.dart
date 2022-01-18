@@ -17,3 +17,8 @@ class GetSpamList extends MangeSpamState {
 }
 
 class ManageSpamFailure extends MangeSpamState {}
+
+class AddEmailSuccess extends MangeSpamState {
+  AddSpamModel addemailModel;
+  AddEmailSuccess({this.addemailModel});
+}

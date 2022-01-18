@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -35,21 +35,20 @@ dependencies:
   percent_indicator: ^2.1.9
   step_progress_indicator: ^0.2.5+8
   intl: ^0.16.1
-  timelines: 
+  timelines:
   fluttertoast: ^8.0.8
-
-
-
+  line_icons: ^2.0.0
+  image_picker: 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   # cupertino_icons: ^1.0.1
 
-# dev_dependencies:
-#   flutter_test:
-#     sdk: flutter
-#   integration_test:
-#     sdk: flutter
+  # dev_dependencies:
+  #   flutter_test:
+  #     sdk: flutter
+  #   integration_test:
+  #     sdk: flutter
 
   flutter_launcher_icons: any
 dependency_overrides:
@@ -78,7 +77,7 @@ flutter:
     - family: RobotLight
       fonts:
         - asset: fonts/Roboto-Light.ttf
-        
+
     - family: RobotRegular
       fonts:
         - asset: fonts/Roboto-Regular.ttf
