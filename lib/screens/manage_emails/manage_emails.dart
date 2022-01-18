@@ -4,15 +4,17 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart'
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
+import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
-class Manage_Emails extends StatefulWidget {
+class ManageEmail extends StatefulWidget {
   @override
-  State<Manage_Emails> createState() => _Manage_EmailsState();
+  State<ManageEmail> createState() => _ManageEmailState();
 }
 
-class _Manage_EmailsState extends State<Manage_Emails> {
+class _ManageEmailState extends State<ManageEmail> {
   String dropdownvalue;
   String c =
       '#date:  #time:  #round_name:  #job_profile:  #joining_date:  #company:  #venue:  #hr_signature:  #name:  #logo:  #interview_date:  #interview_time:  #test_link:  #interview_link:  ';
@@ -24,7 +26,9 @@ class _Manage_EmailsState extends State<Manage_Emails> {
   bool _isChecked = false;
   bool _isBoldClicked = false;
   bool _isItalicClicked = false;
+  bool _isUnderlinedClicked = false;
   bool _isChecked2 = false;
+  bool _newMessage = true;
 
   List<String> items = [
     'ReactJs Developer',
@@ -38,10 +42,8 @@ class _Manage_EmailsState extends State<Manage_Emails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Manage Emails"),
-        ),
-        // drawer: NavigationList(),
+        appBar: SecondAppBar(title: "Manage Emails", onPressed: () {}),
+        drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -77,11 +79,13 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                               ),
                             ),
                             Buttonn(
-                              text: "New Message",
+                              text:
+                                  _newMessage ? "New Message" : "All Templates",
                               bgcolor: AppColors.orange12,
                               onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Step3()));
+                                setState(() {
+                                  _newMessage = !_newMessage;
+                                });
                               },
                             ),
                           ],
@@ -89,52 +93,52 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                         const SizedBox(
                           height: 20,
                         ),
-                        DropdownButton<String>(
-                          onChanged: (value) {
-                            setState(() {
-                              dropdownvalue = value;
-                            });
-                          },
-                          value: dropdownvalue,
+                        // DropdownButton<String>(
+                        //   onChanged: (value) {
+                        //     setState(() {
+                        //       dropdownvalue = value;
+                        //     });
+                        //   },
+                        //   value: dropdownvalue,
 
-                          // Hide the default underline
-                          //    underline: SizedBox(),
-                          hint: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Filter via job',
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.grey),
-                            ),
-                          ),
+                        //   // Hide the default underline
+                        //   //    underline: SizedBox(),
+                        //   hint: Align(
+                        //     alignment: Alignment.centerLeft,
+                        //     child: Text(
+                        //       'Filter via job',
+                        //       style:
+                        //           TextStyle(fontSize: 13, color: Colors.grey),
+                        //     ),
+                        //   ),
 
-                          isExpanded: true,
+                        //   isExpanded: true,
 
-                          // The list of options
-                          items: items
-                              .map((e) => DropdownMenuItem(
-                                    child: Container(
-                                      child: Text(
-                                        e,
-                                        style: TextStyle(fontSize: 13),
-                                      ),
-                                    ),
-                                    value: e,
-                                  ))
-                              .toList(),
+                        //   // The list of options
+                        //   items: items
+                        //       .map((e) => DropdownMenuItem(
+                        //             child: Container(
+                        //               child: Text(
+                        //                 e,
+                        //                 style: TextStyle(fontSize: 13),
+                        //               ),
+                        //             ),
+                        //             value: e,
+                        //           ))
+                        //       .toList(),
 
-                          // Customize the selected item
-                          selectedItemBuilder: (BuildContext context) => items
-                              .map((e) => Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      e,
-                                      style: TextStyle(
-                                          fontSize: 13, color: Colors.grey),
-                                    ),
-                                  ))
-                              .toList(),
-                        ),
+                        //   // Customize the selected item
+                        //   selectedItemBuilder: (BuildContext context) => items
+                        //       .map((e) => Align(
+                        //             alignment: Alignment.centerLeft,
+                        //             child: Text(
+                        //               e,
+                        //               style: TextStyle(
+                        //                   fontSize: 13, color: Colors.grey),
+                        //             ),
+                        //           ))
+                        //       .toList(),
+                        // ),
                         const SizedBox(
                           height: 20,
                         ),
@@ -173,150 +177,185 @@ class _Manage_EmailsState extends State<Manage_Emails> {
                           hintText: "This is the subject of the email message",
                         ),
                         const SizedBox(height: 15),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12.0),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Textt(
-                              text: "Job Profile",
+                        // Padding(
+                        //   padding: const EdgeInsets.only(right: 12.0),
+                        //   child: Align(
+                        //     alignment: Alignment.centerLeft,
+                        //     child: Textt(
+                        //       text: "Job Profile",
+                        //     ),
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 5),
+                        // DropdownButton<String>(
+                        //   onChanged: (value) {
+                        //     setState(() {
+                        //       selectedJob = value;
+                        //     });
+                        //   },
+                        //   value: selectedJob,
+
+                        //   // Hide the default underline
+                        //   //    underline: SizedBox(),
+                        //   hint: Align(
+                        //     alignment: Alignment.centerLeft,
+                        //     child: Text(
+                        //       'Select job profile',
+                        //       style:
+                        //           TextStyle(fontSize: 13, color: Colors.grey),
+                        //     ),
+                        //   ),
+
+                        //   isExpanded: true,
+
+                        //   // The list of options
+                        //   items: items
+                        //       .map((e) => DropdownMenuItem(
+                        //             child: Container(
+                        //               child: Text(
+                        //                 e,
+                        //                 style: TextStyle(fontSize: 13),
+                        //               ),
+                        //             ),
+                        //             value: e,
+                        //           ))
+                        //       .toList(),
+
+                        //   // Customize the selected item
+                        //   selectedItemBuilder: (BuildContext context) => items
+                        //       .map((e) => Align(
+                        //             alignment: Alignment.centerLeft,
+                        //             child: Text(
+                        //               e,
+                        //               style: TextStyle(
+                        //                   fontSize: 13, color: Colors.grey),
+                        //             ),
+                        //           ))
+                        //       .toList(),
+                        // ),
+
+                        TextFormField(
+                          style: TextStyle(
+                              fontWeight: _isBoldClicked
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                              fontStyle: _isItalicClicked
+                                  ? FontStyle.italic
+                                  : FontStyle.normal,
+                              decoration: _isUnderlinedClicked
+                                  ? TextDecoration.underline
+                                  : TextDecoration.none),
+                          maxLines: 8,
+                          decoration: InputDecoration(
+                            hintText: "This is the content of the email",
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey[400],
+                              ),
+                              borderRadius: BorderRadius.circular(10),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.blue)),
                           ),
                         ),
-                        const SizedBox(height: 5),
-                        DropdownButton<String>(
-                          onChanged: (value) {
-                            setState(() {
-                              selectedJob = value;
-                            });
-                          },
-                          value: selectedJob,
 
-                          // Hide the default underline
-                          //    underline: SizedBox(),
-                          hint: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Select job profile',
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.grey),
-                            ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 5,
                           ),
-
-                          isExpanded: true,
-
-                          // The list of options
-                          items: items
-                              .map((e) => DropdownMenuItem(
-                                    child: Container(
-                                      child: Text(
-                                        e,
-                                        style: TextStyle(fontSize: 13),
-                                      ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Contain(
+                                borderrad: 5,
+                                outlinecolor: AppColors.grey,
+                                backcolor: AppColors.white,
+                                height: 35,
+                                width: 30,
+                                child: Center(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      print(" bold clicked");
+                                      setState(() {
+                                        _isBoldClicked = !_isBoldClicked;
+                                      });
+                                    },
+                                    style: TextButton.styleFrom(
+                                      backgroundColor: _isBoldClicked
+                                          ? Color(0XFFfff5b9)
+                                          : Colors.white12,
+                                      primary: Colors.black,
                                     ),
-                                    value: e,
-                                  ))
-                              .toList(),
-
-                          // Customize the selected item
-                          selectedItemBuilder: (BuildContext context) => items
-                              .map((e) => Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      e,
-                                      style: TextStyle(
-                                          fontSize: 13, color: Colors.grey),
-                                    ),
-                                  ))
-                              .toList(),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Stack(
-                          children: <Widget>[
-                            Positioned.fill(
-                              child: Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Row(
-                                    children: [
-                                      Contain(
-                                        borderrad: 5,
-                                        outlinecolor: AppColors.grey,
-                                        backcolor: AppColors.white,
-                                        height: 20,
-                                        width: 30,
-                                        child: Center(
-                                          child: InkWell(
-                                            child: Text(
-                                              "B",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            onTap: () {
-                                              setState(() {
-                                                _isBoldClicked =
-                                                    !_isBoldClicked;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Contain(
-                                        borderrad: 5,
-                                        outlinecolor: AppColors.grey,
-                                        backcolor: _isItalicClicked
-                                            ? AppColors.orange12
-                                            : AppColors.white,
-                                        height: 20,
-                                        width: 30,
-                                        child: Center(
-                                          child: InkWell(
-                                            child: Text(
-                                              "I",
-                                              style: TextStyle(
-                                                  fontStyle: FontStyle.italic),
-                                            ),
-                                            onTap: () {
-                                              setState(() {
-                                                _isItalicClicked =
-                                                    !_isItalicClicked;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Contain(
-                                        borderrad: 5,
-                                        outlinecolor: AppColors.grey,
-                                        height: 20,
-                                        width: 30,
-                                        child: Center(child: Text("U")),
-                                      ),
-                                    ],
+                                    child: Text('B',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        )),
                                   ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextInput(
-                              borderRadius: 1,
-                              fstyle: _isItalicClicked
-                                  ? FontStyle.italic
-                                  : FontStyle.normal,
-                              hintText: "This is the content of the email",
-                              maxLines: 8,
-                            ),
-                          ],
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Contain(
+                                borderrad: 5,
+                                outlinecolor: AppColors.grey,
+                                backcolor: AppColors.white,
+                                height: 35,
+                                width: 30,
+                                child: Center(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      print(" Italic clicked");
+                                      setState(() {
+                                        _isItalicClicked = !_isItalicClicked;
+                                      });
+                                    },
+                                    style: TextButton.styleFrom(
+                                      backgroundColor: _isItalicClicked
+                                          ? Color(0XFFfff5b9)
+                                          : Colors.white12,
+                                      primary: Colors.black,
+                                    ),
+                                    child: Text('I',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            fontStyle: FontStyle.italic)),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Contain(
+                                borderrad: 5,
+                                outlinecolor: AppColors.grey,
+                                backcolor: AppColors.white,
+                                height: 35,
+                                width: 30,
+                                child: Center(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      print(" Italic clicked");
+                                      setState(() {
+                                        _isUnderlinedClicked =
+                                            !_isUnderlinedClicked;
+                                      });
+                                    },
+                                    style: TextButton.styleFrom(
+                                      backgroundColor: _isUnderlinedClicked
+                                          ? Color(0XFFfff5b9)
+                                          : Colors.white12,
+                                      primary: Colors.black,
+                                    ),
+                                    child: Text('U',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 20,

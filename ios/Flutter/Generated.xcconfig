@@ -1,5 +1,4 @@
 // This is a generated file; do not edit or check into version control.
-<<<<<<< HEAD
 FLUTTER_ROOT=C:\flutter
 FLUTTER_APPLICATION_PATH=D:\workspace\recruit-main
 COCOAPODS_PARALLEL_CODE_SIGN=true
@@ -8,15 +7,6 @@ FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
-=======
-FLUTTER_ROOT=/home/excellence/snap/flutter/common/flutter
-FLUTTER_APPLICATION_PATH=/home/excellence/Documents/mobile
-FLUTTER_TARGET=lib/main.dart
-FLUTTER_BUILD_DIR=build
-SYMROOT=${SOURCE_ROOT}/../build/ios
-FLUTTER_BUILD_NAME=1.0.0
-FLUTTER_BUILD_NUMBER=1
->>>>>>> 60fd343a9c2f3ffbd531d495a695cd76bf4a653a
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=false
 TREE_SHAKE_ICONS=false

@@ -6,8 +6,8 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   Function onPressed;
 
   SecondAppBar({this.text, this.title, this.onPressed});
-  var text;
-  var title;
+  var text = '';
+  var title = '';
 
   Size get preferredSize => const Size.fromHeight(100);
 
@@ -24,7 +24,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: TextButton.icon(
             style: TextButton.styleFrom(
               textStyle: TextStyle(color: AppColors.white),
@@ -35,7 +35,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             onPressed: onPressed,
             icon: Icon(Icons.add, color: AppColors.white),
-            label: Text(text, style: TextStyle(color: AppColors.white)),
+            label: Text(text ?? '', style: TextStyle(color: AppColors.white)),
           ),
         ),
       ],

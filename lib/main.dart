@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
-import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_bloc.dart';
-import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
-import 'package:flutter_product_recruit/screens/domainLogin.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
-import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
-import 'package:flutter_product_recruit/screens/statistics.dart';
-import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
+
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:provider/provider.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';

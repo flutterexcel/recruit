@@ -3,14 +3,18 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/screens/Manage%20Referrals/Manage_Referral.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
+import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
+import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
+import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
 import 'package:flutter_product_recruit/screens/Notifications/setup_slack.dart';
 import 'package:flutter_product_recruit/screens/conversation.dart';
 import 'package:flutter_product_recruit/screens/jobsoverview.dart';
+import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
-
-import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
@@ -20,8 +24,12 @@ import 'package:flutter_product_recruit/services/manage_referral/get_referal_ser
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:provider/provider.dart';
 
+import 'jobs_overview/jobsoverviewpage.dart';
+
 class NavigationList extends StatefulWidget {
-  var loginstate;
+  List<JobList> getData;
+  List<JobsOverviewModel> jobsOverViewModel;
+  List<ListJobTag> listJobTag;
 
   NavigationList();
   @override
@@ -35,7 +43,7 @@ class _NavigationListState extends State<NavigationList> {
   @override
   Widget build(BuildContext context) {
     // print("second drawer${this.loginstate}");
-    // final LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
+    final LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
     return Drawer(
       child: ListView(
         // Important: Remove any padding from the ListView.
@@ -141,8 +149,8 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.error_outline_rounded),
             title: Text("MANAGE SPAMS"),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => Manage_Spams()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ManageSpam()));
             },
           ),
           ListTile(
@@ -165,8 +173,8 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.email_sharp),
             title: Text("MANAGE EMAILS"),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => Manage_Emails()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ManageEmail()));
             },
           ),
           ListTile(
@@ -181,8 +189,11 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.logout),
             title: Text("LOGOUT"),
             onTap: () {
-              // loginstate.add(LogOutEvent);m,m,,
-              Navigator.pop(context);
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => Login()),
+                  (Route<dynamic> route) => false);
+              loginBloc.add(LogOutEvent());
+              // Navigator.pop(context);
             },
           ),
         ],

@@ -1,10 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.dart';
-import 'package:flutter_product_recruit/services/manage_spam/spam_services.dart';
+import 'package:flutter_product_recruit/services/manage_spam/manage_spam.dart';
 
 class ManageSpamBloc extends Bloc<ManageSpamEvent, MangeSpamState> {
   ManageSpamBloc() : super(MangeSpamInitial());
+
   @override
   Stream<MangeSpamState> mapEventToState(ManageSpamEvent event) async* {
     if (event is ManageSpamInitialEvent) {
@@ -20,6 +21,7 @@ class ManageSpamBloc extends Bloc<ManageSpamEvent, MangeSpamState> {
       ManageSpamInitialEvent event) async* {
     try {
       var res = await ManageSpamService.getManageSpamEmail();
+
       yield GetSpamList(managelist: res);
     } catch (e) {
       yield ManageSpamFailure();
@@ -27,12 +29,11 @@ class ManageSpamBloc extends Bloc<ManageSpamEvent, MangeSpamState> {
   }
 
   Stream<MangeSpamState> _mapAddEmailToState(AddEmailEvent event) async* {
-    try {
+    try {  
       var res = await ManageSpamService.addManageSpamEmail(event.email);
       print("response of add spam");
-      print(res);
       yield AddEmailSuccess(addemailModel: res);
-    } catch (e) {
+    } catch (e) {           
       yield ManageSpamFailure();
     }
   }

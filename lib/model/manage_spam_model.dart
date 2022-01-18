@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-List<SpamListModel> manageSpamListFromJson(String str) =>
-    List<SpamListModel>.from(
-        json.decode(str).map((x) => SpamListModel.fromJson(x)));
+List<ManageSpamList> manageSpamListFromJson(String str) =>
+    List<ManageSpamList>.from(
+        json.decode(str).map((x) => ManageSpamList.fromJson(x)));
 
 //String manageSpamListToJson(List<ManageSpamList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class SpamListModel {
-  SpamListModel({
+class ManageSpamList {
+  ManageSpamList({
     this.id,
     this.email,
     this.createdAt,
@@ -27,7 +27,7 @@ class SpamListModel {
   int v;
   String manageSpamListId;
 
-  factory SpamListModel.fromJson(Map<String, dynamic> json) => SpamListModel(
+  factory ManageSpamList.fromJson(Map<String, dynamic> json) => ManageSpamList(
         id: json["_id"],
         email: json["email"],
         createdAt: DateTime.parse(json["createdAt"]),
@@ -44,15 +44,17 @@ class SpamListModel {
   //     "__v": v,
   //     "id": manageSpamListId,
   // };
-
 }
 
 //**** add spam model ****//
+
 // To parse this JSON data, do
 //
 //     final addSpamModel = addSpamModelFromJson(jsonString);
+
 AddSpamModel addSpamModelFromJson(String str) =>
     AddSpamModel.fromJson(json.decode(str));
+
 String addSpamModelToJson(AddSpamModel data) => json.encode(data.toJson());
 
 class AddSpamModel {
@@ -60,12 +62,15 @@ class AddSpamModel {
     this.error,
     this.message,
   });
+
   int error;
   String message;
+
   factory AddSpamModel.fromJson(Map<String, dynamic> json) => AddSpamModel(
         error: json["error"],
         message: json["message"],
       );
+
   Map<String, dynamic> toJson() => {
         "error": error,
         "message": message,
