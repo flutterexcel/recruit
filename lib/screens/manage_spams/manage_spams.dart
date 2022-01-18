@@ -26,7 +26,6 @@ class Manage_Spams extends StatefulWidget {
 // ignore: camel_case_types
 class _Manage_SpamsState extends State<Manage_Spams> {
   List data = [];
-
   @override
   void initState() {
     super.initState();
@@ -38,6 +37,11 @@ class _Manage_SpamsState extends State<Manage_Spams> {
   //   print(data);
   // }
 
+  // void getspam() async {
+  //   var res = await GetEmailSpamService.getManageSpamEmail();
+  //   data = res;
+  //   print(data);
+  // }
   void _popupDialog(BuildContext context) {
     showDialog(
         context: context,
@@ -63,7 +67,6 @@ class _Manage_SpamsState extends State<Manage_Spams> {
   }
 
   bool isSwitched = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ManageSpamBloc, MangeSpamState>(

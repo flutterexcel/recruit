@@ -29,11 +29,11 @@ class ManageSpamBloc extends Bloc<ManageSpamEvent, MangeSpamState> {
   }
 
   Stream<MangeSpamState> _mapAddEmailToState(AddEmailEvent event) async* {
-    try {  
+    try {
       var res = await ManageSpamService.addManageSpamEmail(event.email);
       print("response of add spam");
       yield AddEmailSuccess(addemailModel: res);
-    } catch (e) {           
+    } catch (e) {
       yield ManageSpamFailure();
     }
   }

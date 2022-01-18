@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable, deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/src/bloc_provider.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
@@ -14,19 +12,16 @@ import 'package:flutter_product_recruit/widgets/snackbar.dart';
 // ignore: camel_case_types
 class Add_New_Spam extends StatelessWidget {
   var state;
-
   Add_New_Spam({this.state});
   final TextEditingController textEditingController =
       new TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     print("new state");
     print(state);
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-
     RegExp regExp = new RegExp(p);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),

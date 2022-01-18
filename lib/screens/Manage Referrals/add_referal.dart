@@ -1,7 +1,14 @@
+// ignore_for_file: missing_return
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
+import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_bloc.dart';
+import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_event.dart';
+import 'package:flutter_product_recruit/bloc/manage_referral_bloc/manage_referral_state.dart';
+import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.dart';
+import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.dart';
 import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
@@ -114,24 +121,33 @@ class Add_Referal extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          SizedBox(
-                            width: 75,
-                            child: Buttonn(
-                              text: "Add",
-                              bgcolor: AppColors.blue,
-                              onTap: () async {
-                                var res = await Add_Referral_Email_Service
-                                    .addReferralEmail(
-                                        textEditingController.text);
+                          BlocBuilder<ManageSpamBloc, MangeSpamState>(
+                              builder: (context, state) {
+                            return SizedBox(
+                              width: 75,
+                              child: Buttonn(
+                                text: "Add",
+                                bgcolor: AppColors.blue,
+                                onTap: () async {
+                                  // ignore: deprecated_member_use
+                                  context.bloc<ManageReferralBloc>().add(
+                                      AddReferralEvent(
+                                          textEditingController.text));
 
-                                print(res.message);
-                                if (res.message != null) {
-                                  Utils.showSnackBar(context,
-                                      "Added Successfully", AppColors.Orange);
-                                }
-                              },
-                            ),
-                          ),
+                                  // var res =
+                                  //     await AddReferralService.addReferralEmail(
+                                  //         textEditingController.text);
+
+                                  // print(res.message);
+                                  // if (res.message != null) {
+                                  //   Utils.showSnackBar(context,
+                                  //       "Added Successfully", AppColors.Orange);
+                                  // }
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            );
+                          }),
                           const SizedBox(
                             height: 15,
                           ),

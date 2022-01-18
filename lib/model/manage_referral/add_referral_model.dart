@@ -4,13 +4,14 @@
 
 import 'dart:convert';
 
-CreateReferral createReferralFromJson(String str) =>
-    CreateReferral.fromJson(json.decode(str));
+AddReferralModel createReferralFromJson(String str) =>
+    AddReferralModel.fromJson(json.decode(str));
 
-String createReferralToJson(CreateReferral data) => json.encode(data.toJson());
+String createReferralToJson(AddReferralModel data) =>
+    json.encode(data.toJson());
 
-class CreateReferral {
-  CreateReferral({
+class AddReferralModel {
+  AddReferralModel({
     this.status,
     this.message,
     this.data,
@@ -20,7 +21,8 @@ class CreateReferral {
   String message;
   Data data;
 
-  factory CreateReferral.fromJson(Map<String, dynamic> json) => CreateReferral(
+  factory AddReferralModel.fromJson(Map<String, dynamic> json) =>
+      AddReferralModel(
         status: json["status"],
         message: json["message"],
         data: Data.fromJson(json["data"]),

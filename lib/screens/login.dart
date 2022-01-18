@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
-import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/login/login_page.dart';
-
 import 'jobsoverview.dart';
-import 'manage_spams/manage_spams.dart';
 
+// ignore: must_be_immutable
 class Login extends StatelessWidget {
   String url;
   Login({this.url});
