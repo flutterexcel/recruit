@@ -125,8 +125,8 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.refresh_sharp),
             title: Text("MANAGE Referrals"),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => Get_Referrals()));
+              // Navigator.of(context).push(
+              //     MaterialPageRoute(builder: (context) => Get_Referrals()));
             },
           ),
           ListTile(

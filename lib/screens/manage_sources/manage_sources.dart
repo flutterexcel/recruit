@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
-<<<<<<< HEAD
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
-=======
 import 'package:flutter_product_recruit/widgets/container.dart';
-import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
-import 'package:flutter_product_recruit/widgets/navigation.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
->>>>>>> 0fc1c46aab1f12e066fc8f4d3dc98f20b4ec9de6
 
 class ManageSources extends StatefulWidget {
   ManageSources();
