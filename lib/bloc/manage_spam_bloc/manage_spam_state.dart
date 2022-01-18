@@ -12,13 +12,14 @@ class MangeSpamInitial extends MangeSpamState {}
 
 class GetSpamList extends MangeSpamState {
   List<ManageSpamList> managelist;
+  AddSpamModel addemailModel;
 
-  GetSpamList({this.managelist});
+  GetSpamList({this.managelist, this.addemailModel});
 }
 
 class ManageSpamFailure extends MangeSpamState {}
 
-class AddEmailSuccess extends MangeSpamState {
-  AddSpamModel addemailModel;
-  AddEmailSuccess({this.addemailModel});
-}
+// class AddEmailSuccess extends MangeSpamState {
+//   AddSpamModel addemailModel;
+//   AddEmailSuccess({this.addemailModel});
+// }

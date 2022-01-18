@@ -6,24 +6,29 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
+import 'package:flutter_product_recruit/model/manage_spam_model.dart';
+import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/services/manage_spam/add_spam_email_service.dart';
 import 'package:flutter_product_recruit/services/manage_spam/manage_spam.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types
-class Add_New_Spam extends StatelessWidget {
-  var state;
+class Add_New_Spam extends StatefulWidget {
+  Add_New_Spam();
 
-  Add_New_Spam({this.state});
+  @override
+  State<Add_New_Spam> createState() => _Add_New_SpamState();
+}
+
+class _Add_New_SpamState extends State<Add_New_Spam> {
   final TextEditingController textEditingController =
       new TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    print("new state");
-    print(state);
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
@@ -97,22 +102,23 @@ class Add_New_Spam extends StatelessWidget {
                 textColor: Colors.white,
                 onPressed: () async {
                   //print(textEditingController.text);
+
                   if (_formKey.currentState.validate()) {
-                    context
-                        .bloc<ManageSpamBloc>()
-                        .add(AddEmailEvent(textEditingController.text));
+                    AddSpamModel res =
+                        await ManageSpamService.addManageSpamEmail(
+                            textEditingController.text);
 
-                    // var res = await ManageSpamService.addManageSpamEmail(
-                    //     textEditingController.text);
+                    if (res.message == 'Contact is Already Added') {
+                      Utils.showSnackBar(
+                          context, "Contact is Already Added", AppColors.pink);
+                    } else {
+                      Utils.showSnackBar(
+                          context, "Email Added Succesfully", AppColors.pink);
+                    }
+                  context.bloc<ManageSpamBloc>().add(ManageSpamInitialEvent());
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute(builder: (context) => ManageSpam()));
 
-                    // print(res.message);
-                    // if (res.message == 'Contact is Already Added') {
-                    //   Utils.showSnackBar(
-                    //       context, "Contact is Already Added", AppColors.pink);
-                    // } else {
-                    //   Utils.showSnackBar(
-                    //       context, "Email Added Succesfully", AppColors.pink);
-                    // }
                     Navigator.pop(context);
                   }
                 }),

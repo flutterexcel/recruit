@@ -25,11 +25,11 @@ class AddReferralService extends ChangeNotifier {
       notifyListeners();
       var res = AddReferralModel.fromJson(jsonDecode(response.body));
       //print(res.data);
-      addedList.add(ReferralListModel());
+      // addedList.add(ReferralListModel());
       return res;
       //print(addedList);
     } else {
-      print("error");
+      print("------------------error");
       throw Exception('Failed to create album.');
     }
   }
