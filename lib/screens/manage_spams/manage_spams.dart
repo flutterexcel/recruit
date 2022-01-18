@@ -53,11 +53,11 @@ class _ManageSpamState extends State<ManageSpam> {
         });
   }
 
-  void _popupAddNewSpamDialog(BuildContext context, state) {
+  void _popupAddNewSpamDialog(BuildContext context) {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Add_New_Spam(state: state));
+          return Dialog(child: Add_New_Spam());
         });
   }
 
@@ -70,97 +70,96 @@ class _ManageSpamState extends State<ManageSpam> {
       if (state is MangeSpamInitial) {
         context.bloc<ManageSpamBloc>().add(ManageSpamInitialEvent());
         return Loader1();
-      } else if (state is GetSpamList || state is AddEmailSuccess) {
-        // print("state${state.managelist.length}");
+      } else if (state is GetSpamList) {
+        print("state----${state}");
+
         return Scaffold(
           drawer: NavigationList(),
           appBar: SecondAppBar(
               text: "Add Spam",
               title: "Manage Spams",
               onPressed: () {
-                _popupAddNewSpamDialog(context, state);
+                _popupAddNewSpamDialog(context);
               }),
-          body: state is GetSpamList
-              ? ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: state.managelist.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Contain(
-                        outlinecolor: AppColors.grey,
-                        borderrad: 8,
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              alignment: Alignment.center,
-                              height: 60,
-                              width: 60,
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.orange12,
-                              ),
-                              child: Text(
-                                state.managelist[index].email[0].toUpperCase(),
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Textt(
-                              text: state.managelist[index].email,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                    scale: 0.6,
-                                    child: InkWell(
-                                        onTap: () {
-                                          setState(() {
-                                            _popupDialog(context);
-                                          });
-                                        },
-                                        child: Icon(Icons.edit))),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Transform.scale(
-                                  scale: 0.6,
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          _popupConfirmDialog(
-                                              context, data[index].id);
-                                        });
-                                      },
-                                      child: Icon(Icons.delete)),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                          ],
+          body: ListView.builder(
+            shrinkWrap: true,
+            itemCount: state.managelist.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Contain(
+                  outlinecolor: AppColors.grey,
+                  borderrad: 8,
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        height: 60,
+                        width: 60,
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.orange12,
+                        ),
+                        child: Text(
+                          state.managelist[index].email[0].toUpperCase(),
+                          style: TextStyle(
+                            color: AppColors.white,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    );
-                  },
-                )
-              : Text(""),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Textt(
+                        text: state.managelist[index].email,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Transform.scale(
+                              scale: 0.6,
+                              child: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      _popupDialog(context);
+                                    });
+                                  },
+                                  child: Icon(Icons.edit))),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Transform.scale(
+                            scale: 0.6,
+                            child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    _popupConfirmDialog(
+                                        context, data[index].id);
+                                  });
+                                },
+                                child: Icon(Icons.delete)),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         );
       }
     });

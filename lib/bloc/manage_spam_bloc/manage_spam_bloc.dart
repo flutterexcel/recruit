@@ -11,14 +11,16 @@ class ManageSpamBloc extends Bloc<ManageSpamEvent, MangeSpamState> {
     if (event is ManageSpamInitialEvent) {
       yield* _mapManageSpamInitialEvent(event);
     }
-    if (event is AddEmailEvent) {
-      print("add event");
-      yield* _mapAddEmailToState(event);
-    }
+
+    // if (event is AddEmailEvent) {
+    //   print("add event");
+    //   yield* _mapAddEmailToState(event);
+    // }
   }
 
   Stream<MangeSpamState> _mapManageSpamInitialEvent(
       ManageSpamInitialEvent event) async* {
+    print("initial");
     try {
       var res = await ManageSpamService.getManageSpamEmail();
 
@@ -28,13 +30,18 @@ class ManageSpamBloc extends Bloc<ManageSpamEvent, MangeSpamState> {
     }
   }
 
-  Stream<MangeSpamState> _mapAddEmailToState(AddEmailEvent event) async* {
-    try {  
-      var res = await ManageSpamService.addManageSpamEmail(event.email);
-      print("response of add spam");
-      yield AddEmailSuccess(addemailModel: res);
-    } catch (e) {           
-      yield ManageSpamFailure();
-    }
-  }
+  // Stream<MangeSpamState> _mapAddEmailToState(AddEmailEvent event) async* {
+  //   try {
+  //     var res1 = await ManageSpamService.getManageSpamEmail();
+  //     var res2 = await ManageSpamService.addManageSpamEmail(event.email);
+  //     print("response of add spam--${res2}");
+  //     print("response of get spam---${res1}");
+  //     yield GetSpamList(
+  //       managelist: res1,
+  //       addemailModel: res2,
+  //     );
+  //   } catch (e) {
+  //     yield ManageSpamFailure();
+  //   }
+  // }
 }
