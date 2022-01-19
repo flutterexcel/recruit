@@ -14,7 +14,7 @@ import 'package:flutter_product_recruit/screens/conversation.dart';
 import 'package:flutter_product_recruit/screens/jobsoverview.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
-import 'package:flutter_product_recruit/screens/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';

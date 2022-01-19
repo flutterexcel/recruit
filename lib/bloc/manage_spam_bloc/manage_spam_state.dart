@@ -12,9 +12,11 @@ class MangeSpamInitial extends MangeSpamState {}
 
 class GetSpamList extends MangeSpamState {
   List<ManageSpamList> managelist;
-  AddSpamModel addemailModel;
 
-  GetSpamList({this.managelist, this.addemailModel});
+  GetSpamList({this.managelist});
+
+  @override
+  List<Object> get props => [managelist];
 }
 
 class ManageSpamFailure extends MangeSpamState {}

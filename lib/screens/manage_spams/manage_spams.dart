@@ -53,11 +53,11 @@ class _ManageSpamState extends State<ManageSpam> {
         });
   }
 
-  void _popupAddNewSpamDialog(BuildContext context) {
+  void _popupAddNewSpamDialog(BuildContext context, state) {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Add_New_Spam());
+          return Dialog(child: Add_New_Spam(state: state));
         });
   }
 
@@ -79,7 +79,7 @@ class _ManageSpamState extends State<ManageSpam> {
               text: "Add Spam",
               title: "Manage Spams",
               onPressed: () {
-                _popupAddNewSpamDialog(context);
+                _popupAddNewSpamDialog(context, state);
               }),
           body: ListView.builder(
             shrinkWrap: true,

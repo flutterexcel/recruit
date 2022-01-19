@@ -14,21 +14,20 @@ import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types
-class Add_New_Spam extends StatefulWidget {
-  Add_New_Spam();
 
-  @override
-  State<Add_New_Spam> createState() => _Add_New_SpamState();
-}
-
-class _Add_New_SpamState extends State<Add_New_Spam> {
+class Add_New_Spam extends StatelessWidget {
   final TextEditingController textEditingController =
       new TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
+  var state;
+
+  Add_New_Spam({this.state});
+
   @override
   Widget build(BuildContext context) {
+    print("new state--${state}");
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
@@ -115,7 +114,9 @@ class _Add_New_SpamState extends State<Add_New_Spam> {
                       Utils.showSnackBar(
                           context, "Email Added Succesfully", AppColors.pink);
                     }
-                  context.bloc<ManageSpamBloc>().add(ManageSpamInitialEvent());
+                    context
+                        .bloc<ManageSpamBloc>()
+                        .add(ManageSpamInitialEvent());
                     // Navigator.of(context).push(
                     //     MaterialPageRoute(builder: (context) => ManageSpam()));
 
