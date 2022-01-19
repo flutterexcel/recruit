@@ -12,7 +12,7 @@ import 'package:flutter_product_recruit/screens/conversation.dart';
 import 'package:flutter_product_recruit/screens/jobsoverview.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';
-import 'package:flutter_product_recruit/screens/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
@@ -133,8 +133,8 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.error_outline_rounded),
             title: Text("MANAGE SPAMS"),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => ManageSpam()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ManageSpam()));
             },
           ),
           ListTile(
