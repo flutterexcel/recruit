@@ -150,7 +150,12 @@ class _Add_ReferalState extends State<Add_Referal> {
                                       "Added Successfully", AppColors.Orange);
                                   //  Navigator.pop(context);
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => GetReferrals()));
+                                      builder: (context) =>
+                                          ChangeNotifierProvider(
+                                            create: (context) =>
+                                                GetReferralEmailService(),
+                                            child: GetReferrals(),
+                                          )));
 
                                   // GetReferrals();
                                 }
