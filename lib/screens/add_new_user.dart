@@ -8,12 +8,13 @@ import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 // ignore: must_be_immutable, camel_case_types
-class Add_New_User extends StatefulWidget {
+class AddNewUser extends StatefulWidget {
   @override
-  State<Add_New_User> createState() => _Add_New_UserState();
+  State<AddNewUser> createState() => _AddNewUserState();
 }
 
-class _Add_New_UserState extends State<Add_New_User> {
+class _AddNewUserState extends State<AddNewUser> {
+  String _value = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,16 +128,79 @@ class _Add_New_UserState extends State<Add_New_User> {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        TextField_Int(
-                          autocorrect: true,
+                        // TextField_Int(
+                        //   autocorrect: true,
+                        // ),
+                        PopupMenuButton(
+                          child: Container(
+                            height: 40,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                                // color: Colors.yellow,
+                                // Red border with the width is equal to 5
+                                border: Border.all(color: Colors.grey)),
+                            child: Text(_value.toString()),
+                          ),
+
+                          // key: _menuKey,
+                          itemBuilder: (_) => <PopupMenuItem<String>>[
+                            PopupMenuItem<String>(
+                              child: InkWell(
+                                onTap: () {
+                                  print('Admin');
+                                },
+                                child: Text('Admin'),
+                              ),
+                            ),
+                            PopupMenuItem<String>(
+                              child: InkWell(
+                                onTap: () {
+                                  print('HR');
+                                },
+                                child: Text('HR'),
+                              ),
+                            ),
+                            PopupMenuItem<String>(
+                              child: InkWell(
+                                onTap: () {
+                                  print('Interviewee');
+                                },
+                                child: Text('Interviewee'),
+                              ),
+                            ),
+                          ],
+                          onSelected: (value) {
+                            print("-------------$value");
+                            setState(() {
+                              _value = value;
+                              print(_value);
+                            });
+                          },
+                          elevation: 8,
                         ),
                         const SizedBox(height: 15),
                         Buttonn(
                           text: "Add User",
                           bgcolor: AppColors.blue,
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Step3()));
+                          onTap: () async {
+                            //         AddSpamModel res =
+                            //     await ManageSpamService.addManageSpamEmail(
+                            //         textEditingController.text);
+
+                            // if (res.message == 'Contact is Already Added') {
+                            //   Utils.showSnackBar(
+                            //       context, "Contact is Already Added", AppColors.pink);
+                            // } else {
+                            //   Utils.showSnackBar(
+                            //       context, "Email Added Succesfully", AppColors.pink);
+                            // }
+                            // context
+                            //     .bloc<ManageSpamBloc>()
+                            //     .add(ManageSpamInitialEvent());
+                            // Navigator.of(context).push(
+                            //     MaterialPageRoute(builder: (context) => ManageSpam()));
+
+                            Navigator.pop(context);
                           },
                         ),
                         const SizedBox(height: 10),

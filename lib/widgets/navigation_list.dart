@@ -18,7 +18,7 @@ import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.da
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
-import 'package:flutter_product_recruit/screens/users_list.dart';
+import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 
 import 'package:flutter_product_recruit/services/storage_service.dart';

@@ -26,17 +26,6 @@ class ManageSpam extends StatefulWidget {
 class _ManageSpamState extends State<ManageSpam> {
   List data = [];
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  // void getspam() async {
-  //   var res = await GetEmailSpamService.getManageSpamEmail();
-  //   data = res;
-  //   print(data);
-  // }
-
   void _popupDialog(BuildContext context) {
     showDialog(
         context: context,
