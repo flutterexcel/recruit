@@ -3,29 +3,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/utils.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_event.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_state.dart';
+import 'package:flutter_product_recruit/model/userlist_model/delete_userlist_model.dart';
 import 'package:flutter_product_recruit/screens/add_new_user.dart';
 import 'package:flutter_product_recruit/screens/userlist/change_password_dialouge.dart';
 import 'package:flutter_product_recruit/screens/userlist/manage_jobs_dialouge.dart';
-import 'package:flutter_product_recruit/services/userlist_services/get_userlist_service.dart';
+import 'package:flutter_product_recruit/services/userlist_services/deactivate_user_service.dart';
+import 'package:flutter_product_recruit/services/userlist_services/delete_userlist_service.dart';
+
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable, camel_case_types
-class User_List extends StatefulWidget {
+class UsersList extends StatefulWidget {
   @override
-  State<User_List> createState() => _User_ListState();
+  State<UsersList> createState() => _UsersListState();
 }
 
 // ignore: camel_case_types
-class _User_ListState extends State<User_List> {
+class _UsersListState extends State<UsersList> {
   bool isSwitched = false;
   List data = [];
-  String _value = "";
+  String _value = "Delete";
   final GlobalKey _menuKey = GlobalKey();
 
   // @override
@@ -62,7 +66,7 @@ class _User_ListState extends State<User_List> {
         context.bloc<UserListBloc>().add(UserListInitialEvent());
         return Loader1();
       } else if (state is GetUserListState) {
-        print("state----${state}");
+        // print("state----${state}");
         return Scaffold(
           appBar: SecondAppBar(
               text: "Add User",
@@ -71,25 +75,6 @@ class _User_ListState extends State<User_List> {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => AddNewUser()));
               }),
-          //  AppBar(
-          //   title: const Text("All Users"),
-          //   actions: [
-          //     Padding(
-          //       padding: const EdgeInsets.only(right: 15.0),
-          //       child: Container(
-          //         // margin: EdgeInsets.symmetric(vertical: 10),
-          //         child: InkWell(
-          //           child: Icon(Icons.add, color: AppColors.white),
-          //           onTap: () {
-          //             Navigator.of(context).push(MaterialPageRoute(
-          //                 builder: (context) => Add_New_User()));
-          //           },
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // drawer: NavigationList(),s
           body: ListView.separated(
             shrinkWrap: true,
             itemCount: state.userLists.length,
@@ -128,10 +113,11 @@ class _User_ListState extends State<User_List> {
                         height: 10,
                       ),
                       Textt(
-                        text: state.userLists[index].userType.toString(),
-                        size: 13,
-                        tcolor: AppColors.orange12,
-                      ),
+                          text: state.userLists[index].userType.toString(),
+                          size: 13,
+                          tcolor: state.userLists[index].activeStatus
+                              ? AppColors.orange12
+                              : AppColors.grey),
                       const SizedBox(
                         height: 10,
                       ),
@@ -235,23 +221,56 @@ class _User_ListState extends State<User_List> {
                             itemBuilder: (_) => <PopupMenuItem<String>>[
                               PopupMenuItem<String>(
                                 child: InkWell(
-                                  onTap: () {},
-                                  child: Text('Deactivate'),
+                                  onTap: () async {
+                                    DeactivateUserModel res =
+                                        await DeactivateUserService
+                                            .deactivateUser(
+                                                state.userLists[index].id);
+                                    //print(res.status);
+                                    if (res.message == "User Deactivated") {
+                                      Utils.showSnackBar(
+                                          context,
+                                          "Succesfully Deactivated",
+                                          AppColors.Green);
+                                      context
+                                          .bloc<UserListBloc>()
+                                          .add(UserListInitialEvent());
+                                    } else {
+                                      Utils.showSnackBar(
+                                          context, "Invalid Id", AppColors.Red);
+                                    }
+                                  },
+                                  child: state.userLists[index].activeStatus
+                                      ? Text('Deactivate')
+                                      : Text(""),
                                 ),
                               ),
                               PopupMenuItem<String>(
                                 child: InkWell(
-                                  onTap: () {},
                                   child: Text('Delete'),
                                 ),
+                                onTap: () async {
+                                  print("id---${state.userLists[index].id}");
+
+                                  DeleteUserModel res =
+                                      await DeleteUserService.deleteUser(
+                                          state.userLists[index].id);
+                                  //print(res.status);
+                                  if (res.message != null) {
+                                    Utils.showSnackBar(context,
+                                        "Succesfully Deleted", AppColors.Green);
+                                    context
+                                        .bloc<UserListBloc>()
+                                        .add(UserListInitialEvent());
+                                  } else {
+                                    Utils.showSnackBar(
+                                        context, "Invalid Id", AppColors.Red);
+                                  }
+                                  //  Navigator.pop(context, 'Yes');
+                                },
                               ),
                             ],
-                            onSelected: (value) {
-                              setState(() {
-                                _value = value;
-                                print(_value);
-                              });
-                            },
+                            onSelected: (value) {},
                             elevation: 8,
                           ),
                           const SizedBox(

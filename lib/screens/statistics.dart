@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/statistics_samples/population_data.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
@@ -28,7 +29,7 @@ class _StatsState extends State<Stats> {
         appBar: AppBar(
           title: const Text("Statistics"),
         ),
-        // drawer: NavigationList(),s
+        drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(15.0),

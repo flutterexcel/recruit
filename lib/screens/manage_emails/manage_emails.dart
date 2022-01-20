@@ -47,7 +47,7 @@ class _ManageEmailState extends State<ManageEmail> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            "Manage Spam",
+            "Manage Emails",
             style: TextStyle(color: AppColors.Black, fontSize: 23),
             textAlign: TextAlign.left,
           ),

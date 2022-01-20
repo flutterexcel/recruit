@@ -19,6 +19,7 @@ import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
 import 'package:flutter_product_recruit/screens/user_logs/user_log_old.dart';
+import 'package:flutter_product_recruit/screens/statistics.dart';
 import 'package:flutter_product_recruit/screens/user_logs/user_logs.dart';
 import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
@@ -120,7 +121,7 @@ class _NavigationListState extends State<NavigationList> {
             title: Text("USERS LIST"),
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => User_List()));
+                  .push(MaterialPageRoute(builder: (context) => UsersList()));
             },
           ),
           ListTile(
@@ -145,12 +146,26 @@ class _NavigationListState extends State<NavigationList> {
                       )));
             },
           ),
-          // ListTile(
-          //   leading: Icon(Icons.refresh_sharp),
-          //   title: Text("MANAGE Referrals"),
+          ListTile(
+            leading: Icon(Icons.mark_chat_read),
+            title: Text("Statistics"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Stats()),
+              );
+              // Navigator.pop(context);
+            },
+          ),
+          //  ListTile(
+          //   leading: Icon(Icons.mark_chat_read),
+          //   title: Text("Candidate Database"),
           //   onTap: () {
-          //     Navigator.of(context).push(MaterialPageRoute(
-          //         builder: (context) => GetReferrals()));
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => Stats()),
+          //     );
+          //     // Navigator.pop(context);
           //   },
           // ),
           ListTile(

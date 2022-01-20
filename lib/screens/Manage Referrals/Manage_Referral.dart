@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/add_referal.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable, camel_case_types
-class Manage_Referral extends StatelessWidget {
+class ManageReferral extends StatelessWidget {
   bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: NavigationList(),
         appBar: AppBar(
           title: const Text("Manage Referral"),
           actions: [
