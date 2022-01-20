@@ -1,10 +1,8 @@
-// ignore_for_file: must_be_immutable, deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
-// ignore: camel_case_types
+// ignore: camel_case_types, must_be_immutable
 class ChangePass extends StatelessWidget {
   TextEditingController textEditingController;
 
