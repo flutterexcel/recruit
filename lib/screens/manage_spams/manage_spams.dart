@@ -24,18 +24,18 @@ class ManageSpam extends StatefulWidget {
 
 // ignore: camel_case_types
 class _ManageSpamState extends State<ManageSpam> {
-  List data = [];
+  // List data = [];
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  // void getspam() async {
-  //   var res = await GetEmailSpamService.getManageSpamEmail();
-  //   data = res;
-  //   print(data);
+  // @override
+  // void initState() {
+  //   super.initState();
   // }
+
+  // // void getspam() async {
+  // //   var res = await GetEmailSpamService.getManageSpamEmail();
+  // //   data = res;
+  // //   print(data);
+  // // }
 
   void _popupDialog(BuildContext context, ManageSpamList update) {
     showDialog(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
@@ -20,9 +21,9 @@ class _PermisState extends State<Permis> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Create Job"),
+          title: const Text("Permissions"),
         ),
-        // drawer: NavigationList(),s
+        drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(15.0),

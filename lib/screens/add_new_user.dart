@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart'
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
@@ -19,9 +20,9 @@ class _AddNewUserState extends State<AddNewUser> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Create Job"),
+          title: const Text("Add New User"),
         ),
-        // drawer: NavigationList(),
+        drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -133,13 +134,15 @@ class _AddNewUserState extends State<AddNewUser> {
                         // ),
                         PopupMenuButton(
                           child: Container(
-                            height: 40,
+                            height: 45,
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                                 // color: Colors.yellow,
                                 // Red border with the width is equal to 5
                                 border: Border.all(color: Colors.grey)),
-                            child: Text(_value.toString()),
+                            child: Text(
+                              _value,
+                            ),
                           ),
 
                           // key: _menuKey,
@@ -163,7 +166,9 @@ class _AddNewUserState extends State<AddNewUser> {
                             PopupMenuItem<String>(
                               child: InkWell(
                                 onTap: () {
-                                  print('Interviewee');
+                                  setState(() {
+                                    _value = "Interviewee";
+                                  });
                                 },
                                 child: Text('Interviewee'),
                               ),
@@ -183,23 +188,6 @@ class _AddNewUserState extends State<AddNewUser> {
                           text: "Add User",
                           bgcolor: AppColors.blue,
                           onTap: () async {
-                            //         AddSpamModel res =
-                            //     await ManageSpamService.addManageSpamEmail(
-                            //         textEditingController.text);
-
-                            // if (res.message == 'Contact is Already Added') {
-                            //   Utils.showSnackBar(
-                            //       context, "Contact is Already Added", AppColors.pink);
-                            // } else {
-                            //   Utils.showSnackBar(
-                            //       context, "Email Added Succesfully", AppColors.pink);
-                            // }
-                            // context
-                            //     .bloc<ManageSpamBloc>()
-                            //     .add(ManageSpamInitialEvent());
-                            // Navigator.of(context).push(
-                            //     MaterialPageRoute(builder: (context) => ManageSpam()));
-
                             Navigator.pop(context);
                           },
                         ),

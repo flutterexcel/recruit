@@ -5,6 +5,7 @@ import 'package:flutter_product_recruit/screens/Notifications/browser_notificati
 import 'package:flutter_product_recruit/screens/Notifications/daily_reports.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable, camel_case_types
@@ -33,7 +34,7 @@ class _NotificationssState extends State<Notificationss> {
         appBar: AppBar(
           title: const Text("Notifications"),
         ),
-        // drawer: NavigationList(),s
+        drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [
