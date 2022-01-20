@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/services/manage_spam/delete_spam_services.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types, must_be_immutable
@@ -52,13 +51,13 @@ class DeleteReferral extends StatelessWidget {
                   ),
                   textColor: Colors.white,
                   onPressed: () async {
-                    var res =
-                        await Delete_Spam_Email_Service.DeleteSpamEmail(id);
-                    print(res.status);
-                    if (res.status != null) {
-                      Utils.showSnackBar(context, res.status, AppColors.Orange);
-                      Navigator.pop(context, 'Yes');
-                    }
+                    // var res =
+                    //     await Delete_Spam_Email_Service.DeleteSpamEmail(id);
+                    // print(res.status);
+                    // if (res.status != null) {
+                    //   Utils.showSnackBar(context, res.status, AppColors.Orange);
+                    //   Navigator.pop(context, 'Yes');
+                    // }
                   }),
             ],
           ),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/src/bloc_provider.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/services/manage_spam/delete_spam_services.dart';
+import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.dart';
+import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
+import 'package:flutter_product_recruit/model/manage_spam_model.dart';
+import 'package:flutter_product_recruit/services/manage_spam/manage_spam_service.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types, must_be_immutable
@@ -11,6 +15,7 @@ class DeleteSpam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("delete id=${id}");
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       height: 150,
@@ -38,9 +43,14 @@ class DeleteSpam extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'No',
-                style: TextStyle(fontSize: 13),
+              FlatButton(
+                onPressed: () {
+                  Navigator.pop(context, 'No');
+                },
+                child: Text(
+                  'No',
+                  style: TextStyle(fontSize: 13),
+                ),
               ),
               FlatButton(
                   height: 30,
@@ -52,13 +62,20 @@ class DeleteSpam extends StatelessWidget {
                   ),
                   textColor: Colors.white,
                   onPressed: () async {
-                    var res =
-                        await Delete_Spam_Email_Service.DeleteSpamEmail(id);
+                    DeleteSpamModel res =
+                        await ManageSpamService.DeleteSpamService(id);
                     print(res.status);
-                    if (res.status != null) {
-                      Utils.showSnackBar(context, res.status, AppColors.Orange);
-                      Navigator.pop(context, 'Yes');
+                    if (res.status == 'SUCCESS') {
+                      Utils.showSnackBar(
+                          context, "Succesfully Deleted", AppColors.Orange);
+                      context
+                          .bloc<ManageSpamBloc>()
+                          .add(ManageSpamInitialEvent());
+                    } else {
+                      Utils.showSnackBar(
+                          context, "Invalid Id", AppColors.Orange);
                     }
+                    Navigator.pop(context, 'Yes');
                   }),
             ],
           ),

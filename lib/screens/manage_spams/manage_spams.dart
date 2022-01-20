@@ -6,11 +6,11 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_state.dart';
+import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/add_new_spam_contact.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/confirm_delete_spam_dialouge.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
-import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
@@ -37,11 +37,11 @@ class _ManageSpamState extends State<ManageSpam> {
   //   print(data);
   // }
 
-  void _popupDialog(BuildContext context) {
+  void _popupDialog(BuildContext context, ManageSpamList update) {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Update_Contact());
+          return Dialog(child: Update_Contact(update: update));
         });
   }
 
@@ -127,11 +127,12 @@ class _ManageSpamState extends State<ManageSpam> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Transform.scale(
-                              scale: 0.6,
+                              scale: 0.8,
                               child: InkWell(
                                   onTap: () {
                                     setState(() {
-                                      _popupDialog(context);
+                                      _popupDialog(
+                                          context, state.managelist[index]);
                                     });
                                   },
                                   child: Icon(Icons.edit))),
@@ -139,12 +140,12 @@ class _ManageSpamState extends State<ManageSpam> {
                             width: 20,
                           ),
                           Transform.scale(
-                            scale: 0.6,
+                            scale: 0.8,
                             child: InkWell(
                                 onTap: () {
                                   setState(() {
                                     _popupConfirmDialog(
-                                        context, data[index].id);
+                                        context, state.managelist[index].id);
                                   });
                                 },
                                 child: Icon(Icons.delete)),

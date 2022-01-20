@@ -386,7 +386,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.2"
   step_progress_indicator:
     dependency: "direct main"
     description:
@@ -435,7 +435,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.3"
+    version: "2.3.6"
   xdg_directories:
     dependency: transitive
     description:

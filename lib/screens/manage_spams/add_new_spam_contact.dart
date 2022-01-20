@@ -8,8 +8,7 @@ import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.d
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
 import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
-import 'package:flutter_product_recruit/services/manage_spam/add_spam_email_service.dart';
-import 'package:flutter_product_recruit/services/manage_spam/manage_spam.dart';
+import 'package:flutter_product_recruit/services/manage_spam/manage_spam_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 

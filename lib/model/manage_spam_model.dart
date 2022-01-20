@@ -76,3 +76,27 @@ class AddSpamModel {
         "message": message,
       };
 }
+
+//***** delete spam model */
+DeleteSpamModel deleteSpamModelFromJson(String str) =>
+    DeleteSpamModel.fromJson(json.decode(str));
+
+String deleteSpamModelToJson(DeleteSpamModel data) =>
+    json.encode(data.toJson());
+
+class DeleteSpamModel {
+  DeleteSpamModel({
+    this.status,
+  });
+
+  String status;
+
+  factory DeleteSpamModel.fromJson(Map<String, dynamic> json) =>
+      DeleteSpamModel(
+        status: json["status"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+      };
+}

@@ -112,6 +112,7 @@ class _Step2State extends State<Step2> {
                               });
                             },
                             value: dropdownvalue,
+                            style: TextStyle(color: Colors.black),
 
                             // Hide the default underline
                             underline: SizedBox(),

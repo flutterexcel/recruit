@@ -16,6 +16,7 @@ import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.da
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
+import 'package:flutter_product_recruit/screens/user_logs/user_logs.dart';
 import 'package:flutter_product_recruit/screens/users_list.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
@@ -88,8 +89,10 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.inbox),
             title: Text("CONVERSATION "),
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => Conversation()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Conversation()),
+              );
               // Navigator.pop(context);
             },
           ),
@@ -118,7 +121,11 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.list_alt_outlined),
             title: Text("USERS LOGS"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserLogs()),
+              );
+              // Navigator.pop(context);
             },
           ),
           ListTile(
