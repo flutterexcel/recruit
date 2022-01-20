@@ -42,7 +42,16 @@ class _ManageEmailState extends State<ManageEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: SecondAppBar(title: "Manage Emails", onPressed: () {}),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: AppColors.Black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            "Manage Spam",
+            style: TextStyle(color: AppColors.Black, fontSize: 23),
+            textAlign: TextAlign.left,
+          ),
+        ),
         drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(

@@ -12,8 +12,9 @@ class MangeSpamInitial extends MangeSpamState {}
 
 class GetSpamList extends MangeSpamState {
   List<ManageSpamList> managelist;
+  DeleteSpamModel res;
 
-  GetSpamList({this.managelist});
+  GetSpamList({this.managelist, this.res});
 
   @override
   List<Object> get props => [managelist];
