@@ -150,7 +150,7 @@ class _MyAccountState extends State<MyAccount> {
                                       offset: Offset(0, 10))
                                 ],
                                 shape: BoxShape.circle,
-                                  image: DecorationImage(
+                                image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: _image == null
                                         ? AssetImage(

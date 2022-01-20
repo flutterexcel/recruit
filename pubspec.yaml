@@ -21,37 +21,27 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  basic_utils: ^2.6.3
+  equatable: ^1.2.5
+  expandable: ^4.1.4
   flutter:
     sdk: flutter
   flutter_bloc: ^6.1.1
-  equatable: ^1.2.5
-  http: ^0.12.2
-  shared_preferences: ^0.5.12+4
-  basic_utils: ^2.6.3
+  flutter_launcher_icons: any
+  flutter_staggered_grid_view: ^0.6.0
   flutter_svg: ^0.18.0
+  fluttertoast: ^8.0.8
   font_awesome_flutter: ^8.11.0
   getwidget: ^1.2.4
-  expandable: ^4.1.4
-  percent_indicator: ^2.1.9
-  step_progress_indicator: ^0.2.5+8
+  http: ^0.12.2
+  image_picker: null
   intl: ^0.16.1
-  timelines:
-  fluttertoast: ^8.0.8
   line_icons: ^2.0.0
-  image_picker: 
-  
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  # cupertino_icons: ^1.0.1
-
-  # dev_dependencies:
-  #   flutter_test:
-  #     sdk: flutter
-  #   integration_test:
-  #     sdk: flutter
-
-  flutter_launcher_icons: any
+  percent_indicator: ^2.1.9
+  provider: ^4.3.3
+  shared_preferences: ^0.5.12+4
+  step_progress_indicator: ^0.2.5+8
+  timelines: null
 dependency_overrides:
   flutter_svg: ^0.19.3
 
@@ -62,7 +52,6 @@ flutter_icons:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 # mfnsdb
 flutter:
@@ -94,13 +83,10 @@ flutter:
     - assets/icons/
     - assets/images/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

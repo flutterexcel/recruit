@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
+import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
 import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
+import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable, camel_case_types
-class Add_Referal extends StatelessWidget {
+class Add_Referal extends StatefulWidget {
+  @override
+  State<Add_Referal> createState() => _Add_ReferalState();
+}
+
+class _Add_ReferalState extends State<Add_Referal> {
   bool isSwitched = false;
+
   final TextEditingController textEditingController =
       new TextEditingController();
 
@@ -120,14 +128,36 @@ class Add_Referal extends StatelessWidget {
                               text: "Add",
                               bgcolor: AppColors.blue,
                               onTap: () async {
-                                var res =
-                                    await AddReferralService.addReferralEmail(
+                                var res = await Provider.of<AddReferralService>(
+                                        context,
+                                        listen: false)
+                                    .addReferralEmail(
                                         textEditingController.text);
+                                print("----$res");
 
-                                print(res.message);
-                                if (res.message != null) {
+                                // ignore: deprecated_member_use
+                                // context.bloc<ManageReferralBloc>().add(
+                                //     AddReferralEvent(
+                                //         textEditingController.text));
+
+                                // var res =
+                                //     await AddReferralService.addReferralEmail(
+                                //         textEditingController.text);
+
+                                // print(res.message);
+                                if (res != null) {
                                   Utils.showSnackBar(context,
                                       "Added Successfully", AppColors.Orange);
+                                  //  Navigator.pop(context);
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          ChangeNotifierProvider(
+                                            create: (context) =>
+                                                GetReferralEmailService(),
+                                            child: GetReferrals(),
+                                          )));
+
+                                  // GetReferrals();
                                 }
                               },
                             ),

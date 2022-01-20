@@ -28,7 +28,7 @@ class ReferralListModel {
   factory ReferralListModel.fromJson(Map<String, dynamic> json) => ReferralListModel(
         id: json["_id"],
         email: json["email"] == null ? "null" : json["email"],
-        createdAt: DateTime.parse(json["createdAt"]),
+        createdAt: DateTime.parse(json["createdAt"]) ?? null,
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
       );

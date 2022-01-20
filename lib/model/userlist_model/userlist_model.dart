@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-List<UserLists> userListFromJson(String str) =>
-    List<UserLists>.from(json.decode(str).map((x) => UserLists.fromJson(x)));
+List<UserListsModel> userListFromJson(String str) => List<UserListsModel>.from(
+    json.decode(str).map((x) => UserListsModel.fromJson(x)));
 
-String userListToJson(List<UserLists> data) =>
+String userListToJson(List<UserListsModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class UserLists {
-  UserLists({
+class UserListsModel {
+  UserListsModel({
     this.lastLogin,
     this.activeStatus,
     this.extensionLogin,
@@ -49,7 +49,7 @@ class UserLists {
   String imageUrl;
   List<String> jobProfiles;
 
-  factory UserLists.fromJson(Map<String, dynamic> json) => UserLists(
+  factory UserListsModel.fromJson(Map<String, dynamic> json) => UserListsModel(
         lastLogin: json["last_login"] == null
             ? null
             : DateTime.parse(json["last_login"]),

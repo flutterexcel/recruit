@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
+import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
+import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 
 import 'package:flutter_product_recruit/screens/domainLogin.dart';
@@ -48,6 +50,12 @@ class _MainState extends State<Main> {
         BlocProvider<ManageSpamBloc>(
           create: (context) => ManageSpamBloc(),
         ),
+        BlocProvider<UserListBloc>(
+          create: (context) => UserListBloc(),
+        ),
+        BlocProvider<JobListBloc>(
+          create: (context) => JobListBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -61,7 +69,7 @@ class _MainState extends State<Main> {
 class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // return DomainLogin();
+    //  return DomainLogin();
     return Login();
   }
 }
