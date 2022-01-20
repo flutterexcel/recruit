@@ -17,7 +17,6 @@ class Login extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         if (state is LoginInitial) {
-          // ignore: deprecated_member_use
           context.bloc<LoginBloc>().add(LoginInitialEvent());
           return Loader1();
         } else if (state is LoginPageState || state is LoginFailure) {
