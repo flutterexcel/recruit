@@ -41,7 +41,8 @@ dependencies:
   provider: ^4.3.3
   shared_preferences: ^0.5.12+4
   step_progress_indicator: ^0.2.5+8
-  timelines: null
+
+  syncfusion_flutter_datepicker: ^19.4.43
 dependency_overrides:
   flutter_svg: ^0.19.3
 

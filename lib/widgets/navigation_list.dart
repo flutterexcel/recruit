@@ -18,6 +18,7 @@ import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.da
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
+import 'package:flutter_product_recruit/screens/user_logs/user_log_old.dart';
 import 'package:flutter_product_recruit/screens/user_logs/user_logs.dart';
 import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
