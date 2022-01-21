@@ -89,6 +89,7 @@ class StorageUtil {
     return _preferences.getString('userimage') ?? defValue;
   }
 
+  // ignore: missing_return
   static Future<bool> clearCredentials() async {
     if (StorageUtil.getUserEmail() == null) {
       throw Exception();

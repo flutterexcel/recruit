@@ -5,12 +5,12 @@ import 'package:flutter_product_recruit/model/login/user_model.dart';
 import 'package:flutter_product_recruit/services/login_apis/login_authentication_services.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:meta/meta.dart';
-
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial());
+
   AuthenticationService authenticationService = new AuthenticationService();
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
@@ -20,7 +20,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is LoginWithEmail) {
       yield* _mapLoginWithEmailToState(event);
     }
-    if (event is LogOutEvent) {}
+    if (event is LogOutEvent) {
+      print("logout event");
+      yield* _mapLogOutToState(event);
+    }
   }
 
   Stream<LoginState> _mapLoginInitialEvent(LoginInitialEvent event) async* {
@@ -46,8 +49,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       var res = await authenticationService.signInWithEmailAndPassword(
           event.email, event.password);
+      print("login data --${res}");
+
       StorageUtil.setToken(res.token);
       StorageUtil.setUserName(res.userDetails.name);
+      StorageUtil.setUserEmail(res.userDetails.email);
       StorageUtil.setUserProfileImage(res.userDetails.imageName);
       yield LoginSuccess(userModel: res);
     } catch (e) {

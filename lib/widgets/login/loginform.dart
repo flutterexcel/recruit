@@ -5,7 +5,7 @@ import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/forgot_dialogue.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 final _loginFormKey = GlobalKey<FormState>();
 
@@ -16,9 +16,9 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   TextEditingController emailController =
-      new TextEditingController(text: "kartik@excellencetechnologies.info");
+      new TextEditingController(text: "123@gmail.com");
   TextEditingController passwordController =
-      new TextEditingController(text: "Kartik");
+      new TextEditingController(text: "123");
 
   bool _rememberme = false;
 
@@ -74,7 +74,6 @@ class _LoginFormState extends State<LoginForm> {
                         StorageUtil.setUserEmail(emailController.text);
                         StorageUtil.setPassword(passwordController.text);
                       } else if (!value) {
-                        
                         StorageUtil.setUserEmail("");
                         StorageUtil.setPassword("");
                       }
@@ -116,6 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                   textColor: Colors.white,
                   onPressed: () {
                     if (_loginFormKey.currentState.validate()) {
+                      // ignore: deprecated_member_use
                       context.bloc<LoginBloc>().add(LoginWithEmail(
                           emailController.text, passwordController.text));
                     }

@@ -10,7 +10,7 @@ import 'package:flutter_product_recruit/widgets/kanban/newJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/rejectJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/shortlistJobData.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class KanbanPageWidget extends StatefulWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
@@ -99,15 +99,14 @@ class _DomainLoginState extends State<DomainLogin> {
                                       padding: EdgeInsets.only(left: 5),
                                       child: Text(
                                         " It looks like your account is not active. Please contact support to get it activated. ",
-                                        style: TextStyle(
-                                            color: AppColors.Orange),
+                                        style:
+                                            TextStyle(color: AppColors.Orange),
                                       ),
                                     ),
                                   )),
+                              const SizedBox(height: 10),
                               FlatButton(
                                   color: Color(0xFF7CACFB),
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 147),
                                   child: Text(
                                     'Login Again',
                                     style: TextStyle(

@@ -22,6 +22,26 @@ class AppColors {
   static const Color Voilet = Color(0xFF9964E3);
 
   static const Color LIght_Voilet = Color(0xFFCFB8F2);
+  static const Color white = Color(0xFFffffff);
   static const Color Green = Color(0xFF3ABF94);
   static const Color Light_Green = Color(0xFFBBEBD1);
+  static const Color orange12 = Color(0xFFf6a609);
+  static const Color purple = Color(0xFF9964e3);
+  static const Color blue = Color(0xFF007eff);
+  static const Color grey = Color(0xFFa6aab4);
+
+  static const Color lightGrey = Color(0xFFE0E2E7);
+  static const Color veryLightGrey = Color(0xFFE8E9EC);
+  static const Color darkGrey = Color(0xFFF5e5e5e);
+
+  // ignore: non_constant_identifier_names
+  static Color purple_opacity = Color(0xFF9964e3).withOpacity(0.5);
+  // ignore: non_constant_identifier_names
+  static Color purple_opacity_max = Color(0xFF9964e3).withOpacity(0.5);
+  // ignore: non_constant_identifier_names
+  static Color purple_opacity_min = Color(0xFF9964e3).withOpacity(0.5);
+
+  static Color Green_opacity = Color(0xFF3ABF94).withOpacity(0.5);
+  static Color Green_opacity_max = Color(0xFF3ABF94).withOpacity(0.5);
+  static Color Green_opacity_min = Color(0xFF3ABF94).withOpacity(0.5);
 }

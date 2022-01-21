@@ -13,6 +13,7 @@ class DomainLoginState extends DomainState {}
 
 class DomainFailure extends DomainState {}
 
+// ignore: must_be_immutable
 class DomainSuccess extends DomainState {
   DomainModel domainModel;
   DomainSuccess({this.domainModel});

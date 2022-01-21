@@ -4,7 +4,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/kanban_screen.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/job_description.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class JobTitle extends StatefulWidget {
   List<JobList> getData;
@@ -61,18 +61,22 @@ class _JobTitleState extends State<JobTitle> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      getData[index].candidateProfile,
-                      style: TextStyle(color: AppColors.Black, fontSize: 22),
+                    Expanded(
+                      child: Text(
+                        getData[index].candidateProfile,
+                        style: TextStyle(color: AppColors.Black, fontSize: 18),
+                      ),
                     ),
                     Spacer(),
-                    Text(
-                      "${getData[index].unreadEmails.toString()} new  ",
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                          color: AppColors.Grey_Font,
-                          fontSize: 16,
-                          fontFamily: "RobotRegular"),
+                    Expanded(
+                      child: Text(
+                        "${getData[index].unreadEmails.toString()} new  ",
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                            color: AppColors.Grey_Font,
+                            fontSize: 16,
+                            fontFamily: "RobotRegular"),
+                      ),
                     ),
                     IconButton(
                         icon: Icon(isTitleTap[index]
