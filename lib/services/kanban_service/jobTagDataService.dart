@@ -8,6 +8,7 @@ import '../storage_service.dart';
 
 class JobTagDataService {
   final JsonDecoder _jsonDecoder = JsonDecoder();
+  // ignore: deprecated_member_use
   List jobTags = new List();
   JobTagData jobTagData;
   Future getJobTagData(String jobToken) async {
@@ -29,7 +30,7 @@ class JobTagDataService {
       jobTags.add(element);
     });
     Map<String, JobTagData> mapJobTagData = new Map();
-    for (int i = 0; i  < jobTags.length ; i++) {
+    for (int i = 0; i < jobTags.length; i++) {
       Map<String, dynamic> map = responseBody[jobTags[i]];
       mapJobTagData[jobTags[i]] = JobTagData.fromJson(map);
     }

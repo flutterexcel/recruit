@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/src/bloc_provider.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
@@ -15,7 +17,7 @@ class DeleteSpam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("delete id=${id}");
+    print("delete id=$id");
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       height: 150,

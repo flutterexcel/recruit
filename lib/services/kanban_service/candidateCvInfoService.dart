@@ -8,6 +8,7 @@ import '../storage_service.dart';
 class CandidateCvInfoService {
   final JsonDecoder _jsonDecoder = JsonDecoder();
 
+  // ignore: deprecated_member_use
   List jobTags = new List();
 
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();

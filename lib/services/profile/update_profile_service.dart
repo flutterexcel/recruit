@@ -2,8 +2,6 @@ import 'package:flutter_product_recruit/model/profile/update_profile.dart';
 import 'package:flutter_product_recruit/services/post_service.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
-import '../../url_config.dart';
-
 class UserProfileUpdate {
   PostService postService = new PostService();
 

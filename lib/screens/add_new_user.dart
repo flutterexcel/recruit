@@ -140,38 +140,39 @@ class _AddNewUserState extends State<AddNewUser> {
                                 // color: Colors.yellow,
                                 // Red border with the width is equal to 5
                                 border: Border.all(color: Colors.grey)),
-                            child: Text(
-                              _value,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                _value,
+                              ),
                             ),
                           ),
 
                           // key: _menuKey,
                           itemBuilder: (_) => <PopupMenuItem<String>>[
                             PopupMenuItem<String>(
-                              child: InkWell(
-                                onTap: () {
-                                  print('Admin');
-                                },
-                                child: Text('Admin'),
-                              ),
+                              onTap: () {
+                                setState(() {
+                                  _value = "Admin";
+                                });
+                              },
+                              child: InkWell(child: Text('Admin')),
                             ),
                             PopupMenuItem<String>(
-                              child: InkWell(
-                                onTap: () {
-                                  print('HR');
-                                },
-                                child: Text('HR'),
-                              ),
+                              onTap: () {
+                                setState(() {
+                                  _value = "HR";
+                                });
+                              },
+                              child: InkWell(child: Text('HR')),
                             ),
                             PopupMenuItem<String>(
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    _value = "Interviewee";
-                                  });
-                                },
-                                child: Text('Interviewee'),
-                              ),
+                              onTap: () {
+                                setState(() {
+                                  _value = "Interviewee";
+                                });
+                              },
+                              child: InkWell(child: Text('Interviewee')),
                             ),
                           ],
                           onSelected: (value) {

@@ -22,6 +22,7 @@ import 'package:flutter_product_recruit/screens/user_logs/user_log_old.dart';
 import 'package:flutter_product_recruit/screens/statistics.dart';
 import 'package:flutter_product_recruit/screens/user_logs/user_logs.dart';
 import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
+import 'package:flutter_product_recruit/services/getjoblist_service.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -196,8 +197,11 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.email_sharp),
             title: Text("MANAGE EMAILS"),
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => ManageEmail()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                        create: (context) => GetJobListService(),
+                        child: ManageEmail(),
+                      )));
             },
           ),
           ListTile(

@@ -11,11 +11,14 @@ import 'package:flutter_product_recruit/model/userlist_model/delete_userlist_mod
 import 'package:flutter_product_recruit/screens/add_new_user.dart';
 import 'package:flutter_product_recruit/screens/userlist/change_password_dialouge.dart';
 import 'package:flutter_product_recruit/screens/userlist/manage_jobs_dialouge.dart';
+import 'package:flutter_product_recruit/services/userlist_services/activate_user_service.dart';
 import 'package:flutter_product_recruit/services/userlist_services/deactivate_user_service.dart';
 import 'package:flutter_product_recruit/services/userlist_services/delete_userlist_service.dart';
+import 'package:flutter_product_recruit/services/userlist_services/job_role_update_service.dart';
 
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
@@ -29,8 +32,6 @@ class UsersList extends StatefulWidget {
 class _UsersListState extends State<UsersList> {
   bool isSwitched = false;
   List data = [];
-  String _value = "Delete";
-  final GlobalKey _menuKey = GlobalKey();
 
   // @override
   // void initState() {
@@ -63,11 +64,14 @@ class _UsersListState extends State<UsersList> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserListBloc, UserListState>(builder: (context, state) {
       if (state is UserListInitialState) {
+        // ignore: deprecated_member_use
         context.bloc<UserListBloc>().add(UserListInitialEvent());
         return Loader1();
       } else if (state is GetUserListState) {
         // print("state----${state}");
+        print(state.userLists[0].imageUrl);
         return Scaffold(
+          drawer: NavigationList(),
           appBar: SecondAppBar(
               text: "Add User",
               title: "All Users",
@@ -77,7 +81,7 @@ class _UsersListState extends State<UsersList> {
               }),
           body: ListView.separated(
             shrinkWrap: true,
-            itemCount: state.userLists.length,
+            itemCount: state.userLists.length - 1,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -93,29 +97,29 @@ class _UsersListState extends State<UsersList> {
                       ),
                       CircleAvatar(
                         child: Image.network(
-                          "${state.userLists[index].imageUrl}",
+                          state.userLists[index + 1].imageUrl.toString(),
                           fit: BoxFit.contain,
                         ),
-                        radius: 25,
+                        radius: 45,
                       ),
                       const SizedBox(
                         height: 30,
                       ),
-                      Textt(text: state.userLists[index].name),
+                      Textt(text: state.userLists[index + 1].name),
                       const SizedBox(
                         height: 10,
                       ),
                       Textt(
-                        text: state.userLists[index].email,
+                        text: state.userLists[index + 1].email,
                         tcolor: AppColors.grey,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       Textt(
-                          text: state.userLists[index].userType.toString(),
+                          text: state.userLists[index + 1].userType.toString(),
                           size: 13,
-                          tcolor: state.userLists[index].activeStatus
+                          tcolor: state.userLists[index + 1].activeStatus
                               ? AppColors.orange12
                               : AppColors.grey),
                       const SizedBox(
@@ -125,7 +129,9 @@ class _UsersListState extends State<UsersList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Textt(
-                            text: "21 jobs",
+                            text:
+                                "${state.userLists[1].jobProfiles.length}  jobs" ??
+                                    "null",
                           ),
                           const SizedBox(
                             width: 5,
@@ -219,44 +225,76 @@ class _UsersListState extends State<UsersList> {
                             icon: Icon(Icons.delete),
                             // key: _menuKey,
                             itemBuilder: (_) => <PopupMenuItem<String>>[
-                              PopupMenuItem<String>(
-                                child: InkWell(
-                                    onTap: () async {
-                                      DeactivateUserModel res =
-                                          await DeactivateUserService
-                                              .deactivateUser(
-                                                  state.userLists[index].id);
-                                      //print(res.status);
-                                      if (res.message == "User Deactivated") {
-                                        Utils.showSnackBar(
-                                            context,
-                                            "Succesfully Deactivated",
-                                            AppColors.Green);
-                                        context
-                                            .bloc<UserListBloc>()
-                                            .add(UserListInitialEvent());
-                                      } else {
-                                        Utils.showSnackBar(context,
-                                            "Invalid Id", AppColors.Red);
-                                      }
-                                    },
-                                    child: Text('Deactivate')),
-                              ),
+                              state.userLists[index + 1].activeStatus
+                                  ? PopupMenuItem<String>(
+                                      child: InkWell(
+                                        child: Text('Deactivate'),
+                                      ),
+                                      onTap: () async {
+                                        DeactivateUserModel res =
+                                            await DeactivateUserService
+                                                .deactivateUser(state
+                                                    .userLists[index + 1].id);
+                                        //print(res.status);
+                                        if (res.message != null) {
+                                          Utils.showSnackBar(
+                                              context,
+                                              "Succesfully Deactivated",
+                                              AppColors.Green);
+                                          context
+                                              // ignore: deprecated_member_use
+                                              .bloc<UserListBloc>()
+                                              .add(UserListInitialEvent());
+                                        } else {
+                                          Utils.showSnackBar(context,
+                                              "Invalid Id", AppColors.Red);
+                                        }
+                                        //  Navigator.pop(context, 'Yes');
+                                      },
+                                    )
+                                  : PopupMenuItem<String>(
+                                      child: InkWell(
+                                        child: Text('Activate'),
+                                      ),
+                                      onTap: () async {
+                                        DeactivateUserModel res =
+                                            await ActivateUserService
+                                                .activateUser(state
+                                                    .userLists[index + 1].id);
+                                        //print(res.status);
+                                        if (res.message != null) {
+                                          Utils.showSnackBar(
+                                              context,
+                                              "Succesfully Activated",
+                                              AppColors.Green);
+                                          context
+                                              // ignore: deprecated_member_use
+                                              .bloc<UserListBloc>()
+                                              .add(UserListInitialEvent());
+                                        } else {
+                                          Utils.showSnackBar(context,
+                                              "Invalid Id", AppColors.Red);
+                                        }
+                                        //  Navigator.pop(context, 'Yes');
+                                      },
+                                    ),
                               PopupMenuItem<String>(
                                 child: InkWell(
                                   child: Text('Delete'),
                                 ),
                                 onTap: () async {
-                                  print("id---${state.userLists[index].id}");
+                                  print(
+                                      "id---${state.userLists[index + 1].id}");
 
                                   DeleteUserModel res =
                                       await DeleteUserService.deleteUser(
-                                          state.userLists[index].id);
+                                          state.userLists[index + 1].id);
                                   //print(res.status);
                                   if (res.message != null) {
                                     Utils.showSnackBar(context,
                                         "Succesfully Deleted", AppColors.Green);
                                     context
+                                        // ignore: deprecated_member_use
                                         .bloc<UserListBloc>()
                                         .add(UserListInitialEvent());
                                   } else {
@@ -295,35 +333,83 @@ class _UsersListState extends State<UsersList> {
                             // key: _menuKey,
                             itemBuilder: (_) => <PopupMenuItem<String>>[
                               PopupMenuItem<String>(
-                                child: InkWell(
-                                  onTap: () {
-                                    print('Admin');
-                                  },
-                                  child: Text('Admin'),
-                                ),
+                                onTap: () async {
+                                  print("id---${state.userLists[index].id}");
+
+                                  JobRoleUpdateModel res =
+                                      await JobRoleUpdateService.roleUpdate(
+                                          state.userLists[index + 1].id,
+                                          "Admin");
+                                  //print(res.status);
+                                  if (res.data.message != null) {
+                                    Utils.showSnackBar(
+                                        context,
+                                        "Job Role Succesfully Updated",
+                                        AppColors.Green);
+                                    context
+                                        // ignore: deprecated_member_use
+                                        .bloc<UserListBloc>()
+                                        .add(UserListInitialEvent());
+                                  } else {
+                                    Utils.showSnackBar(
+                                        context, "Invalid Id", AppColors.Red);
+                                  }
+                                },
+                                child: InkWell(child: Text('Admin')),
                               ),
                               PopupMenuItem<String>(
-                                child: InkWell(
-                                  onTap: () {
-                                    print('HR');
-                                  },
-                                  child: Text('HR'),
-                                ),
+                                onTap: () async {
+                                  print(
+                                      "id---${state.userLists[index + 1].id}");
+
+                                  JobRoleUpdateModel res =
+                                      await JobRoleUpdateService.roleUpdate(
+                                          state.userLists[index + 1].id, "HR");
+                                  //print(res.status);
+                                  if (res.data.message != null) {
+                                    Utils.showSnackBar(
+                                        context,
+                                        "Job Role Succesfully Updated",
+                                        AppColors.Green);
+                                    context
+                                        // ignore: deprecated_member_use
+                                        .bloc<UserListBloc>()
+                                        .add(UserListInitialEvent());
+                                  } else {
+                                    Utils.showSnackBar(
+                                        context, "Invalid Id", AppColors.Red);
+                                  }
+                                },
+                                child: InkWell(child: Text('HR')),
                               ),
                               PopupMenuItem<String>(
-                                child: InkWell(
-                                  onTap: () {
-                                    print('Interviewee');
-                                  },
-                                  child: Text('Interviewee'),
-                                ),
+                                onTap: () async {
+                                  print("id---${state.userLists[index].id}");
+
+                                  JobRoleUpdateModel res =
+                                      await JobRoleUpdateService.roleUpdate(
+                                          state.userLists[index + 1].id,
+                                          "Interviewee");
+                                  //print(res.status);
+                                  if (res.data.message != null) {
+                                    Utils.showSnackBar(
+                                        context,
+                                        "Job Role Succesfully Updated",
+                                        AppColors.Green);
+                                    context
+                                        // ignore: deprecated_member_use
+                                        .bloc<UserListBloc>()
+                                        .add(UserListInitialEvent());
+                                  } else {
+                                    Utils.showSnackBar(
+                                        context, "Invalid Id", AppColors.Red);
+                                  }
+                                },
+                                child: InkWell(child: Text('Interviewee')),
                               ),
                             ],
-                            onSelected: (value) {
-                              setState(() {
-                                _value = value;
-                                print(_value);
-                              });
+                            onSelected: (value11) {
+                              print(value11);
                             },
                             elevation: 8,
                           ),

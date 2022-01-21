@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 
 import '../../UiConstant/app_colors.dart';
 
+// ignore: must_be_immutable
 class RejectJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<Datum> resumeData;
@@ -180,8 +180,10 @@ class RejectJobData extends StatelessWidget {
                                       width: 5,
                                     ),
                                     blackText("    " +
-                                        resumeData[index].rejectReasonData.last.rejectReason
-                                            )
+                                        resumeData[index]
+                                            .rejectReasonData
+                                            .last
+                                            .rejectReason)
                                   ],
                                 )
                               ],

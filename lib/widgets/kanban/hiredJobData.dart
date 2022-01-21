@@ -5,6 +5,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../UiConstant/app_colors.dart';
 
+// ignore: must_be_immutable
 class HiredJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<Datum> resumeData;
@@ -52,11 +53,11 @@ class HiredJobData extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                     color: resumeData[index].unread
-                        ? AppColors.Grey
-                        : resumeData[index].candidateStar.length != 0
-                            ? AppColors.Orange
-                            : Colors.grey[350],
+                      color: resumeData[index].unread
+                          ? AppColors.Grey
+                          : resumeData[index].candidateStar.length != 0
+                              ? AppColors.Orange
+                              : Colors.grey[350],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8))),
                 child: Column(
@@ -172,24 +173,27 @@ class HiredJobData extends StatelessWidget {
                                   size: 5,
                                   totalSteps: 3,
                                   padding: 0,
-                                  
                                   roundedEdges: Radius.circular(3),
                                   customColor: (step) {
                                     int _step = resumeData[index]
-                                          .candidateSubTagsMovement.interview.last.tagName
-                                          .contains("Offer Sent")
+                                            .candidateSubTagsMovement
+                                            .interview
+                                            .last
+                                            .tagName
+                                            .contains("Offer Sent")
                                         ? 0
                                         : resumeData[index]
-                                          .candidateSubTagsMovement.interview.last.tagName
-                                          .contains("Accepted")
+                                                .candidateSubTagsMovement
+                                                .interview
+                                                .last
+                                                .tagName
+                                                .contains("Accepted")
                                             ? 1
                                             : 2;
-                                    if (step ==
-                                        _step) {
-                                      return  AppColors.Green;
-    
+                                    if (step == _step) {
+                                      return AppColors.Green;
                                     } else
-                                      return  AppColors.Light_Green;
+                                      return AppColors.Light_Green;
                                   },
                                 ),
                                 Row(
@@ -203,8 +207,11 @@ class HiredJobData extends StatelessWidget {
                                       style: TextStyle(
                                           fontFamily: 'RobotRegular',
                                           color: resumeData[index]
-                                          .candidateSubTagsMovement.interview.last.tagName
-                                          .contains("Offer Sent")
+                                                  .candidateSubTagsMovement
+                                                  .interview
+                                                  .last
+                                                  .tagName
+                                                  .contains("Offer Sent")
                                               ? AppColors.Green
                                               : AppColors.Light_Grey,
                                           fontSize: 12),
@@ -214,8 +221,11 @@ class HiredJobData extends StatelessWidget {
                                       style: TextStyle(
                                           fontFamily: 'RobotRegular',
                                           color: resumeData[index]
-                                          .candidateSubTagsMovement.interview.last.tagName
-                                          .contains("Accepted")
+                                                  .candidateSubTagsMovement
+                                                  .interview
+                                                  .last
+                                                  .tagName
+                                                  .contains("Accepted")
                                               ? AppColors.Green
                                               : AppColors.Grey,
                                           fontSize: 12),
@@ -225,15 +235,16 @@ class HiredJobData extends StatelessWidget {
                                       style: TextStyle(
                                           fontFamily: 'RobotRegular',
                                           color: resumeData[index]
-                                          .candidateSubTagsMovement.interview[0].tagName
-                                          .contains("Joined")
+                                                  .candidateSubTagsMovement
+                                                  .interview[0]
+                                                  .tagName
+                                                  .contains("Joined")
                                               ? AppColors.Green
                                               : AppColors.Grey,
                                           fontSize: 12),
                                     ),
                                   ],
                                 ),
-                                
                               ],
                             ),
                           ),

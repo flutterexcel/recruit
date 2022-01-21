@@ -5,6 +5,7 @@ import 'package:flutter_product_recruit/url_config.dart';
 import 'package:http/http.dart' as http;
 
 class JobsListServices {
+  // ignore: deprecated_member_use
   List<JobList> jobList = new List();
 
   Future<List<JobList>> getJobList(String token) async {

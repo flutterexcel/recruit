@@ -27,7 +27,7 @@ class ActivateUserService {
     });
     print(body);
     final response = await http.post(
-      "http://176.9.137.77:3001/user/status/activate?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYxZTkyZWZkZDU5M2ViMDAzYTAxM2Q0NiIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAxLTIxVDA0OjA5OjAyLjk4MVoiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQyNzM4MTQyLCJleHAiOjE2NzQyNzQxNDJ9.QimrT3Cka0dROwFt7eoN-j5ooDI4u-SLcJwogxM6-o8",
+      "http://176.9.137.77:3001/user/status/activate?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYxZTkyZWZkZDU5M2ViMDAzYTAxM2Q0NiIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAxLTIwVDExOjMxOjUxLjEwNFoiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQyNjc4MzExLCJleHAiOjE2NzQyMTQzMTF9.-pRxZ-1HEL4ffMVcp55r-4xVh91T8On2GiBROrc7GlM",
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

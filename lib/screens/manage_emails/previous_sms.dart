@@ -3,16 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/src/bloc_provider.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_bloc.dart';
 import 'package:flutter_product_recruit/bloc/manage_spam_bloc/manage_spam_event.dart';
 import 'package:flutter_product_recruit/model/manage_spam_model.dart';
+import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/services/manage_spam/manage_spam_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types
 
-class Add_New_Spam extends StatelessWidget {
+class PreviousSMS extends StatelessWidget {
   final TextEditingController textEditingController =
       new TextEditingController();
 
@@ -20,7 +22,7 @@ class Add_New_Spam extends StatelessWidget {
 
   var state;
 
-  Add_New_Spam({this.state});
+  PreviousSMS({this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class Add_New_Spam extends StatelessWidget {
     RegExp regExp = new RegExp(p);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
-      height: 250,
+      height: 300,
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
@@ -44,7 +46,7 @@ class Add_New_Spam extends StatelessWidget {
                   height: 30,
                 ),
                 Text(
-                  'Add New Spam Contact',
+                  'Previous SMS',
                   style: TextStyle(
                     color: Colors.grey[800],
                     fontSize: 15,
@@ -53,12 +55,25 @@ class Add_New_Spam extends StatelessWidget {
                   textDirection: TextDirection.ltr,
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 1,
                 ),
                 Text(
-                  'E-mail',
+                  'Message will be send to the below address.We will pick a job profile and candidate on random for preview of email.',
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 14,
+                    fontFamily: 'RobotRegular',
+                    color: AppColors.grey,
+                  ),
+                  textDirection: TextDirection.ltr,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Phone Number',
+                  style: TextStyle(
+                    color: Colors.grey[800],
+                    fontSize: 15,
                     fontFamily: 'RobotRegular',
                   ),
                   textDirection: TextDirection.ltr,
@@ -70,7 +85,7 @@ class Add_New_Spam extends StatelessWidget {
                   controller: textEditingController,
                   borderRadius: 1,
                   autocorrect: true,
-                  hintText: "E-mail",
+                  hintText: "number",
                   validateText: (value) {
                     if (value.isEmpty) {
                       return "Email is required";
@@ -92,7 +107,7 @@ class Add_New_Spam extends StatelessWidget {
                 // minWidth: 2,
                 color: AppColors.Orange,
                 child: Text(
-                  'Add Contact',
+                  'Submit',
                   style: TextStyle(fontSize: 13),
                 ),
                 textColor: Colors.white,
