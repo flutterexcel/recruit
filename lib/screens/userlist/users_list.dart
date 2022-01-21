@@ -221,28 +221,26 @@ class _UsersListState extends State<UsersList> {
                             itemBuilder: (_) => <PopupMenuItem<String>>[
                               PopupMenuItem<String>(
                                 child: InkWell(
-                                  onTap: () async {
-                                    DeactivateUserModel res =
-                                        await DeactivateUserService
-                                            .deactivateUser(
-                                                state.userLists[index].id);
-                                    //print(res.status);
-                                    if (res.message == "User Deactivated") {
-                                      Utils.showSnackBar(
-                                          context,
-                                          "Succesfully Deactivated",
-                                          AppColors.Green);
-                                      context
-                                          .bloc<UserListBloc>()
-                                          .add(UserListInitialEvent());
-                                    } else {
-                                      Utils.showSnackBar(
-                                          context, "Invalid Id", AppColors.Red);
-                                    }
-                                  },
-                                  child:state.userLists[index].activeStatus?
-                                   Text('Deactivate'),
-                                ),
+                                    onTap: () async {
+                                      DeactivateUserModel res =
+                                          await DeactivateUserService
+                                              .deactivateUser(
+                                                  state.userLists[index].id);
+                                      //print(res.status);
+                                      if (res.message == "User Deactivated") {
+                                        Utils.showSnackBar(
+                                            context,
+                                            "Succesfully Deactivated",
+                                            AppColors.Green);
+                                        context
+                                            .bloc<UserListBloc>()
+                                            .add(UserListInitialEvent());
+                                      } else {
+                                        Utils.showSnackBar(context,
+                                            "Invalid Id", AppColors.Red);
+                                      }
+                                    },
+                                    child: Text('Deactivate')),
                               ),
                               PopupMenuItem<String>(
                                 child: InkWell(

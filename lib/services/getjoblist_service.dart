@@ -36,7 +36,7 @@ class GetJobListService {
       // return ManageSpamList.fromJson(jsonDecode(response.body));
     } else {
       print("error");
-      throw Exception('Failed to create album.');
+      // throw Exception('Failed to create album.');
     }
   }
 }
