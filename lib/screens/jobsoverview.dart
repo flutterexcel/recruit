@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/jobsoverviewpage.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
+import 'package:flutter_product_recruit/widgets/loader1.dart';
 
 class JobsOverview extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class JobsOverview extends StatelessWidget {
         if (state is JobsOverviewBlocInitial) {
           // ignore: deprecated_member_use
           context.bloc<JobsOverviewBlocBloc>().add(JobsOverviewInitial());
-          return Loader();
+          return Loader1();
         } else if (state is JobsOvervViewPageState) {
           return JobsOverviewPage(
             getData: state.getData,

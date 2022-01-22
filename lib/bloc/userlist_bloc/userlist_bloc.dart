@@ -17,7 +17,7 @@ class UserListBloc extends Bloc<UserListEvent, UserListState> {
   }
 
   Stream<UserListState> _mapUserListEvent(UserListInitialEvent event) async* {
-    print("Initial state");
+    print("Initial state fetch user list");
     try {
       var res = await GetUserListService.getUserList();
 

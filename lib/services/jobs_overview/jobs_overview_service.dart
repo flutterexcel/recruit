@@ -7,13 +7,14 @@ import '../../url_config.dart';
 
 class JobsOverviewService {
   List<JobsOverviewModel> jobsOverviewList = new List();
-    Future<List<JobsOverviewModel>> getJobList(String token) async {
+  Future<List<JobsOverviewModel>> getJobList(String token) async {
     String url = await UrlConfig.jobsListCalling(
             action: "jobsOverviewCalling", endPoints: "dashboard/jobs-overview")
         .forFirstEnvironment();
     Map<String, String> queryParam = {'accessToken': token};
     String queryString = Uri(queryParameters: queryParam).query;
     String apiUrl = url + '?' + queryString;
+
     var res = await http.get(apiUrl);
     List<dynamic> values = json.decode(res.body);
     for (int i = 0; i < values.length; i++) {
