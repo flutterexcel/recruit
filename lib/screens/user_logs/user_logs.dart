@@ -8,7 +8,6 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.
 import 'package:flutter_product_recruit/services/userlist_services/get_userlist_service.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
-import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -26,11 +25,8 @@ class _UserLogsState extends State<UserLogs> {
   DateTime selectedDate = DateTime.now();
   bool ispressed = false;
   String _chosenValue;
-  String _selectedDate = '';
-  String _dateCount = '';
   // String _range = DateFormat('MMM dd').format(DateTime.now());
   String _range = 'Select Date';
-  String _rangeCount = '';
   final DateRangePickerController _controller = DateRangePickerController();
 
   _UserLogsState();
@@ -55,12 +51,8 @@ class _UserLogsState extends State<UserLogs> {
             // ignore: lines_longer_than_80_chars
             ' ${DateFormat('MMM dd').format(args.value.endDate ?? args.value.startDate)}';
       } else if (args.value is DateTime) {
-        _selectedDate = args.value.toString();
       } else if (args.value is List<DateTime>) {
-        _dateCount = args.value.length.toString();
-      } else {
-        _rangeCount = args.value.length.toString();
-      }
+      } else {}
     });
   }
 

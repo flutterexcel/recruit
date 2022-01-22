@@ -40,7 +40,8 @@ class _ManageJobsDialougeState extends State<ManageJobsDialouge> {
   }
 
   void getjoblist() async {
-    var res = await GetJobListService.getJobList();
+    GetJobListService getJobListService = new GetJobListService();
+    var res = await getJobListService.getJobList();
   }
 
   @override

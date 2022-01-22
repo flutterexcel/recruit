@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 // ignore: camel_case_types
 class Delete_Spam_Email_Service {
+  // ignore: non_constant_identifier_names
   static Future<DeleteSpam> DeleteReferral(String id) async {
     final response = await http.delete(
       Uri.parse(

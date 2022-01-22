@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+
 import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart';
+import 'package:flutter_product_recruit/screens/manage_emails/previous_email.dart';
+import 'package:flutter_product_recruit/screens/manage_emails/previous_sms.dart';
+import 'package:flutter_product_recruit/services/getjoblist_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
-import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
+
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class ManageEmail extends StatefulWidget {
@@ -15,7 +20,7 @@ class ManageEmail extends StatefulWidget {
 }
 
 class _ManageEmailState extends State<ManageEmail> {
-  String dropdownvalue;
+  // String dropdownvaluel = "hii";
   String c =
       '#date:  #time:  #round_name:  #job_profile:  #joining_date:  #company:  #venue:  #hr_signature:  #name:  #logo:  #interview_date:  #interview_time:  #test_link:  #interview_link:  ';
   String b =
@@ -30,17 +35,36 @@ class _ManageEmailState extends State<ManageEmail> {
   bool _isChecked2 = false;
   bool _newMessage = true;
 
-  List<String> items = [
-    'ReactJs Developer',
-    'Angular Developer',
-    'JavaScript Frontend Developer',
-    'NodeJS Developer',
-    'UX/UI Graphic Designer',
-    'PHP Developer',
-  ];
+  void _popupPreviousSMS(
+    BuildContext context,
+  ) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(child: PreviousSMS());
+        });
+  }
+
+  void _popupPreviousEmail(
+    BuildContext context,
+  ) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(child: PreviousEmail());
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
+    // getjobList() async {
+    //   jobList = await GetJobListService.getJobList();
+    //   print(jobList);
+    // }
+    var res =
+        Provider.of<GetJobListService>(context, listen: false).getJobList();
+    print(res);
+
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: AppColors.Black),
@@ -102,52 +126,6 @@ class _ManageEmailState extends State<ManageEmail> {
                         const SizedBox(
                           height: 20,
                         ),
-                        // DropdownButton<String>(
-                        //   onChanged: (value) {
-                        //     setState(() {
-                        //       dropdownvalue = value;
-                        //     });
-                        //   },
-                        //   value: dropdownvalue,
-
-                        //   // Hide the default underline
-                        //   //    underline: SizedBox(),
-                        //   hint: Align(
-                        //     alignment: Alignment.centerLeft,
-                        //     child: Text(
-                        //       'Filter via job',
-                        //       style:
-                        //           TextStyle(fontSize: 13, color: Colors.grey),
-                        //     ),
-                        //   ),
-
-                        //   isExpanded: true,
-
-                        //   // The list of options
-                        //   items: items
-                        //       .map((e) => DropdownMenuItem(
-                        //             child: Container(
-                        //               child: Text(
-                        //                 e,
-                        //                 style: TextStyle(fontSize: 13),
-                        //               ),
-                        //             ),
-                        //             value: e,
-                        //           ))
-                        //       .toList(),
-
-                        //   // Customize the selected item
-                        //   selectedItemBuilder: (BuildContext context) => items
-                        //       .map((e) => Align(
-                        //             alignment: Alignment.centerLeft,
-                        //             child: Text(
-                        //               e,
-                        //               style: TextStyle(
-                        //                   fontSize: 13, color: Colors.grey),
-                        //             ),
-                        //           ))
-                        //       .toList(),
-                        // ),
                         const SizedBox(
                           height: 20,
                         ),
@@ -186,63 +164,69 @@ class _ManageEmailState extends State<ManageEmail> {
                           hintText: "This is the subject of the email message",
                         ),
                         const SizedBox(height: 15),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(right: 12.0),
-                        //   child: Align(
-                        //     alignment: Alignment.centerLeft,
-                        //     child: Textt(
-                        //       text: "Job Profile",
-                        //     ),
-                        //   ),
-                        // ),
-                        // const SizedBox(height: 5),
-                        // DropdownButton<String>(
-                        //   onChanged: (value) {
-                        //     setState(() {
-                        //       selectedJob = value;
-                        //     });
-                        //   },
-                        //   value: selectedJob,
+                        Padding(
+                          padding: const EdgeInsets.only(right: 12.0),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Textt(
+                              text: "Job Profile",
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Consumer<GetJobListService>(builder: (_, states, __) {
+                          return DropdownButton<String>(
+                            onChanged: (String value) {
+                              setState(() {
+                                selectedJob = value;
+                              });
+                            },
+                            value: selectedJob,
 
-                        //   // Hide the default underline
-                        //   //    underline: SizedBox(),
-                        //   hint: Align(
-                        //     alignment: Alignment.centerLeft,
-                        //     child: Text(
-                        //       'Select job profile',
-                        //       style:
-                        //           TextStyle(fontSize: 13, color: Colors.grey),
-                        //     ),
-                        //   ),
+                            // Hide the default underline
+                            //    underline: SizedBox(),
+                            hint: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Select job profile',
+                                style:
+                                    TextStyle(fontSize: 13, color: Colors.grey),
+                              ),
+                            ),
 
-                        //   isExpanded: true,
+                            isExpanded: true,
 
-                        //   // The list of options
-                        //   items: items
-                        //       .map((e) => DropdownMenuItem(
-                        //             child: Container(
-                        //               child: Text(
-                        //                 e,
-                        //                 style: TextStyle(fontSize: 13),
-                        //               ),
-                        //             ),
-                        //             value: e,
-                        //           ))
-                        //       .toList(),
+                            // The list of options
+                            items: states.joblist
+                                    .map((e) => DropdownMenuItem<String>(
+                                          child: Container(
+                                            child: Text(
+                                              e.title,
+                                              style: TextStyle(fontSize: 13),
+                                            ),
+                                          ),
+                                          value: e.title,
+                                        ))
+                                    .toList() ??
+                                [],
 
-                        //   // Customize the selected item
-                        //   selectedItemBuilder: (BuildContext context) => items
-                        //       .map((e) => Align(
-                        //             alignment: Alignment.centerLeft,
-                        //             child: Text(
-                        //               e,
-                        //               style: TextStyle(
-                        //                   fontSize: 13, color: Colors.grey),
-                        //             ),
-                        //           ))
-                        //       .toList(),
-                        // ),
-
+                            // Customize the selected item
+                            // selectedItemBuilder: (BuildContext context) =>
+                            //     states.joblist
+                            //         .map((e) => Align(
+                            //               alignment: Alignment.centerLeft,
+                            //               child: Text(
+                            //                 e.title,
+                            //                 style: TextStyle(
+                            //                     fontSize: 13,
+                            //                     color: Colors.grey),
+                            //               ),
+                            //             )
+                            //             )
+                            //         .toList() ??
+                            //  [],
+                          );
+                        }),
                         TextFormField(
                           style: TextStyle(
                               fontWeight: _isBoldClicked
@@ -267,7 +251,6 @@ class _ManageEmailState extends State<ManageEmail> {
                                 borderSide: BorderSide(color: Colors.blue)),
                           ),
                         ),
-
                         Container(
                           margin: EdgeInsets.only(
                             top: 5,
@@ -445,16 +428,42 @@ class _ManageEmailState extends State<ManageEmail> {
                           //  tcolor: AppColors.grey,
                         ),
                         const SizedBox(height: 20),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Buttonn(
-                            text: "Save",
-                            bgcolor: AppColors.blue,
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Step3()));
-                            },
-                          ),
+                        Column(
+                          children: [
+                            Buttonn(
+                              text: "Previous SMS",
+                              borderRadius: 2,
+                              bgcolor: AppColors.orange12,
+                              onTap: () {
+                                setState(() {
+                                  _popupPreviousSMS(context);
+                                });
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                            Buttonn(
+                              text: "Previous Email",
+                              borderRadius: 2,
+                              bgcolor: AppColors.orange12,
+                              onTap: () {
+                                _popupPreviousEmail(context);
+                              },
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Buttonn(
+                              borderRadius: 2,
+                              text: "Save",
+                              bgcolor: AppColors.blue,
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Step3()));
+                              },
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 10),
                       ],

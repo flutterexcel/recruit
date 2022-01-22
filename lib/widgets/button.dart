@@ -1,6 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 
+// ignore: must_be_immutable
 class Buttonn extends StatelessWidget {
   final String text;
   Function onTap;

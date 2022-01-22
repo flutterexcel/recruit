@@ -15,7 +15,8 @@ class JobListBloc extends Bloc<JobListEvent, JobListState> {
   Stream<JobListState> _mapJobListEvent(JobListInitialEvent event) async* {
     print("Initial state");
     try {
-      var res = await GetJobListService.getJobList();
+      GetJobListService getJobListService = new GetJobListService();
+      var res = await getJobListService.getJobList();
 
       yield GetJobListState(jobLists: res);
     } catch (e) {

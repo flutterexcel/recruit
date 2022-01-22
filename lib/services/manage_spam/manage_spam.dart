@@ -18,7 +18,7 @@ class ManageSpamService {
     String apiUrl = url + '?' + queryString;
 
     var response = await http.get(apiUrl);
-    print("response${response}");
+    print("response$response");
 
     if (response.statusCode == 200) {
       var jsonList = jsonDecode(response.body);

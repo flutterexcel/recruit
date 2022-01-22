@@ -18,7 +18,7 @@ class ManageSpamService {
     String apiUrl = url + '?' + queryString;
 
     var response = await http.get(apiUrl);
-    print("response${response}");
+    print("response$response");
 
     if (response.statusCode == 200) {
       var jsonList = jsonDecode(response.body);
@@ -66,6 +66,7 @@ class ManageSpamService {
     }
   }
 
+  // ignore: non_constant_identifier_names
   static Future DeleteSpamService(String id) async {
     String url = "http://176.9.137.77:3001/spamList/delete/$id";
 

@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 class HiringTeamService {
   final JsonDecoder _jsonDecoder = JsonDecoder();
+  // ignore: deprecated_member_use
   List<HiringTeamModel> hiringTeamModel = new List();
   Future<List<HiringTeamModel>> getHiringTeam() async {
     String url = await UrlConfig.hiringTeam(

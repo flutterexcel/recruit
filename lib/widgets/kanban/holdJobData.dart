@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 
 import '../../UiConstant/app_colors.dart';
 
+// ignore: must_be_immutable
 class HoldJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<Datum> resumeData;
