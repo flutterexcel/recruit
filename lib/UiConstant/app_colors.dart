@@ -33,6 +33,7 @@ class AppColors {
   static const Color lightGrey = Color(0xFFE0E2E7);
   static const Color veryLightGrey = Color(0xFFE8E9EC);
   static const Color darkGrey = Color(0xFFF5e5e5e);
+  static const Color warning = Color(0xFFFe55934);
 
   // ignore: non_constant_identifier_names
   static Color purple_opacity = Color(0xFF9964e3).withOpacity(0.5);

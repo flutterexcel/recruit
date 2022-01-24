@@ -261,6 +261,7 @@ class _AddNewUserState extends State<AddNewUser> {
                                     context, res.message, AppColors.Green);
 
                                 context
+                                    // ignore: deprecated_member_use
                                     .bloc<UserListBloc>()
                                     .add(UserListInitialEvent());
                                 // Navigator.of(context).push(
