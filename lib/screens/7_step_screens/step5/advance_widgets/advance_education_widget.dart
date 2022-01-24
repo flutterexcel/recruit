@@ -64,7 +64,7 @@ class _Adv_EduState extends State<Adv_Edu> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Int(
+                      child: TextFieldInt(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -250,7 +250,7 @@ class _Adv_EduState extends State<Adv_Edu> {
                             SizedBox(
                               width: 45,
                               height: 30,
-                              child: TextField_Int(
+                              child: TextFieldInt(
                                 autocorrect: true,
                               ),
                             ),

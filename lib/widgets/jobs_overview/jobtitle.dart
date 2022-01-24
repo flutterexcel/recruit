@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
@@ -24,7 +26,7 @@ class JobTitle extends StatefulWidget {
 class _JobTitleState extends State<JobTitle> {
   List<JobList> getData;
   List<bool> isTitleTap;
-  List<JobTag> _jobTag;
+  // List<JobTag> _jobTag;
   List<ListJobTag> _listJobTag;
   _JobTitleState(this.getData, this.isTitleTap, this._listJobTag);
 

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
@@ -339,30 +341,33 @@ class NewJobData extends StatelessWidget {
                                   height: 0,
                                   width: 0,
                                 )
-                              : Row(children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                              : Row(
                                   children: [
-                                    SizedBox(
-                                      height: 10,
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        greyText('Gender'),
+                                        blackText(_candidateCvInfoModel
+                                            .cvParsedInfo.finalEntity.gender[0])
+                                      ],
                                     ),
-                                    greyText('Gender'),
-                                    blackText(_candidateCvInfoModel
-                                        .cvParsedInfo.finalEntity.gender[0])
+                                    // Column(
+                                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                                    //   children: [
+                                    //     SizedBox(
+                                    //       height: 10,
+                                    //     ),
+                                    //     greyText('Gender'),
+                                    //     blackText(_candidateCvInfoModel
+                                    //         .cvParsedInfo.finalEntity.gender[0])
+                                    //   ],
+                                    // ),
                                   ],
                                 ),
-                                // Column(
-                                //   crossAxisAlignment: CrossAxisAlignment.start,
-                                //   children: [
-                                //     SizedBox(
-                                //       height: 10,
-                                //     ),
-                                //     greyText('Gender'),
-                                //     blackText(_candidateCvInfoModel
-                                //         .cvParsedInfo.finalEntity.gender[0])
-                                //   ],
-                                // ),
-                              ],),
                   resumeData[index].cvimage == null
                       ? Text(
                           'Resume Missing. Ask Candidate?\n',

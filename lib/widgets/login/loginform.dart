@@ -91,6 +91,7 @@ class _LoginFormState extends State<LoginForm> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   alignment: Alignment.centerRight,
+                  // ignore: deprecated_member_use
                   child: FlatButton(
                       onPressed: () {
                         _popupDialog(context);
@@ -105,6 +106,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
+              // ignore: deprecated_member_use
               child: FlatButton(
                   minWidth: MediaQuery.of(context).size.width,
                   color: Color(0xFF7CACFB),

@@ -244,12 +244,12 @@ class _Step6State extends State<Step6> {
         ));
   }
 
-  Widget containerr(final bg_color, String text) {
+  Widget containerr(final bgColor, String text) {
     return Contain(
       height: 50,
       width: 200,
       //outlinecolor: AppColors.grey,
-      backcolor: bg_color,
+      backcolor: bgColor,
       borderrad: 6,
       child: Padding(
         padding: const EdgeInsets.only(left: 30.0),

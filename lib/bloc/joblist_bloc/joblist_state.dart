@@ -8,6 +8,7 @@ abstract class JobListState extends Equatable {
 
 class JobListInitialState extends JobListState {}
 
+// ignore: must_be_immutable
 class GetJobListState extends JobListState {
   List<GetJobListModel> jobLists;
 

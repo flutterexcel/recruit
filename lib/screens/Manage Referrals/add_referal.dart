@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';

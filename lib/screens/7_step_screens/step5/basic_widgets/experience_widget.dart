@@ -258,7 +258,7 @@ class _ExpState extends State<Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextField_Centre(
+                                          child: TextFieldCentre(
                                             controller: _controller,
                                             autocorrect: true,
                                           ),
@@ -279,7 +279,7 @@ class _ExpState extends State<Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextField_Centre(
+                                          child: TextFieldCentre(
                                             controller: _controller2,
                                             autocorrect: true,
                                           ),

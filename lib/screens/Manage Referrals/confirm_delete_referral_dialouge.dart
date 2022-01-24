@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/snackbar.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class DeleteReferral extends StatelessWidget {
@@ -41,6 +40,7 @@ class DeleteReferral extends StatelessWidget {
                 'No',
                 style: TextStyle(fontSize: 13),
               ),
+              // ignore: deprecated_member_use
               FlatButton(
                   height: 30,
                   minWidth: 4,

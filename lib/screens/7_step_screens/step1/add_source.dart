@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
-import 'package:flutter_product_recruit/widgets/button.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step1/connect_to_email.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
-// ignore: camel_case_types, must_be_immutable
-class AddSourecScreen extends StatelessWidget {
-  bool isSwitched = false;
+// ignore: camel_case_types
+class AddSource extends StatefulWidget {
+  @override
+  State<AddSource> createState() => _AddSourceState();
+}
+
+class _AddSourceState extends State<AddSource> {
+  bool emailPressed = false;
 
   String a =
       'Recruit will automatically fetch candidate from your any email inbox which you setup here. You  can do a job posting on Naukri, Monster or any other job portal and get all your candidates in your inbox. Recruit will automatically go through the email and fetch all relevant candidate information for you.';
@@ -17,7 +21,7 @@ class AddSourecScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Create Job"),
+          title: const Text("Add Source"),
         ),
         drawer: NavigationList(),
         body: SingleChildScrollView(
@@ -29,8 +33,8 @@ class AddSourecScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Contain(
-                  width: MediaQuery.of(context).size.width,
-                  height: 50,
+                  //  width: MediaQuery.of(context).size.width,
+                  //  height: 50,
                   borderrad: 2,
                   backcolor: AppColors.purple,
                   child: Align(
@@ -95,11 +99,9 @@ class AddSourecScreen extends StatelessWidget {
                                   Align(
                                       alignment: Alignment.center,
                                       child: Container(
-                                        child: Expanded(
-                                          child: Textt(
-                                            text: "Connect Your Gmail",
-                                            size: 13,
-                                          ),
+                                        child: Textt(
+                                          text: "Connect Your Gmail",
+                                          size: 13,
                                         ),
                                       )),
                                 ],
@@ -125,14 +127,21 @@ class AddSourecScreen extends StatelessWidget {
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Align(
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        child: Textt(
-                                          text: "Connect Any Email",
-                                          size: 13,
-                                        ),
-                                      )),
+                                  InkWell(
+                                    child: Align(
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          child: Textt(
+                                            text: "Connect Any Email",
+                                            size: 13,
+                                          ),
+                                        )),
+                                    onTap: () {
+                                      setState(() {
+                                        emailPressed = !emailPressed;
+                                      });
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -168,34 +177,13 @@ class AddSourecScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                              height: 55,
+                              height: 30,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Buttonn(
-                                  text: "Back",
-                                  bgcolor: AppColors.orange12,
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => Step1()));
-                                  },
-                                ),
-                                // Buttonn(
-                                //   text: "Next",
-                                //   bgcolor: AppColors.blue,
-                                //   onTap: () {
-                                //     Navigator.of(context).push(
-                                //         MaterialPageRoute(
-                                //             builder: (context) => Step2()));
-                                //   },
-                                // ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
+                            emailPressed
+                                ? ConnectedToEmail()
+                                : const SizedBox(
+                                    height: 20,
+                                  ),
                           ],
                         )),
                   ),

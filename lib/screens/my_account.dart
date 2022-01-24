@@ -1,15 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:io';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
-import 'package:flutter_product_recruit/model/profile/update_profile.dart';
-import 'package:flutter_product_recruit/model/profile/update_profile.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step6/source_matching_dialouge.dart';
 import 'package:flutter_product_recruit/services/profile/update_profile_service.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
@@ -18,7 +12,6 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:image_picker/image_picker.dart';
 
-// ignore: must_be_immutable
 class MyAccount extends StatefulWidget {
   @override
   State<MyAccount> createState() => _MyAccountState();
@@ -451,7 +444,7 @@ class _MyAccountState extends State<MyAccount> {
   }
 
   chooseImage() async {
-    ImagePicker imagePicker = ImagePicker();
+  //  ImagePicker imagePicker = ImagePicker();
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     // print("image-" + image.path);
 //  _image = File(image.path);

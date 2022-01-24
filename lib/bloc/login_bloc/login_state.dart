@@ -9,6 +9,7 @@ abstract class LoginState extends Equatable {
 
 class LoginInitial extends LoginState {}
 
+// ignore: must_be_immutable
 class LoginSuccess extends LoginState {
   UserModel userModel;
   LoginSuccess({this.userModel});
@@ -17,5 +18,5 @@ class LoginSuccess extends LoginState {
 class LoginPageState extends LoginState {}
 
 class LoginFailure extends LoginState {}
-class LogOutState extends LoginState{}
 
+class LogOutState extends LoginState {}

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
 
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
@@ -79,7 +78,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Int(
+                      child: TextFieldInt(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -131,7 +130,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField_Int(
+                                child: TextFieldInt(
                                   autocorrect: true,
                                 ),
                               ),
@@ -151,7 +150,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                               child: SizedBox(
                                 width: 50,
                                 height: 35,
-                                child: TextField_Int(
+                                child: TextFieldInt(
                                   autocorrect: true,
                                 ),
                               ),
@@ -180,7 +179,7 @@ class _Adv_DobState extends State<Adv_Dob> {
                             SizedBox(
                               width: 45,
                               height: 30,
-                              child: TextField_Int(
+                              child: TextFieldInt(
                                 autocorrect: true,
                               ),
                             ),

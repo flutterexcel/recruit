@@ -11,7 +11,6 @@ class UserLogBloc extends Bloc<UserLogBlocEvent, UserLogState> {
 
   @override
   Stream<UserLogState> mapEventToState(UserLogBlocEvent event) async* {
-    // TODO: implement mapEventToState
     if (event is UserLogBlocEventInitial) {
       yield* _mapuserBlocInitialToState(event);
     }

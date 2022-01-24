@@ -65,7 +65,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Int(
+                      child: TextFieldInt(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -182,7 +182,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextField_Centre(
+                                          child: TextFieldCentre(
                                             autocorrect: true,
                                           ),
                                         ),
@@ -202,7 +202,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextField_Centre(
+                                          child: TextFieldCentre(
                                             autocorrect: true,
                                           ),
                                         ),
@@ -231,7 +231,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                       SizedBox(
                                         width: 45,
                                         height: 30,
-                                        child: TextField_Centre(
+                                        child: TextFieldCentre(
                                           autocorrect: true,
                                         ),
                                       ),
@@ -290,7 +290,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                   SizedBox(
                                     width: 45,
                                     height: 30,
-                                    child: TextField_Int(
+                                    child: TextFieldInt(
                                       autocorrect: true,
                                     ),
                                   ),

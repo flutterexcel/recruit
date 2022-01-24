@@ -16,6 +16,7 @@ class JobTagService {
     Map<String, String> queryParam = {'accessToken': token};
     String queryString = Uri(queryParameters: queryParam).query;
     String apiUrl = url + '?' + queryString;
+
     var res = await http.get(apiUrl);
     List<dynamic> values = json.decode(res.body);
     for (int i = 0; i < values.length; i++) {

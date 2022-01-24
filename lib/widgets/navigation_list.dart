@@ -1,4 +1,4 @@
-// ignore_for_file: missing_required_param
+// ignore_for_file: missing_required_param, close_sinks
 
 import 'dart:io';
 
@@ -18,7 +18,6 @@ import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.da
 import 'package:flutter_product_recruit/screens/manage_spams/manage_spams.dart';
 import 'package:flutter_product_recruit/screens/my_account.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
-import 'package:flutter_product_recruit/screens/user_logs/user_log_old.dart';
 import 'package:flutter_product_recruit/screens/statistics.dart';
 import 'package:flutter_product_recruit/screens/user_logs/user_logs.dart';
 import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
@@ -28,8 +27,7 @@ import 'package:flutter_product_recruit/services/manage_referral/get_referal_ser
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:provider/provider.dart';
 
-import 'jobs_overview/jobsoverviewpage.dart';
-
+// ignore: must_be_immutable
 class NavigationList extends StatefulWidget {
   List<JobList> getData;
   List<JobsOverviewModel> jobsOverViewModel;
@@ -138,7 +136,7 @@ class _NavigationListState extends State<NavigationList> {
           ),
           ListTile(
             leading: Icon(Icons.refresh_sharp),
-            title: Text("MANAGE Referrals"),
+            title: Text("MANAGE REFERRALS"),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => ChangeNotifierProvider(
@@ -149,7 +147,7 @@ class _NavigationListState extends State<NavigationList> {
           ),
           ListTile(
             leading: Icon(Icons.mark_chat_read),
-            title: Text("Statistics"),
+            title: Text("STATISTICS"),
             onTap: () {
               Navigator.push(
                 context,

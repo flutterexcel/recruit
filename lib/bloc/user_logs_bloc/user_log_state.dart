@@ -9,6 +9,7 @@ abstract class UserLogState extends Equatable {
 
 class UserLogStateInitial extends UserLogState {}
 
+// ignore: must_be_immutable
 class UserLogViewState extends UserLogState {
   List<UserLog> userLog;
   UserLogViewState({this.userLog});

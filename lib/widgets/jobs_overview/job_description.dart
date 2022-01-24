@@ -1,11 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 // ignore: unused_import
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/jobbar.dart';
-
-import '../../UiConstant/app_colors.dart';
 
 class JobDescription extends StatelessWidget {
   JobList jobList;

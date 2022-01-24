@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_bloc.dart';
+import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
@@ -50,6 +52,12 @@ class _MainState extends State<Main> {
         ),
         BlocProvider<JobListBloc>(
           create: (context) => JobListBloc(),
+        ),
+        BlocProvider<AllUserLogBloc>(
+          create: (context) => AllUserLogBloc(),
+        ),
+        BlocProvider<ApplicationStatusBloc>(
+          create: (context) => ApplicationStatusBloc(),
         ),
       ],
       child: MaterialApp(

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_product_recruit/model/userlist_model/delete_userlist_model.dart';
 
-import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
 // ignore: camel_case_types

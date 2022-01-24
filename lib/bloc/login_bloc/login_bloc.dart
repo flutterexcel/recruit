@@ -49,7 +49,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       var res = await authenticationService.signInWithEmailAndPassword(
           event.email, event.password);
-      print("login data --${res}");
+      print("login data --$res");
 
       StorageUtil.setToken(res.token);
       StorageUtil.setUserName(res.userDetails.name);
