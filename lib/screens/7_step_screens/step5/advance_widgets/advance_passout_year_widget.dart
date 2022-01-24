@@ -5,11 +5,13 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
+// ignore: camel_case_types
 class Adv_Passout extends StatefulWidget {
   @override
   State<Adv_Passout> createState() => _Adv_PassoutState();
 }
 
+// ignore: camel_case_types
 class _Adv_PassoutState extends State<Adv_Passout> {
   final _controller = TextEditingController();
   final _controllerNumber = TextEditingController();
@@ -83,7 +85,7 @@ class _Adv_PassoutState extends State<Adv_Passout> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Int(
+                      child: TextFieldInt(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -252,7 +254,7 @@ class _Adv_PassoutState extends State<Adv_Passout> {
                               child: SizedBox(
                                 width: 250,
                                 height: 35,
-                                child: TextField_Centre(
+                                child: TextFieldCentre(
                                   controller: _controller,
                                   autocorrect: true,
                                 ),
@@ -275,7 +277,7 @@ class _Adv_PassoutState extends State<Adv_Passout> {
                             SizedBox(
                               width: 45,
                               height: 30,
-                              child: TextField_Int(
+                              child: TextFieldInt(
                                 controller: _controllerNumber,
                                 autocorrect: true,
                               ),

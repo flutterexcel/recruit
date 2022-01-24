@@ -5,11 +5,13 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
+// ignore: camel_case_types
 class Adv_Location extends StatefulWidget {
   @override
   State<Adv_Location> createState() => _Adv_LocationState();
 }
 
+// ignore: camel_case_types
 class _Adv_LocationState extends State<Adv_Location> {
   bool isPressed = false;
   final _controller = TextEditingController();
@@ -59,7 +61,7 @@ class _Adv_LocationState extends State<Adv_Location> {
                     child: SizedBox(
                       width: 45,
                       height: 30,
-                      child: TextField_Int(
+                      child: TextFieldInt(
                         hintText: "5",
                         autocorrect: true,
                       ),
@@ -213,7 +215,7 @@ class _Adv_LocationState extends State<Adv_Location> {
                               child: SizedBox(
                                 width: 250,
                                 height: 35,
-                                child: TextField_Centre(
+                                child: TextFieldCentre(
                                   controller: _controller,
                                   autocorrect: true,
                                 ),
@@ -236,7 +238,7 @@ class _Adv_LocationState extends State<Adv_Location> {
                             SizedBox(
                               width: 45,
                               height: 30,
-                              child: TextField_Int(
+                              child: TextFieldInt(
                                 controller: _controllerNumber,
                                 autocorrect: true,
                               ),

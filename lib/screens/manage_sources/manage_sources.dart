@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -17,7 +19,7 @@ class _ManageSourcesState extends State<ManageSources> {
 
     void OnPressed() {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => AddSourecScreen()));
+          .push(MaterialPageRoute(builder: (context) => AddSource()));
     }
 
     return Scaffold(

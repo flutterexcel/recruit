@@ -6,15 +6,15 @@ import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
 // ignore: camel_case_types
-class Update_Contact extends StatefulWidget {
+class UpdateContact extends StatefulWidget {
   ManageSpamList update;
-  Update_Contact({this.update});
+  UpdateContact({this.update});
 
   @override
-  State<Update_Contact> createState() => _Update_ContactState();
+  State<UpdateContact> createState() => _UpdateContactState();
 }
 
-class _Update_ContactState extends State<Update_Contact> {
+class _UpdateContactState extends State<UpdateContact> {
   TextEditingController emailController = TextEditingController();
 
   @override

@@ -25,7 +25,7 @@ class _GetReferralsState extends State<GetReferrals> {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Update_Contact());
+          return Dialog(child: UpdateContact());
         });
   }
 

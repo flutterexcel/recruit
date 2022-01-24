@@ -9,10 +9,12 @@ abstract class KanbanState extends Equatable {
 
 class KanbanInitialState extends KanbanState {}
 
+// ignore: must_be_immutable
 class KanbanPageState extends KanbanState {
   Map<String, JobTagData> mapJobTagData = new Map();
   String title;
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<JobTag> listJobTag;
-  KanbanPageState({this.listJobTag, this.title, this.mapCandidateData,this.mapJobTagData});
+  KanbanPageState(
+      {this.listJobTag, this.title, this.mapCandidateData, this.mapJobTagData});
 }

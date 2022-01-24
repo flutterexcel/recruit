@@ -41,7 +41,7 @@ class _ManageSpamState extends State<ManageSpam> {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Update_Contact(update: update));
+          return Dialog(child: UpdateContact(update: update));
         });
   }
 
@@ -57,7 +57,7 @@ class _ManageSpamState extends State<ManageSpam> {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: Add_New_Spam(state: state));
+          return Dialog(child: AddNewSpam(state: state));
         });
   }
 

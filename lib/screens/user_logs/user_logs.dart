@@ -4,7 +4,6 @@ import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_bloc.dart
 import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_events.dart';
 import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_state.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
 import 'package:flutter_product_recruit/services/userlist_services/get_userlist_service.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -34,7 +33,7 @@ class _UserLogsState extends State<UserLogs> {
 
   @override
   void initState() {
-    var user = getUserList();
+    getUserList();
 
     super.initState();
   }

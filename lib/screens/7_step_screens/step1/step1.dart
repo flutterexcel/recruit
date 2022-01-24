@@ -114,7 +114,7 @@ class Step1 extends StatelessWidget {
                                 bgcolor: AppColors.orange12,
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => AddSourecScreen()));
+                                      builder: (context) => AddSource()));
                                 },
                               ),
                               Buttonn(

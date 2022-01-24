@@ -6,8 +6,7 @@ import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_event.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
 
-import 'package:flutter_product_recruit/services/getjoblist_service.dart';
-import 'package:flutter_product_recruit/widgets/loader1.dart';
+import 'package:flutter_product_recruit/widgets/loader.dart';
 
 // ignore: camel_case_types
 
@@ -34,29 +33,23 @@ class _ManageJobsDialougeState extends State<ManageJobsDialouge> {
   //   print(data);
   // }
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
 
-  void getjoblist() async {
-    GetJobListService getJobListService = new GetJobListService();
-    var res = await getJobListService.getJobList();
-  }
+  // void getjoblist() async {
+  //   GetJobListService getJobListService = new GetJobListService();
+  //   await getJobListService.getJobList();
+  // }
 
   @override
   Widget build(BuildContext context) {
     context.bloc<JobListBloc>().add(JobListInitialEvent());
-    // print("new state--${widget.state}");
-    String p =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-    //RegExp regExp = new RegExp(p);
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
-        //height: 250,
-        // width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
             Form(
@@ -113,28 +106,32 @@ class _ManageJobsDialougeState extends State<ManageJobsDialouge> {
                       builder: (context, state) {
                     if (state is JobListInitialState) {
                       context.bloc<JobListBloc>().add(JobListInitialEvent());
-                      return Loader1();
+                      return SizedBox(height: 35, child: Loader());
                     } else if (state is GetJobListState) {
-                      print("statessss----${state}");
+                      //  print("statessss----$state");
                       print(state.jobLists.length);
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: state.jobLists.length,
-                          itemBuilder: (context, index) {
-                            return CheckboxListTile(
-                                controlAffinity:
-                                    ListTileControlAffinity.leading,
-                                contentPadding: EdgeInsets.all(0),
-                                title: Text(state.jobLists[index].title),
-                                activeColor: const Color(0xFF00E5FF),
-                                checkColor: Colors.white,
-                                value: _value,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _value = value;
+                      return Container(
+                        height: 200,
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: state.jobLists.length,
+                            itemBuilder: (context, index) {
+                              return CheckboxListTile(
+                                  controlAffinity:
+                                      ListTileControlAffinity.leading,
+                                  contentPadding: EdgeInsets.all(0),
+                                  title: Text(state.jobLists[index].title),
+                                  activeColor: const Color(0xFF00E5FF),
+                                  checkColor: Colors.white,
+                                  value: _value,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _value = value;
+                                    });
                                   });
-                                });
-                          });
+                            }),
+                      );
                     } else
                       return Container();
                   }),

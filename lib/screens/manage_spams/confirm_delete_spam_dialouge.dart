@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, implementation_imports
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/src/bloc_provider.dart';
