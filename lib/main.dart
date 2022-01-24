@@ -5,12 +5,10 @@ import 'package:flutter_product_recruit/bloc/application_status_bloc/application
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
+import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
-import 'package:flutter_product_recruit/model/userLog/user_log.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
-import 'package:flutter_product_recruit/screens/user_logs/user_logs.dart';
-import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
+
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -62,6 +60,9 @@ class _MainState extends State<Main> {
         ),
         BlocProvider<ApplicationStatusBloc>(
           create: (context) => ApplicationStatusBloc(),
+        ),
+        BlocProvider<PermissionBloc>(
+          create: (context) => PermissionBloc(),
         ),
       ],
       child: MaterialApp(
