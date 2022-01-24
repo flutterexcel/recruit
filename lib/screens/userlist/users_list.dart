@@ -8,7 +8,7 @@ import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_event.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_state.dart';
 import 'package:flutter_product_recruit/model/userlist_model/delete_userlist_model.dart';
-import 'package:flutter_product_recruit/screens/add_new_user.dart';
+import 'package:flutter_product_recruit/screens/userlist/add_new_user.dart';
 import 'package:flutter_product_recruit/screens/userlist/change_password_dialouge.dart';
 import 'package:flutter_product_recruit/screens/userlist/manage_jobs_dialouge.dart';
 import 'package:flutter_product_recruit/services/userlist_services/activate_user_service.dart';
@@ -21,6 +21,7 @@ import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
+import 'package:flutter_svg/svg.dart';
 
 // ignore: must_be_immutable, camel_case_types
 class UsersList extends StatefulWidget {
@@ -68,8 +69,6 @@ class _UsersListState extends State<UsersList> {
         context.bloc<UserListBloc>().add(UserListInitialEvent());
         return Loader1();
       } else if (state is GetUserListState) {
-        // print("state----${state}");
-        print(state.userLists[0].imageUrl);
         return Scaffold(
           drawer: NavigationList(),
           appBar: SecondAppBar(
@@ -96,11 +95,10 @@ class _UsersListState extends State<UsersList> {
                         height: 30,
                       ),
                       CircleAvatar(
-                        child: Image.network(
-                          state.userLists[index + 1].imageUrl.toString(),
-                          fit: BoxFit.contain,
-                        ),
-                        radius: 45,
+                        backgroundColor: Colors.white,
+                        child: SvgPicture.network(
+                            state.userLists[index + 1].imageUrl),
+                        radius: 35,
                       ),
                       const SizedBox(
                         height: 30,

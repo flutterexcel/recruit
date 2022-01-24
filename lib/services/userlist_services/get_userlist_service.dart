@@ -28,8 +28,8 @@ class GetUserListService {
       var jsonList = jsonDecode(response.body)['data'];
       for (var prod in jsonList) {
         userslist.add(UserListsModel.fromJson(prod));
-      }
-      print("User List got successfully");
+      }             
+      print("User List got successfully");       
       return userslist;
       //print("Success");
       // return ManageSpamList.fromJson(jsonDecode(response.body));

@@ -1,13 +1,14 @@
 // To parse this JSON data, do
 //
-//     final userList = userListFromJson(jsonString);
+//     final userListsModel = userListsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-List<UserListsModel> userListFromJson(String str) => List<UserListsModel>.from(
-    json.decode(str).map((x) => UserListsModel.fromJson(x)));
+List<UserListsModel> userListsModelFromJson(String str) =>
+    List<UserListsModel>.from(
+        json.decode(str).map((x) => UserListsModel.fromJson(x)));
 
-String userListToJson(List<UserListsModel> data) =>
+String userListsModelToJson(List<UserListsModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class UserListsModel {
@@ -26,7 +27,7 @@ class UserListsModel {
     this.userSetting,
     this.phoneNo,
     this.signature,
-    this.userListId,
+    this.userListsModelId,
     this.imageUrl,
     this.jobProfiles,
   });
@@ -36,7 +37,7 @@ class UserListsModel {
   bool extensionLogin;
   String id;
   String email;
-  UserType userType;
+  String userType;
   String name;
   String imageName;
   DateTime createdAt;
@@ -45,7 +46,7 @@ class UserListsModel {
   UserSetting userSetting;
   int phoneNo;
   String signature;
-  String userListId;
+  String userListsModelId;
   String imageUrl;
   List<String> jobProfiles;
 
@@ -57,7 +58,7 @@ class UserListsModel {
         extensionLogin: json["extensionLogin"],
         id: json["_id"],
         email: json["email"],
-        userType: userTypeValues.map[json["user_type"]],
+        userType: json["user_type"],
         name: json["name"],
         imageName: json["imageName"],
         createdAt: DateTime.parse(json["createdAt"]),
@@ -68,7 +69,7 @@ class UserListsModel {
             : UserSetting.fromJson(json["user_setting"]),
         phoneNo: json["phoneNo"],
         signature: json["signature"] == null ? null : json["signature"],
-        userListId: json["id"],
+        userListsModelId: json["id"],
         imageUrl: json["imageUrl"],
         jobProfiles: json["jobProfiles"] == null
             ? null
@@ -81,7 +82,7 @@ class UserListsModel {
         "extensionLogin": extensionLogin,
         "_id": id,
         "email": email,
-        "user_type": userTypeValues.reverse[userType],
+        "user_type": userType,
         "name": name,
         "imageName": imageName,
         "createdAt": createdAt.toIso8601String(),
@@ -90,7 +91,7 @@ class UserListsModel {
         "user_setting": userSetting == null ? null : userSetting.toJson(),
         "phoneNo": phoneNo,
         "signature": signature == null ? null : signature,
-        "id": userListId,
+        "id": userListsModelId,
         "imageUrl": imageUrl,
         "jobProfiles": jobProfiles == null
             ? null
@@ -101,41 +102,15 @@ class UserListsModel {
 class UserSetting {
   UserSetting({
     this.firstLogin,
-    this.dtAgain,
   });
 
   bool firstLogin;
-  bool dtAgain;
 
   factory UserSetting.fromJson(Map<String, dynamic> json) => UserSetting(
         firstLogin: json["firstLogin"],
-        dtAgain: json["dtAgain"] == null ? null : json["dtAgain"],
       );
 
   Map<String, dynamic> toJson() => {
         "firstLogin": firstLogin,
-        "dtAgain": dtAgain == null ? null : dtAgain,
       };
-}
-
-enum UserType { ADMIN, HR, INTERVIEWEE }
-
-final userTypeValues = EnumValues({
-  "Admin": UserType.ADMIN,
-  "HR": UserType.HR,
-  "Interviewee": UserType.INTERVIEWEE
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
-  }
 }
