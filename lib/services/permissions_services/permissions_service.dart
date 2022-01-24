@@ -1,8 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
-import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/model/permission/permisson.dart';
-import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
 class PermissionService {
@@ -28,6 +28,6 @@ class PermissionService {
     } else {
       print("error");
       return PermissionModel.fromJson(jsonDecode(response.body));
-    }    
+    }
   }
 }

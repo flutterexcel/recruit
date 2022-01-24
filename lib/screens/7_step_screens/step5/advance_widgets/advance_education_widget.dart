@@ -4,14 +4,12 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
-// ignore: camel_case_types
-class Adv_Edu extends StatefulWidget {
+class AdvEdu extends StatefulWidget {
   @override
-  State<Adv_Edu> createState() => _Adv_EduState();
+  State<AdvEdu> createState() => _AdvEduState();
 }
 
-// ignore: camel_case_types
-class _Adv_EduState extends State<Adv_Edu> {
+class _AdvEduState extends State<AdvEdu> {
   String _selectedDegree;
   String _selectedCourse;
 

@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
+import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
-// ignore: camel_case_types
-class Adv_Location extends StatefulWidget {
+class AdvLocation extends StatefulWidget {
   @override
-  State<Adv_Location> createState() => _Adv_LocationState();
+  State<AdvLocation> createState() => _AdvLocationState();
 }
 
-// ignore: camel_case_types
-class _Adv_LocationState extends State<Adv_Location> {
+class _AdvLocationState extends State<AdvLocation> {
   bool isPressed = false;
   final _controller = TextEditingController();
   final _controllerNumber = TextEditingController();
@@ -215,7 +213,7 @@ class _Adv_LocationState extends State<Adv_Location> {
                               child: SizedBox(
                                 width: 250,
                                 height: 35,
-                                child: TextFieldCentre(
+                                child: TextInput(
                                   controller: _controller,
                                   autocorrect: true,
                                 ),

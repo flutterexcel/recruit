@@ -3,12 +3,12 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
-class Edu extends StatefulWidget {
+class Education extends StatefulWidget {
   @override
-  State<Edu> createState() => _EduState();
+  State<Education> createState() => _EducationState();
 }
 
-class _EduState extends State<Edu> {
+class _EducationState extends State<Education> {
   String _selectedDegree;
 
   var items = [

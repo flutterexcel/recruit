@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
+import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 // ignore: camel_case_types
-class Adv_Passout extends StatefulWidget {
+class AdvPassout extends StatefulWidget {
   @override
-  State<Adv_Passout> createState() => _Adv_PassoutState();
+  State<AdvPassout> createState() => _AdvPassoutState();
 }
 
 // ignore: camel_case_types
-class _Adv_PassoutState extends State<Adv_Passout> {
+class _AdvPassoutState extends State<AdvPassout> {
   final _controller = TextEditingController();
   final _controllerNumber = TextEditingController();
   bool isPressed = false;
@@ -254,7 +254,7 @@ class _Adv_PassoutState extends State<Adv_Passout> {
                               child: SizedBox(
                                 width: 250,
                                 height: 35,
-                                child: TextFieldCentre(
+                                child: TextInput(
                                   controller: _controller,
                                   autocorrect: true,
                                 ),

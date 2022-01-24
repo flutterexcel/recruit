@@ -5,14 +5,12 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
-// ignore: camel_case_types
-class Adv_Dob extends StatefulWidget {
+class AdvDob extends StatefulWidget {
   @override
-  State<Adv_Dob> createState() => _Adv_DobState();
+  State<AdvDob> createState() => _AdvDobState();
 }
 
-// ignore: camel_case_types
-class _Adv_DobState extends State<Adv_Dob> {
+class _AdvDobState extends State<AdvDob> {
   bool isPressed = false;
   @override
   Widget build(BuildContext context) {

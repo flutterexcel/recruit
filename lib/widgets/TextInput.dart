@@ -11,6 +11,7 @@ class TextInput extends StatelessWidget {
   double borderRadius;
   int maxLines;
   FontStyle fstyle;
+  TextAlign textAlign;
 
   TextInputType keyboardtype;
 
@@ -33,6 +34,7 @@ class TextInput extends StatelessWidget {
     this.validateText,
     this.maxLength,
     this.img,
+    this.textAlign = TextAlign.start,
   });
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class TextInput extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: keyboardtype,
       obscureText: obscureText,
+      textAlign: textAlign,
       controller: controller,
       style: TextStyle(fontStyle: fstyle),
       maxLength: maxLength,

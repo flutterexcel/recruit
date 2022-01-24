@@ -6,12 +6,12 @@ import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
 // ignore: camel_case_types
-class Adv_Skills extends StatefulWidget {
+class AdvSkills extends StatefulWidget {
   @override
-  State<Adv_Skills> createState() => _SkillsState();
+  State<AdvSkills> createState() => _SkillsState();
 }
 
-class _SkillsState extends State<Adv_Skills> {
+class _SkillsState extends State<AdvSkills> {
   final _controller = TextEditingController();
   final _controllerNumber = TextEditingController();
   bool isPressed = false;
