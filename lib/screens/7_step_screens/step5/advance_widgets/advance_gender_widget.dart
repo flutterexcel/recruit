@@ -4,14 +4,12 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
-// ignore: camel_case_types
-class Adv_Gender extends StatefulWidget {
+class AdvGender extends StatefulWidget {
   @override
-  State<Adv_Gender> createState() => _Adv_GenderState();
+  State<AdvGender> createState() => _AdvGenderState();
 }
 
-// ignore: camel_case_types
-class _Adv_GenderState extends State<Adv_Gender> {
+class _AdvGenderState extends State<AdvGender> {
   String _selectedGender;
 
   var items = [
