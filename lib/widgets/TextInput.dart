@@ -16,6 +16,8 @@ class TextInput extends StatelessWidget {
 
   Function validateText;
 
+  int maxLength;
+
   TextInput({
     this.controller,
     this.hintText,
@@ -28,6 +30,7 @@ class TextInput extends StatelessWidget {
     this.fstyle,
     this.keyboardtype,
     this.validateText,
+    this.maxLength,
   });
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class TextInput extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       style: TextStyle(fontStyle: fstyle),
+      maxLength: maxLength,
       maxLines: maxLines,
       decoration: InputDecoration(
         labelText: labelText,

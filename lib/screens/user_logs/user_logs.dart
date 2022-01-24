@@ -47,7 +47,8 @@ class _UserLogsState extends State<UserLogs> {
     setState(() {
       if (args.value is PickerDateRange) {
         print("${args.value.startDate} to ${args.value.endDate}");
-        _range = '${DateFormat('MMM dd').format(args.value.startDate)} -'
+
+            _range = '${DateFormat('MMM dd').format(args.value.startDate)} -'
             // ignore: lines_longer_than_80_chars
             ' ${DateFormat('MMM dd').format(args.value.endDate ?? args.value.startDate)}';
       } else if (args.value is DateTime) {
@@ -55,6 +56,13 @@ class _UserLogsState extends State<UserLogs> {
       } else {}
     });
   }
+
+
+
+
+
+
+
 
   void _datepicker(BuildContext context) {
     showDialog(
