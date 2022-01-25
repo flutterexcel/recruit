@@ -18,7 +18,7 @@ class JobAuthService {
 
   Future<List<JobsOverviewModel>> getJobsOverview(String token) async {
     List<JobsOverviewModel> data;
-    await JobsOverviewService().getJobList(token).then((value) {
+    await JobsOverviewService().getJobOverview(token).then((value) {
       data = value;
     });
     return data;
@@ -26,7 +26,7 @@ class JobAuthService {
 
   Future<List<JobTag>> getJobTag(String jobToken, String token) async {
     List<JobTag> data;
-    await JobTagService().getJobList(jobToken, token).then((value) {
+    await JobTagService().getJobTag(jobToken, token).then((value) {
       data = value;
     });
     return data;

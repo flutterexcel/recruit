@@ -9,6 +9,7 @@ class TrackTimeLine extends StatelessWidget {
   TrackTimeLine({this.data});
   @override
   Widget build(BuildContext context) {
+    print(data);
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -38,50 +39,40 @@ class TrackTimeLine extends StatelessWidget {
               // String time = "${date.hour}:${date.minute}:${date.second}";
 
               return Container(
-                  child: Row(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                          margin: EdgeInsets.only(left: 15, right: 5),
-                          padding: EdgeInsets.all(5),
-                          child: Text(DateFormat('hh:mm a').format(date),
-                              style: TextStyle(
-                                fontSize: 15,
-                              ))),
-                      Container(
-                        width: 3,
-                        height: 60,
-                        color: Colors.black,
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                      child: Container(
-                    margin: EdgeInsets.only(
-                        left: 15, right: 15, top: 15, bottom: 15),
-                    decoration: BoxDecoration(color: AppColors.white,
-                        // border: Border(
-                        //     top: BorderSide(
-                        //         width: 4, color: AppColors.Primary)),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 10,
-                            color: Colors.black38,
-                          )
-                        ]),
-                    height: 120,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 30, horizontal: 20),
-                      child: Text(data.userLog[index].logMsg,
-                          style: TextStyle(
-                            fontSize: 15,
-                          )),
+                margin: EdgeInsets.only(top: 10),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(left: 20),
+                            child: Text(DateFormat('hh:mm a').format(date),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ))),
+                        Container(
+                          margin: EdgeInsets.only(left: 20),
+                          width: 2,
+                          height: 70,
+                          color: Color(0xFFFf6a609),
+                        ),
+                      ],
                     ),
-                  ))
-                ],
-              ));
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(top: 15, left: 10, right: 10),
+                        margin: EdgeInsets.only(
+                            left: 15, right: 15, top: 15, bottom: 15),
+                        height: 70,
+                        child: Text(
+                          data.userLog[index].logMsg,
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             }));
   }
 

@@ -58,6 +58,7 @@ class JobsOverviewBlocBloc
           }
         });
       });
+
       yield JobsOvervViewPageState(
           getData: _getData,
           jobsOverViewModel: _jobsOverViewModel,

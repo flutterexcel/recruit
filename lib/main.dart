@@ -7,6 +7,7 @@ import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
+import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
 
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -68,6 +69,7 @@ class _MainState extends State<Main> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Recruit AI',
+        theme: ThemeData(fontFamily: 'RobotRegular'),
         home: RecruiterApp(),
       ),
     );
@@ -77,7 +79,7 @@ class _MainState extends State<Main> {
 class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //  return DomainLogin();
-    return Permis();
+    return Login();
+    // return Permis();
   }
 }

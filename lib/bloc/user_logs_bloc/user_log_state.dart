@@ -11,6 +11,7 @@ class UserLogStateInitial extends UserLogState {}
 
 // ignore: must_be_immutable
 class UserLogViewState extends UserLogState {
-  List<UserLog> userLog;
+  List<Datum> userLog;
   UserLogViewState({this.userLog});
+  List<Object> get props => [userLog];
 }

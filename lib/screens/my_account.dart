@@ -59,7 +59,14 @@ class _MyAccountState extends State<MyAccount> {
     return Scaffold(
         drawer: NavigationList(),
         appBar: AppBar(
-          title: const Text("My Account"),
+          iconTheme: IconThemeData(color: AppColors.Black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            "My Account",
+            style: TextStyle(color: AppColors.Black, fontSize: 23),
+            textAlign: TextAlign.left,
+          ),
         ),
         // drawer: NavigationList(),
         body: SingleChildScrollView(
@@ -68,28 +75,27 @@ class _MyAccountState extends State<MyAccount> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 10,
                 ),
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Transform.scale(
-                      scale: 1.0,
-                      child: Switch(
-                        value: isSwitched,
-                        onChanged: (value) {
-                          setState(() {
-                            isSwitched = !isSwitched;
-                            firstswitch = false;
-                            isSwitched
-                                ? _popupDialog(context)
-                                : firstswitch == false
-                                    ? _popupDialog(context)
-                                    : Text("on");
-                          });
-                        },
-                        activeTrackColor: const Color(0xFF00E5FF),
-                        activeColor: const Color(0xFF00E5FF),
-                      ),
+                    Container(width: 60   ),
+                    Switch(
+                      value: isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = !isSwitched;
+                          firstswitch = false;
+                          isSwitched
+                              ? _popupDialog(context)
+                              : firstswitch == false
+                                  ? _popupDialog(context)
+                                  : Text("on");
+                        });
+                      },
+                      activeTrackColor: const Color(0xFFffd740),
+                      activeColor: const Color(0xFFffd740),
                     ),
                     Textt(
                       text: "Don't show quick message during shortlist",
@@ -427,7 +433,12 @@ class _MyAccountState extends State<MyAccount> {
         Transform.scale(
           scale: 0.9,
           child: new FlatButton(
-            onPressed: () => Navigator.pop(context, 'Cancel'),
+            onPressed: () {
+              setState(() {
+                isSwitched == true;
+              });
+              Navigator.pop(context, 'Cancel');
+            },
             child: const Text('Cancel'),
           ),
         ),
@@ -444,7 +455,7 @@ class _MyAccountState extends State<MyAccount> {
   }
 
   chooseImage() async {
-  //  ImagePicker imagePicker = ImagePicker();
+    //  ImagePicker imagePicker = ImagePicker();
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     // print("image-" + image.path);
 //  _image = File(image.path);

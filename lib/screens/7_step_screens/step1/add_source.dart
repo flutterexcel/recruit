@@ -21,7 +21,14 @@ class _AddSourceState extends State<AddSource> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Add Source"),
+          iconTheme: IconThemeData(color: AppColors.Black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            "Add Source",
+            style: TextStyle(color: AppColors.Black, fontSize: 23),
+            textAlign: TextAlign.left,
+          ),
         ),
         drawer: NavigationList(),
         body: SingleChildScrollView(

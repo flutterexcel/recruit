@@ -32,11 +32,6 @@ class _PermisState extends State<Permis> {
   // }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<PermissionBloc, PermissionState>(
         // ignore: missing_return

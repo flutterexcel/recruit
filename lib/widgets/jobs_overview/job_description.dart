@@ -36,7 +36,7 @@ class JobDescription extends StatelessWidget {
                 height: 24,
                 width: 24,
               ),
-              Image.asset("assets/icons/jobanalytic.svg"),
+              // Image.asset("assets/icons/jobanalytic.svg"),
               JobBar(
                 jobList: jobList,
                 listJobTag: _listJobTag,
