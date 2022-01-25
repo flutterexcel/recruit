@@ -9,6 +9,10 @@ import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dar
 import 'package:flutter_product_recruit/bloc/pipeline_bloc/pipeline_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
+import 'package:flutter_product_recruit/screens/login.dart';
+import 'package:flutter_product_recruit/screens/permissions.dart';
+
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -71,6 +75,7 @@ class _MainState extends State<Main> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Recruit AI',
+        theme: ThemeData(fontFamily: 'RobotRegular'),
         home: RecruiterApp(),
       ),
     );

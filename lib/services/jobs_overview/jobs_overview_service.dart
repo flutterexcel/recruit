@@ -9,7 +9,7 @@ import '../../url_config.dart';
 
 class JobsOverviewService {
   List<JobsOverviewModel> jobsOverviewList = new List();
-  Future<List<JobsOverviewModel>> getJobList(String token) async {
+  Future<List<JobsOverviewModel>> getJobOverview(String token) async {
     String url = await UrlConfig.jobsListCalling(
             action: "jobsOverviewCalling", endPoints: "dashboard/jobs-overview")
         .forFirstEnvironment();

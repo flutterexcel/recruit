@@ -7,23 +7,24 @@ import 'package:http/http.dart' as http;
 
 class UserLogsAuth {
   final JsonDecoder _jsonDecoder = JsonDecoder();
-
   List<UserLog> userLog = [];
-  
-  Future<List<UserLog>> getUserLogList(String token) async {
-    
+  static Future<UserLog> getUserLogList(String token) async {
+    print("getUserLogList");
     String url = await UrlConfig.userLogs(
             action: "userlogs", endPoints: "dashboard/userLogs/1/100")
         .forFirstEnvironment();
     Map<String, String> queryParams = {'accessToken': StorageUtil.getToken()};
     String queryString = Uri(queryParameters: queryParams).query;
     String apiUrl = url + '?' + queryString;
+
     var res = await http.get(apiUrl);
-    var resData = _jsonDecoder.convert(res.body)['data'];
-    for (int i = 0; i < resData.length; i++) {
-      Map<String, dynamic> map = resData[i];
-      userLog .add(UserLog.fromJson(map));
+    if (res.statusCode == 200) {
+      print("Success userlog");
+      // print(jsonDecode(response.body)['data']);
+      return UserLog.fromJson(jsonDecode(res.body));
+    } else {
+      print("error userLog");
+      return UserLog.fromJson(jsonDecode(res.body));
     }
-    return userLog;
   }
 }

@@ -55,7 +55,6 @@ class _JobsOverviewPageState extends State<JobsOverviewPage> {
           context.bloc<UserLogBloc>().add(UserLogBlocEventInitial());
           return Loader();
         } else if (state is UserLogViewState) {
-          print("job overview----$state");
           // return UserLogView(state.userLog);
           return Scaffold(
             drawer: NavigationList(),

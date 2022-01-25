@@ -17,4 +17,5 @@ class JobsOvervViewPageState extends JobsOverviewState {
   List<ListJobTag> listJobTag;
   JobsOvervViewPageState(
       {this.getData, this.jobsOverViewModel, this.hirinTeam, this.listJobTag});
+  List<Object> get props => [getData, jobsOverViewModel, hirinTeam, listJobTag];
 }

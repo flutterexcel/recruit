@@ -10,7 +10,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
 import 'package:flutter_product_recruit/screens/Notifications/setup_slack.dart';
-import 'package:flutter_product_recruit/screens/conversation.dart';
+import 'package:flutter_product_recruit/screens/conversation/conversation.dart';
 import 'package:flutter_product_recruit/screens/jobsoverview.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/manage_emails/manage_emails.dart';

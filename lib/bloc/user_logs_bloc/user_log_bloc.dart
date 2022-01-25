@@ -17,13 +17,13 @@ class UserLogBloc extends Bloc<UserLogBlocEvent, UserLogState> {
   }
 
   Stream<UserLogState> _mapuserBlocInitialToState(
-      UserLogBlocEvent event) async* {
-    List<UserLog> data;
+      UserLogBlocEventInitial event) async* {
+    List<Datum> data = [];
 
     try {
-      await userlogsauth.getUserLogList(StorageUtil.getToken()).then((value) {
-        data = value;
-      });
+      var res = await UserLogsAuth.getUserLogList(StorageUtil.getToken());
+      // print("user log data ${res.data}");
+      data = res.data;
 
       yield UserLogViewState(userLog: data);
     } catch (e) {}

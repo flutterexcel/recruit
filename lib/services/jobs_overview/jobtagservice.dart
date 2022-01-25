@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class JobTagService {
   // ignore: deprecated_member_use
   List<JobTag> jobTag = new List();
-  Future<List<JobTag>> getJobList(String jobToken, String token) async {
+  Future<List<JobTag>> getJobTag(String jobToken, String token) async {
     String url = await UrlConfig.jobsListCalling(
             action: "jobsOverviewCalling", endPoints: "tag/$jobToken")
         .forFirstEnvironment();

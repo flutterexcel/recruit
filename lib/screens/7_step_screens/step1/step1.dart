@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.
 import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
@@ -13,8 +14,16 @@ class Step1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: NavigationList(),
         appBar: AppBar(
-          title: const Text("Create Job"),
+          iconTheme: IconThemeData(color: AppColors.Black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            "Create Job",
+            style: TextStyle(color: AppColors.Black, fontSize: 23),
+            textAlign: TextAlign.left,
+          ),
         ),
         // drawer: NavigationList(),s
         body: SingleChildScrollView(

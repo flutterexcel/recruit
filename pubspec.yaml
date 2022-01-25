@@ -58,21 +58,14 @@ flutter_icons:
 # mfnsdb
 flutter:
   fonts:
-    - family: Roboto
-      fonts:
-        - asset: fonts/Roboto-Medium.ttf
 
-    - family: RobotoThin
+    - family: RobotoBold
       fonts:
-        - asset: fonts/Roboto-Thin.ttf
+        - asset: fonts/Roboto-Bold.ttf
 
-    - family: RobotLight
+    - family: RobotoRegular
       fonts:
-        - asset: fonts/Roboto-Light.ttf
-
-    - family: RobotRegular
-      fonts:
-        - asset: fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
