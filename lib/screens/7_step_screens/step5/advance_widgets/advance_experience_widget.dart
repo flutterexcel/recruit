@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
+import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_product_recruit/widgets/tf_int.dart';
 
-// ignore: camel_case_types
-class Adv_Exp extends StatefulWidget {
+class AdvExp extends StatefulWidget {
   @override
-  State<Adv_Exp> createState() => _Adv_ExpState();
+  State<AdvExp> createState() => _AdvExpState();
 }
 
-// ignore: camel_case_types
-class _Adv_ExpState extends State<Adv_Exp> {
+class _AdvExpState extends State<AdvExp> {
   String _selectedExperience;
 
   List<String> items = [
@@ -182,7 +180,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextFieldCentre(
+                                          child: TextInput(
                                             autocorrect: true,
                                           ),
                                         ),
@@ -202,7 +200,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextFieldCentre(
+                                          child: TextInput(
                                             autocorrect: true,
                                           ),
                                         ),
@@ -231,7 +229,7 @@ class _Adv_ExpState extends State<Adv_Exp> {
                                       SizedBox(
                                         width: 45,
                                         height: 30,
-                                        child: TextFieldCentre(
+                                        child: TextInput(
                                           autocorrect: true,
                                         ),
                                       ),

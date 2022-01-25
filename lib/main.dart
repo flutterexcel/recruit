@@ -10,6 +10,7 @@ import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/screens/permissions.dart';
 
+import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';

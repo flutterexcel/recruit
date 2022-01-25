@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
-import 'package:flutter_product_recruit/widgets/TextField_centre.dart';
+import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
@@ -10,13 +10,9 @@ class Exp extends StatefulWidget {
 }
 
 class _ExpState extends State<Exp> {
-  String _selectedExperience;
-  final List<String> names = <String>[];
-  // final List<String> expName = <String>[];
   bool isIconPressed = true;
   final _controller = TextEditingController();
   final _controller2 = TextEditingController();
-  final List<String> number = <String>[];
 
   List<String> items = [
     'Less than 1 year',
@@ -26,6 +22,9 @@ class _ExpState extends State<Exp> {
     'Custome Experience Range',
   ];
   bool isPressed = false;
+  String _selectedExperience;
+  final List<String> number = <String>[];
+  final List<String> names = <String>[];
 
   @override
   Widget build(BuildContext context) {
@@ -115,9 +114,8 @@ class _ExpState extends State<Exp> {
                                                         alignment: Alignment
                                                             .centerLeft,
                                                         child: _selectedExperience
-                                                                .toString()
-                                                                .contains(
-                                                                    items[4])
+                                                                    .toString() ==
+                                                                items[4]
                                                             ? Text('${names[index]} Years' +
                                                                 ' to ' +
                                                                 '${number[index]} Years')
@@ -188,8 +186,6 @@ class _ExpState extends State<Exp> {
                                       });
                                     },
                                     value: _selectedExperience,
-
-                                    // Hide the default underline
                                     underline: SizedBox(),
                                     hint: Align(
                                       alignment: Alignment.centerLeft,
@@ -239,9 +235,8 @@ class _ExpState extends State<Exp> {
                         const SizedBox(
                           height: 20,
                         ),
-                        _selectedExperience
-                                .toString()
-                                .contains('Custome Experience Range')
+                        _selectedExperience.toString() ==
+                                'Custome Experience Range'
                             ? Column(
                                 children: [
                                   Row(
@@ -258,7 +253,7 @@ class _ExpState extends State<Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextFieldCentre(
+                                          child: TextInput(
                                             controller: _controller,
                                             autocorrect: true,
                                           ),
@@ -279,7 +274,7 @@ class _ExpState extends State<Exp> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 35,
-                                          child: TextFieldCentre(
+                                          child: TextInput(
                                             controller: _controller2,
                                             autocorrect: true,
                                           ),
@@ -317,29 +312,24 @@ class _ExpState extends State<Exp> {
                                 color: AppColors.orange12,
                               ),
                               onTap: () {
-                                setState(() {
-                                  if (_selectedExperience
-                                          .toString()
-                                          .contains(items[0]) ||
-                                      _selectedExperience
-                                          .toString()
-                                          .contains(items[1]) ||
-                                      _selectedExperience
-                                          .toString()
-                                          .contains(items[2]) ||
-                                      _selectedExperience
-                                          .toString()
-                                          .contains(items[3])) {
-                                    names.insert(0, _selectedExperience);
-                                  } else if (_selectedExperience
-                                      .toString()
-                                      .contains(items[4])) {
-                                    names.insert(0, _controller.text);
-                                    names.insert(0, _controller2.text);
-                                    _controller.clear();
-                                    _controller2.clear();
-                                  }
-                                });
+                                if (_selectedExperience.toString() ==
+                                        items[0] ||
+                                    _selectedExperience.toString() ==
+                                        items[1] ||
+                                    _selectedExperience.toString() ==
+                                        items[2] ||
+                                    _selectedExperience.toString() ==
+                                        items[3]) {
+                                  names.insert(0, _selectedExperience);
+                                } else if (_selectedExperience.toString() ==
+                                    items[4]) {
+                                  print(_selectedExperience.toString());
+                                  names.insert(0, _controller.text);
+                                  number.insert(0, _controller2.text);
+                                  _controller.clear();
+                                  _controller2.clear();
+                                }
+                                setState(() {});
                               },
                             ),
                           ],

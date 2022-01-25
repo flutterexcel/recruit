@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, implementation_imports
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/src/bloc_provider.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';

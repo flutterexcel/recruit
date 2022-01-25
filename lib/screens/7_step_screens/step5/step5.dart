@@ -9,11 +9,10 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_wid
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_passout_year_widget.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step5/advance_widgets/advance_skills_widget.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step6/step6.dart';
-
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
-
 import 'basic_widgets/dob_widget.dart';
 import 'basic_widgets/education_widget.dart';
 import 'basic_widgets/experience_widget.dart';
@@ -22,15 +21,12 @@ import 'basic_widgets/location_widget.dart';
 import 'basic_widgets/passout_year_widget.dart';
 import 'basic_widgets/skills_widget.dart';
 
-// ignore: must_be_immutable
 class Step5 extends StatefulWidget {
   @override
   State<Step5> createState() => _Step5State();
 }
 
 class _Step5State extends State<Step5> {
-  final List<String> names = <String>['govind', 'text', 'Test', 'test123'];
-
   bool isSwitched = true;
 
   @override
@@ -39,7 +35,7 @@ class _Step5State extends State<Step5> {
         appBar: AppBar(
           title: const Text("Create Job"),
         ),
-        // drawer: NavigationList(),
+        drawer: NavigationList(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -188,7 +184,7 @@ class _Step5State extends State<Step5> {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Edu(),
+                                  Education(),
                                   const SizedBox(
                                     height: 20,
                                   ),
@@ -212,15 +208,15 @@ class _Step5State extends State<Step5> {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Adv_Skills(),
+                                  AdvSkills(),
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Adv_Exp(),
+                                  AdvExp(),
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Adv_Edu(),
+                                  AdvEdu(),
                                   const SizedBox(
                                     height: 20,
                                   ),
@@ -228,15 +224,15 @@ class _Step5State extends State<Step5> {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Adv_Passout(),
+                                  AdvPassout(),
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Adv_Location(),
+                                  AdvLocation(),
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Adv_Dob(),
+                                  AdvDob(),
                                 ],
                               ),
 

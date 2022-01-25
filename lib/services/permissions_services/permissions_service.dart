@@ -1,8 +1,9 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:flutter_product_recruit/model/permission/permisson.dart';
 import 'package:flutter_product_recruit/model/permission/set_permission_model.dart';
-import 'package:flutter_product_recruit/services/post_service.dart';
 import 'package:http/http.dart' as http;
 
 class PermissionService {
