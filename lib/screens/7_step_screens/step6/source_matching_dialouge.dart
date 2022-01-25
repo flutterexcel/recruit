@@ -5,9 +5,10 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
 // ignore: camel_case_types
-class Source_Matching extends StatelessWidget {
+class SourceMatching extends StatelessWidget {
   TextEditingController textEditingController;
-  Source_Matching({this.textEditingController});
+
+//  SourceMatching({this.textEditingController});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,6 +48,7 @@ class Source_Matching extends StatelessWidget {
               ),
               TextInput(
                 autocorrect: true,
+                controller: textEditingController,
                 hintText: "Stage",
               ),
               SizedBox(
@@ -65,7 +67,9 @@ class Source_Matching extends StatelessWidget {
                   style: TextStyle(fontSize: 13),
                 ),
                 textColor: Colors.white,
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
           ),
         ],
       ),

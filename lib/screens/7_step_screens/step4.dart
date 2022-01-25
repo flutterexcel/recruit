@@ -7,32 +7,29 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_event.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_state.dart';
+import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step3/step3.dart';
 
 import 'package:flutter_product_recruit/screens/userlist/users_list.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// ignore: must_be_immutable
 class Step4 extends StatefulWidget {
   @override
   State<Step4> createState() => _Step4State();
 }
 
 class _Step4State extends State<Step4> {
-  /// final List<String> names = <String>['govind', 'text', 'Test', 'test123'];
 
-  bool isHRSelected = true;
-  //bool isIntervieweeSelected = true;
 
   @override
   Widget build(BuildContext context) {
-    List list1 = [];
-    List list2 = [];
-    List<bool> _isIntSelected = List.generate(20, (i) => false);
+    List<UserListsModel> list1 = [];
+    List<UserListsModel> list2 = [];
     return BlocBuilder<UserListBloc, UserListState>(builder: (context, state) {
       if (state is UserListInitialState) {
         context.bloc<UserListBloc>().add(UserListInitialEvent());
@@ -52,10 +49,11 @@ class _Step4State extends State<Step4> {
           }
         }
         return Scaffold(
+        
             appBar: AppBar(
               title: const Text("Create Job"),
             ),
-            // drawer: NavigationList(),
+            drawer: NavigationList(),
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -143,43 +141,57 @@ class _Step4State extends State<Step4> {
                                           itemBuilder: (context, index) {
                                             return Column(
                                               children: [
-                                                Container(
-                                                  // constraints: BoxConstraints(
-                                                  //     minWidth: 100, maxWidth: 200),
-                                                  // height: 40,
-                                                  //  width: 140,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            AppColors.orange12),
-                                                    shape: BoxShape.rectangle,
-                                                    borderRadius:
-                                                        const BorderRadius.all(
-                                                            Radius.circular(
-                                                                20)),
+                                                ListTile(
+                                                  title: Container(
+                                                    // constraints: BoxConstraints(
+                                                    //     minWidth: 100, maxWidth: 200),
+                                                    // height: 40,
+                                                    //  width: 140,
+                                                    decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: list1[index]
+                                                                  .isSelected
+                                                              ? AppColors
+                                                                  .orange12
+                                                              : AppColors.grey),
+                                                      shape: BoxShape.rectangle,
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                                  .all(
+                                                              Radius.circular(
+                                                                  20)),
+                                                    ),
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 15.0),
+                                                            child: CircleAvatar(
+                                                              backgroundColor:
+                                                                  Colors.white,
+                                                              child: SvgPicture
+                                                                  .network(list1[
+                                                                          index]
+                                                                      .imageUrl),
+                                                              radius: 18,
+                                                            )),
+                                                        const SizedBox(
+                                                          width: 15,
+                                                        ),
+                                                        Text(list1[index].name),
+                                                      ],
+                                                    ),
                                                   ),
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 15.0),
-                                                          child: CircleAvatar(
-                                                            backgroundColor:
-                                                                Colors.white,
-                                                            child: SvgPicture
-                                                                .network(list1[
-                                                                        index]
-                                                                    .imageUrl),
-                                                            radius: 18,
-                                                          )),
-                                                      const SizedBox(
-                                                        width: 15,
-                                                      ),
-                                                      Text(list1[index].name),
-                                                    ],
-                                                  ),
+                                                  onTap: () {
+                                                    print(list1[index].name);
+                                                    // ignore: unnecessary_statements
+                                                    list1[index].isSelected =
+                                                        !list1[index]
+                                                            .isSelected;
+                                                    setState(() {});
+                                                  },
                                                 ),
                                                 SizedBox(
                                                   height: 10,
@@ -231,8 +243,8 @@ class _Step4State extends State<Step4> {
 
                                                     decoration: BoxDecoration(
                                                       border: Border.all(
-                                                          color: _isIntSelected[
-                                                                  index]
+                                                          color: list2[index]
+                                                                  .isSelected
                                                               ? AppColors
                                                                   .orange12
                                                               : AppColors.grey),
@@ -268,9 +280,9 @@ class _Step4State extends State<Step4> {
                                                   ),
                                                   onTap: () {
                                                     setState(() {
-                                                      _isIntSelected[index] =
-                                                          !_isIntSelected[
-                                                              index];
+                                                      list2[index].isSelected =
+                                                          !list2[index]
+                                                              .isSelected;
                                                     });
                                                   },
                                                 ),

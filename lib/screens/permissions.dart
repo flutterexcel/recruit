@@ -1,9 +1,10 @@
+// ignore_for_file: deprecated_member_use, missing_return
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
 import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
-import 'package:flutter_product_recruit/model/permission/permisson.dart';
 import 'package:flutter_product_recruit/model/permission/set_permission_model.dart';
 import 'package:flutter_product_recruit/services/permissions_services/permissions_service.dart';
 import 'package:flutter_product_recruit/widgets/loader1.dart';
@@ -39,10 +40,8 @@ class _PermisState extends State<Permis> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PermissionBloc, PermissionState>(
-        // ignore: missing_return
         builder: (context, state) {
       if (state is PermissionInitialState) {
-        // ignore: deprecated_member_use
         context.bloc<PermissionBloc>().add(PermissionInitialEvent());
         return Loader1();
       } else if (state is GetPermission) {

@@ -6,8 +6,9 @@ import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
+import 'package:flutter_product_recruit/bloc/pipeline_bloc/pipeline_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -63,6 +64,9 @@ class _MainState extends State<Main> {
         BlocProvider<PermissionBloc>(
           create: (context) => PermissionBloc(),
         ),
+        BlocProvider<PipeLineBloc>(
+          create: (context) => PipeLineBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -77,6 +81,6 @@ class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //  return DomainLogin();
-    return Step5();
+    return Step4();
   }
 }

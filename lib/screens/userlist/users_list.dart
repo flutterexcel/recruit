@@ -63,12 +63,21 @@ class _UsersListState extends State<UsersList> {
 
   @override
   Widget build(BuildContext context) {
+    List list1 = [];
+    // List list2 = [];
     return BlocBuilder<UserListBloc, UserListState>(builder: (context, state) {
       if (state is UserListInitialState) {
         // ignore: deprecated_member_use
         context.bloc<UserListBloc>().add(UserListInitialEvent());
         return Loader1();
       } else if (state is GetUserListState) {
+        for (final hrList in state.userLists) {
+          if (hrList.userType == "HR") {
+            list1.add(hrList);
+            print(list1.length);
+          }
+        }
+
         return Scaffold(
           drawer: NavigationList(),
           appBar: SecondAppBar(
@@ -127,9 +136,8 @@ class _UsersListState extends State<UsersList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Textt(
-                            text:
-                                "${state.userLists[1].jobProfiles.length}  jobs" ??
-                                    "null",
+                            text: "${list1[index].jobProfiles.length} jobs" ??
+                                "null",
                           ),
                           const SizedBox(
                             width: 5,
@@ -164,7 +172,7 @@ class _UsersListState extends State<UsersList> {
                                   //     2 /
                                   //     (MediaQuery.of(context).size.height / 3),
                                 ),
-                                itemCount: 3,
+                                itemCount: list1[index].jobProfiles.length,
                                 itemBuilder: (context, index) {
                                   return SingleChildScrollView(
                                     child: Contain(
@@ -182,7 +190,9 @@ class _UsersListState extends State<UsersList> {
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                      'Angular Developer',
+                                                      list1[index]
+                                                          .jobProfiles
+                                                          .toString(),
                                                       style: TextStyle(
                                                           color: Colors.black),
                                                     ),

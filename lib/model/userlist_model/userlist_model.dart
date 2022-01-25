@@ -30,10 +30,12 @@ class UserListsModel {
     this.userListsModelId,
     this.imageUrl,
     this.jobProfiles,
+    this.isSelected = true,
   });
 
   DateTime lastLogin;
   bool activeStatus;
+  bool isSelected;
   bool extensionLogin;
   String id;
   String email;
@@ -55,6 +57,7 @@ class UserListsModel {
             ? null
             : DateTime.parse(json["last_login"]),
         activeStatus: json["activeStatus"],
+        isSelected: true,
         extensionLogin: json["extensionLogin"],
         id: json["_id"],
         email: json["email"],
