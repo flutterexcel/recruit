@@ -14,6 +14,7 @@ class UrlConfig {
   String endPoints;
   String jobTagValue;
   String midPoints;
+
   UrlConfig({this.url});
   UrlConfig.firstLogin({this.step, this.action});
   UrlConfig.nextLogin({this.step, this.action, this.token});
