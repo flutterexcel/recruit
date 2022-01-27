@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/services/jobs_overview/jobtagservice.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 import '../UiConstant/app_colors.dart';
 

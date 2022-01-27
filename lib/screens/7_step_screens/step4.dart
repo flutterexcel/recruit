@@ -1,4 +1,4 @@
-// ignore_for_file: missing_return, deprecated_member_use
+// ignore_for_file: missing_return, deprecated_member_use, unnecessary_statements
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,12 +24,12 @@ class Step4 extends StatefulWidget {
 }
 
 class _Step4State extends State<Step4> {
-
-
   @override
   Widget build(BuildContext context) {
     List<UserListsModel> list1 = [];
     List<UserListsModel> list2 = [];
+    List list3 = [];
+
     return BlocBuilder<UserListBloc, UserListState>(builder: (context, state) {
       if (state is UserListInitialState) {
         context.bloc<UserListBloc>().add(UserListInitialEvent());
@@ -49,7 +49,6 @@ class _Step4State extends State<Step4> {
           }
         }
         return Scaffold(
-        
             appBar: AppBar(
               title: const Text("Create Job"),
             ),
@@ -186,11 +185,17 @@ class _Step4State extends State<Step4> {
                                                   ),
                                                   onTap: () {
                                                     print(list1[index].name);
-                                                    // ignore: unnecessary_statements
                                                     list1[index].isSelected =
                                                         !list1[index]
                                                             .isSelected;
+
+                                                    // list1[index].isSelected
+                                                    //     ? list3.add(
+                                                    //         list1[index].name)
+                                                    //     : null;
+                                                    // print(list3);
                                                     setState(() {});
+                                                    //   print( "-->${list1[index].isSelected}");
                                                   },
                                                 ),
                                                 SizedBox(
@@ -319,6 +324,7 @@ class _Step4State extends State<Step4> {
                                   bgcolor: AppColors.blue,
                                   borderRadius: 2,
                                   onTap: () {
+                                    print(list3);
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) => UsersList()));

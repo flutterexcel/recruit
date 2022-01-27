@@ -99,14 +99,21 @@ class _GetReferralsState extends State<GetReferrals> {
                           height: 30,
                         ),
                         Container(
+                          height: 60,
+                          width: 60,
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.orange12,
                           ),
-                          child: Text(states.referralList[index].email[0]
-                              .toString()
-                              .toUpperCase()),
+                          child: Center(
+                            child: Text(
+                              states.referralList[index].email[0]
+                                  .toString()
+                                  .toUpperCase(),
+                              textScaleFactor: 1.5,
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           height: 10,
@@ -116,7 +123,7 @@ class _GetReferralsState extends State<GetReferrals> {
                           height: 5,
                         ),
                         Textt(
-                          text: DateFormat('dd:MM:yyyy').format(dater),
+                          text: DateFormat('MMM:dd').format(dater),
                         ),
                         const SizedBox(
                           height: 30,

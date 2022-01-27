@@ -9,6 +9,9 @@ import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_state.dar
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_bloc.dart';
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_event.dart';
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_state.dart';
+import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
+import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_event.dart';
+import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -644,6 +647,42 @@ class _StatsState extends State<Stats> {
                           Divider(
                             color: Colors.black,
                           ),
+                          BlocBuilder<JobListBloc, JobListState>(
+                              builder: (context, state) {
+                            if (state is JobListInitialState) {
+                              context
+                                  .bloc<JobListBloc>()
+                                  .add(JobListInitialEvent());
+                              return SizedBox(height: 35, child: Loader());
+                            } else if (state is GetJobListState) {
+                              //  print("statessss----$state");
+                              print(state.jobLists.length);
+                              return Container(
+                                height: 200,
+                                child: Column(
+                                  children: [
+                                    for (var i = 0;
+                                        i < state.jobLists.length;
+                                        i++)
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(
+                                            state.jobLists[i].title,
+                                            textScaleFactor: 1.6,
+                                          ),
+                                        ],
+                                      ),
+                                    Container(
+                                      height: 30,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            } else
+                              return Container();
+                          }),
                         ],
                       ),
                     ),

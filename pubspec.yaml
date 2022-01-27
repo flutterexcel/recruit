@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  basic_utils: ^2.7.0
+  basic_utils: ^2.6.3
   equatable: ^1.2.5
   expandable: ^4.1.4
   flutter:
@@ -35,13 +35,12 @@ dependencies:
   getwidget: ^1.2.4
   http: ^0.12.2
   image_picker: null
-  intl: ^0.15.2
+  intl: ^0.16.1
   line_icons: ^2.0.0
   percent_indicator: ^2.1.9
   provider: ^4.3.3
   shared_preferences: ^0.5.12+4
   step_progress_indicator: ^0.2.5+8
- 
 
   syncfusion_flutter_datepicker: ^19.4.43
 dependency_overrides:
@@ -58,10 +57,9 @@ flutter_icons:
 # mfnsdb
 flutter:
   fonts:
-
     - family: RobotoBold
       fonts:
-        - asset: fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
 
     - family: RobotoRegular
       fonts:
