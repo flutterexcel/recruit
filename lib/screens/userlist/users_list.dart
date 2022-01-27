@@ -33,6 +33,7 @@ class UsersList extends StatefulWidget {
 class _UsersListState extends State<UsersList> {
   bool isSwitched = false;
   List data = [];
+  // List<bool> isSwitched = [];
 
   // @override
   // void initState() {
@@ -71,12 +72,12 @@ class _UsersListState extends State<UsersList> {
         context.bloc<UserListBloc>().add(UserListInitialEvent());
         return Loader1();
       } else if (state is GetUserListState) {
-        for (final hrList in state.userLists) {
-          if (hrList.userType == "HR") {
-            list1.add(hrList);
-            print(list1.length);
-          }
-        }
+        // for (final hrList in state.userLists) {
+        //   if (hrList.userType == "HR") {
+        //     list1.add(hrList);
+        //     print(list1.length);
+        //   }
+        // }
 
         return Scaffold(
           drawer: NavigationList(),
@@ -132,28 +133,45 @@ class _UsersListState extends State<UsersList> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Textt(
-                            text: "${list1[index].jobProfiles.length} jobs" ??
-                                "null",
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          InkWell(
-                            child: Icon(isSwitched
-                                ? Icons.arrow_drop_up
-                                : Icons.arrow_drop_down),
-                            onTap: () {
-                              setState(() {
-                                isSwitched = !isSwitched;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
+                      state.userLists[index + 1].userType == 'Admin'
+                          ? SizedBox(
+                              height: 10,
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Textt(
+                                  text: state.userLists[index + 1].userType !=
+                                          'Admin'
+                                      ? "${state.userLists[index + 1].jobProfiles.length} jobs"
+                                      : '',
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                // InkWell(
+                                //   child: Icon(isSwitched[index + 1]
+                                //       ? Icons.arrow_drop_up
+                                //       : Icons.arrow_drop_down),
+                                //   onTap: () {
+                                //     setState(() {
+                                //       isSwitched[index + 1] =
+                                //           !isSwitched[index + 1];
+                                //     });
+                                //   },
+                                // ),
+                                InkWell(
+                                  child: Icon(isSwitched
+                                      ? Icons.arrow_drop_up
+                                      : Icons.arrow_drop_down),
+                                  onTap: () {
+                                    setState(() {
+                                      isSwitched = !isSwitched;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -172,8 +190,13 @@ class _UsersListState extends State<UsersList> {
                                   //     2 /
                                   //     (MediaQuery.of(context).size.height / 3),
                                 ),
-                                itemCount: list1[index].jobProfiles.length,
-                                itemBuilder: (context, index) {
+                                itemCount:
+                                    state.userLists[index + 1].userType !=
+                                            'Admin'
+                                        ? state.userLists[index + 1].jobProfiles
+                                            .length
+                                        : 0,
+                                itemBuilder: (context, index2) {
                                   return SingleChildScrollView(
                                     child: Contain(
                                       //  height: 30,
@@ -190,8 +213,8 @@ class _UsersListState extends State<UsersList> {
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                      list1[index]
-                                                          .jobProfiles
+                                                      state.userLists[index + 1]
+                                                          .jobProfiles[index2]
                                                           .toString(),
                                                       style: TextStyle(
                                                           color: Colors.black),
