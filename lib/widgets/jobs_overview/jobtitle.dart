@@ -92,7 +92,7 @@ class _JobTitleState extends State<JobTitle> {
                           IconButton(
                               icon: Icon(isTitleTap[index]
                                   ? Icons.arrow_drop_down
-                                  : Icons.arrow_left),
+                                  : Icons.arrow_drop_up),
                               onPressed: () {
                                 if (isTitleTap[index] == false) {
                                   setState(() {
@@ -207,16 +207,16 @@ class _JobTitleState extends State<JobTitle> {
                     ],
                   )),
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => KanbanScreen(
-                        _listJobTag[index].listJobTag,
-                        getData[index].candidateProfile,
-                        getData[index].id)),
-              );
-            },
+            // onTap: () {
+            //   Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (context) => KanbanScreen(
+            //             _listJobTag[index].listJobTag,
+            //             getData[index].candidateProfile,
+            //             getData[index].id)),
+            //   );
+            // },
             subtitle: isTitleTap[index] == true
                 ? JobDescription(getData[index], _listJobTag[index].listJobTag)
                 : Center());

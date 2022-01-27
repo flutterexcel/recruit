@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use, missing_return
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
@@ -12,6 +14,8 @@ import 'package:flutter_product_recruit/bloc/application_status_bloc/application
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_event.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
+import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
+import 'package:flutter_product_recruit/screens/statistics/ai_analytics.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -25,8 +29,19 @@ class Stats extends StatefulWidget {
 
 class _StatsState extends State<Stats> {
   bool isSwitched = false;
-  String callLogsdd = 'User';
-  List<String> callLogsItems = ['User', 'Test'];
+  String callLogsdd;
+  // List<String> callLogsItems = ['User', 'Test'];
+  List<Color> colors = [
+    Colors.red,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.purple,
+    Colors.yellow,
+    Colors.indigo,
+    Colors.green,
+  ];
+  //List<charts.Series<Pollution, String>> _seriesData;
 
   String activitydd;
 
@@ -40,14 +55,6 @@ class _StatsState extends State<Stats> {
   //   _generateData();
   // }
 
-  // // void getApplicationStatus() async {
-  // //   print("entered");
-  // //   GetApplicationStatusService getApplicationStatusService =
-  // //       new GetApplicationStatusService();
-  // //   applicationStatusList =
-  // //       await getApplicationStatusService.getApplicationStatus();
-  // //   print("---->$applicationStatusList");
-  // // }
   // _generateData() {
   //   var data1 = [
   //     new Pollution(1980, 'USA', 30),
@@ -103,6 +110,7 @@ class _StatsState extends State<Stats> {
   @override
   Widget build(BuildContext context) {
     print("entered in build");
+    List<UserListsModel> list1 = [];
 
     return BlocBuilder<ApplicationStatusBloc, ApplicationStatusState>(
         builder: (context, state) {
@@ -114,8 +122,28 @@ class _StatsState extends State<Stats> {
       } else if (state is GetApplicationStatusState) {
         return Scaffold(
             appBar: AppBar(
-              title: const Text("Statistics"),
+              title: const Text(
+                "Statistics",
+                style: TextStyle(color: Colors.black),
+              ),
+              iconTheme: IconThemeData(color: AppColors.Black),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              actions: [
+                IconButton(
+                  icon: Image.asset("assets/icons/jobanalytic.svg"),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => AIAnalytics()));
+                  },
+                ),
+                // add more IconButton
+              ],
             ),
+            //   : Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Image.asset("assets/icons/jobanalytic.svg")),
+            // ),
             drawer: NavigationList(),
             body: Padding(
               padding: EdgeInsets.all(15.0),
@@ -658,28 +686,48 @@ class _StatsState extends State<Stats> {
                               //  print("statessss----$state");
                               print(state.jobLists.length);
                               return Container(
-                                height: 200,
-                                child: Column(
-                                  children: [
-                                    for (var i = 0;
-                                        i < state.jobLists.length;
-                                        i++)
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text(
-                                            state.jobLists[i].title,
-                                            textScaleFactor: 1.6,
+                                  height: 200,
+                                  child: Wrap(
+                                    //   runAlignment: WrapAlignment.start,
+                                    alignment: WrapAlignment.start,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.start,
+                                    spacing: 8.0, // gap between adjacent chips
+                                    //  runSpacing: 4.0, // gap between lines
+                                    children: [
+                                      for (var i = 0;
+                                          i < state.jobLists.length;
+                                          i++)
+                                        Text.rich(
+                                          TextSpan(
+                                            children: <InlineSpan>[
+                                              WidgetSpan(
+                                                alignment:
+                                                    PlaceholderAlignment.middle,
+                                                child: Container(
+                                                  height: 10,
+                                                  width: 10,
+                                                  padding:
+                                                      const EdgeInsets.all(4),
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Colors.primaries[
+                                                          Random().nextInt(
+                                                              Colors.primaries
+                                                                  .length)]),
+                                                  child: Text(""),
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                  text:
+                                                      "  ${state.jobLists[i].title}"),
+                                            ],
                                           ),
-                                        ],
-                                      ),
-                                    Container(
-                                      height: 30,
-                                    ),
-                                  ],
-                                ),
-                              );
+                                          // textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 13),
+                                        )
+                                    ],
+                                  ));
                             } else
                               return Container();
                           }),
@@ -725,160 +773,6 @@ class _StatsState extends State<Stats> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Contain(
-                      width: MediaQuery.of(context).size.width,
-                      height: 340,
-                      borderrad: 5,
-                      outlinecolor: AppColors.grey,
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Textt(
-                                    text: "Call Logs",
-                                    size: 20,
-                                    fweight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  child: DefaultTabController(
-                                    length: 3,
-                                    child: TabBar(
-                                      labelColor: Color(0xFF00E5FF),
-                                      indicatorColor: Color(0xFF00E5FF),
-                                      unselectedLabelColor: Colors.black,
-                                      labelStyle: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                      tabs: <Widget>[
-                                        Text(
-                                          "Day",
-                                          textScaleFactor: 0.7,
-                                        ),
-                                        Text(
-                                          "Month",
-                                          textScaleFactor: 0.7,
-                                        ),
-                                        DropdownButton<String>(
-                                          onChanged: (value) {
-                                            setState(() {
-                                              callLogsdd = value;
-                                            });
-                                          },
-                                          value: callLogsdd,
-
-                                          underline: SizedBox(),
-
-                                          isExpanded: true,
-
-                                          // The list of options
-                                          items: callLogsItems
-                                              .map((e) => DropdownMenuItem(
-                                                    child: Container(
-                                                      child: Text(
-                                                        e,
-                                                        textScaleFactor: 1.4,
-                                                        style: TextStyle(
-                                                            fontSize: 13),
-                                                      ),
-                                                    ),
-                                                    value: e,
-                                                  ))
-                                              .toList(),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Divider(
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Contain(
-                      width: MediaQuery.of(context).size.width,
-                      height: 340,
-                      borderrad: 5,
-                      outlinecolor: AppColors.grey,
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: Textt(
-                                  text: "Job Application Read",
-                                  size: 20,
-                                  fweight: FontWeight.bold,
-                                ),
-                              ),
-                              Expanded(
-                                child: DefaultTabController(
-                                  length: 2,
-                                  child: TabBar(
-                                    labelColor: Color(0xFF00E5FF),
-                                    indicatorColor: Color(0xFF00E5FF),
-                                    unselectedLabelColor: Colors.black,
-                                    labelStyle: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                    tabs: <Widget>[
-                                      Text(
-                                        "By Day",
-                                        textScaleFactor: 0.8,
-                                      ),
-                                      Text(
-                                        "By User",
-                                        textScaleFactor: 0.8,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     BlocBuilder<AllUserLogBloc, AllUserLogState>(
                         builder: (context, state) {
                       if (state is AllUserLogInitialState) {
@@ -888,77 +782,258 @@ class _StatsState extends State<Stats> {
 
                         return SizedBox(height: 10, child: Loader());
                       } else if (state is AllUserLogDropdownState) {
-                        print(state.usersList.length);
-                        return Contain(
-                          width: MediaQuery.of(context).size.width,
-                          height: 340,
-                          borderrad: 5,
-                          outlinecolor: AppColors.grey,
-                          //  backcolor: AppColors.purple,
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
+                        for (final hrList in state.usersList) {
+                          if (hrList.userType == "HR") {
+                            list1.add(hrList);
+                            // print(list1.length);
+                          }
+                        }
+                        return Column(
+                          children: [
+                            Contain(
+                              width: MediaQuery.of(context).size.width,
+                              height: 340,
+                              borderrad: 5,
+                              outlinecolor: AppColors.grey,
+                              child: Column(
                                 children: [
                                   const SizedBox(
-                                    width: 10,
+                                    height: 10,
                                   ),
-                                  Expanded(
-                                    child: Textt(
-                                      text: "Activity",
-                                      size: 20,
-                                      fweight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  DropdownButton<String>(
-                                    onChanged: (value) {
-                                      setState(() {
-                                        activitydd = value;
-                                      });
-                                    },
-                                    value: activitydd,
-
-                                    // Hide the default underline
-                                    underline: SizedBox(),
-                                    hint: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'By Name',
-                                        style: TextStyle(
-                                            fontSize: 13, color: Colors.grey),
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
                                       ),
-                                    ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Textt(
+                                            text: "Call Logs",
+                                            size: 20,
+                                            fweight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 4,
+                                        child: Container(
+                                          child: DefaultTabController(
+                                            length: 3,
+                                            child: TabBar(
+                                              labelColor: Color(0xFF00E5FF),
+                                              indicatorColor: Color(0xFF00E5FF),
+                                              unselectedLabelColor:
+                                                  Colors.black,
+                                              labelStyle: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                              tabs: <Widget>[
+                                                Text(
+                                                  "Day",
+                                                  textScaleFactor: 0.7,
+                                                ),
+                                                Text(
+                                                  "Month",
+                                                  textScaleFactor: 0.7,
+                                                ),
+                                                DropdownButton<String>(
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      callLogsdd = value;
+                                                    });
+                                                  },
+                                                  value: callLogsdd,
+                                                  isExpanded: true,
 
-                                    items: state.usersList
-                                            .map((e) => DropdownMenuItem(
-                                                  child: Container(
+                                                  // Hide the default underline
+                                                  underline: SizedBox(),
+                                                  hint: Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
                                                     child: Text(
-                                                      e.name.toString(),
-                                                      textScaleFactor: 1.4,
+                                                      'User',
                                                       style: TextStyle(
-                                                          fontSize: 13),
+                                                        fontSize: 14,
+                                                      ),
                                                     ),
                                                   ),
-                                                  value: e.id.toString(),
-                                                ))
-                                            .toList() ??
-                                        [],
+
+                                                  items: list1
+                                                          .map((e) =>
+                                                              DropdownMenuItem(
+                                                                child:
+                                                                    Container(
+                                                                  child: Text(
+                                                                    e.name
+                                                                        .toString(),
+                                                                    textScaleFactor:
+                                                                        1.4,
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            13),
+                                                                  ),
+                                                                ),
+                                                                value: e.id
+                                                                    .toString(),
+                                                              ))
+                                                          .toList() ??
+                                                      [],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
                                   ),
                                   const SizedBox(
-                                    width: 10,
+                                    height: 5,
+                                  ),
+                                  Divider(
+                                    color: Colors.black,
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Contain(
+                              width: MediaQuery.of(context).size.width,
+                              height: 340,
+                              borderrad: 5,
+                              outlinecolor: AppColors.grey,
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Textt(
+                                          text: "Job Application Read",
+                                          size: 20,
+                                          fweight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: DefaultTabController(
+                                          length: 2,
+                                          child: TabBar(
+                                            labelColor: Color(0xFF00E5FF),
+                                            indicatorColor: Color(0xFF00E5FF),
+                                            unselectedLabelColor: Colors.black,
+                                            labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                            tabs: <Widget>[
+                                              Text(
+                                                "By Day",
+                                                textScaleFactor: 0.8,
+                                              ),
+                                              Text(
+                                                "By User",
+                                                textScaleFactor: 0.8,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: Colors.black,
+                                  ),
+                                ],
                               ),
-                              Divider(
-                                color: Colors.black,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Contain(
+                              width: MediaQuery.of(context).size.width,
+                              height: 340,
+                              borderrad: 5,
+                              outlinecolor: AppColors.grey,
+                              //  backcolor: AppColors.purple,
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Textt(
+                                          text: "Activity",
+                                          size: 20,
+                                          fweight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      DropdownButton<String>(
+                                        onChanged: (value) {
+                                          setState(() {
+                                            activitydd = value;
+                                          });
+                                        },
+                                        value: activitydd,
+
+                                        // Hide the default underline
+                                        underline: SizedBox(),
+                                        hint: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'By Name',
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey),
+                                          ),
+                                        ),
+
+                                        items: state.usersList
+                                                .map((e) => DropdownMenuItem(
+                                                      child: Container(
+                                                        child: Text(
+                                                          e.name.toString(),
+                                                          textScaleFactor: 1.4,
+                                                          style: TextStyle(
+                                                              fontSize: 13),
+                                                        ),
+                                                      ),
+                                                      value: e.id.toString(),
+                                                    ))
+                                                .toList() ??
+                                            [],
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Divider(
+                                    color: Colors.black,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         );
                       }
                     }),

@@ -7,7 +7,12 @@ import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
 // ignore: must_be_immutable
-class ConnectedToEmail extends StatelessWidget {
+class ForYahoo extends StatefulWidget {
+  @override
+  State<ForYahoo> createState() => _ForYahooState();
+}
+
+class _ForYahooState extends State<ForYahoo> {
   TextEditingController imapController =
       new TextEditingController(text: "imap.mail.yahoo.com");
 
@@ -17,75 +22,11 @@ class ConnectedToEmail extends StatelessWidget {
       new TextEditingController(text: "SSL");
 
   TextEditingController portController = new TextEditingController(text: "993");
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Textt(
-              text: "Email",
-            ),
-          ),
-        ),
-        const SizedBox(height: 5),
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: TextInput(
-            controller: emailController,
-            borderRadius: 1,
-            autocorrect: true,
-            hintText: "Email",
-            img: emailController.text.contains('yahoo.com')
-                ? Container(
-                    child: Transform.scale(
-                      scale: 0.6,
-                      child: Image.asset(
-                        'assets/images/yahoo.png',
-                        height: 5,
-                        width: 5,
-                      ),
-                    ),
-                  )
-                : Container(
-                    child: Transform.scale(
-                      scale: 0.6,
-                      child: Image.asset(
-                        'assets/images/gmaill.png',
-                        height: 5,
-                        width: 5,
-                      ),
-                    ),
-                  ),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Textt(
-              text: "Password",
-            ),
-          ),
-        ),
-        const SizedBox(height: 5),
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: TextInput(
-            borderRadius: 1,
-            obscureText: true,
-            autocorrect: true,
-            hintText: "Password",
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
         Padding(
           padding: const EdgeInsets.only(right: 12.0),
           child: Contain(
@@ -100,52 +41,24 @@ class ConnectedToEmail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Gmail Settings:",
+                    "Yahoo Settings:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 4,
                   ),
                   Text(
-                    "**NOTE : The recommended way is for your to",
+                    "**NOTE : IMAP settings are required to fetch email from your mailbox. You can get the correct settings here ",
                     style: TextStyle(fontSize: 15),
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    children: [
-                      Text("setup "),
-                      Text(
-                        "2FA",
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: AppColors.blue),
-                      ),
-                      Text(" authentication on your gmail account and"),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    children: [
-                      Text("and "),
-                      Text(
-                        "enable app",
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: AppColors.blue),
-                      ),
-                      Text(" specific passwords.This way you"),
-                    ],
                   ),
                   const SizedBox(
                     height: 3,
                   ),
                   Text(
-                    "don't have to share with us your actual gmail password and your account is fully secure!",
-                    style: TextStyle(fontSize: 15),
+                    "https://help.yahoo.com/kb/SLN4075.html?guccounter=1",
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: AppColors.blue),
                   ),
                 ],
               ),
@@ -225,8 +138,9 @@ class ConnectedToEmail extends StatelessWidget {
           text: "Add",
           bgcolor: AppColors.blue,
           onTap: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Step1()));
+            print(emailController.text.contains('yahoo.com'));
+            // Navigator.of(context)
+            //     .push(MaterialPageRoute(builder: (context) => Step1()));
           },
         ),
         const SizedBox(

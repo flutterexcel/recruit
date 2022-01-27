@@ -16,6 +16,7 @@ class TextInput extends StatelessWidget {
   TextInputType keyboardtype;
 
   Function validateText;
+  Function onTap;
   Container img;
 
   int maxLength;
@@ -35,6 +36,7 @@ class TextInput extends StatelessWidget {
     this.maxLength,
     this.img,
     this.textAlign = TextAlign.start,
+    this.onTap,
   });
   @override
   Widget build(BuildContext context) {
@@ -64,6 +66,7 @@ class TextInput extends StatelessWidget {
             OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
       ),
       validator: validateText,
+      onTap: onTap,
     );
   }
 }
