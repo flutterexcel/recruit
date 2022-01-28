@@ -7,12 +7,9 @@ import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
 import 'package:flutter_product_recruit/bloc/pipeline_bloc/pipeline_bloc.dart';
+import 'package:flutter_product_recruit/bloc/profile_bloc/profile_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/add_source.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
-import 'package:flutter_product_recruit/screens/login.dart';
-import 'package:flutter_product_recruit/screens/statistics/statistics.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -70,6 +67,9 @@ class _MainState extends State<Main> {
         ),
         BlocProvider<PipeLineBloc>(
           create: (context) => PipeLineBloc(),
+        ),
+        BlocProvider<ProfileBloc>(
+          create: (context) => ProfileBloc(),
         ),
       ],
       child: MaterialApp(
