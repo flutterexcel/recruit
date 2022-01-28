@@ -1,10 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
+import 'package:flutter_product_recruit/model/profile/update_profile.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/services/profile/update_profile_service.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -16,6 +18,7 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_product_recruit/bloc/profile_bloc/profile_bloc.dart';
+import 'package:http/http.dart' as http;
 
 class MyAccount extends StatefulWidget {
   @override
@@ -45,6 +48,7 @@ class _MyAccountState extends State<MyAccount> {
   TextEditingController newPassword = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
   File _image;
+  bool showSpinner = false;
   // AuthenticationService authenticationService = new AuthenticationService();
   // var name, email;
 
@@ -539,9 +543,12 @@ class _MyAccountState extends State<MyAccount> {
       print(_image);
     });
 
-    if (_image != null) {
+    if (image != null) {
+      print(" before response");
+
       var res = await updateprofile.userProfileImage(_image);
-      print(res.message);
+      print("response");
+      print(res);
       if (res.message != null) {
         Utils.showSnackBar(context, res.message, AppColors.pink);
       }

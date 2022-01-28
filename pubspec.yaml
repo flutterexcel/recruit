@@ -23,7 +23,6 @@ environment:
 dependencies:
   basic_utils: ^2.6.3
   equatable: ^1.2.5
-  
   expandable: ^4.1.4
   flutter:
     sdk: flutter
@@ -38,12 +37,11 @@ dependencies:
   image_picker: null
   intl: ^0.16.1
   line_icons: ^2.0.0
+  modal_progress_hud_nsn: 
   percent_indicator: ^2.1.9
   provider: ^4.3.3
   shared_preferences: ^0.5.12+4
   step_progress_indicator: ^0.2.5+8
-   
-
   syncfusion_flutter_datepicker: ^19.4.43
 dependency_overrides:
   flutter_svg: ^0.19.3

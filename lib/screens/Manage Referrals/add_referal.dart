@@ -28,7 +28,12 @@ class _Add_ReferalState extends State<Add_Referal> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Add Referral"),
+          iconTheme: IconThemeData(color: AppColors.Black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text("Add Referral",
+              style: TextStyle(color: AppColors.Black, fontSize: 23),
+              textAlign: TextAlign.left),
         ),
         // drawer: NavigationList(),s
         body: SingleChildScrollView(

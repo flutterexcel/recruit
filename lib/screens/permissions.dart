@@ -42,7 +42,12 @@ class _PermisState extends State<Permis> {
       } else if (state is GetPermission) {
         return Scaffold(
             appBar: AppBar(
-              title: const Text("Permissions"),
+              iconTheme: IconThemeData(color: AppColors.Black),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              title: const Text("Permissions",
+                  style: TextStyle(color: AppColors.Black, fontSize: 23),
+                  textAlign: TextAlign.left),
             ),
             drawer: NavigationList(),
             body: SingleChildScrollView(

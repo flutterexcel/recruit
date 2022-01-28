@@ -64,6 +64,7 @@ class UserProfileUpdate {
   //update profile imageName
   Future<ProfileUpdate> userProfileImage(File image) async {
     print("image-----------${image}");
+    //url-----
     String url = "http://176.9.137.77:3001/user/userImage/upload";
 
     Map<String, String> queryParams = {
@@ -72,21 +73,62 @@ class UserProfileUpdate {
     String queryString = Uri(queryParameters: queryParams).query;
     String apiUrl = url + '?' + queryString;
 
-    Map data = {
-      'image': image,
-    };
-    final response1 = await http.post(
-      apiUrl,
-      body: data,
-    );
-    print(response1);
+    var stream = new http.ByteStream(image.openRead());
 
-    if (response1.statusCode == 200) {
-      print("Success image upload");
-      return ProfileUpdate.fromJson(jsonDecode(response1.body));
+    stream.cast();
+    var length = await image.length();
+    print("length of image ${length}");
+    var uri = Uri.parse(apiUrl);
+    //** send request----- */
+    var request = new http.MultipartRequest('POST', uri);
+    print(request);
+    var file = new http.MultipartFile('image', stream, length);
+    print(file.toString());
+    //add  file
+    request.files.add(file);
+    var response = await request.send();
+    var responseString = await http.Response.fromStream(response);
+
+    print(response);
+    if (response.statusCode == 200) {
+      print("image uploaded");
+      return ProfileUpdate.fromJson(jsonDecode(responseString.body));
     } else {
-      print("error image upload");
-      return ProfileUpdate.fromJson(jsonDecode(response1.body));
+      print("image not uploaded");
+      return ProfileUpdate.fromJson(jsonDecode(responseString.body));
     }
+
+    // String url = "http://176.9.137.77:3001/user/userImage/upload";
+
+    // Map<String, String> queryParams = {
+    //   'accessToken': StorageUtil.getToken(),
+    // };
+    // String queryString = Uri(queryParameters: queryParams).query;
+    // String apiUrl = url + '?' + queryString;
+
+    // Map data = {
+    //   'image': image,
+    // };
+
+    // var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
+    // request.files
+    //     .add(await http.MultipartFile.fromPath('image', image.toString()));
+    // var response = await request.send();
+
+    // var responsed = await http.Response.fromStream(response);
+    // final responseData = json.decode(responsed.body);
+    // // final response1 = await http.post(
+    // //   apiUrl,
+    // //   body: data,
+    // // );
+    // // print(response1);
+
+    // if (response.statusCode == 200) {
+    //   print("Success image upload");
+    //   return ProfileUpdate.fromJson(jsonDecode(responseData));
+    // } else {
+    //   print("error image upload");
+    //   return ProfileUpdate.fromJson(jsonDecode(responseData));
+    // }
   }
 }

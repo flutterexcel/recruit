@@ -8,6 +8,8 @@ import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dial
 import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
+import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:intl/intl.dart';
 
@@ -47,36 +49,51 @@ class _GetReferralsState extends State<GetReferrals> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Manage Referral"),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 15.0),
-              child: Container(
-                // margin: EdgeInsets.symmetric(vertical: 10),
-                child: InkWell(
-                  child: Row(
-                    children: [
-                      Icon(Icons.add, color: AppColors.white),
-                      Text("Add Referral"),
-                    ],
-                  ),
-                  onTap: () {
-                    setState(() {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              ChangeNotifierProvider<AddReferralService>(
-                                create: (BuildContext context) =>
-                                    AddReferralService(),
-                                child: Add_Referal(),
-                              )));
-                    });
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+        drawer: NavigationList(),
+        appBar: SecondAppBar(
+            text: "Add Referral",
+            title: "Manage Referral",
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        ChangeNotifierProvider<AddReferralService>(
+                          create: (BuildContext context) =>
+                              AddReferralService(),
+                          child: Add_Referal(),
+                        )));
+              });
+            }),
+        // appBar: AppBar(
+        //   title: const Text("Manage Referral"),
+        //   actions: [
+        //     Padding(
+        //       padding: const EdgeInsets.only(right: 15.0),
+        //       child: Container(
+        //         // margin: EdgeInsets.symmetric(vertical: 10),
+        //         child: InkWell(
+        //           child: Row(
+        //             children: [
+        //               Icon(Icons.add, color: AppColors.white),
+        //               Text("Add Referral"),
+        //             ],
+        //           ),
+        //           onTap: () {
+        //             setState(() {
+        //               Navigator.of(context).push(MaterialPageRoute(
+        //                   builder: (context) =>
+        //                       ChangeNotifierProvider<AddReferralService>(
+        //                         create: (BuildContext context) =>
+        //                             AddReferralService(),
+        //                         child: Add_Referal(),
+        //                       )));
+        //             });
+        //           },
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         // drawer: NavigationList(),s
         body: Consumer<GetReferralEmailService>(
           builder: (context, states, child) {
