@@ -23,6 +23,7 @@ class _Step3State extends State<Step3> {
 
   TextEditingController tfController = TextEditingController();
   bool isPressed = true;
+  //QuillController _controller = QuillController.basic();
 
   @override
   Widget build(BuildContext context) {
@@ -129,6 +130,16 @@ class _Step3State extends State<Step3> {
                         ),
                         const SizedBox(
                           height: 5,
+                        ),
+                        //  QuillToolbar.basic(controller: _controller),
+                        // Container(
+                        //   child: QuillEditor.basic(
+                        //     controller: _controller,
+                        //     readOnly: false,
+                        //   ),
+                        // ),
+                        const SizedBox(
+                          height: 25,
                         ),
                         Row(
                           children: [

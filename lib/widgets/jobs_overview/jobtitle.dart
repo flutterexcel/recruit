@@ -9,7 +9,6 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart'
 import 'package:flutter_product_recruit/screens/7_step_screens/step6/step6.dart';
 
 import 'package:flutter_product_recruit/screens/7_step_screens/step7.dart';
-import 'package:flutter_product_recruit/screens/kanban_screen.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/job_description.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

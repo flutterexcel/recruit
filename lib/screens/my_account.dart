@@ -13,7 +13,6 @@ import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/services/userlist_services/get_userlist_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
-import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:image_picker/image_picker.dart';
@@ -512,9 +511,7 @@ class _MyAccountState extends State<MyAccount> {
           scale: 0.9,
           child: new FlatButton(
             onPressed: () {
-              setState(() {
-                isSwitched == true;
-              });
+              setState(() {});
               Navigator.pop(context, 'Cancel');
             },
             child: const Text('Cancel'),
