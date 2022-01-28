@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'dart:convert';
 
 import 'package:flutter_product_recruit/model/userLog/user_log.dart';

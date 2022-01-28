@@ -7,31 +7,33 @@ import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
-class ForYahoo extends StatefulWidget {
+class ForHotmail extends StatefulWidget {
   @override
-  State<ForYahoo> createState() => _ForYahooState();
+  State<ForHotmail> createState() => _ForHotmailState();
   String password;
-  ForYahoo(this.password);
+  ForHotmail(this.password);
 }
 
-class _ForYahooState extends State<ForYahoo> {
+class _ForHotmailState extends State<ForHotmail> {
   TextEditingController imapController =
-      new TextEditingController(text: "imap.mail.yahoo.com");
+      new TextEditingController(text: "outlook.office365.com");
 
   TextEditingController emailController = new TextEditingController();
-  String _value = "SSL";
+
+  TextEditingController serverController =
+      new TextEditingController(text: "TLS");
 
   TextEditingController portController = new TextEditingController(text: "993");
-  String yahooUrl = 'https://help.yahoo.com/kb/SLN4075.html?guccounter=1';
   bool isPressed = false;
+  String _value = "TLS";
+
+  String hotmailUrl =
+      'https://support.office.com/en-us/article/pop-imap-and-smtp-settings-for-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040';
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
         isPressed
             ? Column(
                 children: [
@@ -79,7 +81,7 @@ class _ForYahooState extends State<ForYahoo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Yahoo Settings:",
+                    "Outlook Settings:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
@@ -94,21 +96,20 @@ class _ForYahooState extends State<ForYahoo> {
                   ),
                   InkWell(
                     child: Text(
-                      yahooUrl,
+                      hotmailUrl,
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: AppColors.blue),
                     ),
                     onTap: () async {
-                      if (!await canLaunch(yahooUrl)) {
+                      if (!await canLaunch(hotmailUrl)) {
                         await launch(
-                          yahooUrl,
+                          hotmailUrl,
                           forceSafariVC: true,
                           forceWebView: true,
-                          enableJavaScript: true,
                         );
                       } else {
-                        throw 'Could not launch $yahooUrl';
+                        throw 'Could not launch $hotmailUrl';
                       }
                     },
                   ),
@@ -156,7 +157,10 @@ class _ForYahooState extends State<ForYahoo> {
           child: Container(
             height: 45,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+            decoration: BoxDecoration(
+                // color: Colors.yellow,
+                // Red border with the width is equal to 5
+                border: Border.all(color: Colors.grey)),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
@@ -164,6 +168,8 @@ class _ForYahooState extends State<ForYahoo> {
               ),
             ),
           ),
+
+          // key: _menuKey,
           itemBuilder: (_) => <PopupMenuItem<String>>[
             PopupMenuItem<String>(
               onTap: () {

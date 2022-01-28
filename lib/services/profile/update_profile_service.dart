@@ -63,7 +63,7 @@ class UserProfileUpdate {
 
   //update profile imageName
   Future<ProfileUpdate> userProfileImage(File image) async {
-    print("image-----------${image}");
+    print("image-----------$image");
     String url = "http://176.9.137.77:3001/user/userImage/upload";
 
     Map<String, String> queryParams = {

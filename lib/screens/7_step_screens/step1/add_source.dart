@@ -188,7 +188,7 @@ class _AddSourceState extends State<AddSource> {
                             emailPressed
                                 ? ConnectedToEmail()
                                 : const SizedBox(
-                                    height: 20,
+                                    height: 5,
                                   ),
                           ],
                         )),

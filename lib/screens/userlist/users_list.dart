@@ -1,4 +1,4 @@
-// ignore_for_file: missing_return
+// ignore_for_file: missing_return, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,11 +64,8 @@ class _UsersListState extends State<UsersList> {
 
   @override
   Widget build(BuildContext context) {
-    List list1 = [];
-    // List list2 = [];
     return BlocBuilder<UserListBloc, UserListState>(builder: (context, state) {
       if (state is UserListInitialState) {
-        // ignore: deprecated_member_use
         context.bloc<UserListBloc>().add(UserListInitialEvent());
         return Loader1();
       } else if (state is GetUserListState) {
@@ -273,7 +270,6 @@ class _UsersListState extends State<UsersList> {
                                               "Succesfully Deactivated",
                                               AppColors.Green);
                                           context
-                                              // ignore: deprecated_member_use
                                               .bloc<UserListBloc>()
                                               .add(UserListInitialEvent());
                                         } else {
@@ -299,7 +295,6 @@ class _UsersListState extends State<UsersList> {
                                               "Succesfully Activated",
                                               AppColors.Green);
                                           context
-                                              // ignore: deprecated_member_use
                                               .bloc<UserListBloc>()
                                               .add(UserListInitialEvent());
                                         } else {
@@ -325,7 +320,6 @@ class _UsersListState extends State<UsersList> {
                                     Utils.showSnackBar(context,
                                         "Succesfully Deleted", AppColors.Green);
                                     context
-                                        // ignore: deprecated_member_use
                                         .bloc<UserListBloc>()
                                         .add(UserListInitialEvent());
                                   } else {
@@ -378,7 +372,6 @@ class _UsersListState extends State<UsersList> {
                                         "Job Role Succesfully Updated",
                                         AppColors.Green);
                                     context
-                                        // ignore: deprecated_member_use
                                         .bloc<UserListBloc>()
                                         .add(UserListInitialEvent());
                                   } else {
@@ -403,7 +396,6 @@ class _UsersListState extends State<UsersList> {
                                         "Job Role Succesfully Updated",
                                         AppColors.Green);
                                     context
-                                        // ignore: deprecated_member_use
                                         .bloc<UserListBloc>()
                                         .add(UserListInitialEvent());
                                   } else {
@@ -428,7 +420,6 @@ class _UsersListState extends State<UsersList> {
                                         "Job Role Succesfully Updated",
                                         AppColors.Green);
                                     context
-                                        // ignore: deprecated_member_use
                                         .bloc<UserListBloc>()
                                         .add(UserListInitialEvent());
                                   } else {

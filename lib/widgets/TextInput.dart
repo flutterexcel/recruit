@@ -17,6 +17,7 @@ class TextInput extends StatelessWidget {
 
   Function validateText;
   Function onTap;
+  Function onChanged;
   Container img;
 
   int maxLength;
@@ -37,6 +38,7 @@ class TextInput extends StatelessWidget {
     this.img,
     this.textAlign = TextAlign.start,
     this.onTap,
+    this.onChanged,
   });
   @override
   Widget build(BuildContext context) {
@@ -67,6 +69,7 @@ class TextInput extends StatelessWidget {
       ),
       validator: validateText,
       onTap: onTap,
+      onChanged: onChanged,
     );
   }
 }
