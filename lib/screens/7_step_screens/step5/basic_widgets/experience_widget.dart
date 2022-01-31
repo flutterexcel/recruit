@@ -11,8 +11,8 @@ class Exp extends StatefulWidget {
 
 class _ExpState extends State<Exp> {
   bool isIconPressed = true;
-  final _controller = TextEditingController();
-  final _controller2 = TextEditingController();
+  TextEditingController _controller = TextEditingController();
+  TextEditingController _controller2 = TextEditingController();
 
   List<String> items = [
     'Less than 1 year',
@@ -23,8 +23,8 @@ class _ExpState extends State<Exp> {
   ];
   bool isPressed = false;
   String _selectedExperience;
-  final List<String> number = <String>[];
-  final List<String> names = <String>[];
+  List<String> number = <String>[];
+  List<String> names = <String>[];
 
   @override
   Widget build(BuildContext context) {
@@ -113,14 +113,12 @@ class _ExpState extends State<Exp> {
                                                       child: Align(
                                                         alignment: Alignment
                                                             .centerLeft,
-                                                        child: _selectedExperience
-                                                                    .toString() ==
-                                                                items[4]
+                                                        child: number.length > 0
                                                             ? Text('${names[index]} Years' +
                                                                 ' to ' +
                                                                 '${number[index]} Years')
                                                             : Text(
-                                                                '${names[index]}'),
+                                                                '${names[index]} years'),
                                                       ),
                                                     )),
                                               ],
@@ -211,21 +209,6 @@ class _ExpState extends State<Exp> {
                                               value: e,
                                             ))
                                         .toList(),
-
-                                    // Customize the selected item
-                                    selectedItemBuilder:
-                                        (BuildContext context) => items
-                                            .map((e) => Align(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  child: Text(
-                                                    e,
-                                                    style: TextStyle(
-                                                        fontSize: 13,
-                                                        color: Colors.grey),
-                                                  ),
-                                                ))
-                                            .toList(),
                                   ),
                                 ),
                               ),
@@ -320,16 +303,20 @@ class _ExpState extends State<Exp> {
                                         items[2] ||
                                     _selectedExperience.toString() ==
                                         items[3]) {
+                                  print(_selectedExperience);
                                   names.insert(0, _selectedExperience);
+                                  setState(() {});
                                 } else if (_selectedExperience.toString() ==
                                     items[4]) {
                                   print(_selectedExperience.toString());
-                                  names.insert(0, _controller.text);
-                                  number.insert(0, _controller2.text);
+                                  names.add(_controller.text);
+                                  number.add(_controller2.text);
+                                  // names.insert(0, _controller.text);
+                                  //  number.insert(0, _controller2.text);
                                   _controller.clear();
                                   _controller2.clear();
+                                  setState(() {});
                                 }
-                                setState(() {});
                               },
                             ),
                           ],

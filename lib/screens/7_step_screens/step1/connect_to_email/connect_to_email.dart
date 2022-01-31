@@ -131,9 +131,9 @@ class _ConnectedToEmailState extends State<ConnectedToEmail> {
             ? ForHotmail(passwordController.text)
             : Text(""),
         (emailController.text.length != 0 &&
-                (emailController.text != '@yahoo.com' &&
-                    emailController.text != '@gmail.com' &&
-                    emailController.text != '@hotmail.com'))
+                (!emailController.text.contains('@yahoo.com') &&
+                    !emailController.text.contains('@gmail.com') &&
+                    !emailController.text.contains('@hotmail.com')))
             ? UnkwonProvider()
             : Text(""),
       ],

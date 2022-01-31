@@ -28,22 +28,24 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^6.1.1
   flutter_launcher_icons: any
-  
+ # flutter_quill: null
   flutter_staggered_grid_view: ^0.6.0
-  flutter_svg: ^0.18.0
+  flutter_svg: ^1.0.3
   fluttertoast: ^8.0.8
   font_awesome_flutter: ^8.11.0
   getwidget: ^1.2.4
   http: ^0.12.2
   image_picker: null
+  #html_editor_enhanced:
   intl: ^0.16.1
   line_icons: ^2.0.0
-  modal_progress_hud_nsn: 
+  modal_progress_hud_nsn: null
   percent_indicator: ^2.1.9
   provider: ^4.3.3
   shared_preferences: ^0.5.12+4
   step_progress_indicator: ^0.2.5+8
   syncfusion_flutter_datepicker: ^19.4.43
+  table_calendar: null
   url_launcher: null
 dependency_overrides:
   flutter_svg: ^0.19.3

@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/screens/conversation/email_dialouge.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
-import 'package:flutter_product_recruit/widgets/second_app_bar..dart';
 
 class Conversation extends StatefulWidget {
   Conversation();
@@ -14,13 +14,74 @@ class Conversation extends StatefulWidget {
 class _ConversationState extends State<Conversation> {
   final GlobalKey _menuKey = GlobalKey();
   _ConversationState();
+  void _popupEmailDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(child: EmailDialouge());
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     // print("manage source -${state}");
 
     return Scaffold(
       drawer: NavigationList(),
-      appBar: SecondAppBar(text: "New   ", title: "Conversation"),
+      appBar: AppBar(
+        title: const Text(
+          "Conversations",
+          style: TextStyle(color: Colors.black),
+        ),
+        iconTheme: IconThemeData(
+          color: AppColors.blue,
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              height: 10,
+              width: 48,
+              child: InkWell(
+                child: Icon(
+                  Icons.attach_email_outlined,
+                  color: AppColors.white,
+                ),
+                onTap: () {
+                  _popupEmailDialog(context);
+                },
+              ),
+              decoration: BoxDecoration(
+                // border: Border.all(color: outlinecolor),
+                color: AppColors.blue,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+            ),
+          )
+
+          // Container(
+          //   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          //   child: TextButton.icon(
+          //     style: TextButton.styleFrom(
+          //       textStyle: TextStyle(color: AppColors.white),
+          //       backgroundColor: AppColors.Primary,
+          //       shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(24.0),
+          //       ),
+          //     ),
+          //     onPressed: () {},
+          //     icon: Icon(Icons.message, color: AppColors.white),
+          //     label: Text(""),
+          //   ),
+          // ),
+          // add more IconButton
+        ],
+      ),
+
+      //   SecondAppBar(text: "New   ", title: "Conversation"),
       body: Conversation(),
     );
   }

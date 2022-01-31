@@ -17,14 +17,12 @@ class Step2 extends StatefulWidget {
 
 class _Step2State extends State<Step2> {
   String dropdownvalue;
-
-  var data;
-
-  @override
-  void initState() {
-    super.initState();
-    //this.fetchDropdown();
-  }
+  TextEditingController jobTitleController = new TextEditingController();
+  TextEditingController jobDescController = new TextEditingController();
+  TextEditingController candidateProfileController =
+      new TextEditingController();
+  TextEditingController numberOfOpenningController =
+      new TextEditingController();
 
   var items = [
     'HR Recruitment',
@@ -138,18 +136,6 @@ class _Step2State extends State<Step2> {
                                       value: e,
                                     ))
                                 .toList(),
-
-                            // Customize the selected item
-                            selectedItemBuilder: (BuildContext context) => items
-                                .map((e) => Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        e,
-                                        style: TextStyle(
-                                            fontSize: 13, color: Colors.grey),
-                                      ),
-                                    ))
-                                .toList(),
                           ),
                         ),
                         const SizedBox(
@@ -166,6 +152,7 @@ class _Step2State extends State<Step2> {
                         ),
                         const SizedBox(height: 5),
                         TextInput(
+                          controller: jobTitleController,
                           autocorrect: true,
                           hintText: "Eg. PHP Developer",
                         ),
@@ -183,6 +170,7 @@ class _Step2State extends State<Step2> {
                             ),
                             const SizedBox(height: 5),
                             TextInput(
+                              controller: jobDescController,
                               hintText:
                                   "Eg. Job Brief, Responsibility, Skill Required",
                               maxLines: 6,
@@ -203,6 +191,7 @@ class _Step2State extends State<Step2> {
                         ),
                         const SizedBox(height: 5),
                         TextInput(
+                          controller: candidateProfileController,
                           hintText: "Describe Candidate Skill set here...",
                           maxLines: 5,
                         ),
@@ -220,6 +209,7 @@ class _Step2State extends State<Step2> {
                         ),
                         const SizedBox(height: 5),
                         TextFieldInt(
+                          controller: numberOfOpenningController,
                           hintText: "Number of openings",
                           autocorrect: true,
                         ),
@@ -235,14 +225,27 @@ class _Step2State extends State<Step2> {
                                     builder: (context) => Step1()));
                               },
                             ),
-                            Buttonn(
-                              text: "Next",
-                              bgcolor: AppColors.blue,
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Step3()));
-                              },
-                            ),
+                            (jobTitleController.text.isNotEmpty &&
+                                    jobDescController.text.isNotEmpty &&
+                                    candidateProfileController
+                                        .text.isNotEmpty &&
+                                    numberOfOpenningController.text.isNotEmpty)
+                                ? Buttonn(
+                                    text: "Next",
+                                    bgcolor: AppColors.blue,
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => Step3()));
+                                    },
+                                  )
+                                : Opacity(
+                                    opacity: 0.6,
+                                    child: Buttonn(
+                                        text: "Next",
+                                        bgcolor: AppColors.blue,
+                                        onTap: null),
+                                  ),
                           ],
                         ),
                         const SizedBox(height: 10),

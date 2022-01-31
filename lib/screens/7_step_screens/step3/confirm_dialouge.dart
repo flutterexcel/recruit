@@ -2,11 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
+import 'package:flutter_product_recruit/screens/7_step_screens/step3/fetchfromdialouge.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class Confirm_Dialouge extends StatelessWidget {
   TextEditingController textEditingController;
   Confirm_Dialouge({this.textEditingController});
+  void _popupFetchFromDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(child: FetchFromDialouge());
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +62,9 @@ class Confirm_Dialouge extends StatelessWidget {
                       style: TextStyle(fontSize: 13),
                     ),
                     textColor: Colors.white,
-                    onPressed: () {}),
+                    onPressed: () {
+                      _popupFetchFromDialog(context);
+                    }),
               ],
             ),
           ),

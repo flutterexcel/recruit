@@ -25,12 +25,11 @@ class Step1 extends StatelessWidget {
             textAlign: TextAlign.left,
           ),
         ),
-        // drawer: NavigationList(),s
         body: SingleChildScrollView(
           child: Column(
             children: [
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.all(15.0),

@@ -63,7 +63,7 @@ class UserProfileUpdate {
 
   //update profile imageName
   Future<ProfileUpdate> userProfileImage(File image) async {
-    print("image-----------${image}");
+    print("image-----------$image");
     //url-----
     String url = "http://176.9.137.77:3001/user/userImage/upload";
 
@@ -77,7 +77,7 @@ class UserProfileUpdate {
 
     stream.cast();
     var length = await image.length();
-    print("length of image ${length}");
+    print("length of image $length");
     var uri = Uri.parse(apiUrl);
     //** send request----- */
     var request = new http.MultipartRequest('POST', uri);

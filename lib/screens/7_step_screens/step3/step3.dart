@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step3/confirm_dialouge.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/button.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
@@ -22,7 +21,8 @@ class _Step3State extends State<Step3> {
       'You can also search subject using these operators like "+" and "|" . "+" allows you to search multiple words together and "|" allows you to match either one of the work\n\ne.g\na) php + mysql : this will match resumes having both php and mysql in their subject like \n\nb) email marketing | lead generation : this will match resumes having either email marketing or lead generation in their subject \n\nc) flutter | java : this will match subjects having either flutter or java in their subject. you can try out different combinations to setup your filter accordingly. ';
 
   TextEditingController tfController = TextEditingController();
-  bool isPressed = true;
+  bool isCrossPressed = true;
+  bool isIconPressed = true;
   //QuillController _controller = QuillController.basic();
 
   @override
@@ -158,11 +158,19 @@ class _Step3State extends State<Step3> {
                                 child: InkWell(
                                   child: Transform.scale(
                                     scale: 1.6,
-                                    child: Icon(
-                                      Icons.info,
+                                    child: Tooltip(
+                                      child: Icon(
+                                        Icons.info,
+                                      ),
+                                      message:
+                                          "see subject operators related message",
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    setState(() {
+                                      isIconPressed = !isIconPressed;
+                                    });
+                                  },
                                 )),
                           ],
                         ),
@@ -170,37 +178,37 @@ class _Step3State extends State<Step3> {
                         const SizedBox(
                           height: 10,
                         ),
-
-                        Visibility(
-                          visible: isPressed ? true : false,
-                          child: Contain(
-                            // height: 315,
-                            backcolor: AppColors.orange12,
-                            outlinecolor: AppColors.grey,
-                            borderrad: 2,
-                            child: Column(
-                              children: [
-                                Align(
-                                    alignment: Alignment.centerRight,
-                                    child: InkWell(
-                                      child: Icon(
-                                        Icons.close,
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          isPressed = false;
-                                        });
-                                      },
-                                    )),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8.0, bottom: 8.0),
-                                  child: Text(a),
+                        isIconPressed
+                            ? Contain(
+                                // height: 315,
+                                backcolor: AppColors.orange12,
+                                outlinecolor: AppColors.grey,
+                                borderrad: 2,
+                                child: Column(
+                                  children: [
+                                    // Align(
+                                    //     alignment: Alignment.centerRight,
+                                    //     child: InkWell(
+                                    //       child: Icon(
+                                    //         Icons.close,
+                                    //       ),
+                                    //       onTap: () {
+                                    //         setState(() {
+                                    //           isCrossPressed = false;
+                                    //         });
+                                    //       },
+                                    //     )),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, bottom: 8.0),
+                                      child: Text(a),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
+                              )
+                            : SizedBox(
+                                width: 1,
+                              ),
 
                         const SizedBox(
                           height: 20,
@@ -238,8 +246,8 @@ class _Step3State extends State<Step3> {
                               borderRadius: 2,
                               onTap: () {
                                 _popupDialog(context);
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Step4()));
+                                // Navigator.of(context).push(MaterialPageRoute(
+                                //     builder: (context) => Step4()));
                               },
                             ),
                           ],

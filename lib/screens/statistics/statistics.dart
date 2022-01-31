@@ -236,7 +236,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 New",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[0].jobApplicantsTagNew}  New",
                                             size: 17,
                                           ),
                                         ),
@@ -259,7 +260,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Candidates",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[1].shortlist} Shortlist",
                                             size: 17,
                                           ),
                                         ),
@@ -282,7 +284,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Interview",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[2].interview}  Interview",
                                             size: 17,
                                           ),
                                         ),
@@ -298,18 +301,21 @@ class _StatsState extends State<Stats> {
                                   const SizedBox(
                                     width: 2,
                                   ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text: "0 Hired",
-                                            size: 17,
+                                  Expanded(
+                                    child: Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Container(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 3.0),
+                                            child: Textt(
+                                              text:
+                                                  "${state.applicationStatusList[3].jobApplicantsTags[3].hired}  Hired",
+                                              size: 17,
+                                            ),
                                           ),
-                                        ),
-                                      )),
+                                        )),
+                                  ),
                                 ],
                               ),
                               const SizedBox(
@@ -335,7 +341,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Hold",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[4].hold} Hold",
                                             size: 17,
                                           ),
                                         ),
@@ -358,7 +365,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Reject",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[5].reject}  Reject",
                                             size: 17,
                                           ),
                                         ),
@@ -381,7 +389,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 First",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[6].firstRound} First",
                                             size: 17,
                                           ),
                                         ),
@@ -397,18 +406,24 @@ class _StatsState extends State<Stats> {
                                   const SizedBox(
                                     width: 2,
                                   ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text: "0 Second",
-                                            size: 17,
+                                  Expanded(
+                                    child: Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Container(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 3.0),
+                                            child: Textt(
+                                              text:
+                                                  "${state.applicationStatusList[3].jobApplicantsTags[7].secondRound} Second",
+                                              size: 17,
+                                            ),
                                           ),
-                                        ),
-                                      )),
+                                        )),
+                                  ),
+                                  Expanded(
+                                    child: Text(""),
+                                  )
                                 ],
                               ),
                               const SizedBox(
@@ -434,7 +449,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Third",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[8].thirdRound} Third",
                                             size: 17,
                                           ),
                                         ),
@@ -457,7 +473,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Offer",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[9].offerSent}  Offer",
                                             size: 17,
                                           ),
                                         ),
@@ -480,7 +497,8 @@ class _StatsState extends State<Stats> {
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
                                           child: Textt(
-                                            text: "0 Accepted",
+                                            text:
+                                                "${state.applicationStatusList[3].jobApplicantsTags[10].accepted} Accepted",
                                             size: 17,
                                           ),
                                         ),
@@ -496,18 +514,21 @@ class _StatsState extends State<Stats> {
                                   const SizedBox(
                                     width: 2,
                                   ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text: "0 Joined",
-                                            size: 17,
+                                  Expanded(
+                                    child: Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Container(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 3.0),
+                                            child: Textt(
+                                              text:
+                                                  "${state.applicationStatusList[3].jobApplicantsTags[11].joined}  Joined",
+                                              size: 17,
+                                            ),
                                           ),
-                                        ),
-                                      )),
+                                        )),
+                                  ),
                                 ],
                               ),
                             ],
