@@ -4,14 +4,14 @@ import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_bloc.dart
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_bloc.dart';
 import 'package:flutter_product_recruit/bloc/domain_bloc/domain_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
+import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
+import 'package:flutter_product_recruit/bloc/managesource_bloc/managesource_bloc.dart';
 import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
 import 'package:flutter_product_recruit/bloc/pipeline_bloc/pipeline_bloc.dart';
 import 'package:flutter_product_recruit/bloc/profile_bloc/profile_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart';
-import 'package:flutter_product_recruit/screens/conversation/conversation.dart';
-import 'package:flutter_product_recruit/screens/manage_sources/manage_sources.dart';
+import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
@@ -73,6 +73,12 @@ class _MainState extends State<Main> {
         BlocProvider<ProfileBloc>(
           create: (context) => ProfileBloc(),
         ),
+        BlocProvider<ManageSourceBloc>(
+          create: (context) => ManageSourceBloc(),
+        ),
+        BlocProvider<JobPerformanceBloc>(
+          create: (context) => JobPerformanceBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -88,6 +94,6 @@ class RecruiterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //  return DomainLogin();
-    return ManageSources();
+    return Login();
   }
 }

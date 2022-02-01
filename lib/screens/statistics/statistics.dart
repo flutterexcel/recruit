@@ -14,8 +14,12 @@ import 'package:flutter_product_recruit/bloc/application_status_bloc/application
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_event.dart';
 import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
+import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_bloc.dart';
+import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_event.dart';
+import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_state.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/screens/statistics/ai_analytics.dart';
+import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
@@ -214,324 +218,336 @@ class _StatsState extends State<Stats> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.blue,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[0].jobApplicantsTagNew}  New",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.orange12,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[1].shortlist} Shortlist",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.Green,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[2].interview}  Interview",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.purple,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Expanded(
-                                    child: Align(
-                                        alignment: Alignment.topCenter,
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
                                         child: Container(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 3.0),
-                                            child: Textt(
-                                              text:
-                                                  "${state.applicationStatusList[3].jobApplicantsTags[3].hired}  Hired",
-                                              size: 17,
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.blue,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[0].jobApplicantsTagNew}  New",
+                                                size: 17,
+                                              ),
                                             ),
-                                          ),
-                                        )),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.Red,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[4].hold} Hold",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.grey,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[5].reject}  Reject",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.Light_Blue,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[6].firstRound} First",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.purple,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Expanded(
-                                    child: Align(
-                                        alignment: Alignment.topCenter,
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
                                         child: Container(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 3.0),
-                                            child: Textt(
-                                              text:
-                                                  "${state.applicationStatusList[3].jobApplicantsTags[7].secondRound} Second",
-                                              size: 17,
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.orange12,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[1].shortlist} Shortlist",
+                                                size: 17,
+                                              ),
                                             ),
-                                          ),
-                                        )),
-                                  ),
-                                  Expanded(
-                                    child: Text(""),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.Light_Blue,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[8].thirdRound} Third",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.purple,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[9].offerSent}  Offer",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.Red,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 3.0),
-                                          child: Textt(
-                                            text:
-                                                "${state.applicationStatusList[3].jobApplicantsTags[10].accepted} Accepted",
-                                            size: 17,
-                                          ),
-                                        ),
-                                      )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: Container(
-                                      width: 4,
-                                      height: 25,
-                                      color: AppColors.grey,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  Expanded(
-                                    child: Align(
-                                        alignment: Alignment.topCenter,
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
                                         child: Container(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 3.0),
-                                            child: Textt(
-                                              text:
-                                                  "${state.applicationStatusList[3].jobApplicantsTags[11].joined}  Joined",
-                                              size: 17,
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.Green,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[2].interview}  Interview",
+                                                size: 17,
+                                              ),
                                             ),
-                                          ),
-                                        )),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.purple,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[3].hired}  Hired",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.Red,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[4].hold} Hold",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.grey,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[5].reject}  Reject",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.Light_Blue,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[6].firstRound} First",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.purple,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[7].secondRound} Second",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Text("")
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.Light_Blue,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[8].thirdRound} Third",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.purple,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[9].offerSent}  Offer",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.Red,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[10].accepted} Accepted",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 12),
+                                        child: Container(
+                                          width: 4,
+                                          height: 25,
+                                          color: AppColors.grey,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Container(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0),
+                                              child: Textt(
+                                                text:
+                                                    "${state.applicationStatusList[3].jobApplicantsTags[11].joined}  Joined",
+                                                size: 17,
+                                              ),
+                                            ),
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -984,7 +1000,7 @@ class _StatsState extends State<Stats> {
                             ),
                             Contain(
                               width: MediaQuery.of(context).size.width,
-                              height: 340,
+                              //  height: 340,
                               borderrad: 5,
                               outlinecolor: AppColors.grey,
                               //  backcolor: AppColors.purple,
@@ -1046,11 +1062,180 @@ class _StatsState extends State<Stats> {
                                     ],
                                   ),
                                   const SizedBox(
-                                    height: 10,
+                                    height: 5,
                                   ),
                                   Divider(
                                     color: Colors.black,
                                   ),
+                                  const SizedBox(
+                                    height: 1,
+                                  ),
+                                  BlocBuilder<JobPerformanceBloc,
+                                          JobPerformanceState>(
+                                      builder: (context, state) {
+                                    if (state is JobPerformanceInitialState) {
+                                      print(StorageUtil.getId());
+                                      context.bloc<JobPerformanceBloc>().add(
+                                          JobPerformanceInitialEvent(
+                                              StorageUtil.getId()));
+                                      return SizedBox(
+                                          height: 5, child: Loader());
+                                    } else if (state
+                                        is GetJobPerformanceState) {
+                                      print(state
+                                          .jobpPerformanceLists[0].employee);
+                                      return Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.0),
+                                        child: Scrollbar(
+                                          //controller: _controllerOne,
+                                          thickness: 1,
+                                          // isAlwaysShown: true,
+                                          child: Column(
+                                            children: [
+                                              // Row(
+                                              //     mainAxisAlignment:
+                                              //         MainAxisAlignment
+                                              //             .spaceBetween,
+                                              //     children: [
+                                              //       // Padding(
+                                              //       //   padding:
+                                              //       //       const EdgeInsets.only(
+                                              //       //           left: 15),
+                                              //       //   child: Text(
+                                              //       //     "day",
+                                              //       //     style: TextStyle(
+                                              //       //         fontSize: 18,
+                                              //       //         fontWeight:
+                                              //       //             FontWeight.w600),
+                                              //       //   ),
+                                              //       // ),
+                                              //       Padding(
+                                              //         padding:
+                                              //             const EdgeInsets.only(
+                                              //                 right: 15),
+                                              //         child: Text(
+                                              //           "duration",
+                                              //           style: TextStyle(
+                                              //               fontSize: 18,
+                                              //               fontWeight:
+                                              //                   FontWeight.w600),
+                                              //         ),
+                                              //       ),
+                                              //     ]),
+                                              Container(
+                                                  height: 600,
+                                                  padding:
+                                                      EdgeInsets.only(top: 25),
+                                                  child: ListView.separated(
+                                                      separatorBuilder:
+                                                          (BuildContext context,
+                                                                  int index) =>
+                                                              const Divider(),
+                                                      // physics: NeverScrollableScrollPhysics(),
+                                                      // shrinkWrap: true,
+                                                      itemCount: 1,
+                                                      // state
+                                                      //     .jobpPerformanceLists
+                                                      //     .length,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return Row(
+                                                          children: [
+                                                            Column(
+                                                              children: [
+                                                                Container(
+                                                                  margin: EdgeInsets
+                                                                      .only(
+                                                                          left:
+                                                                              20),
+                                                                  width: 12,
+                                                                  height: 12,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFFFf6a609),
+                                                                      borderRadius:
+                                                                          BorderRadius.all(
+                                                                              Radius.circular(80))),
+                                                                ),
+                                                                Container(
+                                                                  margin: EdgeInsets
+                                                                      .only(
+                                                                          left:
+                                                                              20),
+                                                                  width: 2,
+                                                                  height: 70,
+                                                                  color: Color(
+                                                                      0xFFFf6a609),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      "Tuesday,Feb 1,2022",
+                                                                      textScaleFactor:
+                                                                          1.3,
+                                                                    ),
+                                                                    const SizedBox(
+                                                                      height: 5,
+                                                                    ),
+                                                                    Text(
+                                                                      "9:56AM - 3:30PM",
+                                                                      textScaleFactor:
+                                                                          1.3,
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              AppColors.grey),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                      height: 5,
+                                                                    ),
+                                                                    Row(
+                                                                      children: [
+                                                                        Text(
+                                                                          "Shakshi",
+                                                                          textScaleFactor:
+                                                                              1.3,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          " was active for ",
+                                                                          textScaleFactor:
+                                                                              1.3,
+                                                                        ),
+                                                                        Text(
+                                                                          "1:15",
+                                                                          textScaleFactor:
+                                                                              1.3,
+                                                                          style:
+                                                                              TextStyle(fontWeight: FontWeight.bold),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ]),
+                                                            )
+                                                          ],
+                                                        );
+                                                      }))
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    return Container();
+                                  }),
                                 ],
                               ),
                             ),
@@ -1068,10 +1253,10 @@ class _StatsState extends State<Stats> {
   }
 }
 
-class Pollution {
-  String place;
-  int year;
-  int quantity;
+// class Pollution {
+//   String place;
+//   int year;
+//   int quantity;
 
-  Pollution(this.year, this.place, this.quantity);
-}
+//   Pollution(this.year, this.place, this.quantity);
+// }

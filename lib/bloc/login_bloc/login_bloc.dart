@@ -52,6 +52,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       StorageUtil.setToken(res.token);
       StorageUtil.setUserName(res.userDetails.name);
+      StorageUtil.setId(res.userDetails.id);
       StorageUtil.setUserEmail(res.userDetails.email);
       StorageUtil.setUserProfileImage(res.userDetails.imageName);
       StorageUtil.setUserPhone(res.userDetails.phoneNo.toString());
