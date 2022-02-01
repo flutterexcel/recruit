@@ -20,7 +20,7 @@ class UserListBloc extends Bloc<UserListEvent, UserListState> {
     try {
       var res = await GetUserListService.getUserList();
 
-      yield GetUserListState(userLists: res);
+      yield GetUserListState(userLists: res ?? "");
     } catch (e) {
       yield UserListFailureState();
     }

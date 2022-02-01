@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/app_config.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
@@ -7,6 +8,7 @@ import 'package:http/http.dart' as http;
 class GetUserListService {
   static Future<List<UserListsModel>> getUserList() async {
     List<UserListsModel> userslist = [];
+    // final prodUrl = await AppConfig.forEnvironment('/list/1/100');
 
     String url = "http://176.9.137.77:3001/user/list/1/100";
 
