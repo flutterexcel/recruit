@@ -10,7 +10,7 @@ import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class UserLogs extends StatefulWidget {
   UserLogs();

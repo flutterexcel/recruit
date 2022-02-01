@@ -31,8 +31,22 @@ class UsersList extends StatefulWidget {
 
 // ignore: camel_case_types
 class _UsersListState extends State<UsersList> {
-  bool isSwitched = false;
+  // bool isSwitched = false;
+
   List data = [];
+  List<bool> isSwitched = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
   // List<bool> isSwitched = [];
 
   // @override
@@ -46,6 +60,13 @@ class _UsersListState extends State<UsersList> {
   //   data = res;
   //   //print(res[1].userType.toString());
   // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(BlocProvider.of<UserListBloc>(context).state);
+  }
+
   void _popupDialog(BuildContext context) {
     showDialog(
         context: context,
@@ -86,6 +107,7 @@ class _UsersListState extends State<UsersList> {
                     MaterialPageRoute(builder: (context) => AddNewUser()));
               }),
           body: ListView.separated(
+            physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             itemCount: state.userLists.length - 1,
             itemBuilder: (context, index) {
@@ -137,12 +159,18 @@ class _UsersListState extends State<UsersList> {
                           : Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                // Textt(
+                                //   text: state.userLists[index + 1].userType !=
+                                //           'Admin'
+                                //       ? "${state.userLists[index + 1].jobProfiles.length} jobs"
+                                //       : '',
+                                // ),
                                 Textt(
-                                  text: state.userLists[index + 1].userType !=
-                                          'Admin'
-                                      ? "${state.userLists[index + 1].jobProfiles.length} jobs"
-                                      : '',
-                                ),
+                                    text: state.userLists[index + 1]
+                                                .jobProfiles ==
+                                            null
+                                        ? ""
+                                        : "${state.userLists[index + 1].jobProfiles.length} Jobs"),
                                 const SizedBox(
                                   width: 5,
                                 ),
@@ -157,30 +185,47 @@ class _UsersListState extends State<UsersList> {
                                 //     });
                                 //   },
                                 // ),
-                                InkWell(
-                                  child: Icon(isSwitched
-                                      ? Icons.arrow_drop_up
-                                      : Icons.arrow_drop_down),
-                                  onTap: () {
-                                    setState(() {
-                                      isSwitched = !isSwitched;
-                                    });
-                                  },
-                                ),
+                                // InkWell(
+                                //   child:
+                                //       state.userLists[index + 1].jobProfiles ==
+                                //               null
+                                //           ? SizedBox()
+                                //           : Icon(isSwitched[index + 1]
+                                //               ? Icons.arrow_drop_up
+                                //               : Icons.arrow_drop_down),
+                                //   onTap: () {
+                                //     print(isSwitched[index + 1]);
+                                //     setState(() {
+                                //       isSwitched[index + 1] =
+                                //           !isSwitched[index + 1];
+                                //       print(isSwitched[index + 1]);
+                                //       isSwitched = List.generate(
+                                //           state.userLists.length,
+                                //           (index) => isSwitched[index]);
+                                //       ;
+                                //       print(isSwitched);
+                                //     });
+                                //   },
+                                // ),
+                                Icon(Icons.arrow_drop_down)
                               ],
                             ),
                       const SizedBox(
                         height: 20,
                       ),
-                      isSwitched
+                      // isSwitched[index + 1]
+                      //     ?
+                      state.userLists[index + 1].jobProfiles != null
                           ? Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GridView.builder(
+                                physics: BouncingScrollPhysics(),
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3,
                                   crossAxisSpacing: 15,
-                                  mainAxisSpacing: 5,
+
+                                  // mainAxisSpacing: 5,
                                   // childAspectRatio: MediaQuery.of(context)
                                   //         .size
                                   //         .width *
@@ -188,8 +233,8 @@ class _UsersListState extends State<UsersList> {
                                   //     (MediaQuery.of(context).size.height / 3),
                                 ),
                                 itemCount:
-                                    state.userLists[index + 1].userType !=
-                                            'Admin'
+                                    state.userLists[index + 1].jobProfiles !=
+                                            null
                                         ? state.userLists[index + 1].jobProfiles
                                             .length
                                         : 0,
@@ -250,7 +295,7 @@ class _UsersListState extends State<UsersList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           PopupMenuButton(
-                            icon: Icon(Icons.delete),
+                            icon: Icon(Icons.power_settings_new_outlined),
                             // key: _menuKey,
                             itemBuilder: (_) => <PopupMenuItem<String>>[
                               state.userLists[index + 1].activeStatus
@@ -337,7 +382,7 @@ class _UsersListState extends State<UsersList> {
                             width: 20,
                           ),
                           InkWell(
-                            child: Icon(Icons.usb_off_rounded),
+                            child: Icon(Icons.https_outlined),
                             onTap: () {
                               _popupChangePassDialog(context);
                             },
@@ -346,7 +391,7 @@ class _UsersListState extends State<UsersList> {
                             width: 20,
                           ),
                           InkWell(
-                            child: Icon(Icons.local_post_office),
+                            child: Icon(Icons.work_outline_outlined),
                             onTap: () {
                               _popupDialog(context);
                             },

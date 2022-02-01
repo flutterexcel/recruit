@@ -8,6 +8,7 @@ class GetJobListService extends ChangeNotifier {
   List<GetJobListModel> joblist = [];
   // ignore: missing_return
   Future<List<GetJobListModel>> getJobList() async {
+
     // String url = "http://176.9.137.77:3001/job-profile/list";
 
     // Map<String, String> queryParams = {
