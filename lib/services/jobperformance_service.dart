@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'package:flutter_product_recruit/model/jobperformance_model.dart';
 import 'package:http/http.dart' as http;
 
 // ignore: camel_case_types
 class GetJobPerformanceService {
   List jobPerLists = [];
   // ignore: missing_return
-  Future<List<JobPerformanceModel>> getJobPerformanceList(String id) async {
+  Future getJobPerformanceList(String id) async {
     // String url = "http://176.9.137.77:3001/job-profile/list";
 
     // Map<String, String> queryParams = {
@@ -35,13 +34,17 @@ class GetJobPerformanceService {
       // for (var prod in jsonList) {
       //   jobPerLists.add(JobPerformanceModel.fromJson(prod));
       // }
+      //print("jsonList-->$jsonList");
+      for (var i = 0; i < jsonList.length; i++) {
+        // jobPerLists.add(jsonList[i]);
 
-      for (var i = 0; i <= jsonList.length; i++) {
-        print(jsonList[i]);
+        //  print("jsonList[j]-->${jsonList[i]}");
         jobPerLists.add(jsonList[i]);
       }
+
       print("job performanceList got successfully");
-      return jobPerLists;
+      // print("my list $jobPerLists");
+      return jsonList;
       //print("Success");
       // return ManageSpamList.fromJson(jsonDecode(response.body));
     } else {

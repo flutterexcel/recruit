@@ -11,10 +11,12 @@ class JobPerformanceInitialState extends JobPerformanceState {}
 
 // ignore: must_be_immutable
 class GetJobPerformanceState extends JobPerformanceState {
-  List<JobPerformanceModel> jobpPerformanceLists;
-  List<UserListsModel> getUserLists;
+  List jobpPerformanceLists;
+  //List<UserListsModel> getUserLists;
 
-  GetJobPerformanceState({this.jobpPerformanceLists, this.getUserLists});
+  GetJobPerformanceState({
+    this.jobpPerformanceLists,
+  });
 
   List<Object> get props => [jobpPerformanceLists];
 }

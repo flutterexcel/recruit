@@ -17,6 +17,7 @@ import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_event.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_state.dart';
+import 'package:flutter_product_recruit/model/jobperformance_model.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/screens/statistics/ai_analytics.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -115,6 +116,7 @@ class _StatsState extends State<Stats> {
   Widget build(BuildContext context) {
     print("entered in build");
     List<UserListsModel> list1 = [];
+    List<JobPerformanceModel> lists2 = [];
 
     return BlocBuilder<ApplicationStatusBloc, ApplicationStatusState>(
         builder: (context, state) {
@@ -1082,8 +1084,24 @@ class _StatsState extends State<Stats> {
                                           height: 5, child: Loader());
                                     } else if (state
                                         is GetJobPerformanceState) {
-                                      print(state
-                                          .jobpPerformanceLists[0].employee);
+                                      //  print(state.jobpPerformanceLists[0]);
+                                      for (var i = 0;
+                                          i <=
+                                              state.jobpPerformanceLists.length;
+                                          i++) {
+                                        print(
+                                            "-->${state.jobpPerformanceLists[i]}");
+                                        // print(state
+                                        //     .jobpPerformanceLists[0].);
+                                        for (var j = 0;
+                                            j <
+                                                state.jobpPerformanceLists[0]
+                                                    .length;
+                                            j++) {
+                                          print(
+                                              state.jobpPerformanceLists[0][j]);
+                                        }
+                                      }
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10.0),

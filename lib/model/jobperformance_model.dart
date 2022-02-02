@@ -9,9 +9,9 @@ List<List<JobPerformanceModel>> jobPerformanceModelFromJson(String str) =>
         List<JobPerformanceModel>.from(
             x.map((x) => JobPerformanceModel.fromJson(x)))));
 
-String jobPerformanceModelToJson(List<List<JobPerformanceModel>> data) =>
-    json.encode(List<dynamic>.from(
-        data.map((x) => List<dynamic>.from(x.map((x) => x.toJson())))));
+// String jobPerformanceModelToJson(List<List<JobPerformanceModel>> data) =>
+//     json.encode(List<dynamic>.from(
+//         data.map((x) => List<dynamic>.from(x.map((x) => x.toJson())))));
 
 class JobPerformanceModel {
   JobPerformanceModel({
@@ -36,29 +36,29 @@ class JobPerformanceModel {
         from: json["from"] == null ? null : json["from"],
         to: json["to"] == null ? null : json["to"],
         userId: json["userId"],
-        employee: json["employee"],
+        employee: json["employee"] == null ? null : json["employee"],
         duration: json["duration"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "date": dateValues.reverse[date],
-        "from": from == null ? null : from,
-        "to": to == null ? null : to,
-        "userId": userId,
-        "employee": employee,
-        "duration": duration,
-      };
+  // Map<String, dynamic> toJson() => {
+  //       "date": dateValues.reverse[date],
+  //       "from": from == null ? null : from,
+  //       "to": to == null ? null : to,
+  //       "userId": userId,
+  //       "employee": employee,
+  //       "duration": duration,
+  //     };
 }
 
 enum Date {
-  TUE_JAN_252022,
   WED_JAN_262022,
   THU_JAN_272022,
   FRI_JAN_282022,
   SAT_JAN_292022,
   SUN_JAN_302022,
   MON_JAN_312022,
-  TUE_FEB_012022
+  TUE_FEB_012022,
+  WED_FEB_022022
 }
 
 final dateValues = EnumValues({
@@ -68,7 +68,7 @@ final dateValues = EnumValues({
   "Sun Jan 30 2022": Date.SUN_JAN_302022,
   "Thu Jan 27 2022": Date.THU_JAN_272022,
   "Tue Feb 01 2022": Date.TUE_FEB_012022,
-  "Tue Jan 25 2022": Date.TUE_JAN_252022,
+  "Wed Feb 02 2022": Date.WED_FEB_022022,
   "Wed Jan 26 2022": Date.WED_JAN_262022
 });
 
