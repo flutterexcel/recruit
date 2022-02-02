@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
   static void showSnackBar(BuildContext context, String text, Color color) =>
@@ -14,14 +13,14 @@ class Utils {
             duration: const Duration(seconds: 2)),
       );
 
-  static showToast(String msg, Color bgColor) {
-    return Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: bgColor,
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
+  // static showToast(String msg, Color bgColor) {
+  //   return Fluttertoast.showToast(
+  //       msg: msg,
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       timeInSecForIosWeb: 1,
+  //       backgroundColor: bgColor,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0);
+  // }
 }

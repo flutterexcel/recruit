@@ -11,6 +11,7 @@ import 'package:flutter_product_recruit/model/userlist_model/delete_userlist_mod
 import 'package:flutter_product_recruit/screens/userlist/add_new_user.dart';
 import 'package:flutter_product_recruit/screens/userlist/change_password_dialouge.dart';
 import 'package:flutter_product_recruit/screens/userlist/manage_jobs_dialouge.dart';
+import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/services/userlist_services/activate_user_service.dart';
 import 'package:flutter_product_recruit/services/userlist_services/deactivate_user_service.dart';
 import 'package:flutter_product_recruit/services/userlist_services/delete_userlist_service.dart';
@@ -314,6 +315,7 @@ class _UsersListState extends State<UsersList> {
                                               context,
                                               "Succesfully Deactivated",
                                               AppColors.Green);
+
                                           context
                                               .bloc<UserListBloc>()
                                               .add(UserListInitialEvent());
