@@ -15,7 +15,7 @@ class GetJobListModel {
   GetJobListModel({
     this.assignToAllEmails,
     this.jobDescription,
-    //   this.criteria,
+    this.criteria,
     this.activeStatus,
     this.noOfJobOpenings,
     this.skills,
@@ -38,15 +38,22 @@ class GetJobListModel {
     this.v,
     this.activateCron,
     this.isCriteriaUpdated,
+    this.automation,
+    this.automationScore,
+    this.automationTag,
+    this.automationType,
+    this.automationTypeDetails,
+    this.mailTemplateForAutomation,
+    this.testPaperId,
     this.getJobListModelId,
     this.totalEmails,
     this.unreadEmails,
-    // this.userDetail,
+    this.userDetail,
   });
 
   bool assignToAllEmails;
   String jobDescription;
-  // Criteria criteria;
+  Criteria criteria;
   bool activeStatus;
   int noOfJobOpenings;
   List<dynamic> skills;
@@ -69,16 +76,25 @@ class GetJobListModel {
   int v;
   bool activateCron;
   bool isCriteriaUpdated;
+  bool automation;
+  int automationScore;
+  String automationTag;
+  String automationType;
+  AutomationTypeDetails automationTypeDetails;
+  String mailTemplateForAutomation;
+  String testPaperId;
   String getJobListModelId;
   int totalEmails;
   int unreadEmails;
-  // List<UserDetail> userDetail;
+  List<UserDetail> userDetail;
 
   factory GetJobListModel.fromJson(Map<String, dynamic> json) =>
       GetJobListModel(
         assignToAllEmails: json["assign_to_all_emails"],
         jobDescription: json["job_description"],
-        // criteria: Criteria.fromJson(json["criteria"]),
+        criteria: json["criteria"] == null
+            ? null
+            : Criteria.fromJson(json["criteria"]),
         activeStatus: json["active_status"],
         noOfJobOpenings: json["no_of_job_openings"],
         skills: List<dynamic>.from(json["skills"].map((x) => x)),
@@ -104,18 +120,35 @@ class GetJobListModel {
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
         activateCron: json["activateCron"],
-        isCriteriaUpdated: json["is_criteria_updated"],
+        isCriteriaUpdated: json["is_criteria_updated"] == null
+            ? null
+            : json["is_criteria_updated"],
+        automation: json["automation"] == null ? null : json["automation"],
+        automationScore:
+            json["automationScore"] == null ? null : json["automationScore"],
+        automationTag:
+            json["automationTag"] == null ? null : json["automationTag"],
+        automationType:
+            json["automationType"] == null ? null : json["automationType"],
+        automationTypeDetails: json["automationTypeDetails"] == null
+            ? null
+            : AutomationTypeDetails.fromJson(json["automationTypeDetails"]),
+        mailTemplateForAutomation: json["mailTemplateForAutomation"] == null
+            ? null
+            : json["mailTemplateForAutomation"],
+        testPaperId:
+            json["test_paper_id"] == null ? null : json["test_paper_id"],
         getJobListModelId: json["id"],
         totalEmails: json["total_emails"],
         unreadEmails: json["unread_emails"],
-        //  userDetail: List<UserDetail>.from(
-        // json["userDetail"].map((x) => UserDetail.fromJson(x))),
+        userDetail: List<UserDetail>.from(
+            json["userDetail"].map((x) => UserDetail.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "assign_to_all_emails": assignToAllEmails,
         "job_description": jobDescription,
-        //"criteria": criteria.toJson(),
+        "criteria": criteria == null ? null : criteria.toJson(),
         "active_status": activeStatus,
         "no_of_job_openings": noOfJobOpenings,
         "skills": List<dynamic>.from(skills.map((x) => x)),
@@ -138,271 +171,319 @@ class GetJobListModel {
         "updatedAt": updatedAt.toIso8601String(),
         "__v": v,
         "activateCron": activateCron,
-        "is_criteria_updated": isCriteriaUpdated,
+        "is_criteria_updated":
+            isCriteriaUpdated == null ? null : isCriteriaUpdated,
+        "automation": automation == null ? null : automation,
+        "automationScore": automationScore == null ? null : automationScore,
+        "automationTag": automationTag == null ? null : automationTag,
+        "automationType": automationType == null ? null : automationType,
+        "automationTypeDetails": automationTypeDetails == null
+            ? null
+            : automationTypeDetails.toJson(),
+        "mailTemplateForAutomation": mailTemplateForAutomation == null
+            ? null
+            : mailTemplateForAutomation,
+        "test_paper_id": testPaperId == null ? null : testPaperId,
         "id": getJobListModelId,
         "total_emails": totalEmails,
         "unread_emails": unreadEmails,
-        //"userDetail": List<dynamic>.from(userDetail.map((x) => x.toJson())),
+        "userDetail": List<dynamic>.from(userDetail.map((x) => x.toJson())),
       };
 }
 
-// class Criteria {
-//   Criteria({
-//     this.experience,
-//     this.gender,
-//     this.skills,
-//     this.education,
-//     this.passoutYear,
-//     this.location,
-//     this.dob,
-//     this.basic,
-//   });
+class AutomationTypeDetails {
+  AutomationTypeDetails({
+    this.initialTag,
+    this.labelPreferred,
+    this.labels,
+    this.finalTag,
+    this.initialTemplate,
+    this.finalTemplate,
+    this.passingPercentage,
+  });
 
-//   Experience experience;
-//   Gender gender;
-//   Location skills;
-//   Education education;
-//   Location passoutYear;
-//   Location location;
-//   Dob dob;
-//   bool basic;
+  String initialTag;
+  String labelPreferred;
+  List<String> labels;
+  String finalTag;
+  String initialTemplate;
+  String finalTemplate;
+  String passingPercentage;
 
-//   factory Criteria.fromJson(Map<String, dynamic> json) => Criteria(
-//         experience: Experience.fromJson(json["experience"]),
-//         gender: Gender.fromJson(json["gender"]),
-//         skills: Location.fromJson(json["skills"]),
-//         education: Education.fromJson(json["education"]),
-//         passoutYear: Location.fromJson(json["passoutYear"]),
-//         location: Location.fromJson(json["location"]),
-//         dob: Dob.fromJson(json["dob"]),
-//         basic: json["basic"],
-//       );
+  factory AutomationTypeDetails.fromJson(Map<String, dynamic> json) =>
+      AutomationTypeDetails(
+        initialTag: json["initialTag"],
+        labelPreferred: json["labelPreferred"],
+        labels: List<String>.from(json["labels"].map((x) => x)),
+        finalTag: json["finalTag"],
+        initialTemplate: json["initialTemplate"],
+        finalTemplate: json["finalTemplate"],
+        passingPercentage: json["passingPercentage"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "experience": experience.toJson(),
-//         "gender": gender.toJson(),
-//         "skills": skills.toJson(),
-//         "education": education.toJson(),
-//         "passoutYear": passoutYear.toJson(),
-//         "location": location.toJson(),
-//         "dob": dob.toJson(),
-//         "basic": basic,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "initialTag": initialTag,
+        "labelPreferred": labelPreferred,
+        "labels": List<dynamic>.from(labels.map((x) => x)),
+        "finalTag": finalTag,
+        "initialTemplate": initialTemplate,
+        "finalTemplate": finalTemplate,
+        "passingPercentage": passingPercentage,
+      };
+}
 
-// class Dob {
-//   Dob({
-//     this.values,
-//     this.weight,
-//   });
+class Criteria {
+  Criteria({
+    this.experience,
+    this.gender,
+    this.skills,
+    this.education,
+    this.passoutYear,
+    this.location,
+    this.dob,
+    this.basic,
+  });
 
-//   List<DobValue> values;
-//   int weight;
+  Dob experience;
+  Gender gender;
+  Skills skills;
+  Education education;
+  Location passoutYear;
+  Location location;
+  Dob dob;
+  bool basic;
 
-//   factory Dob.fromJson(Map<String, dynamic> json) => Dob(
-//         values: List<DobValue>.from(
-//             json["values"].map((x) => DobValue.fromJson(x))),
-//         weight: json["weight"],
-//       );
+  factory Criteria.fromJson(Map<String, dynamic> json) => Criteria(
+        experience: Dob.fromJson(json["experience"]),
+        gender: json["gender"] == null ? null : Gender.fromJson(json["gender"]),
+        skills: Skills.fromJson(json["skills"]),
+        education: Education.fromJson(json["education"]),
+        passoutYear: Location.fromJson(json["passoutYear"]),
+        location: Location.fromJson(json["location"]),
+        dob: Dob.fromJson(json["dob"]),
+        basic: json["basic"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "values": List<dynamic>.from(values.map((x) => x.toJson())),
-//         "weight": weight,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "experience": experience.toJson(),
+        "gender": gender == null ? null : gender.toJson(),
+        "skills": skills.toJson(),
+        "education": education.toJson(),
+        "passoutYear": passoutYear.toJson(),
+        "location": location.toJson(),
+        "dob": dob.toJson(),
+        "basic": basic,
+      };
+}
 
-// class DobValue {
-//   DobValue({
-//     this.min,
-//     this.max,
-//     this.weight,
-//     this.id,
-//   });
+class Dob {
+  Dob({
+    this.values,
+    this.weight,
+  });
 
-//   String min;
-//   String max;
-//   int weight;
-//   int id;
+  List<DobValue> values;
+  int weight;
 
-//   factory DobValue.fromJson(Map<String, dynamic> json) => DobValue(
-//         min: json["min"],
-//         max: json["max"],
-//         weight: json["weight"],
-//         id: json["id"],
-//       );
+  factory Dob.fromJson(Map<String, dynamic> json) => Dob(
+        values: List<DobValue>.from(
+            json["values"].map((x) => DobValue.fromJson(x))),
+        weight: json["weight"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "min": min,
-//         "max": max,
-//         "weight": weight,
-//         "id": id,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "values": List<dynamic>.from(values.map((x) => x.toJson())),
+        "weight": weight,
+      };
+}
 
-// class Education {
-//   Education({
-//     this.values,
-//     this.weight,
-//   });
+class DobValue {
+  DobValue({
+    this.min,
+    this.max,
+    this.weight,
+    this.id,
+  });
 
-//   List<EducationValue> values;
-//   int weight;
+  String min;
+  String max;
+  int weight;
+  int id;
 
-//   factory Education.fromJson(Map<String, dynamic> json) => Education(
-//         values: List<EducationValue>.from(
-//             json["values"].map((x) => EducationValue.fromJson(x))),
-//         weight: json["weight"],
-//       );
+  factory DobValue.fromJson(Map<String, dynamic> json) => DobValue(
+        min: json["min"],
+        max: json["max"],
+        weight: json["weight"],
+        id: json["id"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "values": List<dynamic>.from(values.map((x) => x.toJson())),
-//         "weight": weight,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "min": min,
+        "max": max,
+        "weight": weight,
+        "id": id,
+      };
+}
 
-// class EducationValue {
-//   EducationValue({
-//     this.value,
-//     this.weight,
-//     this.type,
-//   });
+class Education {
+  Education({
+    this.values,
+    this.weight,
+  });
 
-//   String value;
-//   int weight;
-//   String type;
+  List<EducationValue> values;
+  int weight;
 
-//   factory EducationValue.fromJson(Map<String, dynamic> json) => EducationValue(
-//         value: json["value"],
-//         weight: json["weight"],
-//         type: json["type"],
-//       );
+  factory Education.fromJson(Map<String, dynamic> json) => Education(
+        values: List<EducationValue>.from(
+            json["values"].map((x) => EducationValue.fromJson(x))),
+        weight: json["weight"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "value": value,
-//         "weight": weight,
-//         "type": type,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "values": List<dynamic>.from(values.map((x) => x.toJson())),
+        "weight": weight,
+      };
+}
 
-// class Experience {
-//   Experience({
-//     this.values,
-//     this.weight,
-//   });
+class EducationValue {
+  EducationValue({
+    this.value,
+    this.weight,
+    this.type,
+  });
 
-//   List<ExperienceValue> values;
-//   int weight;
+  String value;
+  int weight;
+  String type;
 
-//   factory Experience.fromJson(Map<String, dynamic> json) => Experience(
-//         values: List<ExperienceValue>.from(
-//             json["values"].map((x) => ExperienceValue.fromJson(x))),
-//         weight: json["weight"],
-//       );
+  factory EducationValue.fromJson(Map<String, dynamic> json) => EducationValue(
+        value: json["value"],
+        weight: json["weight"],
+        type: json["type"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "values": List<dynamic>.from(values.map((x) => x.toJson())),
-//         "weight": weight,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "value": value,
+        "weight": weight,
+        "type": type,
+      };
+}
 
-// class ExperienceValue {
-//   ExperienceValue({
-//     this.weight,
-//     this.id,
-//     this.min,
-//     this.max,
-//   });
+class Gender {
+  Gender({
+    this.value,
+    this.weight,
+  });
 
-//   int weight;
-//   int id;
-//   int min;
-//   int max;
+  String value;
+  int weight;
 
-//   factory ExperienceValue.fromJson(Map<String, dynamic> json) =>
-//       ExperienceValue(
-//         weight: json["weight"],
-//         id: json["id"],
-//         min: json["min"],
-//         max: json["max"],
-//       );
+  factory Gender.fromJson(Map<String, dynamic> json) => Gender(
+        value: json["value"],
+        weight: json["weight"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "weight": weight,
-//         "id": id,
-//         "min": min,
-//         "max": max,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "value": value,
+        "weight": weight,
+      };
+}
 
-// class Gender {
-//   Gender({
-//     this.value,
-//     this.weight,
-//   });
+class Location {
+  Location({
+    this.values,
+    this.weight,
+  });
 
-//   String value;
-//   int weight;
+  List<Gender> values;
+  int weight;
 
-//   factory Gender.fromJson(Map<String, dynamic> json) => Gender(
-//         value: json["value"],
-//         weight: json["weight"],
-//       );
+  factory Location.fromJson(Map<String, dynamic> json) => Location(
+        values:
+            List<Gender>.from(json["values"].map((x) => Gender.fromJson(x))),
+        weight: json["weight"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "value": value,
-//         "weight": weight,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "values": List<dynamic>.from(values.map((x) => x.toJson())),
+        "weight": weight,
+      };
+}
 
-// class Location {
-//   Location({
-//     this.values,
-//     this.weight,
-//   });
+class Skills {
+  Skills({
+    this.values,
+    this.weight,
+  });
 
-//   List<Gender> values;
-//   int weight;
+  List<SkillsValue> values;
+  int weight;
 
-//   factory Location.fromJson(Map<String, dynamic> json) => Location(
-//         values:
-//             List<Gender>.from(json["values"].map((x) => Gender.fromJson(x))),
-//         weight: json["weight"],
-//       );
+  factory Skills.fromJson(Map<String, dynamic> json) => Skills(
+        values: List<SkillsValue>.from(
+            json["values"].map((x) => SkillsValue.fromJson(x))),
+        weight: json["weight"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "values": List<dynamic>.from(values.map((x) => x.toJson())),
-//         "weight": weight,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "values": List<dynamic>.from(values.map((x) => x.toJson())),
+        "weight": weight,
+      };
+}
 
-// class UserDetail {
-//   UserDetail({
-//     this.id,
-//     this.name,
-//     this.email,
-//     this.imageUrl,
-//     this.userType,
-//   });
+class SkillsValue {
+  SkillsValue({
+    this.value,
+    this.weight,
+    this.hovered,
+  });
 
-//   String id;
-//   String name;
-//   String email;
-//   String imageUrl;
-//   String userType;
+  String value;
+  int weight;
+  bool hovered;
 
-//   factory UserDetail.fromJson(Map<String, dynamic> json) => UserDetail(
-//         id: json["id"],
-//         name: json["name"],
-//         email: json["email"],
-//         imageUrl: json["imageUrl"],
-//         userType: json["user_type"],
-//       );
+  factory SkillsValue.fromJson(Map<String, dynamic> json) => SkillsValue(
+        value: json["value"],
+        weight: json["weight"],
+        hovered: json["hovered"] == null ? null : json["hovered"],
+      );
 
-//   Map<String, dynamic> toJson() => {
-//         "id": id,
-//         "name": name,
-//         "email": email,
-//         "imageUrl": imageUrl,
-//         "user_type": userType,
-//       };
-// }
+  Map<String, dynamic> toJson() => {
+        "value": value,
+        "weight": weight,
+        "hovered": hovered == null ? null : hovered,
+      };
+}
+
+class UserDetail {
+  UserDetail({
+    this.id,
+    this.name,
+    this.email,
+    this.imageUrl,
+    this.userType,
+  });
+
+  String id;
+  String name;
+  String email;
+  String imageUrl;
+  String userType;
+
+  factory UserDetail.fromJson(Map<String, dynamic> json) => UserDetail(
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        imageUrl: json["imageUrl"],
+        userType: json["user_type"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "email": email,
+        "imageUrl": imageUrl,
+        "user_type": userType,
+      };
+}

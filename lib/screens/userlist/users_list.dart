@@ -68,11 +68,11 @@ class _UsersListState extends State<UsersList> {
     print(BlocProvider.of<UserListBloc>(context).state);
   }
 
-  void _popupDialog(BuildContext context) {
+  void _popupDialog(BuildContext context, id) {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: ManageJobsDialouge());
+          return Dialog(child: ManageJobsDialouge(userId: id));
         });
   }
 
@@ -395,7 +395,10 @@ class _UsersListState extends State<UsersList> {
                           InkWell(
                             child: Icon(Icons.work_outline_outlined),
                             onTap: () {
-                              _popupDialog(context);
+                              state.userLists[index + 1].userType != 'Admin'
+                                  ? _popupDialog(
+                                      context, state.userLists[index + 1].id)
+                                  : "";
                             },
                           ),
                           const SizedBox(
