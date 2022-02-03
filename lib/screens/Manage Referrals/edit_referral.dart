@@ -1,10 +1,9 @@
-// ignore_for_file: must_be_immutable, deprecated_member_use
+// ignore_for_file: must_be_immutable, deprecated_member_use, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
 import 'package:flutter_product_recruit/model/manage_referral/get_referral_model.dart';
-import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/show_referral.dart';
 import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';

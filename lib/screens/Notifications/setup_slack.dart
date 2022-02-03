@@ -112,12 +112,10 @@ class _NotificationssState extends State<Notificationss> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(left: 5.0),
-                                      child: Expanded(
-                                        child: Transform.scale(
-                                          scale: 0.7,
-                                          child: Image.asset(
-                                            'assets/images/slack.png',
-                                          ),
+                                      child: Transform.scale(
+                                        scale: 0.7,
+                                        child: Image.asset(
+                                          'assets/images/slack.png',
                                         ),
                                       ),
                                     ),
@@ -127,11 +125,9 @@ class _NotificationssState extends State<Notificationss> {
                                     Align(
                                         alignment: Alignment.center,
                                         child: Container(
-                                          child: Expanded(
-                                            child: Textt(
-                                              text: "Add to Slack",
-                                              //  size: 10,
-                                            ),
+                                          child: Textt(
+                                            text: "Add to Slack",
+                                            //  size: 10,
                                           ),
                                         )),
                                     SizedBox(
