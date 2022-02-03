@@ -16,9 +16,9 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   TextEditingController emailController =
-      new TextEditingController(text: "123@gmail.com");
+      new TextEditingController(text: "testing1@gmail.com");
   TextEditingController passwordController =
-      new TextEditingController(text: "123");
+      new TextEditingController(text: "testing1");
 
   bool _rememberme = false;
 
