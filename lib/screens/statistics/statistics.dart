@@ -116,7 +116,7 @@ class _StatsState extends State<Stats> {
   Widget build(BuildContext context) {
     print("entered in build");
     List<UserListsModel> list1 = [];
-    List<JobPerformanceModel> lists2 = [];
+    List lists2 = [];
 
     return BlocBuilder<ApplicationStatusBloc, ApplicationStatusState>(
         builder: (context, state) {
@@ -1089,19 +1089,16 @@ class _StatsState extends State<Stats> {
                                           i <=
                                               state.jobpPerformanceLists.length;
                                           i++) {
-                                        print(
-                                            "-->${state.jobpPerformanceLists[i]}");
-                                        // print(state
-                                        //     .jobpPerformanceLists[0].);
                                         for (var j = 0;
                                             j <
-                                                state.jobpPerformanceLists[0]
+                                                state.jobpPerformanceLists
                                                     .length;
                                             j++) {
-                                          print(
-                                              state.jobpPerformanceLists[0][j]);
+                                          lists2.add(
+                                              state.jobpPerformanceLists[i][j]);
                                         }
                                       }
+                                      print("lists2$lists2");
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10.0),
@@ -1152,7 +1149,7 @@ class _StatsState extends State<Stats> {
                                                               const Divider(),
                                                       // physics: NeverScrollableScrollPhysics(),
                                                       // shrinkWrap: true,
-                                                      itemCount: 1,
+                                                      itemCount: lists2.length,
                                                       // state
                                                       //     .jobpPerformanceLists
                                                       //     .length,
@@ -1198,7 +1195,8 @@ class _StatsState extends State<Stats> {
                                                                           .start,
                                                                   children: [
                                                                     Text(
-                                                                      "Tuesday,Feb 1,2022",
+                                                                      lists2[index]
+                                                                          .employee,
                                                                       textScaleFactor:
                                                                           1.3,
                                                                     ),

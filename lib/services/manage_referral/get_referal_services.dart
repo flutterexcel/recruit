@@ -30,11 +30,8 @@ class GetReferralEmailService extends ChangeNotifier {
         print("referral got successfully");
 
         return referralList;
-        //print("Success");
-        // return ManageSpamList.fromJson(jsonDecode(response.body));
       } else {
-        print("error in referral");
-        throw Exception('Failed to create album.');
+        print("error in getting referral");
       }
     } catch (e) {
       print(e.toString());

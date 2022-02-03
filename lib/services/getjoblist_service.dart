@@ -26,7 +26,6 @@ class GetJobListService extends ChangeNotifier {
     );
 
     if (response.statusCode == 200) {
-      print("200 got successfully");
       var jsonList = jsonDecode(response.body);
       for (var prod in jsonList) {
         joblist.add(GetJobListModel.fromJson(prod));
@@ -34,11 +33,8 @@ class GetJobListService extends ChangeNotifier {
       print("job List got successfully");
       notifyListeners();
       return joblist;
-      //print("Success");
-      // return ManageSpamList.fromJson(jsonDecode(response.body));
     } else {
-      print("error");
-      // throw Exception('Failed to create album.');
+      print("error in getting joblists");
     }
   }
 }

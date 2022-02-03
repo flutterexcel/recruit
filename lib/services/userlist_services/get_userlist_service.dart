@@ -1,3 +1,5 @@
+// ignore_for_file: missing_return
+
 import 'dart:convert';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -7,7 +9,6 @@ import 'package:http/http.dart' as http;
 class GetUserListService {
   static Future<List<UserListsModel>> getUserList() async {
     List<UserListsModel> userslist = [];
-    // final prodUrl = await AppConfig.forEnvironment('/list/1/100');
 
     String url = "http://176.9.137.77:3001/user/list/1/100";
 
@@ -32,11 +33,8 @@ class GetUserListService {
       }
       print("User List got successfully");
       return userslist;
-      //print("Success");
-      // return ManageSpamList.fromJson(jsonDecode(response.body));
     } else {
-      print("error");
-      throw Exception('Failed to create album.');
+      print("Error in getting user");
     }
   }
 }

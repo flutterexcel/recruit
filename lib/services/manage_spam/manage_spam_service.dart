@@ -25,10 +25,8 @@ class ManageSpamService {
       for (var prod in jsonList) {
         spamlist.add(ManageSpamList.fromJson(prod));
       }
-      print("got successfully");
+      print("spam got successfully");
       return spamlist;
-      //print("Success");
-      // return ManageSpamList.fromJson(jsonDecode(response.body));
     } else {
       print("error");
       throw Exception('Failed to create album.');
