@@ -1,15 +1,25 @@
 import 'dart:convert';
 
 import 'package:flutter_product_recruit/model/manage_spam_model.dart';
+import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
 class AddUserListService {
   //**** add user  */
   static Future addUserList(String name, String email, String password,
       String cpassword, String phone, String userType) async {
+    String url = "http://176.9.137.77:3001/user/add_user";
+
+    Map<String, String> queryParams = {
+      'accessToken': StorageUtil.getToken(),
+    };
+
+    String queryString = Uri(queryParameters: queryParams).query;
+
+    String apiUrl = url + '?' + queryString;
+
     final response = await http.post(
-      Uri.parse(
-          'http://176.9.137.77:3001/user/add_user?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYxZTkyZWZkZDU5M2ViMDAzYTAxM2Q0NiIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAxLTIyVDA1OjU2OjQ1LjAwNVoiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQyODMxMDA1LCJleHAiOjE2NzQzNjcwMDV9.0mC06kXoibWMBy4YXSAy_rTJPJkuPJ1abOH4uIW-vW0'),
+      Uri.parse(apiUrl),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -24,10 +34,10 @@ class AddUserListService {
     );
 
     if (response.statusCode == 200) {
-      print("Success");
+      print("User Added Successfully");
       return AddSpamModel.fromJson(jsonDecode(response.body));
     } else {
-      print("error");
+      print("error in user adding");
       return AddSpamModel.fromJson(jsonDecode(response.body));
     }
   }

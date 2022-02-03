@@ -1,3 +1,5 @@
+// ignore_for_file: missing_return, deprecated_member_use
+
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_product_recruit/model/manage_referral/add_referral_model.dart';
@@ -6,12 +8,9 @@ import 'package:flutter_product_recruit/model/manage_referral/get_referral_model
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
-// ignore: camel_case_types
 class AddReferralService extends ChangeNotifier {
-  // ignore: deprecated_member_use
   List<ReferralListModel> addedList = new List<ReferralListModel>();
   Future<AddReferralModel> addReferralEmail(String email) async {
-    print("-----------------enter in function");
     String url = "http://176.9.137.77:3001/referral-email";
 
     Map<String, String> queryParams = {
@@ -35,10 +34,8 @@ class AddReferralService extends ChangeNotifier {
       print("Referral Added Successfully");
       notifyListeners();
       var res = AddReferralModel.fromJson(jsonDecode(response.body));
-      //print(res.data);
-      // addedList.add(ReferralListModel());
+
       return res;
-      //print(addedList);
     } else {
       print("------------------error");
       throw Exception('Failed to create referrals.');

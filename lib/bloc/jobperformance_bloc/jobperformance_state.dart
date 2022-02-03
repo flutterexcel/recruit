@@ -1,6 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_product_recruit/model/jobperformance_model.dart';
-import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 
 abstract class JobPerformanceState extends Equatable {
   JobPerformanceState();

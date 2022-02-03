@@ -68,9 +68,9 @@ class _MainState extends State<Main> {
         BlocProvider<PermissionBloc>(
           create: (context) => PermissionBloc(),
         ),
-        BlocProvider<PipeLineBloc>(
-          create: (context) => PipeLineBloc(),
-        ),
+        // BlocProvider<PipeLineBloc>(
+        //   create: (context) => PipeLineBloc(),
+        // ),
         BlocProvider<ProfileBloc>(
           create: (context) => ProfileBloc(),
         ),

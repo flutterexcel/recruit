@@ -1,24 +1,35 @@
+// ignore_for_file: missing_return
+
 import 'dart:convert';
+import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
 // ignore: camel_case_types
 class Delete_Spam_Email_Service {
   // ignore: non_constant_identifier_names
-  static Future<DeleteSpam> DeleteReferral(String id) async {
+  static Future<DeleteSpam> deleteReferral(String id) async {
+    String url = "http://176.9.137.77:3001/spamList/delete/$id";
+
+    Map<String, String> queryParams = {
+      'accessToken': StorageUtil.getToken(),
+    };
+
+    String queryString = Uri(queryParameters: queryParams).query;
+
+    String apiUrl = url + '?' + queryString;
+
     final response = await http.delete(
-      Uri.parse(
-          'http://176.9.137.77:3001/spamList/delete/$id?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYwY2IyNjc0ZGM4YjhmMDAzYTgyM2YxYyIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAxLTExVDA5OjU3OjAyLjIxMloiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQxODk1MDIyLCJleHAiOjE2NzM0MzEwMjJ9.tJRFa_0tR92W6vmsFDuZ4NRGga4PrZ_3S5IXeOdJ0Ak'),
+      Uri.parse(apiUrl),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
 
     if (response.statusCode == 200) {
-      print("Successfully Deleted");
+      print("Referral Successfully Deleted");
       return DeleteSpam.fromJson(jsonDecode(response.body));
     } else {
-      print("error in deletion");
-      throw Exception('Failed to create album.');
+      print("error in referral deletion");
     }
   }
 }
