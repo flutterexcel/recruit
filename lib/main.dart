@@ -8,10 +8,8 @@ import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
 import 'package:flutter_product_recruit/bloc/managesource_bloc/managesource_bloc.dart';
 import 'package:flutter_product_recruit/bloc/permission_bloc/permission_bloc.dart';
-import 'package:flutter_product_recruit/bloc/pipeline_bloc/pipeline_bloc.dart';
 import 'package:flutter_product_recruit/bloc/profile_bloc/profile_bloc.dart';
 import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
-
 import 'package:flutter_product_recruit/screens/login.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'bloc/kanban_bloc/kanban_bloc.dart';

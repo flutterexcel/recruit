@@ -17,7 +17,6 @@ import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_event.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_state.dart';
-import 'package:flutter_product_recruit/model/jobperformance_model.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/screens/statistics/ai_analytics.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -1091,11 +1090,11 @@ class _StatsState extends State<Stats> {
                                           i++) {
                                         for (var j = 0;
                                             j <
-                                                state.jobpPerformanceLists
+                                                state.jobpPerformanceLists[i]
                                                     .length;
                                             j++) {
                                           lists2.add(
-                                              state.jobpPerformanceLists[i][j]);
+                                              state.jobpPerformanceLists[j]);
                                         }
                                       }
                                       print("lists2$lists2");
