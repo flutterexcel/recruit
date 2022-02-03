@@ -9,6 +9,7 @@ class DeleteReferral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("id $id");
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       height: 150,

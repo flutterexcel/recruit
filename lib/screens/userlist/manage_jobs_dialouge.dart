@@ -182,9 +182,9 @@ class _ManageJobsDialougeState extends State<ManageJobsDialouge> {
                                   value: _value[index],
                                   onChanged: (value) {
                                     print(value);
-                                    // setState(() {
-                                    _value[index] = value;
-                                    // });
+                                    setState(() {
+                                      _value[index] = value;
+                                    });
                                   });
                             }),
                       );
