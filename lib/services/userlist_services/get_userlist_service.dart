@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_product_recruit/UiConstant/app_config.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
