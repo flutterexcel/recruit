@@ -4,6 +4,7 @@ import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/add_referal.dart';
 import 'package:flutter_product_recruit/screens/Manage%20Referrals/confirm_delete_referral_dialouge.dart';
+import 'package:flutter_product_recruit/screens/Manage%20Referrals/edit_referral.dart';
 import 'package:flutter_product_recruit/screens/manage_spams/update_contact_dialouge.dart';
 import 'package:flutter_product_recruit/services/manage_referral/add_referral_services.dart';
 import 'package:flutter_product_recruit/services/manage_referral/get_referal_services.dart';
@@ -23,11 +24,14 @@ class GetReferrals extends StatefulWidget {
 
 // ignore: camel_case_types
 class _GetReferralsState extends State<GetReferrals> {
-  void _popupDialog(BuildContext context) {
+  void _popupDialog(BuildContext context, updates) {
     showDialog(
         context: context,
         builder: (context) {
-          return Dialog(child: UpdateContact());
+          return Dialog(
+              child: ChangeNotifierProvider(
+                  create: (context) => AddReferralService(),
+                  child: EditReferral(update: updates)));
         });
   }
 
@@ -153,7 +157,8 @@ class _GetReferralsState extends State<GetReferrals> {
                                 child: InkWell(
                                     onTap: () {
                                       setState(() {
-                                        _popupDialog(context);
+                                        _popupDialog(context,
+                                            states.referralList[index]);
                                       });
                                     },
                                     child: Icon(Icons.edit))),
