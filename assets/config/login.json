@@ -1,12 +1,11 @@
 {
-    "baseUrl": "http://",
-    "devUrl": "176.9.137.77:",
+    "baseUrl": "https://",
+    "devUrl": "excellence_api.exweb.in",
     "aiBaseUrl": "https://",
     "aiUrl": "aiapi-1.exweb.in/datasync/filter/fetch/",
     "cvAiUrl": "aiapi-1.exweb.in/datasync/filter/fetch/",
     "accountName": "devrecruit",
-    "port": "3001/",
+    "port": "/",
     "nextAction": "=",
     "domainUrl": "_api.exweb.in/account/logo/image"
-    
 }

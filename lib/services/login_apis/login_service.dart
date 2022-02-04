@@ -8,6 +8,7 @@ class LoginService {
     var apiUrl =
         await (UrlConfig.firstLogin(step: "login", action: "user/login"))
             .forFirstEnvironment();
+    print("----->$apiUrl");
     Map data = {
       'email': email,
       'password': password,

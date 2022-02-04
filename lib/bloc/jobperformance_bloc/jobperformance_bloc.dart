@@ -21,7 +21,7 @@ class JobPerformanceBloc
       GetJobPerformanceService getJobPerformanceService =
           new GetJobPerformanceService();
       var res = await getJobPerformanceService.getJobPerformanceList(event.id);
-      print("res$res");
+      // print("res$res");
       //var res2 = await GetUserListService.getUserList();
 
       yield GetJobPerformanceState(jobpPerformanceLists: res);

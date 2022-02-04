@@ -67,24 +67,34 @@ class HiringTeam extends StatelessWidget {
                         crossAxisCount: 4),
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        child: _adminpanelsize[index].imageUrl.contains(".jpg")
-                            ? CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    _adminpanelsize[index].imageUrl,
-                                    scale: 1.0),
+                        child: _adminpanelsize[index]
+                                    .imageUrl
+                                    .contains(".jpg") ||
+                                _adminpanelsize[index].imageUrl.contains(".png")
+                            ? Tooltip(
+                                child: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      _adminpanelsize[index].imageUrl,
+                                      scale: 1.0),
+                                ),
+                                message: _adminpanelsize[index].name,
                               )
-                            : SvgPicture.network(hirinTeam[index].imageUrl),
+                            : Tooltip(
+                                child: SvgPicture.network(
+                                    hirinTeam[index].imageUrl),
+                                message: hirinTeam[index].name,
+                              ),
                       );
                     }),
                 SizedBox(
-                  height: 15,
+                  height: 25,
                 ),
                 Text(
                   "HR(s)",
                   style: TextStyle(color: AppColors.Black, fontSize: 18),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 GridView.builder(
                     shrinkWrap: true,
@@ -96,23 +106,30 @@ class HiringTeam extends StatelessWidget {
                         crossAxisCount: 4),
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        child: hirinTeam[index].imageUrl.contains(".jpg")
-                            ? CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage((hirinTeam[index].imageUrl)),
+                        child: _hrpanelsize[index].imageUrl.contains(".jpg")
+                            ? Tooltip(
+                                child: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      (_hrpanelsize[index].imageUrl)),
+                                ),
+                                message: _hrpanelsize[index].name,
                               )
-                            : SvgPicture.network(hirinTeam[index].imageUrl),
+                            : Tooltip(
+                                child: SvgPicture.network(
+                                    _hrpanelsize[index].imageUrl),
+                                message: _hrpanelsize[index].name,
+                              ),
                       );
                     }),
                 SizedBox(
-                  height: 15,
+                  height: 25,
                 ),
                 Text(
                   "Interviewee(s)",
                   style: TextStyle(color: AppColors.Black, fontSize: 18),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 GridView.builder(
                     shrinkWrap: true,
@@ -124,12 +141,21 @@ class HiringTeam extends StatelessWidget {
                         crossAxisCount: 4),
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        child: hirinTeam[index].imageUrl.contains(".jpg")
-                            ? CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage((hirinTeam[index].imageUrl)),
+                        child: _intervieweepanelsize[index]
+                                .imageUrl
+                                .contains(".jpg")
+                            ? Tooltip(
+                                child: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      (_intervieweepanelsize[index].imageUrl)),
+                                ),
+                                message: _intervieweepanelsize[index].name,
                               )
-                            : SvgPicture.network(hirinTeam[index].imageUrl),
+                            : Tooltip(
+                                child: SvgPicture.network(
+                                    _intervieweepanelsize[index].imageUrl),
+                                message: _intervieweepanelsize[index].name,
+                              ),
                       );
                     })
               ],

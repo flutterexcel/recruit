@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_bloc.dart';
@@ -20,6 +22,7 @@ import 'bloc/user_logs_bloc/user_log_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageUtil.getInstance();
+  HttpOverrides.global = new MyHttpOverrides();
   runApp(Main());
 }
 
@@ -94,5 +97,14 @@ class RecruiterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //  return DomainLogin();
     return Login();
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

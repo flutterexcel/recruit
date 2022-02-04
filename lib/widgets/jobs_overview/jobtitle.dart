@@ -9,6 +9,7 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart'
 import 'package:flutter_product_recruit/screens/7_step_screens/step6/step6.dart';
 
 import 'package:flutter_product_recruit/screens/7_step_screens/step7.dart';
+import 'package:flutter_product_recruit/screens/kanban_screen.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/job_description.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -49,7 +50,6 @@ class _JobTitleState extends State<JobTitle> {
               widthFactor: 1.1,
               child: Container(
                   margin: EdgeInsets.only(top: 10),
-                  height: 90,
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
@@ -72,7 +72,7 @@ class _JobTitleState extends State<JobTitle> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
-                            width: 200,
+                            width: 210,
                             child: Text(
                               getData[index].title,
                               style: TextStyle(
@@ -187,35 +187,73 @@ class _JobTitleState extends State<JobTitle> {
                           ),
                         ],
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Container(
                         height: 40,
                         // width: 200,
                         child: GridView.builder(
                             gridDelegate:
                                 new SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 12),
+                                    crossAxisCount: 10, crossAxisSpacing: 2),
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: getData[index].userDetail.length,
                             itemBuilder: (context, index2) {
-                              return SvgPicture.network(
-                                getData[index].userDetail[index2].imageUrl,
-                              );
+                              return !getData[index]
+                                      .userDetail[index2]
+                                      .imageUrl
+                                      .contains('.svg')
+                                  ? Tooltip(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(
+                                                  getData[index]
+                                                      .userDetail[index2]
+                                                      .imageUrl,
+                                                ))),
+                                      ),
+                                      message: getData[index]
+                                          .userDetail[index2]
+                                          .name,
+                                    )
+                                  :
+                                  // Container(
+
+                                  //   child: Image.network(
+                                  //     getData[index].userDetail[index2].imageUrl,
+                                  //     fit: BoxFit.contain,
+                                  //   ),
+                                  // );
+                                  Tooltip(
+                                      child: SvgPicture.network(
+                                        getData[index]
+                                            .userDetail[index2]
+                                            .imageUrl,
+                                      ),
+                                      message: getData[index]
+                                          .userDetail[index2]
+                                          .name,
+                                    );
                             }),
                       )
                     ],
                   )),
             ),
-            // onTap: () {
-            //   Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => KanbanScreen(
-            //             _listJobTag[index].listJobTag,
-            //             getData[index].candidateProfile,
-            //             getData[index].id)),
-            //   );
-            // },
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => KanbanScreen(
+                        _listJobTag[index].listJobTag,
+                        getData[index].candidateProfile,
+                        getData[index].id)),
+              );
+            },
             subtitle: isTitleTap[index] == true
                 ? JobDescription(getData[index], _listJobTag[index].listJobTag)
                 : Center());

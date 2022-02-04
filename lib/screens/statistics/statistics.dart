@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use, missing_return
 
-import 'dart:math';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,15 +10,14 @@ import 'package:flutter_product_recruit/bloc/all_user_bloc/all_userlog_state.dar
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_bloc.dart';
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_event.dart';
 import 'package:flutter_product_recruit/bloc/application_status_bloc/application_status_state.dart';
-import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_bloc.dart';
-import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_event.dart';
-import 'package:flutter_product_recruit/bloc/joblist_bloc/joblist_state.dart';
+
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_bloc.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_event.dart';
 import 'package:flutter_product_recruit/bloc/jobperformance_bloc/jobperformance_state.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/screens/statistics/ai_analytics.dart';
 import 'package:flutter_product_recruit/screens/statistics/job_applicants.dart';
+import 'package:flutter_product_recruit/screens/statistics/job_application_day.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
@@ -33,7 +30,7 @@ class Stats extends StatefulWidget {
   State<Stats> createState() => _StatsState();
 }
 
-class _StatsState extends State<Stats> {
+class _StatsState extends State<Stats> with SingleTickerProviderStateMixin {
   bool isSwitched = false;
   String callLogsdd;
   // List<String> callLogsItems = ['User', 'Test'];
@@ -55,63 +52,13 @@ class _StatsState extends State<Stats> {
 
   List<String> upcomingInterviewItems = ['All'];
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _generateData();
-  // }
+  TabController _tabController;
 
-  // _generateData() {
-  //   var data1 = [
-  //     new Pollution(1980, 'USA', 30),
-  //     new Pollution(1980, 'Asia', 40),
-  //     new Pollution(1980, 'Europe', 10),
-  //   ];
-  //   var data2 = [
-  //     new Pollution(1985, 'USA', 100),
-  //     new Pollution(1980, 'Asia', 150),
-  //     new Pollution(1985, 'Europe', 80),
-  //   ];
-  //   var data3 = [
-  //     new Pollution(1985, 'USA', 200),
-  //     new Pollution(1980, 'Asia', 300),
-  //     new Pollution(1985, 'Europe', 180),
-  //   ];
-  //   _seriesData.add(
-  //     charts.Series(
-  //       domainFn: (Pollution pollution, _) => pollution.place,
-  //       measureFn: (Pollution pollution, _) => pollution.quantity,
-  //       id: '2017',
-  //       data: data1,
-  //       fillPatternFn: (_, __) => charts.FillPatternType.solid,
-  //       fillColorFn: (Pollution pollution, _) =>
-  //           charts.ColorUtil.fromDartColor(Colors.blue),
-  //     ),
-  //   );
-  //   _seriesData.add(
-  //     charts.Series(
-  //       domainFn: (Pollution pollution, _) => pollution.place,
-  //       measureFn: (Pollution pollution, _) => pollution.quantity,
-  //       id: '2018',
-  //       data: data2,
-  //       fillPatternFn: (_, __) => charts.FillPatternType.solid,
-  //       fillColorFn: (Pollution pollution, _) =>
-  //           charts.ColorUtil.fromDartColor(Color(0xff109618)),
-  //     ),
-  //   );
-
-  //   _seriesData.add(
-  //     charts.Series(
-  //       domainFn: (Pollution pollution, _) => pollution.place,
-  //       measureFn: (Pollution pollution, _) => pollution.quantity,
-  //       id: '2019',
-  //       data: data3,
-  //       fillPatternFn: (_, __) => charts.FillPatternType.solid,
-  //       fillColorFn: (Pollution pollution, _) =>
-  //           charts.ColorUtil.fromDartColor(Color(0xffff9900)),
-  //     ),
-  //   );
-  // }
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(vsync: this, initialIndex: 0, length: 2);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -338,14 +285,15 @@ class _StatsState extends State<Stats> {
                                   child: DefaultTabController(
                                     length: 2,
                                     child: TabBar(
+                                      controller: _tabController,
                                       labelColor: Color(0xFF00E5FF),
                                       indicatorColor: Color(0xFF00E5FF),
                                       unselectedLabelColor: Colors.black,
                                       labelStyle: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
-                                      tabs: <Widget>[
-                                        Tab(
+                                      tabs: [
+                                        const Tab(
                                           text: "Day",
                                         ),
                                         Tab(text: "Month"),
@@ -368,162 +316,217 @@ class _StatsState extends State<Stats> {
                           const SizedBox(
                             height: 5,
                           ),
-                          BlocBuilder<JobListBloc, JobListState>(
-                              builder: (context, state) {
-                            if (state is JobListInitialState) {
-                              context
-                                  .bloc<JobListBloc>()
-                                  .add(JobListInitialEvent());
-                              return SizedBox(height: 35, child: Loader());
-                            } else if (state is GetJobListState) {
-                              //  print("statessss----$state");
-                              print(state.jobLists.length);
-                              return Container(
-                                  child: Wrap(
-                                //   runAlignment: WrapAlignment.start,
-                                alignment: WrapAlignment.start,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                spacing: 8.0, // gap between adjacent chips
-                                //  runSpacing: 4.0, // gap between lines
-                                children: [
-                                  for (var i = 0;
-                                      i < state.jobLists.length;
-                                      i++)
-                                    Text.rich(
-                                      TextSpan(
-                                        children: <InlineSpan>[
-                                          WidgetSpan(
-                                            alignment:
-                                                PlaceholderAlignment.middle,
-                                            child: Container(
-                                              height: 10,
-                                              width: 10,
-                                              padding: const EdgeInsets.all(4),
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.primaries[
-                                                      Random().nextInt(Colors
-                                                          .primaries.length)]),
-                                              child: Text(""),
+                          Expanded(
+                            child: TabBarView(
+                              controller: _tabController,
+                              children: [
+                                Column(
+                                  children: [
+                                    JobApplicationDay(),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: LineChart(
+                                          LineChartData(
+                                            lineTouchData:
+                                                LineTouchData(enabled: false),
+                                            lineBarsData: [
+                                              LineChartBarData(
+                                                spots: [
+                                                  FlSpot(0, 1),
+                                                ],
+                                                belowBarData: BarAreaData(
+                                                  // show: true,
+                                                  colors: [
+                                                    Colors.lightBlue
+                                                        .withOpacity(0.5)
+                                                  ],
+                                                  cutOffY: cutOffYValue,
+                                                  applyCutOffY: true,
+                                                ),
+                                                aboveBarData: BarAreaData(
+                                                  show: true,
+                                                  colors: [
+                                                    Colors.lightGreen
+                                                        .withOpacity(0.5)
+                                                  ],
+                                                  cutOffY: cutOffYValue,
+                                                  applyCutOffY: true,
+                                                ),
+                                                dotData: FlDotData(
+                                                  show: false,
+                                                ),
+                                              ),
+                                            ],
+                                            minY: 0,
+                                            maxX: 3,
+                                            maxY: 4,
+                                            minX: 0,
+                                            gridData: FlGridData(
+                                                show: true,
+                                                getDrawingHorizontalLine:
+                                                    (value) =>
+                                                        FlLine(strokeWidth: 1)),
+                                            titlesData: FlTitlesData(
+                                              bottomTitles: SideTitles(
+                                                  showTitles: true,
+                                                  reservedSize: 10,
+                                                  margin: 15,
+                                                  textStyle: yearTextStyle,
+                                                  getTitles: (value) {
+                                                    switch (value.toInt()) {
+                                                      case 0:
+                                                        return 'Mon, Jan 10';
+                                                      case 1:
+                                                        return 'Fri, Jan 21';
+                                                      case 2:
+                                                        return 'Tue, Feb 1';
+                                                    }
+                                                    return '';
+                                                  }),
+                                              leftTitles: SideTitles(
+                                                showTitles: true,
+                                                margin: 15,
+                                                getTitles: (value) {
+                                                  switch (value.toInt()) {
+                                                    case 0:
+                                                      return '0';
+                                                    case 1:
+                                                      return '0.25';
+                                                    case 2:
+                                                      return '0.5';
+                                                    case 3:
+                                                      return '0.75';
+                                                    case 4:
+                                                      return '1';
+                                                    default:
+                                                      return '';
+                                                  }
+                                                },
+                                              ),
                                             ),
+                                            // axisTitleData: FlAxisTitleData(
+                                            //     leftTitle: AxisTitle(
+                                            //         showTitle: true,
+                                            //         titleText: 'Value',
+                                            //         margin: 10),
+                                            //     bottomTitle: AxisTitle(
+                                            //         showTitle: true,
+                                            //         margin: 10,
+                                            //         titleText: 'Year',
+                                            //         textStyle: yearTextStyle,
+                                            //         textAlign: TextAlign.right)),
+                                            // gridData: FlGridData(
+                                            //   show: true,
+                                            //   checkToShowHorizontalLine: (double value) {
+                                            //     return value == 1 ||
+                                            //         value == 2 ||
+                                            //         value == 3 ||
+                                            //         value == 4;
+                                            //   },
+                                            // ),
                                           ),
-                                          TextSpan(
-                                              text:
-                                                  "  ${state.jobLists[i].title}"),
-                                        ],
-                                      ),
-                                      // textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 13),
-                                    )
-                                ],
-                              ));
-                            } else
-                              return Container();
-                          }),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: LineChart(
-                                LineChartData(
-                                  lineTouchData: LineTouchData(enabled: false),
-                                  lineBarsData: [
-                                    LineChartBarData(
-                                      spots: [
-                                        FlSpot(0, 1),
-                                      ],
-                                      belowBarData: BarAreaData(
-                                        // show: true,
-                                        colors: [
-                                          Colors.lightBlue.withOpacity(0.5)
-                                        ],
-                                        cutOffY: cutOffYValue,
-                                        applyCutOffY: true,
-                                      ),
-                                      aboveBarData: BarAreaData(
-                                        show: true,
-                                        colors: [
-                                          Colors.lightGreen.withOpacity(0.5)
-                                        ],
-                                        cutOffY: cutOffYValue,
-                                        applyCutOffY: true,
-                                      ),
-                                      dotData: FlDotData(
-                                        show: false,
+                                        ),
                                       ),
                                     ),
                                   ],
-                                  minY: 0,
-                                  maxX: 3,
-                                  maxY: 4,
-                                  minX: 0,
-                                  gridData: FlGridData(
-                                      show: true,
-                                      getDrawingHorizontalLine: (value) =>
-                                          FlLine(strokeWidth: 1)),
-                                  titlesData: FlTitlesData(
-                                    bottomTitles: SideTitles(
-                                        showTitles: true,
-                                        reservedSize: 10,
-                                        margin: 15,
-                                        textStyle: yearTextStyle,
-                                        getTitles: (value) {
-                                          switch (value.toInt()) {
-                                            case 0:
-                                              return 'Mon, Jan 10';
-                                            case 1:
-                                              return 'Fri, Jan 21';
-                                            case 2:
-                                              return 'Tue, Feb 1';
-                                          }
-                                          return '';
-                                        }),
-                                    leftTitles: SideTitles(
-                                      showTitles: true,
-                                      margin: 15,
-                                      getTitles: (value) {
-                                        switch (value.toInt()) {
-                                          case 0:
-                                            return '0';
-                                          case 1:
-                                            return '0.25';
-                                          case 2:
-                                            return '0.5';
-                                          case 3:
-                                            return '0.75';
-                                          case 4:
-                                            return '1';
-                                          default:
-                                            return '';
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                  // axisTitleData: FlAxisTitleData(
-                                  //     leftTitle: AxisTitle(
-                                  //         showTitle: true,
-                                  //         titleText: 'Value',
-                                  //         margin: 10),
-                                  //     bottomTitle: AxisTitle(
-                                  //         showTitle: true,
-                                  //         margin: 10,
-                                  //         titleText: 'Year',
-                                  //         textStyle: yearTextStyle,
-                                  //         textAlign: TextAlign.right)),
-                                  // gridData: FlGridData(
-                                  //   show: true,
-                                  //   checkToShowHorizontalLine: (double value) {
-                                  //     return value == 1 ||
-                                  //         value == 2 ||
-                                  //         value == 3 ||
-                                  //         value == 4;
-                                  //   },
-                                  // ),
                                 ),
-                              ),
+                                Column(
+                                  children: [
+                                    JobApplicationDay(),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: LineChart(
+                                          LineChartData(
+                                            lineTouchData:
+                                                LineTouchData(enabled: false),
+                                            lineBarsData: [
+                                              LineChartBarData(
+                                                spots: [
+                                                  FlSpot(0, 1),
+                                                ],
+                                                belowBarData: BarAreaData(
+                                                  // show: true,
+                                                  colors: [
+                                                    Colors.lightBlue
+                                                        .withOpacity(0.5)
+                                                  ],
+                                                  cutOffY: cutOffYValue,
+                                                  applyCutOffY: true,
+                                                ),
+                                                aboveBarData: BarAreaData(
+                                                  show: true,
+                                                  colors: [
+                                                    Colors.lightGreen
+                                                        .withOpacity(0.5)
+                                                  ],
+                                                  cutOffY: cutOffYValue,
+                                                  applyCutOffY: true,
+                                                ),
+                                                dotData: FlDotData(
+                                                  show: false,
+                                                ),
+                                              ),
+                                            ],
+                                            minY: 0,
+                                            maxX: 1,
+                                            maxY: 4,
+                                            minX: 0,
+                                            gridData: FlGridData(
+                                                show: true,
+                                                getDrawingHorizontalLine:
+                                                    (value) =>
+                                                        FlLine(strokeWidth: 1)),
+                                            titlesData: FlTitlesData(
+                                              bottomTitles: SideTitles(
+                                                  showTitles: true,
+                                                  reservedSize: 10,
+                                                  margin: 15,
+                                                  textStyle: yearTextStyle,
+                                                  getTitles: (value) {
+                                                    switch (value.toInt()) {
+                                                      case 0:
+                                                        return 'Jan 2022';
+                                                    }
+                                                    return '';
+                                                  }),
+                                              leftTitles: SideTitles(
+                                                showTitles: true,
+                                                margin: 15,
+                                                getTitles: (value) {
+                                                  switch (value.toInt()) {
+                                                    case 0:
+                                                      return '0';
+                                                    case 1:
+                                                      return '0.25';
+                                                    case 2:
+                                                      return '0.5';
+                                                    case 3:
+                                                      return '0.75';
+                                                    case 4:
+                                                      return '1';
+                                                    default:
+                                                      return '';
+                                                  }
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -840,21 +843,22 @@ class _StatsState extends State<Stats> {
                                           height: 5, child: Loader());
                                     } else if (state
                                         is GetJobPerformanceState) {
-                                      //  print(state.jobpPerformanceLists[0]);
+                                      print(state.jobpPerformanceLists.length);
                                       for (var i = 0;
                                           i <=
                                               state.jobpPerformanceLists.length;
                                           i++) {
                                         for (var j = 0;
-                                            j <
+                                            j <=
                                                 state.jobpPerformanceLists[i]
                                                     .length;
                                             j++) {
                                           lists2.add(
-                                              state.jobpPerformanceLists[j]);
+                                              state.jobpPerformanceLists[i][j]);
+                                          print("lists2$lists2");
                                         }
                                       }
-                                      print("lists2$lists2");
+
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10.0),
@@ -864,36 +868,6 @@ class _StatsState extends State<Stats> {
                                           // isAlwaysShown: true,
                                           child: Column(
                                             children: [
-                                              // Row(
-                                              //     mainAxisAlignment:
-                                              //         MainAxisAlignment
-                                              //             .spaceBetween,
-                                              //     children: [
-                                              //       // Padding(
-                                              //       //   padding:
-                                              //       //       const EdgeInsets.only(
-                                              //       //           left: 15),
-                                              //       //   child: Text(
-                                              //       //     "day",
-                                              //       //     style: TextStyle(
-                                              //       //         fontSize: 18,
-                                              //       //         fontWeight:
-                                              //       //             FontWeight.w600),
-                                              //       //   ),
-                                              //       // ),
-                                              //       Padding(
-                                              //         padding:
-                                              //             const EdgeInsets.only(
-                                              //                 right: 15),
-                                              //         child: Text(
-                                              //           "duration",
-                                              //           style: TextStyle(
-                                              //               fontSize: 18,
-                                              //               fontWeight:
-                                              //                   FontWeight.w600),
-                                              //         ),
-                                              //       ),
-                                              //     ]),
                                               Container(
                                                   height: 600,
                                                   padding:

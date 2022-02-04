@@ -11,7 +11,6 @@ import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
-// ignore: must_be_immutable
 class Permis extends StatefulWidget {
   @override
   State<Permis> createState() => _PermisState();

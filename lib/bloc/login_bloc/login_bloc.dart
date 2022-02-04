@@ -61,6 +61,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginSuccess(userModel: res);
     } catch (e) {
       yield LoginFailure();
+      print(e.toString());
     }
   }
 }

@@ -41,7 +41,7 @@ class UrlConfig {
       url = json['companyLogo'] + domain + json['icon'];
     } else if (action.contains('domain')) {
       if (domain.contains('DevRecruit')) {
-        url = "http://176.9.137.77:3001/account/logo/image";
+        url = "https://excellence_api.exweb.in/account/logo/image";
       } else {
         url = json['baseUrl'] + domain + json['domainUrl'];
       }
