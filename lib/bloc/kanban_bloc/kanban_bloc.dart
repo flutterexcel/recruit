@@ -27,28 +27,35 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
   Stream<KanbanState> _mapKanbanInitialToState(
       KanbanInitialEvent event) async* {
     try {
+      print("Enter in try block");
       Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
       Map<String, JobTagData> mapJobTagData =
           await kanbanAuthService.getJobTagData(event.jobToken);
-      print('>>>>>>>>> ${mapJobTagData.entries}');
+      print('mapJobTagData.entries--> ${mapJobTagData.entries}');
       for (String key in mapJobTagData.keys) {
         await kanbanAuthService
             .getCandididateCvInfo(key, event.jobToken)
             .then((value) {
+          print("map-->");
           Map<String, CandidateCvInfoModel> map = new Map();
           map = value;
 
           mapCandidateData.addAll(map);
+
           map.clear();
         });
       }
+      print('bh1');
+
       yield KanbanPageState(
           listJobTag: event._listJobTag,
           title: event.title,
           mapCandidateData: mapCandidateData,
           mapJobTagData: mapJobTagData);
+      print('bh');
     } catch (e) {
       yield KanbanInitialState();
+      print(e.toString());
     }
   }
 }

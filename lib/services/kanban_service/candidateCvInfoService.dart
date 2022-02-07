@@ -13,6 +13,7 @@ class CandidateCvInfoService {
 
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   Future getCandididateCvInfo(String jobTagValue, jobToken) async {
+    print("jobTagValue-->$jobTagValue");
     String url = await UrlConfig.getCandididateCvInfo(
             action: 'getCandididateCvInfo',
             jobTagValue: jobTagValue,
@@ -20,20 +21,27 @@ class CandidateCvInfoService {
             jobToken: jobToken,
             endPoints: '/True')
         .forFirstEnvironment();
+    print("mapCandidateData-->$url");
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),
-      'account-name': StorageUtil.getDomain().toLowerCase()
+      'account-name': 'excellencerecruit'
     };
     String queryString = Uri(queryParameters: queryParams).query;
     String apiUrl = url + '?' + queryString;
     var res = await get(apiUrl);
     var responseBody = _jsonDecoder.convert(res.body);
     Map<String, dynamic> jsonParsedKey = responseBody['candidate_map'];
+
+    print("jsonParsedKey-->$jsonParsedKey");
+
     jsonParsedKey.forEach((key, value) {
+      print("value-->$value");
       mapCandidateData.putIfAbsent(
           key, () => CandidateCvInfoModel.fromJson(value));
     });
+    print("enterin");
+
     return mapCandidateData;
   }
 }

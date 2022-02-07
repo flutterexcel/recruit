@@ -7,7 +7,7 @@ import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobs_overview.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step1/step1.dart';
-import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle.dart';
+import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle/jobtitle.dart';
 import 'package:flutter_product_recruit/widgets/loader.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

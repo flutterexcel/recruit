@@ -23,6 +23,7 @@ class JobsOverviewBlocBloc
     JobsOverviewBlocEvent event,
   ) async* {
     if (event is JobsOverviewInitial) {
+      print("deactivated");
       yield* _mapJobOverviewIitialToState(event);
     }
   }
@@ -64,6 +65,8 @@ class JobsOverviewBlocBloc
           jobsOverViewModel: _jobsOverViewModel,
           hirinTeam: _hirinTeam,
           listJobTag: _jobTagList);
-    } catch (e) {}
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

@@ -21,107 +21,166 @@ class JobBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          IconButton(
+            icon: Image.asset("assets/icons/jobanalytic.svg"),
+            onPressed: () {},
+          ),
           SizedBox(
-            height: 5,
+            height: 10,
           ),
-          Container(
-            width: 235,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(70),
-              border: Border.all(
-                color: Colors.grey[350],
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircularPercentIndicator(
-                    radius: 57.0,
-                    lineWidth: 4.0,
-                    animation: true,
-                    percent: (jobList.hiredUnattended.length) /
-                                listJobTag[5].count <
-                            1
-                        ? (jobList.hiredUnattended.length) / listJobTag[5].count
-                        : 1,
-                    center: new Text(
-                      jobList.hiredUnattended.length.toString(),
-                      style: new TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20.0),
+          jobList.hiredUnattended.length > 0
+              ? Container(
+                  width: 235,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(70),
+                    border: Border.all(
+                      color: Colors.grey[350],
                     ),
-                    circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: AppColors.Red),
-                Text("hired candidates pending\nyour action"),
-                SizedBox(
-                  width: 7,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircularPercentIndicator(
+                          radius: 57.0,
+                          lineWidth: 4.0,
+                          animation: true,
+                          percent: (jobList.hiredUnattended.length) /
+                                      listJobTag[5].count <
+                                  1
+                              ? (jobList.hiredUnattended.length) /
+                                  listJobTag[5].count
+                              : 1,
+                          center: new Text(
+                            jobList.hiredUnattended.length.toString(),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20.0),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+                          progressColor: AppColors.Red),
+                      Text("hired candidates pending\nyour action"),
+                      SizedBox(
+                        width: 7,
+                      )
+                    ],
+                  ),
                 )
-              ],
-            ),
-          ),
+              : SizedBox(
+                  width: 1,
+                ),
           SizedBox(
             height: 15,
           ),
-          Container(
-            width: 235,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(70),
-                border: Border.all(
-                  color: Colors.grey[350],
-                )),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircularPercentIndicator(
-                    radius: 55.0,
-                    lineWidth: 4.0,
-                    animation: true,
-                    percent: jobList.interviewUnattended.length /
-                                listJobTag[2].count <
-                            1
-                        ? jobList.interviewUnattended.length /
-                            listJobTag[2].count
-                        : 1,
-                    center: new Text(
-                      jobList.interviewUnattended.length.toString(),
-                      style: new TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20.0),
+          jobList.holdUnattended.length > 0
+              ? Container(
+                  width: 235,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(70),
+                    border: Border.all(
+                      color: Colors.grey[350],
                     ),
-                    circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: AppColors.Red),
-                Text("interviews pending your\naction"),
-                SizedBox(
-                  width: 10,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircularPercentIndicator(
+                          radius: 57.0,
+                          lineWidth: 4.0,
+                          animation: true,
+                          percent: (jobList.holdUnattended.length) /
+                                      listJobTag[5].count <
+                                  1
+                              ? (jobList.holdUnattended.length) /
+                                  listJobTag[5].count
+                              : 1,
+                          center: new Text(
+                            jobList.holdUnattended.length.toString(),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20.0),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+                          progressColor: AppColors.Red),
+                      Text("hold candidates pending\nyour action"),
+                      SizedBox(
+                        width: 7,
+                      )
+                    ],
+                  ),
                 )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Container(
-            width: 235,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(70),
-                border: Border.all(
-                  color: Colors.grey[350],
-                )),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircleAvatar(
-                  backgroundColor: AppColors.Red,
-                  radius: 30.0,
-                  child: Text(jobList.unreadCandidate.length.toString()),
+              : SizedBox(
+                  width: 1,
                 ),
-                Text("email pending your reply"),
-                SizedBox(
-                  width: 10,
-                )
-              ],
-            ),
+          SizedBox(
+            height: 15,
           ),
+          jobList.interviewUnattended.length > 0
+              ? Container(
+                  width: 235,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(70),
+                      border: Border.all(
+                        color: Colors.grey[350],
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircularPercentIndicator(
+                          radius: 55.0,
+                          lineWidth: 4.0,
+                          animation: true,
+                          percent: jobList.interviewUnattended.length /
+                                      listJobTag[2].count <
+                                  1
+                              ? jobList.interviewUnattended.length /
+                                  listJobTag[2].count
+                              : 1,
+                          center: new Text(
+                            jobList.interviewUnattended.length.toString(),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20.0),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+                          progressColor: AppColors.Red),
+                      Text("interviews pending your\naction"),
+                      SizedBox(
+                        width: 10,
+                      )
+                    ],
+                  ),
+                )
+              : SizedBox(
+                  width: 1,
+                ),
+          SizedBox(
+            height: 15,
+          ),
+          jobList.unreadCandidate.length > 0
+              ? Container(
+                  width: 235,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(70),
+                      border: Border.all(
+                        color: Colors.grey[350],
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: AppColors.Red,
+                        radius: 30.0,
+                        child: Text(jobList.unreadCandidate.length.toString()),
+                      ),
+                      Text("email pending your reply"),
+                      SizedBox(
+                        width: 10,
+                      )
+                    ],
+                  ),
+                )
+              : SizedBox(
+                  width: 1,
+                ),
           GridView.builder(
-              // scrollDirection: Axis.vertical,
+              scrollDirection: Axis.vertical,
               //physics: NeverScrollableScrollPhysics(),
               itemCount: listJobTag.length,
               shrinkWrap: true,

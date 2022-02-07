@@ -4,12 +4,16 @@ import 'package:flutter_product_recruit/services/kanban_service/jobTagDataServic
 
 class KanbanAuthService {
   Future<Map<String, JobTagData>> getJobTagData(String jobToken) async {
+    print("KanbanAuthServicedata-->");
     Map data = await JobTagDataService().getJobTagData(jobToken);
+    print("getJobTagData-->$data");
     return data;
   }
 
   Future getCandididateCvInfo(String jobTagValue, jobToken) async {
-    var data=await CandidateCvInfoService().getCandididateCvInfo(jobTagValue, jobToken);
+    var data = await CandidateCvInfoService()
+        .getCandididateCvInfo(jobTagValue, jobToken);
+
     return data;
   }
 }
