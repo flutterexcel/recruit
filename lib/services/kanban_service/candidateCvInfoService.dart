@@ -21,7 +21,7 @@ class CandidateCvInfoService {
             jobToken: jobToken,
             endPoints: '/True')
         .forFirstEnvironment();
-    print("mapCandidateData-->$url");
+    print("url-->$url");
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),
@@ -39,6 +39,7 @@ class CandidateCvInfoService {
       print("value-->$value");
       mapCandidateData.putIfAbsent(
           key, () => CandidateCvInfoModel.fromJson(value));
+      print("value-->");
     });
     print("enterin");
 
