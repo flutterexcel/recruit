@@ -31,6 +31,7 @@ class CandidateCvInfoService {
     String apiUrl = url + '?' + queryString;
     var res = await get(apiUrl);
     var responseBody = _jsonDecoder.convert(res.body);
+    print("responseBody------>$responseBody");
     Map<String, dynamic> jsonParsedKey = responseBody['candidate_map'];
 
     print("jsonParsedKey-->$jsonParsedKey");
@@ -39,6 +40,7 @@ class CandidateCvInfoService {
       print("value-->$value");
       mapCandidateData.putIfAbsent(
           key, () => CandidateCvInfoModel.fromJson(value));
+      //  CandidateCvInfoModel.fromJson(value);
       print("value-->");
     });
     print("enterin");

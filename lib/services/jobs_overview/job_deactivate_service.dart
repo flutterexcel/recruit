@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,7 +11,7 @@ class DeactivateJobService {
     print("Enter in deactivate Job");
     print(id);
 
-    String url = "https://excellence_api.exweb.in/job-profile/job/close";
+    String url = "$appUrl/job-profile/job/close";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

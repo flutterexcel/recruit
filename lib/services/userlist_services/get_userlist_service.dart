@@ -1,6 +1,7 @@
 // ignore_for_file: missing_return
 
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/userlist_model/userlist_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
@@ -10,13 +11,17 @@ class GetUserListService {
   static Future<List<UserListsModel>> getUserList() async {
     List<UserListsModel> userslist = [];
 
-    String url = "http://176.9.137.77:3001/user/list/1/100";
+    print("appUrl--->$appUrl");
+
+    String url = "$appUrl/user/list/1/100";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),
     };
 
     String queryString = Uri(queryParameters: queryParams).query;
+
+    print("queryString---->$queryString");
 
     String apiUrl = url + '?' + queryString;
     final response = await http.get(

@@ -36,11 +36,14 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
         await kanbanAuthService
             .getCandididateCvInfo(key, event.jobToken)
             .then((value) {
-          print("map-->");
+          print("map-->$value");
           Map<String, CandidateCvInfoModel> map = new Map();
           map = value;
 
+          print("map---->$map");
+
           mapCandidateData.addAll(map);
+          print("------>mapCandidateData-->$mapCandidateData");
 
           map.clear();
         });

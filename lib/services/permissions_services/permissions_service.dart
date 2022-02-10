@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/permission/permisson.dart';
 import 'package:flutter_product_recruit/model/permission/set_permission_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
@@ -10,7 +11,7 @@ import 'package:http/http.dart' as http;
 class PermissionService {
   static Future<PermissionModel> GetPermission() async {
     //** dynamic url */
-    String url = "http://176.9.137.77:3001/permission";
+    String url = "$appUrl/permission";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

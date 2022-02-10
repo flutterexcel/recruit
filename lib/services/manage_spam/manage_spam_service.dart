@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ class ManageSpamService {
 // ***** get spam List
   static Future<List<ManageSpamList>> getManageSpamEmail() async {
     List<ManageSpamList> spamlist = [];
-    String url = "http://176.9.137.77:3001/spamList/get/1/100";
+    String url = "$appUrl/spamList/get/1/100";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

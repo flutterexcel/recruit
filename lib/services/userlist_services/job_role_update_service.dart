@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,7 +10,7 @@ class JobRoleUpdateService {
     print(id);
     print(userType);
 
-    String url = "http://176.9.137.77:3001/user/role/update/$id/$userType";
+    String url = "$appUrl/user/role/update/$id/$userType";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

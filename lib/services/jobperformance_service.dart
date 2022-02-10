@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:http/http.dart' as http;
 
 // ignore: camel_case_types
@@ -20,7 +21,7 @@ class GetJobPerformanceService {
     });
     final response = await http.post(
       Uri.parse(
-          "http://176.9.137.77:3001/user/jobPerformanceData?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYxZTkyZWZkZDU5M2ViMDAzYTAxM2Q0NiIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAyLTAxVDA5OjMzOjI1LjMwNloiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQzNzA4MDA1LCJleHAiOjE2NzUyNDQwMDV9.3t0Q50O7zJJv79iHWYXTk0__Zs0ytbb23OpRKxPdEGw"),
+          "$appUrl/user/jobPerformanceData?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjYxZTkyZWZkZDU5M2ViMDAzYTAxM2Q0NiIsInJvbGUiOiJBZG1pbiIsImxhc3RfbG9naW4iOiIyMDIyLTAyLTAxVDA5OjMzOjI1LjMwNloiLCJwYXNzd29yZCI6InBtV2tXU0JDTDUxQmZraG43OXhQdUtCS0h6Ly9INkIrbVk2RzkvZWlldU09IiwiaWF0IjoxNjQzNzA4MDA1LCJleHAiOjE2NzUyNDQwMDV9.3t0Q50O7zJJv79iHWYXTk0__Zs0ytbb23OpRKxPdEGw"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

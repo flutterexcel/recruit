@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/manage_referral/add_referral_model.dart';
 import 'package:flutter_product_recruit/model/manage_referral/edit_referral_model.dart';
 import 'package:flutter_product_recruit/model/manage_referral/get_referral_model.dart';
@@ -11,7 +12,7 @@ import 'package:http/http.dart' as http;
 class AddReferralService extends ChangeNotifier {
   List<ReferralListModel> addedList = new List<ReferralListModel>();
   Future<AddReferralModel> addReferralEmail(String email) async {
-    String url = "http://176.9.137.77:3001/referral-email";
+    String url = "$appUrl/referral-email";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

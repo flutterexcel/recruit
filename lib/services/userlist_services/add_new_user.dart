@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/manage_spam_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ class AddUserListService {
   //**** add user  */
   static Future addUserList(String name, String email, String password,
       String cpassword, String phone, String userType) async {
-    String url = "http://176.9.137.77:3001/user/add_user";
+    String url = "$appUrl/user/add_user";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

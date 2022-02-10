@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,7 +10,7 @@ class DeactivateUserService {
     print("Enter in deactivate User");
     print(id);
 
-    String url = "http://176.9.137.77:3001/user/status/deactivate";
+    String url = "$appUrl/user/status/deactivate";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

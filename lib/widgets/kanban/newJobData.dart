@@ -36,6 +36,7 @@ class NewJobData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("mapCandidateData----->$mapCandidateData");
     try {
       return ListView.builder(
           padding: EdgeInsets.all(8),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/userlist_model/delete_userlist_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 
@@ -10,7 +11,7 @@ class DeleteUserService {
     print("Enter in Delete User");
     print(id);
 
-    String url = "http://176.9.137.77:3001/user/delete/$id";
+    String url = "$appUrl/user/delete/$id";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

@@ -1,6 +1,7 @@
 // ignore_for_file: missing_return
 
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,7 +9,7 @@ import 'package:http/http.dart' as http;
 class Delete_Spam_Email_Service {
   // ignore: non_constant_identifier_names
   static Future<DeleteSpam> deleteReferral(String id) async {
-    String url = "http://176.9.137.77:3001/spamList/delete/$id";
+    String url = "$appUrl/spamList/delete/$id";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),

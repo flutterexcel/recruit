@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_product_recruit/UiConstant/appurl.dart';
 import 'package:flutter_product_recruit/model/managesource_model.dart';
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ class GetManageSourceService {
   List<ManageSourceModel> sourcelists = [];
   // ignore: missing_return
   Future<List<ManageSourceModel>> getSourcesList() async {
-    String url = "http://176.9.137.77:3001/imap/get";
+    String url = "$appUrl/imap/get";
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),
