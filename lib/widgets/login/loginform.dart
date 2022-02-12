@@ -7,7 +7,7 @@ import 'package:flutter_product_recruit/widgets/forgot_dialogue.dart';
 
 import '../../UiConstant/app_colors.dart';
 
-final _loginFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> _loginFormKey1 = GlobalKey<FormState>();
 
 class LoginForm extends StatefulWidget {
   @override
@@ -37,7 +37,7 @@ class _LoginFormState extends State<LoginForm> {
         return Column(
           children: [
             Form(
-              key: _loginFormKey,
+              key: _loginFormKey1,
               child: Column(
                 children: <Widget>[
                   Container(
@@ -116,7 +116,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   textColor: Colors.white,
                   onPressed: () {
-                    if (_loginFormKey.currentState.validate()) {
+                    if (_loginFormKey1.currentState.validate()) {
                       // ignore: deprecated_member_use
                       context.bloc<LoginBloc>().add(LoginWithEmail(
                           emailController.text, passwordController.text));

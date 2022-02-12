@@ -214,10 +214,12 @@ class _NavigationListState extends State<NavigationList> {
             leading: Icon(Icons.logout),
             title: Text("LOGOUT"),
             onTap: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => Login()),
-                  (Route<dynamic> route) => false);
+              // Navigator.of(context).pushAndRemoveUntil(
+              //     MaterialPageRoute(builder: (context) => Login()),
+              //     (Route<dynamic> route) => false);
               loginBloc.add(LogOutEvent());
+              // Navigator.of(context)
+              //     .push(MaterialPageRoute(builder: (context) => Login()));
               // Navigator.pop(context);
             },
           ),
