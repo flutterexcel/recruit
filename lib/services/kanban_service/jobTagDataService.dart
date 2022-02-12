@@ -35,13 +35,21 @@ class JobTagDataService {
     jsonParsedKey.keys.forEach((element) {
       jobTags.add(element);
     });
+    print("jobTags---->$jobTags");
     print("Hii");
     Map<String, JobTagData> mapJobTagData = new Map();
     for (int i = 0; i < jobTags.length; i++) {
       Map<String, dynamic> map = responseBody[jobTags[i]];
-      mapJobTagData[jobTags[i]] = JobTagData.fromJson(map);
+      print("----<>mapJobTagData-->$map");
+      try {
+        mapJobTagData[jobTags[i]] = JobTagData.fromJson(map);
+      } catch (e) {
+        print(e.toString());
+      }
+
+      print("----<>mapJobTagData-->${mapJobTagData[jobTags[i]]}");
     }
-    print(mapJobTagData);
+    print("----<>mapJobTagData-->$mapJobTagData");
 
     return mapJobTagData;
   }

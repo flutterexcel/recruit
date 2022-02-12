@@ -14,7 +14,7 @@ class CandidateCvInfoModel {
 
   factory CandidateCvInfoModel.fromJson(Map<String, dynamic> json) =>
       CandidateCvInfoModel(
-        cvParsedInfo: json["cvParsedInfo"] == null
+        cvParsedInfo: json["cvParsedInfo"].isEmpty
             ? null
             : CvParsedInfo.fromJson(json["cvParsedInfo"]),
       );

@@ -32,7 +32,7 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
   Map<String, JobTagData> mapJobTagData = new Map();
   List<JobTag> _listJobTag;
   String title;
-  int left = 4;
+  int left = 0;
   String jobTagId;
   List<Datum> resumeData = [];
   Color lightColor;
@@ -64,12 +64,15 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
       }
       return resumeData;
     } catch (e) {
+      print("Enter in generateCandidateList");
       return resumeData;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    print("mapCandidateData111111111--->$mapCandidateData");
+    print("listtgJob--->$_listJobTag");
     if (left == 0) {
       darkColor = AppColors.Blue;
       lightColor = AppColors.Light_Blue;
@@ -152,58 +155,61 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
               valueColor: AlwaysStoppedAnimation<Color>(darkColor),
               backgroundColor: lightColor,
             ),
-            ListTile(
-              title: Center(
-                child: Column(
-                  children: [
-                    Text(
-                      '${_listJobTag[left].title}',
-                      style: TextStyle(
-                        fontFamily: 'RobotRegular',
-                        color: AppColors.Black,
-                        fontSize: 20,
+            Container(
+              color: AppColors.blue,
+              child: ListTile(
+                title: Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        '${_listJobTag[left].title}',
+                        style: TextStyle(
+                          fontFamily: 'RobotRegular',
+                          color: AppColors.white,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    Text(
-                      ' ${_listJobTag[left].unread}/${_listJobTag[left].count}',
-                      style: TextStyle(
-                          fontFamily: 'RobotoRegular',
-                          color: AppColors.Grey,
-                          fontSize: 15),
-                    )
-                  ],
+                      Text(
+                        ' ${_listJobTag[left].unread}/${_listJobTag[left].count}',
+                        style: TextStyle(
+                            fontFamily: 'RobotoRegular',
+                            color: AppColors.white,
+                            fontSize: 15),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              leading: IconButton(
+                leading: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      color: AppColors.white,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (left > 0) {
+                          left = left - 1;
+                        } else if (left == 0) {
+                          left = _listJobTag.length - 1;
+                        }
+                      });
+                    }),
+                trailing: IconButton(
                   icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: AppColors.Icon_Color,
+                    Icons.arrow_forward_ios_rounded,
+                    color: AppColors.white,
                   ),
                   onPressed: () {
                     setState(() {
-                      if (left > 0) {
-                        left = left - 1;
-                      } else if (left == 0) {
-                        left = _listJobTag.length - 1;
+                      if (left < _listJobTag.length - 1) {
+                        left = left + 1;
+                      } else if (left == _listJobTag.length - 1) {
+                        left = 0;
                       }
                     });
-                  }),
-              trailing: IconButton(
-                icon: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: AppColors.Icon_Color,
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    if (left < _listJobTag.length - 1) {
-                      left = left + 1;
-                    } else if (left == _listJobTag.length - 1) {
-                      left = 0;
-                    }
-                  });
-                },
               ),
-            )
+            ),
           ],
         ),
       ),

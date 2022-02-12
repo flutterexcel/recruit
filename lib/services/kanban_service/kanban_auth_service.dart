@@ -11,8 +11,11 @@ class KanbanAuthService {
   }
 
   Future getCandididateCvInfo(String jobTagValue, jobToken) async {
+    print("Enter in getCandididateCvInfo");
     var data = await CandidateCvInfoService()
         .getCandididateCvInfo(jobTagValue, jobToken);
+
+    print("data---->$data");
 
     return data;
   }

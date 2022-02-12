@@ -32,6 +32,7 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
       Map<String, JobTagData> mapJobTagData =
           await kanbanAuthService.getJobTagData(event.jobToken);
       print('mapJobTagData.entries--> ${mapJobTagData.entries}');
+
       for (String key in mapJobTagData.keys) {
         await kanbanAuthService
             .getCandididateCvInfo(key, event.jobToken)
@@ -39,9 +40,7 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
           print("map-->$value");
           Map<String, CandidateCvInfoModel> map = new Map();
           map = value;
-
           print("map---->$map");
-
           mapCandidateData.addAll(map);
           print("------>mapCandidateData-->$mapCandidateData");
 

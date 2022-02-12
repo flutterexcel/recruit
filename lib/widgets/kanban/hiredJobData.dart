@@ -37,6 +37,7 @@ class HiredJobData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Enter in HiredJob");
     try {
       return Container(
         color: AppColors.Grey_BackGround,

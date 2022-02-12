@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, missing_return
 
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
@@ -37,6 +37,7 @@ class ShortlistJobData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Enter in ShortList");
     try {
       return Container(
         color: AppColors.Grey_BackGround,
@@ -46,6 +47,7 @@ class ShortlistJobData extends StatelessWidget {
             itemCount: resumeData.length,
             itemBuilder: (context, index) {
               _candidateCvInfoModel = mapCandidateData[resumeData[index].id];
+              print("gtyjuyki-->${_candidateCvInfoModel.cvParsedInfo == null}");
               return Container(
                 margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 padding: EdgeInsets.only(left: 10, top: 10, bottom: 5),
@@ -117,39 +119,39 @@ class ShortlistJobData extends StatelessWidget {
                                       height: 0,
                                       width: 0,
                                     ),
-                              _candidateCvInfoModel.cvParsedInfo == null
-                                  ? SizedBox(
-                                      height: 0,
-                                      width: 0,
-                                    )
-                                  : _candidateCvInfoModel
-                                              .cvParsedInfo.finalEntity ==
-                                          null
-                                      ? SizedBox(
-                                          height: 0,
-                                          width: 0,
-                                        )
-                                      : _candidateCvInfoModel.cvParsedInfo
-                                                  .finalEntity.phone ==
-                                              null
-                                          ? SizedBox(
-                                              height: 0,
-                                              width: 0,
-                                            )
-                                          : _candidateCvInfoModel.cvParsedInfo
-                                                      .finalEntity.phone.obj ==
-                                                  null
-                                              ? SizedBox(
-                                                  height: 0,
-                                                  width: 0,
-                                                )
-                                              : greyText(
-                                                  _candidateCvInfoModel
-                                                      .cvParsedInfo
-                                                      .finalEntity
-                                                      .phone
-                                                      .obj,
-                                                ),
+                              // _candidateCvInfoModel.cvParsedInfo == null
+                              //     ? SizedBox(
+                              //         height: 0,
+                              //         width: 0,
+                              //       )
+                              //     : _candidateCvInfoModel
+                              //                 .cvParsedInfo.finalEntity ==
+                              //             null
+                              //         ? SizedBox(
+                              //             height: 0,
+                              //             width: 0,
+                              //           )
+                              //         : _candidateCvInfoModel.cvParsedInfo
+                              //                     .finalEntity.phone ==
+                              //                 null
+                              //             ? SizedBox(
+                              //                 height: 0,
+                              //                 width: 0,
+                              //               )
+                              //             : _candidateCvInfoModel.cvParsedInfo
+                              //                         .finalEntity.phone.obj ==
+                              //                     null
+                              //                 ? SizedBox(
+                              //                     height: 0,
+                              //                     width: 0,
+                              //                   )
+                              //                 : greyText(
+                              //                     _candidateCvInfoModel
+                              //                         .cvParsedInfo
+                              //                         .finalEntity
+                              //                         .phone
+                              //                         .obj,
+                              //                   ),
                               resumeData[index].senderMail == null
                                   ? SizedBox(
                                       height: 0,
@@ -187,212 +189,212 @@ class ShortlistJobData extends StatelessWidget {
                         SizedBox(
                           width: 20,
                         ),
-                        _candidateCvInfoModel.cvParsedInfo == null
-                            ? SizedBox(
-                                height: 0,
-                                width: 0,
-                              )
-                            : _candidateCvInfoModel.cvParsedInfo.finalEntity ==
-                                    null
-                                ? SizedBox(
-                                    height: 0,
-                                    width: 0,
-                                  )
-                                : _candidateCvInfoModel
-                                            .cvParsedInfo.finalEntity.email ==
-                                        null
-                                    ? SizedBox(
-                                        height: 0,
-                                        width: 0,
-                                      )
-                                    : Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          greyText('Email'),
-                                          blackText(_candidateCvInfoModel
-                                              .cvParsedInfo
-                                              .finalEntity
-                                              .email
-                                              .obj),
-                                        ],
-                                      ),
+                        // _candidateCvInfoModel.cvParsedInfo == null
+                        //     ? SizedBox(
+                        //         height: 0,
+                        //         width: 0,
+                        //       )
+                        //     : _candidateCvInfoModel.cvParsedInfo.finalEntity ==
+                        //             null
+                        //         ? SizedBox(
+                        //             height: 0,
+                        //             width: 0,
+                        //           )
+                        //         : _candidateCvInfoModel
+                        //                     .cvParsedInfo.finalEntity.email ==
+                        //                 null
+                        //             ? SizedBox(
+                        //                 height: 0,
+                        //                 width: 0,
+                        //               )
+                        //             : Column(
+                        //                 crossAxisAlignment:
+                        //                     CrossAxisAlignment.start,
+                        //                 children: [
+                        //                   SizedBox(
+                        //                     height: 10,
+                        //                   ),
+                        //                   greyText('Email'),
+                        //                   blackText(_candidateCvInfoModel
+                        //                       .cvParsedInfo
+                        //                       .finalEntity
+                        //                       .email
+                        //                       .obj),
+                        //                 ],
+                        //               ),
                       ],
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    _candidateCvInfoModel.cvParsedInfo == null
-                        ? SizedBox(
-                            height: 0,
-                            width: 0,
-                          )
-                        : _candidateCvInfoModel.cvParsedInfo.finalEntity == null
-                            ? SizedBox(
-                                height: 0,
-                                width: 0,
-                              )
-                            : Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  _candidateCvInfoModel
-                                              .cvParsedInfo.finalEntity.phone ==
-                                          null
-                                      ? SizedBox(
-                                          height: 0,
-                                          width: 0,
-                                        )
-                                      : Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            greyText('Phone'),
-                                            blackText(_candidateCvInfoModel
-                                                .cvParsedInfo
-                                                .finalEntity
-                                                .phone
-                                                .obj)
-                                          ],
-                                        ),
-                                  _candidateCvInfoModel
-                                              .cvParsedInfo.finalEntity.gpe ==
-                                          null
-                                      ? SizedBox(
-                                          height: 0,
-                                          width: 0,
-                                        )
-                                      : Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            greyText('Location'),
-                                            Container(
-                                              width: 90,
-                                              child: blackText(
-                                                  _candidateCvInfoModel
-                                                      .cvParsedInfo
-                                                      .finalEntity
-                                                      .gpe
-                                                      .obj),
-                                            )
-                                          ],
-                                        ),
-                                  _candidateCvInfoModel
-                                              .cvParsedInfo.finalEntity.dob ==
-                                          null
-                                      ? SizedBox(
-                                          height: 0,
-                                          width: 0,
-                                        )
-                                      : Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            greyText('DOB'),
-                                            Container(
-                                              width: 100,
-                                              child: blackText(
-                                                  _candidateCvInfoModel
-                                                      .cvParsedInfo
-                                                      .finalEntity
-                                                      .dob
-                                                      .obj),
-                                            )
-                                          ],
-                                        ),
-                                ],
-                              ),
+                    // _candidateCvInfoModel.cvParsedInfo == null
+                    //     ? SizedBox(
+                    //         height: 0,
+                    //         width: 0,
+                    //       )
+                    //     : _candidateCvInfoModel.cvParsedInfo.finalEntity == null
+                    //         ? SizedBox(
+                    //             height: 0,
+                    //             width: 0,
+                    //           )
+                    //         : Row(
+                    //             mainAxisAlignment:
+                    //                 MainAxisAlignment.spaceBetween,
+                    //             children: [
+                    //               _candidateCvInfoModel
+                    //                           .cvParsedInfo.finalEntity.phone ==
+                    //                       null
+                    //                   ? SizedBox(
+                    //                       height: 0,
+                    //                       width: 0,
+                    //                     )
+                    //                   : Column(
+                    //                       crossAxisAlignment:
+                    //                           CrossAxisAlignment.start,
+                    //                       children: [
+                    //                         greyText('Phone'),
+                    //                         blackText(_candidateCvInfoModel
+                    //                             .cvParsedInfo
+                    //                             .finalEntity
+                    //                             .phone
+                    //                             .obj)
+                    //                       ],
+                    //                     ),
+                    //               _candidateCvInfoModel
+                    //                           .cvParsedInfo.finalEntity.gpe ==
+                    //                       null
+                    //                   ? SizedBox(
+                    //                       height: 0,
+                    //                       width: 0,
+                    //                     )
+                    //                   : Column(
+                    //                       crossAxisAlignment:
+                    //                           CrossAxisAlignment.start,
+                    //                       children: [
+                    //                         greyText('Location'),
+                    //                         Container(
+                    //                           width: 90,
+                    //                           child: blackText(
+                    //                               _candidateCvInfoModel
+                    //                                   .cvParsedInfo
+                    //                                   .finalEntity
+                    //                                   .gpe
+                    //                                   .obj),
+                    //                         )
+                    //                       ],
+                    //                     ),
+                    //               _candidateCvInfoModel
+                    //                           .cvParsedInfo.finalEntity.dob ==
+                    //                       null
+                    //                   ? SizedBox(
+                    //                       height: 0,
+                    //                       width: 0,
+                    //                     )
+                    //                   : Column(
+                    //                       crossAxisAlignment:
+                    //                           CrossAxisAlignment.start,
+                    //                       children: [
+                    //                         greyText('DOB'),
+                    //                         Container(
+                    //                           width: 100,
+                    //                           child: blackText(
+                    //                               _candidateCvInfoModel
+                    //                                   .cvParsedInfo
+                    //                                   .finalEntity
+                    //                                   .dob
+                    //                                   .obj),
+                    //                         )
+                    //                       ],
+                    //                     ),
+                    //             ],
+                    //           ),
                     SizedBox(
                       height: 10,
                     ),
-                    _candidateCvInfoModel.cvParsedInfo == null
-                        ? SizedBox(
-                            height: 0,
-                            width: 0,
-                          )
-                        : _candidateCvInfoModel.cvParsedInfo.finalEntity == null
-                            ? SizedBox(
-                                height: 0,
-                                width: 0,
-                              )
-                            : Row(
-                                children: [
-                                  _candidateCvInfoModel.cvParsedInfo.finalEntity
-                                              .gender ==
-                                          null
-                                      ? SizedBox(
-                                          height: 0,
-                                          width: 0,
-                                        )
-                                      : Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            greyText('Gender'),
-                                            blackText(_candidateCvInfoModel
-                                                .cvParsedInfo
-                                                .finalEntity
-                                                .gender[0])
-                                          ],
-                                        ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  _candidateCvInfoModel.cvParsedInfo.finalEntity
-                                              .educationDegree ==
-                                          null
-                                      ? SizedBox(
-                                          height: 0,
-                                          width: 0,
-                                        )
-                                      // : _candidateCvInfoModel.cvParsedInfo
-                                      //             .finalEntity.education.length ==0
+                    // _candidateCvInfoModel.cvParsedInfo == null
+                    //     ? SizedBox(
+                    //         height: 0,
+                    //         width: 0,
+                    //       )
+                    //     : _candidateCvInfoModel.cvParsedInfo.finalEntity == null
+                    //         ? SizedBox(
+                    //             height: 0,
+                    //             width: 0,
+                    //           )
+                    //         : Row(
+                    //             children: [
+                    //               _candidateCvInfoModel.cvParsedInfo.finalEntity
+                    //                           .gender ==
+                    //                       null
+                    //                   ? SizedBox(
+                    //                       height: 0,
+                    //                       width: 0,
+                    //                     )
+                    //                   : Column(
+                    //                       crossAxisAlignment:
+                    //                           CrossAxisAlignment.start,
+                    //                       children: [
+                    //                         greyText('Gender'),
+                    //                         blackText(_candidateCvInfoModel
+                    //                             .cvParsedInfo
+                    //                             .finalEntity
+                    //                             .gender[0])
+                    //                       ],
+                    //                     ),
+                    //               SizedBox(
+                    //                 width: 20,
+                    //               ),
+                    //               _candidateCvInfoModel.cvParsedInfo.finalEntity
+                    //                           .educationDegree ==
+                    //                       null
+                    //                   ? SizedBox(
+                    //                       height: 0,
+                    //                       width: 0,
+                    //                     )
+                    //                   // : _candidateCvInfoModel.cvParsedInfo
+                    //                   //             .finalEntity.education.length ==0
 
-                                      //     ? SizedBox(
-                                      //         height: 0,
-                                      //         width: 0,
-                                      //       )
-                                      : _candidateCvInfoModel
-                                                  .cvParsedInfo
-                                                  .finalEntity
-                                                  .educationDegree
-                                                  .obj ==
-                                              null
-                                          ? SizedBox(
-                                              height: 0,
-                                              width: 0,
-                                            )
-                                          // :
-                                          //  _candidateCvInfoModel
-                                          //             .cvParsedInfo
-                                          //             .finalEntity
-                                          //            .educationDegree
-                                          //         .obj ==
-                                          //         null
-                                          //     ? SizedBox(
-                                          //         height: 0,
-                                          //         width: 0,
-                                          //       )
-                                          : Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                greyText('Education'),
-                                                blackText("B.C.A")
-                                                // blackText(_candidateCvInfoModel
-                                                //     .cvParsedInfo
-                                                //     .finalEntity
-                                                //     .educationDegree
-                                                //     .obj)
-                                              ],
-                                            ),
-                                  //_candidateCvInfoModel.cvParsedInfo.finalEntity.education.last.last.educationDegree,
-                                ],
-                              ),
+                    //                   //     ? SizedBox(
+                    //                   //         height: 0,
+                    //                   //         width: 0,
+                    //                   //       )
+                    //                   : _candidateCvInfoModel
+                    //                               .cvParsedInfo
+                    //                               .finalEntity
+                    //                               .educationDegree
+                    //                               .obj ==
+                    //                           null
+                    //                       ? SizedBox(
+                    //                           height: 0,
+                    //                           width: 0,
+                    //                         )
+                    //                       // :
+                    //                       //  _candidateCvInfoModel
+                    //                       //             .cvParsedInfo
+                    //                       //             .finalEntity
+                    //                       //            .educationDegree
+                    //                       //         .obj ==
+                    //                       //         null
+                    //                       //     ? SizedBox(
+                    //                       //         height: 0,
+                    //                       //         width: 0,
+                    //                       //       )
+                    //                       : Column(
+                    //                           crossAxisAlignment:
+                    //                               CrossAxisAlignment.start,
+                    //                           children: [
+                    //                             greyText('Education'),
+                    //                             blackText("B.C.A")
+                    //                             // blackText(_candidateCvInfoModel
+                    //                             //     .cvParsedInfo
+                    //                             //     .finalEntity
+                    //                             //     .educationDegree
+                    //                             //     .obj)
+                    //                           ],
+                    //                         ),
+                    //               //_candidateCvInfoModel.cvParsedInfo.finalEntity.education.last.last.educationDegree,
+                    //             ],
+                    //           ),
                     resumeData[index].cvimage == null
                         ? Text(
                             'Mail sent on ${resumeData[index].senderMail} for missing resume',

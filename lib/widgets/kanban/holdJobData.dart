@@ -27,6 +27,7 @@ class HoldJobData extends StatelessWidget {
   }
 
   Widget blackText(String text) {
+    print("Enter in HoldJob");
     return Text(
       text,
       style: TextStyle(

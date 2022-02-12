@@ -5,7 +5,7 @@ import 'package:flutter_bloc/src/bloc_provider.dart';
 import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview_bloc.dart';
-import 'package:flutter_product_recruit/screens/7_step_screens/step4.dart';
+
 import 'package:flutter_product_recruit/services/jobs_overview/job_deactivate_service.dart';
 
 import 'package:intl/intl.dart';

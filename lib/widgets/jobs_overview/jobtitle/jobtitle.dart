@@ -2,13 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc/src/bloc_provider.dart';
+
 import 'package:flutter_product_recruit/UiConstant/utils.dart';
 import 'package:flutter_product_recruit/bloc/jobs_overview_bloc/jobs_overview.dart';
-import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_bloc.dart';
-import 'package:flutter_product_recruit/bloc/user_logs_bloc/user_log_event.dart';
-import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_bloc.dart';
-import 'package:flutter_product_recruit/bloc/userlist_bloc/userlist_event.dart';
+
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/screens/7_step_screens/step2.dart';
@@ -17,13 +14,13 @@ import 'package:flutter_product_recruit/screens/7_step_screens/step5/step5.dart'
 import 'package:flutter_product_recruit/screens/7_step_screens/step6/step6.dart';
 
 import 'package:flutter_product_recruit/screens/7_step_screens/step7.dart';
-import 'package:flutter_product_recruit/screens/jobsoverview.dart';
+
 import 'package:flutter_product_recruit/screens/kanban_screen.dart';
 import 'package:flutter_product_recruit/services/jobs_overview/job_deactivate_service.dart';
 import 'package:flutter_product_recruit/widgets/container.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/job_description.dart';
 import 'package:flutter_product_recruit/widgets/jobs_overview/jobtitle/activateconfirmdialouge.dart';
-import 'package:flutter_product_recruit/widgets/loader1.dart';
+
 import 'package:flutter_product_recruit/widgets/text.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

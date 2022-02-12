@@ -9,6 +9,7 @@ class CheckJobData extends StatelessWidget {
   CheckJobData({this.resumeData, this.mapCandidateData});
   @override
   Widget build(BuildContext context) {
+    print("Enter in CheckJob");
     return Container(
       child: Text('CheckJobData'),
     );

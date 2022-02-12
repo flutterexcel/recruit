@@ -25,7 +25,7 @@ class CandidateCvInfoService {
 
     Map<String, String> queryParams = {
       'accessToken': StorageUtil.getToken(),
-      'account-name': 'excellencerecruit'
+      'account-name': 'excellencerecruit',
     };
     String queryString = Uri(queryParameters: queryParams).query;
     String apiUrl = url + '?' + queryString;
@@ -33,16 +33,21 @@ class CandidateCvInfoService {
     var responseBody = _jsonDecoder.convert(res.body);
     print("responseBody------>$responseBody");
     Map<String, dynamic> jsonParsedKey = responseBody['candidate_map'];
-
     print("jsonParsedKey-->$jsonParsedKey");
 
-    jsonParsedKey.forEach((key, value) {
-      print("value-->$value");
-      mapCandidateData.putIfAbsent(
-          key, () => CandidateCvInfoModel.fromJson(value));
-      //  CandidateCvInfoModel.fromJson(value);
-      print("value-->");
-    });
+    try {
+      jsonParsedKey.forEach((key, value) {
+        print("value-->$value");
+        mapCandidateData.putIfAbsent(key, () {
+          return CandidateCvInfoModel.fromJson(value);
+        });
+        //  CandidateCvInfoModel.fromJson(value);
+        print("value-->");
+      });
+    } catch (e) {
+      print("------------------->${e.toString()}");
+    }
+
     print("enterin");
 
     return mapCandidateData;
