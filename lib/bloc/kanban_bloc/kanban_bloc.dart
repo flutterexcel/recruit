@@ -34,6 +34,8 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
       print('mapJobTagData.entries--> ${mapJobTagData.entries}');
 
       for (String key in mapJobTagData.keys) {
+        print("mapJobTagData.keys---->${mapJobTagData.keys}");
+        print("event.jobToken-->${event.jobToken}");
         await kanbanAuthService
             .getCandididateCvInfo(key, event.jobToken)
             .then((value) {
@@ -48,7 +50,6 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
         });
       }
       print('bh1');
-
       yield KanbanPageState(
           listJobTag: event._listJobTag,
           title: event.title,

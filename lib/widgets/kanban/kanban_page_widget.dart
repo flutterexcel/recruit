@@ -9,6 +9,7 @@ import 'package:flutter_product_recruit/widgets/kanban/interviewJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/newJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/rejectJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/shortlistJobData.dart';
+import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 
 import '../../UiConstant/app_colors.dart';
 
@@ -92,8 +93,9 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
       darkColor = AppColors.Red;
       lightColor = AppColors.Light_Red;
     }
-    print(left);
+    print("left--->$title");
     return Scaffold(
+      drawer: NavigationList(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppColors.Black),
         backgroundColor: Colors.white,
@@ -114,33 +116,36 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         color: AppColors.Grey_BackGround,
-        child: left == 0
-            ? NewJobData(
-                resumeData: generateCandidateList(left),
-                mapCandidateData: mapCandidateData)
-            : left == 1
-                ? ShortlistJobData(
-                    resumeData: generateCandidateList(left),
-                    mapCandidateData: mapCandidateData)
-                : left == 2
-                    ? InterviewJobData(
-                        resumeData: generateCandidateList(left),
-                        mapCandidateData: mapCandidateData)
-                    : left == 3
-                        ? HiredJobData(
-                            resumeData: generateCandidateList(left),
-                            mapCandidateData: mapCandidateData)
-                        : left == 4
-                            ? HoldJobData(
-                                resumeData: generateCandidateList(left),
-                                mapCandidateData: mapCandidateData)
-                            : left == 5
-                                ? RejectJobData(
-                                    resumeData: generateCandidateList(left),
-                                    mapCandidateData: mapCandidateData)
-                                : CheckJobData(
-                                    resumeData: generateCandidateList(left),
-                                    mapCandidateData: mapCandidateData),
+        child: NewJobData(
+            resumeData: generateCandidateList(left),
+            mapCandidateData: mapCandidateData),
+        // left == 0
+        //     ? NewJobData(
+        //         resumeData: generateCandidateList(left),
+        //         mapCandidateData: mapCandidateData)
+        //     : left == 1
+        //         ? ShortlistJobData(
+        //             resumeData: generateCandidateList(left),
+        //             mapCandidateData: mapCandidateData)
+        //         : left == 2
+        //             ? InterviewJobData(
+        //                 resumeData: generateCandidateList(left),
+        //                 mapCandidateData: mapCandidateData)
+        //             : left == 3
+        //                 ? HiredJobData(
+        //                     resumeData: generateCandidateList(left),
+        //                     mapCandidateData: mapCandidateData)
+        //                 : left == 4
+        //                     ? HoldJobData(
+        //                         resumeData: generateCandidateList(left),
+        //                         mapCandidateData: mapCandidateData)
+        //                     : left == 5
+        //                         ? RejectJobData(
+        //                             resumeData: generateCandidateList(left),
+        //                             mapCandidateData: mapCandidateData)
+        //                         : CheckJobData(
+        //                             resumeData: generateCandidateList(left),
+        //                             mapCandidateData: mapCandidateData),
       ),
 
       bottomNavigationBar: Container(

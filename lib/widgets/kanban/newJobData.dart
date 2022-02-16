@@ -49,7 +49,7 @@ class NewJobData extends StatelessWidget {
 
             print("resumedata<>-->${mapCandidateData[resumeData[index].id]}");
             _candidateCvInfoModel = mapCandidateData[resumeData[index].id];
-            print("_candidateCvInfoModel---->${_candidateCvInfoModel}");
+            print("_candidateCvInfoModel---->$_candidateCvInfoModel");
             if (_candidateCvInfoModel != null)
               return Container(
                 margin: EdgeInsets.only(bottom: 10),

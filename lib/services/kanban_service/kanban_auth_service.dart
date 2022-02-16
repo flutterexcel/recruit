@@ -11,7 +11,8 @@ class KanbanAuthService {
   }
 
   Future getCandididateCvInfo(String jobTagValue, jobToken) async {
-    print("Enter in getCandididateCvInfo");
+    print("Enter in getCandididateCvInfo-->${jobTagValue}");
+    print("Enter in jobToken-->$jobToken");
     var data = await CandidateCvInfoService()
         .getCandididateCvInfo(jobTagValue, jobToken);
 

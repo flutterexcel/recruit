@@ -299,12 +299,14 @@ class _JobTitleState extends State<JobTitle> {
                         )),
                   ),
                   onTap: () {
+                    print(
+                        "state.titlesss----->${_listJobTag[index].listJobTag}");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => KanbanScreen(
                               _listJobTag[index].listJobTag,
-                              getData[index].candidateProfile,
+                              getData[index].title,
                               getData[index].id)),
                     );
                   },

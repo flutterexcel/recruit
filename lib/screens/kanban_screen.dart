@@ -25,6 +25,7 @@ class KanbanScreen extends StatelessWidget {
                 .add(KanbanInitialEvent(_listJobTag, title, jobToken));
           }
           if (state is KanbanPageState) {
+            print("state.title----->${state.mapCandidateData}");
             return KanbanPageWidget(state.listJobTag, state.title,
                 state.mapCandidateData, state.mapJobTagData);
           }

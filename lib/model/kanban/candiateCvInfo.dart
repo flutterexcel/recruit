@@ -14,7 +14,7 @@ class CandidateCvInfoModel {
 
   factory CandidateCvInfoModel.fromJson(Map<String, dynamic> json) =>
       CandidateCvInfoModel(
-        cvParsedInfo: json["cvParsedInfo"].isEmpty
+        cvParsedInfo: !json["cvParsedInfo"].containsKey("ai_version")
             ? null
             : CvParsedInfo.fromJson(json["cvParsedInfo"]),
       );
@@ -31,6 +31,8 @@ class CvParsedInfo {
     this.finalEntity,
     this.newCompressedStructuredContent,
     this.parsingType,
+    this.candidateScore,
+    this.candidateScoreDebug,
     this.qaShortAnswers,
     this.qaType,
     this.skillExtracted,
@@ -40,6 +42,8 @@ class CvParsedInfo {
   String aiVersion;
   String aiVersionProcessed;
   FinalEntity finalEntity;
+  double candidateScore;
+  List<String> candidateScoreDebug;
   NewCompressedStructuredContent newCompressedStructuredContent;
   String parsingType;
   QaShortAnswers qaShortAnswers;
@@ -60,6 +64,9 @@ class CvParsedInfo {
         finalEntity: json["finalEntity"] == null
             ? null
             : FinalEntity.fromJson(json["finalEntity"]),
+        candidateScore: json["candidate_score"].toDouble(),
+        candidateScoreDebug:
+            List<String>.from(json["candidate_score_debug"].map((x) => x)),
         newCompressedStructuredContent:
             json["newCompressedStructuredContent"] == null
                 ? null

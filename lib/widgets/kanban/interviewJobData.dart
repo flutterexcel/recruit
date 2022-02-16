@@ -319,7 +319,7 @@ class InterviewJobData extends StatelessWidget {
                                                 color: AppColors.Blue,
                                                 fontSize: 12)))
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -346,6 +346,7 @@ class InterviewJobData extends StatelessWidget {
             }),
       );
     } catch (e) {
+      print("objecttttt-->${e.toString()}");
       return Center(child: Text('NO RESPONSE DATA'));
     }
   }
