@@ -63,6 +63,9 @@ android {
    buildTypes {
        release {
            signingConfig signingConfigs.debug
+            shrinkResources false
+            minifyEnabled false
+            useProguard false
        }
    }
 

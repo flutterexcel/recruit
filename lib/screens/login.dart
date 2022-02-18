@@ -24,6 +24,8 @@ class Login extends StatelessWidget {
         } else if (state is LoginSuccess) {
           return JobsOverview();
           // return Manage_Spams();
+        } else if (state is LoginState) {
+          return LoginPage();
         }
         return Loader();
       },
