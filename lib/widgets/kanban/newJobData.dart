@@ -76,24 +76,67 @@ class NewJobData extends StatelessWidget {
                                   height: 0,
                                   width: 0,
                                 )
-                              : GestureDetector(
-                                  child: Container(
-                                      margin: EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey[350],
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(0))),
-                                      height: 100,
-                                      width: 80,
-                                      child: Image.network(
-                                        resumeData[index].cvimage.images[0],
-                                      )),
-                                  onTap: () {
-                                    _popupDialog(context,
-                                        resumeData[index].cvimage.images[0]);
-                                  },
+                              : Stack(
+                                  alignment: AlignmentDirectional.bottomEnd,
+                                  children: [
+                                    GestureDetector(
+                                      child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Colors.grey[350],
+                                              ),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(0))),
+                                          height: 100,
+                                          width: 80,
+                                          child: Image.network(
+                                            resumeData[index].cvimage.images[0],
+                                          )),
+                                      onTap: () {
+                                        _popupDialog(
+                                            context,
+                                            resumeData[index]
+                                                .cvimage
+                                                .images[0]);
+                                      },
+                                    ),
+                                    _candidateCvInfoModel.cvParsedInfo == null
+                                        ? SizedBox(
+                                            height: 0,
+                                            width: 0,
+                                          )
+                                        : _candidateCvInfoModel.cvParsedInfo
+                                                    .candidateScore ==
+                                                null
+                                            ? SizedBox(
+                                                height: 0,
+                                                width: 0,
+                                              )
+                                            : Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 8.0),
+                                                child: Container(
+                                                    alignment: Alignment.center,
+                                                    width: 30,
+                                                    height: 30,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.black,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    80))),
+                                                    child: Text(
+                                                      _candidateCvInfoModel
+                                                          .cvParsedInfo
+                                                          .candidateScore
+                                                          .toStringAsFixed(1),
+                                                      style: TextStyle(
+                                                          color:
+                                                              AppColors.white),
+                                                    )),
+                                              ),
+                                  ],
                                 ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,16 +196,50 @@ class NewJobData extends StatelessWidget {
                                                       .phone
                                                       .obj,
                                                 ),
-                              resumeData[index].senderMail == null
+
+                              _candidateCvInfoModel.cvParsedInfo == null
                                   ? SizedBox(
                                       height: 0,
                                       width: 0,
                                     )
-                                  : Container(
-                                      width: 230,
-                                      child: greyText(
-                                        resumeData[index].senderMail,
-                                      )),
+                                  : _candidateCvInfoModel
+                                              .cvParsedInfo.finalEntity ==
+                                          null
+                                      ? SizedBox(
+                                          height: 0,
+                                          width: 0,
+                                        )
+                                      : _candidateCvInfoModel.cvParsedInfo
+                                                  .finalEntity.email ==
+                                              null
+                                          ? SizedBox(
+                                              height: 0,
+                                              width: 0,
+                                            )
+                                          : _candidateCvInfoModel.cvParsedInfo
+                                                      .finalEntity.email.obj ==
+                                                  null
+                                              ? SizedBox(
+                                                  height: 0,
+                                                  width: 0,
+                                                )
+                                              : greyText(
+                                                  _candidateCvInfoModel
+                                                      .cvParsedInfo
+                                                      .finalEntity
+                                                      .email
+                                                      .obj,
+                                                ),
+                              // resumeData[index].senderMail == null
+                              //     ? SizedBox(
+                              //         height: 0,
+                              //         width: 0,
+                              //       )
+                              //     : Container(
+                              //         width: 230,
+                              //         child: greyText(
+                              //           resumeData[index].senderMail,
+                              //         )),
                             ],
                           ),
                         ],
@@ -202,6 +279,9 @@ class NewJobData extends StatelessWidget {
                                       )
                                     ],
                                   ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     _candidateCvInfoModel.cvParsedInfo == null
                         ? SizedBox(
                             height: 0,
@@ -223,7 +303,7 @@ class NewJobData extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       greyText('Email'),
@@ -231,6 +311,73 @@ class NewJobData extends StatelessWidget {
                                           .cvParsedInfo.finalEntity.email.obj),
                                     ],
                                   ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    _candidateCvInfoModel.cvParsedInfo == null
+                        ? SizedBox(
+                            height: 0,
+                            width: 0,
+                          )
+                        : _candidateCvInfoModel.cvParsedInfo.qaShortAnswers ==
+                                null
+                            ? SizedBox(
+                                height: 0,
+                                width: 0,
+                              )
+                            : _candidateCvInfoModel.cvParsedInfo.qaShortAnswers
+                                        .projectsName ==
+                                    null
+                                ? SizedBox(
+                                    height: 0,
+                                    width: 0,
+                                  )
+                                : Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      greyText('Project Name'),
+                                      blackText(
+                                        _candidateCvInfoModel.cvParsedInfo
+                                            .qaShortAnswers.projectsName,
+                                      )
+                                    ],
+                                  ),
+                    _candidateCvInfoModel.cvParsedInfo == null
+                        ? SizedBox(
+                            height: 0,
+                            width: 0,
+                          )
+                        : _candidateCvInfoModel.cvParsedInfo.answerMap == null
+                            ? SizedBox(
+                                height: 0,
+                                width: 0,
+                              )
+                            : _candidateCvInfoModel
+                                        .cvParsedInfo.answerMap["skills"] ==
+                                    null
+                                ? SizedBox(
+                                    height: 0,
+                                    width: 0,
+                                  )
+                                : _candidateCvInfoModel.cvParsedInfo
+                                            .answerMap["skills"].answer ==
+                                        null
+                                    ? SizedBox(
+                                        height: 0,
+                                        width: 0,
+                                      )
+                                    : Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          greyText('Core Skills'),
+                                          blackText(
+                                            _candidateCvInfoModel.cvParsedInfo
+                                                .answerMap["skills"].answer,
+                                          )
+                                        ],
+                                      ),
                     SizedBox(
                       height: 10,
                     ),
@@ -253,25 +400,21 @@ class NewJobData extends StatelessWidget {
                                           height: 0,
                                           width: 0,
                                         )
-                                      : Row(
+                                      : Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                greyText('Phone'),
-                                                blackText(_candidateCvInfoModel
-                                                    .cvParsedInfo
-                                                    .finalEntity
-                                                    .phone
-                                                    .obj)
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 20,
-                                            )
+                                            greyText('Phone'),
+                                            blackText(_candidateCvInfoModel
+                                                .cvParsedInfo
+                                                .finalEntity
+                                                .phone
+                                                .obj)
                                           ],
                                         ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
                                   _candidateCvInfoModel
                                               .cvParsedInfo.finalEntity.gpe ==
                                           null
@@ -279,29 +422,27 @@ class NewJobData extends StatelessWidget {
                                           height: 0,
                                           width: 0,
                                         )
-                                      : Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                greyText('Location'),
-                                                Container(
-                                                  width: 90,
-                                                  child: blackText(
-                                                      _candidateCvInfoModel
-                                                          .cvParsedInfo
-                                                          .finalEntity
-                                                          .gpe
-                                                          .obj),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 20,
-                                            )
-                                          ],
+                                      : Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              greyText('Location'),
+                                              Container(
+                                                //width: 90,
+                                                child: blackText(
+                                                    _candidateCvInfoModel
+                                                        .cvParsedInfo
+                                                        .finalEntity
+                                                        .gpe
+                                                        .obj),
+                                              )
+                                            ],
+                                          ),
                                         ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
                                   _candidateCvInfoModel
                                               .cvParsedInfo.finalEntity.dob ==
                                           null
@@ -367,22 +508,90 @@ class NewJobData extends StatelessWidget {
                                               .gender[0])
                                         ],
                                       ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          greyText('Gender'),
-                                          blackText(_candidateCvInfoModel
-                                              .cvParsedInfo
-                                              .finalEntity
-                                              .gender[0])
-                                        ],
+                                      const SizedBox(
+                                        width: 10,
                                       ),
+                                      // Column(
+                                      //   crossAxisAlignment:
+                                      //       CrossAxisAlignment.start,
+                                      //   children: [
+                                      //     SizedBox(
+                                      //       height: 10,
+                                      //     ),
+                                      //     greyText('Core Skills'),
+                                      //     blackText(_candidateCvInfoModel
+                                      //         .cvParsedInfo
+                                      //         .finalEntity
+                                      //         .gender[0])
+                                      //   ],
+                                      // ),
                                     ],
                                   ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    _candidateCvInfoModel.cvParsedInfo == null
+                        ? SizedBox(
+                            height: 0,
+                            width: 0,
+                          )
+                        : _candidateCvInfoModel.cvParsedInfo.answerMap == null
+                            ? SizedBox(
+                                height: 0,
+                                width: 0,
+                              )
+                            : _candidateCvInfoModel.cvParsedInfo
+                                        .answerMap["personal_location"] ==
+                                    null
+                                ? SizedBox(
+                                    height: 0,
+                                    width: 0,
+                                  )
+                                : _candidateCvInfoModel
+                                            .cvParsedInfo
+                                            .answerMap["personal_location"]
+                                            .answer ==
+                                        null
+                                    ? SizedBox(
+                                        height: 0,
+                                        width: 0,
+                                      )
+                                    : Row(
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              greyText('Location'),
+                                              blackText(_candidateCvInfoModel
+                                                  .cvParsedInfo
+                                                  .answerMap[
+                                                      "personal_location"]
+                                                  .answer)
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          // Column(
+                                          //   crossAxisAlignment:
+                                          //       CrossAxisAlignment.start,
+                                          //   children: [
+                                          //     SizedBox(
+                                          //       height: 10,
+                                          //     ),
+                                          //     greyText('Core Skills'),
+                                          //     blackText(_candidateCvInfoModel
+                                          //         .cvParsedInfo
+                                          //         .finalEntity
+                                          //         .gender[0])
+                                          //   ],
+                                          // ),
+                                        ],
+                                      ),
                     resumeData[index].cvimage == null
                         ? Text(
                             'Resume Missing. Ask Candidate?\n',
@@ -399,6 +608,7 @@ class NewJobData extends StatelessWidget {
               );
           });
     } catch (e) {
+      print(e.toString());
       return Center(child: Text(e.toString()));
     }
   }

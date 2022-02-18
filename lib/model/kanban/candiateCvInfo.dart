@@ -28,6 +28,7 @@ class CvParsedInfo {
   CvParsedInfo({
     this.aiVersion,
     this.aiVersionProcessed,
+    this.answerMap,
     this.finalEntity,
     this.newCompressedStructuredContent,
     this.parsingType,
@@ -41,6 +42,7 @@ class CvParsedInfo {
 
   String aiVersion;
   String aiVersionProcessed;
+  Map<String, AnswerMap> answerMap;
   FinalEntity finalEntity;
   double candidateScore;
   List<String> candidateScoreDebug;
@@ -61,12 +63,19 @@ class CvParsedInfo {
         aiVersionProcessed: json["ai_version_processed"] == null
             ? null
             : json["ai_version_processed"],
+        answerMap: json["answer_map"] == null
+            ? null
+            : Map.from(json["answer_map"]).map((k, v) =>
+                MapEntry<String, AnswerMap>(k, AnswerMap.fromJson(v))),
+
         finalEntity: json["finalEntity"] == null
             ? null
             : FinalEntity.fromJson(json["finalEntity"]),
-        candidateScore: json["candidate_score"].toDouble(),
-        candidateScoreDebug:
-            List<String>.from(json["candidate_score_debug"].map((x) => x)),
+        candidateScore: json["candidate_score"] == null
+            ? null
+            : json["candidate_score"].toDouble(),
+        // candidateScoreDebug:
+        //     List<String>.from(json["candidate_score_debug"].map((x) => x)),
         newCompressedStructuredContent:
             json["newCompressedStructuredContent"] == null
                 ? null
@@ -99,6 +108,46 @@ class CvParsedInfo {
         "skillExtracted":
             skillExtracted == null ? null : skillExtracted.toJson(),
         "timeTaken": timeTaken == null ? null : timeTaken,
+      };
+}
+
+class AnswerMap {
+  AnswerMap({
+    this.answer,
+    this.end,
+    this.question,
+    this.questionKey,
+    this.score,
+    this.start,
+    this.timeTaken,
+  });
+
+  String answer;
+  int end;
+  String question;
+  String questionKey;
+  double score;
+  int start;
+  double timeTaken;
+
+  factory AnswerMap.fromJson(Map<String, dynamic> json) => AnswerMap(
+        answer: json["answer"],
+        end: json["end"],
+        question: json["question"],
+        questionKey: json["question_key"],
+        score: json["score"],
+        start: json["start"],
+        timeTaken: json["time_taken"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "answer": answer,
+        "end": end,
+        "question": question,
+        "question_key": questionKey,
+        "score": score,
+        "start": start,
+        "time_taken": timeTaken,
       };
 }
 
@@ -389,9 +438,11 @@ class The1 {
 class QaShortAnswers {
   QaShortAnswers({
     this.personalName,
+    this.projectsName,
   });
 
   String personalName;
+  String projectsName;
 
   factory QaShortAnswers.fromRawJson(String str) =>
       QaShortAnswers.fromJson(json.decode(str));
@@ -401,6 +452,8 @@ class QaShortAnswers {
   factory QaShortAnswers.fromJson(Map<String, dynamic> json) => QaShortAnswers(
         personalName:
             json["personal_name"] == null ? null : json["personal_name"],
+        projectsName:
+            json["projects_name"] == null ? null : json["projects_name"],
       );
 
   Map<String, dynamic> toJson() => {

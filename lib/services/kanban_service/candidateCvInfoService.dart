@@ -41,12 +41,13 @@ class CandidateCvInfoService {
 
     try {
       jsonParsedKey.forEach((key, value) {
-        print("value-->$value");
+        print("value-->${key}");
         mapCandidateData.putIfAbsent(key, () {
+          // print("valueeee-->${CandidateCvInfoModel.fromJson(value)}");
           return CandidateCvInfoModel.fromJson(value);
         });
         //  CandidateCvInfoModel.fromJson(value);
-        print("value-->");
+        print("valueeee-->${CandidateCvInfoModel.fromJson(value)}");
       });
     } catch (e) {
       print("------------------->${e.toString()}");

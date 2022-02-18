@@ -10,6 +10,7 @@ import 'package:flutter_product_recruit/widgets/kanban/newJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/rejectJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/shortlistJobData.dart';
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
+import 'package:flutter_product_recruit/widgets/text.dart';
 
 import '../../UiConstant/app_colors.dart';
 
@@ -93,7 +94,7 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
       darkColor = AppColors.Red;
       lightColor = AppColors.Light_Red;
     }
-    print("left--->$title");
+    print("left--->${generateCandidateList(left).length}");
     return Scaffold(
       drawer: NavigationList(),
       appBar: AppBar(
@@ -114,39 +115,70 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
       //5-> Hired
       //6 -> Check
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        color: AppColors.Grey_BackGround,
-        child: NewJobData(
-            resumeData: generateCandidateList(left),
-            mapCandidateData: mapCandidateData),
-        // left == 0
-        //     ? NewJobData(
-        //         resumeData: generateCandidateList(left),
-        //         mapCandidateData: mapCandidateData)
-        //     : left == 1
-        //         ? ShortlistJobData(
-        //             resumeData: generateCandidateList(left),
-        //             mapCandidateData: mapCandidateData)
-        //         : left == 2
-        //             ? InterviewJobData(
-        //                 resumeData: generateCandidateList(left),
-        //                 mapCandidateData: mapCandidateData)
-        //             : left == 3
-        //                 ? HiredJobData(
-        //                     resumeData: generateCandidateList(left),
-        //                     mapCandidateData: mapCandidateData)
-        //                 : left == 4
-        //                     ? HoldJobData(
-        //                         resumeData: generateCandidateList(left),
-        //                         mapCandidateData: mapCandidateData)
-        //                     : left == 5
-        //                         ? RejectJobData(
-        //                             resumeData: generateCandidateList(left),
-        //                             mapCandidateData: mapCandidateData)
-        //                         : CheckJobData(
-        //                             resumeData: generateCandidateList(left),
-        //                             mapCandidateData: mapCandidateData),
-      ),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: AppColors.Grey_BackGround,
+          child: generateCandidateList(left).length != 0
+              ? _listJobTag[left].title != 'Interview'
+                  ? NewJobData(
+                      resumeData: generateCandidateList(left),
+                      mapCandidateData: mapCandidateData)
+                  : InterviewJobData(
+                      resumeData: generateCandidateList(left),
+                      mapCandidateData: mapCandidateData)
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 40,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.Black),
+                          color: AppColors.white,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                        ),
+                        child: Center(
+                          child: Textt(
+                            text: "- - - - - -",
+                            size: 25,
+                            fweight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+
+          // left == 0
+          //     ? NewJobData(
+          //         resumeData: generateCandidateList(left),
+          //         mapCandidateData: mapCandidateData)
+          //     : left == 1
+          //         ? ShortlistJobData(
+          //             resumeData: generateCandidateList(left),
+          //             mapCandidateData: mapCandidateData)
+          //         : left == 2
+          //             ? InterviewJobData(
+          //                 resumeData: generateCandidateList(left),
+          //                 mapCandidateData: mapCandidateData)
+          //             : left == 3
+          //                 ? HiredJobData(
+          //                     resumeData: generateCandidateList(left),
+          //                     mapCandidateData: mapCandidateData)
+          //                 : left == 4
+          //                     ? HoldJobData(
+          //                         resumeData: generateCandidateList(left),
+          //                         mapCandidateData: mapCandidateData)
+          //                     : left == 5
+          //                         ? RejectJobData(
+          //                             resumeData: generateCandidateList(left),
+          //                             mapCandidateData: mapCandidateData)
+          //                         : CheckJobData(
+          //                             resumeData: generateCandidateList(left),
+          //                             mapCandidateData: mapCandidateData),
+          ),
 
       bottomNavigationBar: Container(
         height: 65,
