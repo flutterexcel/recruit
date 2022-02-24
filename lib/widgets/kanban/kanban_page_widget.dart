@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/src/bloc_provider.dart';
+import 'package:flutter_product_recruit/bloc/kanban_bloc/kanban_bloc.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_product_recruit/widgets/kanban/interviewJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/newJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/rejectJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/shortlistJobData.dart';
+
 import 'package:flutter_product_recruit/widgets/navigation_list.dart';
 import 'package:flutter_product_recruit/widgets/text.dart';
 
@@ -19,14 +22,19 @@ class KanbanPageWidget extends StatefulWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   Map<String, JobTagData> mapJobTagData = new Map();
   String title;
-  List<JobTag> _listJobTag;
+  List<JobTag> listJobTag;
+  String jobToken;
 
   KanbanPageWidget(
-      this._listJobTag, this.title, this.mapCandidateData, this.mapJobTagData);
+      {this.jobToken,
+      this.listJobTag,
+      this.title,
+      this.mapCandidateData,
+      this.mapJobTagData});
 
   @override
   _KanbanPageWidgetState createState() => _KanbanPageWidgetState(
-      _listJobTag, title, mapCandidateData, mapJobTagData);
+      jobToken, listJobTag, title, mapCandidateData, mapJobTagData);
 }
 
 class _KanbanPageWidgetState extends State<KanbanPageWidget> {
@@ -39,8 +47,8 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
   List<Datum> resumeData = [];
   Color lightColor;
   Color darkColor;
-  _KanbanPageWidgetState(
-      this._listJobTag, this.title, this.mapCandidateData, this.mapJobTagData);
+  _KanbanPageWidgetState(this.jobTagId, this._listJobTag, this.title,
+      this.mapCandidateData, this.mapJobTagData);
 
   generateCandidateList(int i) {
     try {
@@ -74,7 +82,7 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
   @override
   Widget build(BuildContext context) {
     print("mapCandidateData111111111--->$mapCandidateData");
-    print("listtgJob--->$_listJobTag");
+    print("listtgJob--->${_listJobTag[left].id}");
     if (left == 0) {
       darkColor = AppColors.Blue;
       lightColor = AppColors.Light_Blue;
@@ -106,6 +114,56 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
           style: TextStyle(color: AppColors.Black, fontSize: 30),
           textAlign: TextAlign.left,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              height: 10,
+              width: 48,
+              child: PopupMenuButton(
+                //key: _menuKey,
+                itemBuilder: (_) => <PopupMenuItem<String>>[
+                  PopupMenuItem<String>(
+                    child: InkWell(
+                      child: Text('Show Only Unread'),
+                      onTap: () {
+                        // context.bloc<KanbanBloc>().add(KanbanUnreadEvent(
+                        //     jobTagId, 25, 1, _listJobTag[left].id, true));
+                      },
+                    ),
+                  ),
+                  PopupMenuItem<String>(
+                    child: InkWell(
+                      child: Text('Mark All Read'),
+                      onTap: () {},
+                    ),
+                  ),
+                  PopupMenuItem<String>(
+                    child: InkWell(
+                      child: Text('Sort By Date'),
+                      onTap: () {},
+                    ),
+                  ),
+                  PopupMenuItem<String>(
+                    child: InkWell(child: Text('Sort By Score/Sequence')),
+                  ),
+                  PopupMenuItem<String>(
+                    child: InkWell(child: Text('Send Mail To All')),
+                  ),
+                  PopupMenuItem<String>(
+                    child: InkWell(child: Text('Move All To Reject')),
+                  ),
+                ],
+              ),
+              // decoration: BoxDecoration(
+              //   // border: Border.all(color: outlinecolor),
+              //   color: AppColors.blue,
+              //   shape: BoxShape.rectangle,
+              //   borderRadius: BorderRadius.all(Radius.circular(10)),
+              // ),
+            ),
+          )
+        ],
       ),
       //0->New
       //1->ShortList
@@ -119,13 +177,25 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
           width: MediaQuery.of(context).size.width,
           color: AppColors.Grey_BackGround,
           child: generateCandidateList(left).length != 0
-              ? _listJobTag[left].title != 'Interview'
-                  ? NewJobData(
+              ? _listJobTag[left].title == 'Interview'
+                  ? InterviewJobData(
                       resumeData: generateCandidateList(left),
                       mapCandidateData: mapCandidateData)
-                  : InterviewJobData(
-                      resumeData: generateCandidateList(left),
-                      mapCandidateData: mapCandidateData)
+                  : _listJobTag[left].title == 'Reject'
+                      ? RejectJobData(
+                          resumeData: generateCandidateList(left),
+                          mapCandidateData: mapCandidateData)
+                      : _listJobTag[left].title == 'Hired'
+                          ? HiredJobData(
+                              resumeData: generateCandidateList(left),
+                              mapCandidateData: mapCandidateData)
+                          : _listJobTag[left].title == 'Shortlist'
+                              ? ShortlistJobData(
+                                  resumeData: generateCandidateList(left),
+                                  mapCandidateData: mapCandidateData)
+                              : NewJobData(
+                                  resumeData: generateCandidateList(left),
+                                  mapCandidateData: mapCandidateData)
               : Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -193,7 +263,17 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
               backgroundColor: lightColor,
             ),
             Container(
-              color: AppColors.blue,
+              color: _listJobTag[left].title == 'Shortlist'
+                  ? AppColors.orange12
+                  : _listJobTag[left].title == 'Interview'
+                      ? AppColors.purple
+                      : _listJobTag[left].title == 'Hired'
+                          ? AppColors.Green
+                          : _listJobTag[left].title == 'Hold'
+                              ? AppColors.grey
+                              : _listJobTag[left].title == 'Reject'
+                                  ? AppColors.Red
+                                  : AppColors.blue,
               child: ListTile(
                 title: Center(
                   child: Column(

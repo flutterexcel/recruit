@@ -51,6 +51,7 @@ class Datum {
     this.cvData,
     this.cvParsedAi,
     this.cvParsedStatus,
+    this.cvRejected,
     this.cvTimeStampAi,
     this.cvimage,
     this.dailyMail,
@@ -119,6 +120,7 @@ class Datum {
   dynamic cvData;
   bool cvParsedAi;
   bool cvParsedStatus;
+  bool cvRejected;
   CvTimeStampAi cvTimeStampAi;
   Cvimage cvimage;
   bool dailyMail;
@@ -208,6 +210,7 @@ class Datum {
         cvParsedAi: json["cvParsedAI"] == null ? null : json["cvParsedAI"],
         cvParsedStatus:
             json["cvParsedStatus"] == null ? null : json["cvParsedStatus"],
+        cvRejected: json["cvRejected"] == null ? null : json["cvRejected"],
         cvTimeStampAi: json["cvTimeStampAI"] == null
             ? null
             : CvTimeStampAi.fromJson(json["cvTimeStampAI"]),

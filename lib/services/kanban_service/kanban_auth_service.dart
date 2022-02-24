@@ -11,7 +11,7 @@ class KanbanAuthService {
   }
 
   Future getCandididateCvInfo(String jobTagValue, jobToken) async {
-    print("Enter in getCandididateCvInfo-->${jobTagValue}");
+    print("Enter in getCandididateCvInfo-->$jobTagValue");
     print("Enter in jobToken-->$jobToken");
     var data = await CandidateCvInfoService()
         .getCandididateCvInfo(jobTagValue, jobToken);
@@ -20,4 +20,14 @@ class KanbanAuthService {
 
     return data;
   }
+
+  // Future getCandididateUnreadCvInfo(String jobProfileId, int limit, int page,
+  //     String listJobTagId, bool unread) async {
+  //   var data = await CandidateCvInfoService().getCandididateUnreadCvInfo(
+  //       jobProfileId, limit, page, listJobTagId, unread);
+
+  //   print("data---->$data");
+
+  //   return data;
+  // }
 }

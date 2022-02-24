@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/src/bloc_provider.dart';
+import 'package:flutter_product_recruit/bloc/kanban_bloc/kanban_bloc.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 import 'package:intl/intl.dart';
@@ -38,7 +40,6 @@ class InterviewJobData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Enter in InterviewJob");
     try {
       return Container(
         color: AppColors.Grey_BackGround,
@@ -49,6 +50,9 @@ class InterviewJobData extends StatelessWidget {
             itemCount: resumeData.length,
             itemBuilder: (context, index) {
               _candidateCvInfoModel = mapCandidateData[resumeData[index].id];
+              var date =
+                  DateFormat('MMM dd,yyyy').format(resumeData[index].date);
+              print("Enter in InterviewJob-->${resumeData[index].id}");
               return Container(
                 margin: EdgeInsets.only(bottom: 10),
                 padding: EdgeInsets.only(left: 10, top: 10, bottom: 5),
@@ -74,30 +78,79 @@ class InterviewJobData extends StatelessWidget {
                                   height: 0,
                                   width: 0,
                                 )
-                              : GestureDetector(
-                                  child: Container(
-                                      margin: EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey[350],
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(0))),
-                                      height: 100,
-                                      width: 80,
-                                      child: Image.network(resumeData[index]
-                                                  .cvimage
-                                                  .picture ==
-                                              null
-                                          ? resumeData[index]
-                                              .cvimage
-                                              .images
-                                              .first
-                                          : resumeData[index].cvimage.picture)),
-                                  onTap: () {
-                                    _popupDialog(context,
-                                        resumeData[index].cvimage.images[0]);
-                                  },
+                              : Stack(
+                                  alignment: AlignmentDirectional.bottomEnd,
+                                  children: [
+                                    GestureDetector(
+                                      child: Tooltip(
+                                        message: 'Open Resume',
+                                        child: Container(
+                                            margin: EdgeInsets.only(right: 10),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Colors.grey[350],
+                                                ),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(0))),
+                                            height: 100,
+                                            width: 80,
+                                            child: Image.network(
+                                                resumeData[index]
+                                                            .cvimage
+                                                            .picture ==
+                                                        null
+                                                    ? resumeData[index]
+                                                        .cvimage
+                                                        .images
+                                                        .first
+                                                    : resumeData[index]
+                                                        .cvimage
+                                                        .picture)),
+                                      ),
+                                      onTap: () {
+                                        _popupDialog(
+                                            context,
+                                            resumeData[index]
+                                                .cvimage
+                                                .images[0]);
+                                      },
+                                    ),
+                                    _candidateCvInfoModel.cvParsedInfo == null
+                                        ? SizedBox(
+                                            height: 0,
+                                            width: 0,
+                                          )
+                                        : _candidateCvInfoModel.cvParsedInfo
+                                                    .candidateScore ==
+                                                null
+                                            ? SizedBox(
+                                                height: 0,
+                                                width: 0,
+                                              )
+                                            : Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 8.0),
+                                                child: Container(
+                                                    alignment: Alignment.center,
+                                                    width: 30,
+                                                    height: 30,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.black,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    80))),
+                                                    child: Text(
+                                                      _candidateCvInfoModel
+                                                          .cvParsedInfo
+                                                          .candidateScore
+                                                          .toStringAsFixed(1),
+                                                      style: TextStyle(
+                                                          color:
+                                                              AppColors.white),
+                                                    )),
+                                              ),
+                                  ],
                                 ),
                           Container(
                             width: 220,
@@ -331,15 +384,127 @@ class InterviewJobData extends StatelessWidget {
                     ),
                     resumeData[index].cvimage == null
                         ? Text(
-                            'Mail sent on ${resumeData[index].senderMail} for missing resume',
+                            'Resume Missing. Ask Candidate?\n',
                             style: TextStyle(
-                                color: AppColors.Orange,
+                                color: AppColors.Red,
                                 fontFamily: 'RobotRegular'),
                           )
                         : SizedBox(
                             height: 0,
                             width: 0,
                           ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Divider(
+                        height: 10,
+                        color: AppColors.Black,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(14.0),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.thumb_down_alt_outlined,
+                                    color: AppColors.grey,
+                                    size: 25,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  InkWell(
+                                    child: Icon(
+                                      Icons.grade_outlined,
+                                      color: !resumeData[index].unread
+                                          ? AppColors.orange12
+                                          : AppColors.grey,
+                                      size: 25,
+                                    ),
+                                    onTap: () {
+                                      context.bloc<KanbanBloc>().add(
+                                          KanbanStarEvent(
+                                              mongoid: resumeData[index].id));
+                                    },
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Icon(
+                                    Icons.drafts_outlined,
+                                    color: AppColors.grey,
+                                    size: 25,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  InkWell(
+                                    child: Icon(
+                                      Icons.message_outlined,
+                                      color: AppColors.grey,
+                                      size: 25,
+                                    ),
+                                    onTap: () {
+                                      // _popupManageSourceFetchFromDialog(context);
+                                    },
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Icon(
+                                    Icons.description_outlined,
+                                    color: AppColors.grey,
+                                    size: 25,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            greyText(date),
+                            PopupMenuButton(
+                              //key: _menuKey,
+                              itemBuilder: (_) => <PopupMenuItem<String>>[
+                                PopupMenuItem<String>(
+                                  child: InkWell(
+                                    child: Text('Change Job Profile'),
+                                    onTap: () {},
+                                  ),
+                                ),
+                                PopupMenuItem<String>(
+                                  child: InkWell(
+                                    child: Text('Archive'),
+                                    onTap: () {},
+                                  ),
+                                ),
+                                PopupMenuItem<String>(
+                                  child: InkWell(
+                                    child: Text('Update Call Status'),
+                                    onTap: () {},
+                                  ),
+                                ),
+                                PopupMenuItem<String>(
+                                  child: InkWell(child: Text('Update Email')),
+                                ),
+                                PopupMenuItem<String>(
+                                  child: InkWell(
+                                      child: Text('Move To Custom Tag')),
+                                ),
+                                PopupMenuItem<String>(
+                                  child: InkWell(child: Text('Update Email')),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               );

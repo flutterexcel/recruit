@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
+import 'package:intl/intl.dart';
 
 import '../../UiConstant/app_colors.dart';
 
@@ -47,6 +48,7 @@ class HoldJobData extends StatelessWidget {
             itemCount: resumeData.length,
             itemBuilder: (context, index) {
               _candidateCvInfoModel = mapCandidateData[resumeData[index].id];
+              var date = DateFormat('MMM dd').format(resumeData[index].date);
               return Container(
                 margin: EdgeInsets.only(bottom: 10),
                 padding: EdgeInsets.only(left: 10, top: 10, bottom: 5),

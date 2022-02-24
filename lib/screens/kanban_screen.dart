@@ -24,10 +24,21 @@ class KanbanScreen extends StatelessWidget {
                 .bloc<KanbanBloc>()
                 .add(KanbanInitialEvent(_listJobTag, title, jobToken));
           }
+          // if (state is KanbanUnreadPageState) {
+          //   print("state.titttttle----->${state.mapCandidateData}");
+          //   return KanbanPageWidget(
+          //     jobToken: state.jobToken,
+          //     mapCandidateData: state.mapCandidateData,
+          //   );
+          // }
           if (state is KanbanPageState) {
             print("state.title----->${state.mapCandidateData}");
-            return KanbanPageWidget(state.listJobTag, state.title,
-                state.mapCandidateData, state.mapJobTagData);
+            return KanbanPageWidget(
+                jobToken: state.jobToken,
+                listJobTag: state.listJobTag,
+                title: state.title,
+                mapCandidateData: state.mapCandidateData,
+                mapJobTagData: state.mapJobTagData);
           }
           return Loader();
         },

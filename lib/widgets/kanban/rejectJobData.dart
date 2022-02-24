@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
+import 'package:intl/intl.dart';
 
 import '../../UiConstant/app_colors.dart';
 
@@ -47,6 +48,7 @@ class RejectJobData extends StatelessWidget {
             itemCount: resumeData.length,
             itemBuilder: (context, index) {
               _candidateCvInfoModel = mapCandidateData[resumeData[index].id];
+              var date = DateFormat('MMM dd').format(resumeData[index].date);
               return Container(
                 margin: EdgeInsets.only(bottom: 10),
                 padding: EdgeInsets.only(left: 10, top: 10, bottom: 5),
@@ -72,30 +74,79 @@ class RejectJobData extends StatelessWidget {
                                   height: 0,
                                   width: 0,
                                 )
-                              : GestureDetector(
-                                  child: Container(
-                                      margin: EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.grey[350],
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(0))),
-                                      height: 100,
-                                      width: 80,
-                                      child: Image.network(resumeData[index]
-                                                  .cvimage
-                                                  .picture ==
-                                              null
-                                          ? resumeData[index]
-                                              .cvimage
-                                              .images
-                                              .first
-                                          : resumeData[index].cvimage.picture)),
-                                  onTap: () {
-                                    _popupDialog(context,
-                                        resumeData[index].cvimage.images[0]);
-                                  },
+                              : Stack(
+                                  alignment: AlignmentDirectional.bottomEnd,
+                                  children: [
+                                    GestureDetector(
+                                      child: Tooltip(
+                                        message: 'Open Resume',
+                                        child: Container(
+                                            margin: EdgeInsets.only(right: 10),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Colors.grey[350],
+                                                ),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(0))),
+                                            height: 100,
+                                            width: 80,
+                                            child: Image.network(
+                                                resumeData[index]
+                                                            .cvimage
+                                                            .picture ==
+                                                        null
+                                                    ? resumeData[index]
+                                                        .cvimage
+                                                        .images
+                                                        .first
+                                                    : resumeData[index]
+                                                        .cvimage
+                                                        .picture)),
+                                      ),
+                                      onTap: () {
+                                        _popupDialog(
+                                            context,
+                                            resumeData[index]
+                                                .cvimage
+                                                .images[0]);
+                                      },
+                                    ),
+                                    _candidateCvInfoModel.cvParsedInfo == null
+                                        ? SizedBox(
+                                            height: 0,
+                                            width: 0,
+                                          )
+                                        : _candidateCvInfoModel.cvParsedInfo
+                                                    .candidateScore ==
+                                                null
+                                            ? SizedBox(
+                                                height: 0,
+                                                width: 0,
+                                              )
+                                            : Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 8.0),
+                                                child: Container(
+                                                    alignment: Alignment.center,
+                                                    width: 30,
+                                                    height: 30,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.black,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    80))),
+                                                    child: Text(
+                                                      _candidateCvInfoModel
+                                                          .cvParsedInfo
+                                                          .candidateScore
+                                                          .toStringAsFixed(1),
+                                                      style: TextStyle(
+                                                          color:
+                                                              AppColors.white),
+                                                    )),
+                                              ),
+                                  ],
                                 ),
                           Container(
                             width: 220,
@@ -180,11 +231,15 @@ class RejectJobData extends StatelessWidget {
                                       height: 30,
                                       width: 5,
                                     ),
-                                    blackText("    " +
-                                        resumeData[index]
-                                            .rejectReasonData
-                                            .last
-                                            .rejectReason)
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: blackText(resumeData[index]
+                                          .rejectReasonData
+                                          .last
+                                          .rejectReason),
+                                    )
                                   ],
                                 )
                               ],
@@ -193,11 +248,14 @@ class RejectJobData extends StatelessWidget {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     resumeData[index].cvimage == null
                         ? Text(
-                            'Mail sent on ${resumeData[index].senderMail} for missing resume',
+                            'Resume Missing. Ask Candidate?\n',
                             style: TextStyle(
-                                color: AppColors.Orange,
+                                color: AppColors.Red,
                                 fontFamily: 'RobotRegular'),
                           )
                         : SizedBox(
