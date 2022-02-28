@@ -41,24 +41,35 @@ class JobsOverviewBlocBloc
       await jobAuthService.getJobList(StorageUtil.getToken()).then((value) {
         _getData = value;
       }).whenComplete(() async {
+        print("hii");
         await jobAuthService
             .getJobsOverview(StorageUtil.getToken())
             .then((value) {
+          print("fvfvbjvitjbtijt$value");
           _jobsOverViewModel = value;
+          print("fvfvbjvitjbtijt");
         });
       }).whenComplete(() async {
+        print("hii2");
         await jobAuthService.getHiringTeam().then((value) {
           _hirinTeam = value;
         }).whenComplete(() async {
+          print("hii3");
           for (int i = 0; i < _getData.length; i++) {
             await jobAuthService
                 .getJobTag(_getData[i].jobListId, StorageUtil.getToken())
                 .then((value) {
+              print("hjnnii5${_getData.length}");
+              print("hii5$value");
               _jobTagList.add(ListJobTag(listJobTag: value));
+              print("object");
             });
           }
+          print("objec2t");
         });
+        print("objec3");
       });
+      print("objec4");
 
       yield JobsOvervViewPageState(
           getData: _getData,
@@ -66,6 +77,7 @@ class JobsOverviewBlocBloc
           hirinTeam: _hirinTeam,
           listJobTag: _jobTagList);
     } catch (e) {
+      print("error in job overview bloc");
       print(e.toString());
     }
   }

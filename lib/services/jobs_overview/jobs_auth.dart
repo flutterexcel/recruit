@@ -17,9 +17,11 @@ class JobAuthService {
   }
 
   Future<List<JobsOverviewModel>> getJobsOverview(String token) async {
+    print("enterrrrrr");
     List<JobsOverviewModel> data;
     await JobsOverviewService().getJobOverview(token).then((value) {
       data = value;
+      print("jnvjnivrnivtvbtb-->$value");
     });
     return data;
   }

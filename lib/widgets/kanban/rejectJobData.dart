@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
+import 'package:flutter_product_recruit/widgets/kanban/bottom_icons.dart';
+import 'package:flutter_product_recruit/widgets/kanban/reject_bottom_icons.dart';
 import 'package:intl/intl.dart';
 
 import '../../UiConstant/app_colors.dart';
@@ -9,7 +11,9 @@ import '../../UiConstant/app_colors.dart';
 class RejectJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<Datum> resumeData;
+
   RejectJobData({this.resumeData, this.mapCandidateData});
+
   CandidateCvInfoModel _candidateCvInfoModel;
   void _popupDialog(BuildContext context, String imageUrl) {
     showDialog(
@@ -55,11 +59,14 @@ class RejectJobData extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: resumeData[index].unread
-                          ? AppColors.Grey
+                      color: resumeData[index].unread &&
+                              resumeData[index].candidateStar.length != 0
+                          ? AppColors.orange12
                           : resumeData[index].candidateStar.length != 0
                               ? AppColors.Orange
-                              : Colors.grey[350],
+                              : resumeData[index].unread
+                                  ? AppColors.Black
+                                  : Colors.grey[350],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8))),
                 child: Column(
@@ -261,6 +268,16 @@ class RejectJobData extends StatelessWidget {
                         : SizedBox(
                             height: 20,
                           ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Divider(
+                        height: 10,
+                        color: AppColors.Black,
+                      ),
+                    ),
+                    RejectBottomIcons(
+                      data: resumeData[index],
+                    ),
                   ],
                 ),
               );

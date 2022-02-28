@@ -14,16 +14,16 @@ import 'package:flutter_product_recruit/widgets/loader1.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:intl/intl.dart';
 
-class BottomIcons extends StatefulWidget {
+class RejectBottomIcons extends StatefulWidget {
   Datum data;
   String jobTagName;
-  BottomIcons({this.data, this.jobTagName});
+  RejectBottomIcons({this.data, this.jobTagName});
 
   @override
-  State<BottomIcons> createState() => _BottomIconsState();
+  State<RejectBottomIcons> createState() => _RejectBottomIconsState();
 }
 
-class _BottomIconsState extends State<BottomIcons> {
+class _RejectBottomIconsState extends State<RejectBottomIcons> {
   Widget greyText(String text) {
     return Text(
       text,
@@ -44,43 +44,6 @@ class _BottomIconsState extends State<BottomIcons> {
               padding: const EdgeInsets.all(14.0),
               child: Row(
                 children: [
-                  InkWell(
-                    child: Icon(
-                      Icons.thumb_down_alt_outlined,
-                      color: AppColors.grey,
-                      size: 25,
-                    ),
-                    onTap: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return BlocBuilder<KanbanBloc, KanbanState>(
-                                builder: (context, state) {
-                              if (state is KanbanInitialState) {
-                                context
-                                    .bloc<KanbanBloc>()
-                                    .add(KanbanRejectEvent());
-                                return Loader();
-                              } else if (state is KanbanLoadingState) {
-                                return Loader();
-                              } else if (state is KanbanRejectReasonState) {
-                                // var reasons;
-                                // for (var i in state.rejectReasons.reason) {
-                                //   reasons = i.reason;
-                                // }
-                                return Dialog(
-                                    child: RejectDialog(
-                                  data: state.rejectReasons.reason,
-                                  name: widget.data.from,
-                                ));
-                              }
-                            });
-                          });
-                    },
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
                   widget.data.candidateStar.length > 0
                       ? InkWell(
                           child: Icon(
@@ -135,25 +98,19 @@ class _BottomIconsState extends State<BottomIcons> {
                   const SizedBox(
                     width: 10,
                   ),
-                  widget.jobTagName == 'Hold'
-                      ? Row(
-                          children: [
-                            InkWell(
-                              child: Icon(
-                                Icons.archive_outlined,
-                                color: AppColors.grey,
-                                size: 25,
-                              ),
-                              onTap: () {
-                                // _popupManageSourceFetchFromDialog(context);
-                              },
-                            ),
-                            SizedBox(
-                              width: 10,
-                            )
-                          ],
-                        )
-                      : SizedBox(),
+                  InkWell(
+                    child: Icon(
+                      Icons.archive_outlined,
+                      color: AppColors.grey,
+                      size: 25,
+                    ),
+                    onTap: () {
+                      // _popupManageSourceFetchFromDialog(context);
+                    },
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   InkWell(
                     child: Icon(
                       Icons.message_outlined,

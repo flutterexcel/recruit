@@ -6,7 +6,7 @@ import 'package:flutter_product_recruit/widgets/TextInput.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class ChangePass extends StatelessWidget {
-  TextEditingController textEditingController;
+  // TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {

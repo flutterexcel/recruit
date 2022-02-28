@@ -166,12 +166,26 @@ class _RejectDialogState extends State<RejectDialog> {
                                   width: 30,
                                   decoration:
                                       BoxDecoration(color: AppColors.blue),
-                                  child: Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
+                                  child: PopupMenuButton(
+                                    child: Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.white,
+                                    ),
+                                    //key: _menuKey,
+                                    itemBuilder: (_) => <PopupMenuItem<String>>[
+                                      PopupMenuItem<String>(
+                                        child: InkWell(
+                                          child: Text('Edit'),
+                                          onTap: () {
+                                            // context.bloc<KanbanBloc>().add(KanbanUnreadEvent(
+                                            //     jobTagId, 25, 1, _listJobTag[left].id, true));
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),

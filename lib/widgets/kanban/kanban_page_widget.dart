@@ -184,7 +184,8 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
                   : _listJobTag[left].title == 'Reject'
                       ? RejectJobData(
                           resumeData: generateCandidateList(left),
-                          mapCandidateData: mapCandidateData)
+                          mapCandidateData: mapCandidateData,
+                        )
                       : _listJobTag[left].title == 'Hired'
                           ? HiredJobData(
                               resumeData: generateCandidateList(left),
@@ -193,9 +194,15 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
                               ? ShortlistJobData(
                                   resumeData: generateCandidateList(left),
                                   mapCandidateData: mapCandidateData)
-                              : NewJobData(
-                                  resumeData: generateCandidateList(left),
-                                  mapCandidateData: mapCandidateData)
+                              : _listJobTag[left].title == 'Hold'
+                                  ? HoldJobData(
+                                      resumeData: generateCandidateList(left),
+                                      mapCandidateData: mapCandidateData,
+                                      jobTagName: 'Hold',
+                                    )
+                                  : NewJobData(
+                                      resumeData: generateCandidateList(left),
+                                      mapCandidateData: mapCandidateData)
               : Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -273,7 +280,9 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
                               ? AppColors.grey
                               : _listJobTag[left].title == 'Reject'
                                   ? AppColors.Red
-                                  : AppColors.blue,
+                                  : _listJobTag[left].title == 'Test checked'
+                                      ? AppColors.purple
+                                      : AppColors.blue,
               child: ListTile(
                 title: Center(
                   child: Column(

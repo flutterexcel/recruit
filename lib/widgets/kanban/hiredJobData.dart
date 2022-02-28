@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
+import 'package:flutter_product_recruit/widgets/kanban/bottom_icons.dart';
 import 'package:flutter_product_recruit/widgets/kanban/expanded.dart';
 import 'package:intl/intl.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -1142,101 +1143,8 @@ class HiredJobData extends StatelessWidget {
                         color: AppColors.Black,
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.thumb_down_alt_outlined,
-                                    color: AppColors.grey,
-                                    size: 25,
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Icon(
-                                    Icons.grade_outlined,
-                                    color: AppColors.grey,
-                                    size: 25,
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Icon(
-                                    Icons.drafts_outlined,
-                                    color: AppColors.grey,
-                                    size: 25,
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  InkWell(
-                                    child: Icon(
-                                      Icons.message_outlined,
-                                      color: AppColors.grey,
-                                      size: 25,
-                                    ),
-                                    onTap: () {
-                                      // _popupManageSourceFetchFromDialog(context);
-                                    },
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Icon(
-                                    Icons.description_outlined,
-                                    color: AppColors.grey,
-                                    size: 25,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            greyText(date),
-                            PopupMenuButton(
-                              //key: _menuKey,
-                              itemBuilder: (_) => <PopupMenuItem<String>>[
-                                PopupMenuItem<String>(
-                                  child: InkWell(
-                                    child: Text('Change Job Profile'),
-                                    onTap: () {},
-                                  ),
-                                ),
-                                PopupMenuItem<String>(
-                                  child: InkWell(
-                                    child: Text('Archive'),
-                                    onTap: () {},
-                                  ),
-                                ),
-                                PopupMenuItem<String>(
-                                  child: InkWell(
-                                    child: Text('Update Call Status'),
-                                    onTap: () {},
-                                  ),
-                                ),
-                                PopupMenuItem<String>(
-                                  child: InkWell(child: Text('Update Email')),
-                                ),
-                                PopupMenuItem<String>(
-                                  child: InkWell(
-                                      child: Text('Move To Custom Tag')),
-                                ),
-                                PopupMenuItem<String>(
-                                  child: InkWell(child: Text('Update Email')),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
+                    BottomIcons(
+                      data: resumeData[index],
                     ),
                   ],
                 ),

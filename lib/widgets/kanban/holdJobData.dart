@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
+import 'package:flutter_product_recruit/widgets/kanban/bottom_icons.dart';
 import 'package:intl/intl.dart';
 
 import '../../UiConstant/app_colors.dart';
@@ -9,7 +10,8 @@ import '../../UiConstant/app_colors.dart';
 class HoldJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<Datum> resumeData;
-  HoldJobData({this.resumeData, this.mapCandidateData});
+  String jobTagName;
+  HoldJobData({this.resumeData, this.mapCandidateData, this.jobTagName});
   CandidateCvInfoModel _candidateCvInfoModel;
   void _popupDialog(BuildContext context, String imageUrl) {
     showDialog(
@@ -28,7 +30,7 @@ class HoldJobData extends StatelessWidget {
   }
 
   Widget blackText(String text) {
-    print("Enter in HoldJob");
+    print("Enter in HoldJob$jobTagName");
     return Text(
       text,
       style: TextStyle(
@@ -182,11 +184,15 @@ class HoldJobData extends StatelessWidget {
                                       height: 30,
                                       width: 5,
                                     ),
-                                    blackText("    " +
-                                        resumeData[index]
-                                            .holdReasonData
-                                            .last
-                                            .holdReason)
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: blackText(resumeData[index]
+                                          .holdReasonData
+                                          .last
+                                          .holdReason),
+                                    )
                                   ],
                                 )
                               ],
@@ -205,6 +211,17 @@ class HoldJobData extends StatelessWidget {
                         : SizedBox(
                             height: 20,
                           ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Divider(
+                        height: 10,
+                        color: AppColors.Black,
+                      ),
+                    ),
+                    BottomIcons(
+                      data: resumeData[index],
+                      jobTagName: jobTagName,
+                    ),
                   ],
                 ),
               );

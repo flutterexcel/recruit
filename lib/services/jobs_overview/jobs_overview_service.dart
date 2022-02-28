@@ -16,13 +16,17 @@ class JobsOverviewService {
     Map<String, String> queryParam = {'accessToken': token};
     String queryString = Uri(queryParameters: queryParam).query;
     String apiUrl = url + '?' + queryString;
+    print("bivhbotbononioi gtio gnioniobbb$apiUrl");
 
     var res = await http.get(apiUrl);
     List<dynamic> values = json.decode(res.body);
+    print("brvbhrvbobeipvpebui$values");
     for (int i = 0; i < values.length; i++) {
       Map<String, dynamic> map = values[i];
+      print("brvbhrvbobeipvpebui$map");
       jobsOverviewList.add(JobsOverviewModel.fromJson(map));
     }
+    print("bivhbotbobbb");
     return jobsOverviewList;
   }
 }

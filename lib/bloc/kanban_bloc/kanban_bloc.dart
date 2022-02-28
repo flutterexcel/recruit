@@ -79,6 +79,7 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
 
   Stream<KanbanState> _mapKanbanStarToState(KanbanStarEvent event) async* {
     print("${event.value},${event.mongoid}");
+    yield KanbanLoadingState();
     try {
       await CandidateCvInfoService()
           .starCandidateMark(event.mongoid, event.value)
@@ -86,7 +87,6 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
         print("map-->$value");
       });
 
-      print('bh1');
       yield KanbanInitialState();
       print('bh');
     } catch (e) {
@@ -135,6 +135,7 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
 
   Stream<KanbanState> _mapKanbanRejectToState(KanbanRejectEvent event) async* {
     RejectReasonModel reasonLists;
+    yield KanbanLoadingState();
     try {
       await CandidateCvInfoService().RejectCandidate().then((value) {
         reasonLists = value;

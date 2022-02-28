@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, duplicate_ignore
 
 part of 'kanban_bloc.dart';
 
@@ -31,6 +31,8 @@ class KanbanPageState extends KanbanState {
       this.mapJobTagData,
       this.jobToken});
 }
+
+class KanbanLoadingState extends KanbanState {}
 
 // class KanbanUnreadPageState extends KanbanState {
 //   Map mapCandidateData = new Map();
