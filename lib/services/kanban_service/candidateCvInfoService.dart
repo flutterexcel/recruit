@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/url_config.dart';
 import 'package:http/http.dart';
-
 import '../storage_service.dart';
 
 class CandidateCvInfoService {
   final JsonDecoder _jsonDecoder = JsonDecoder();
 
+  // ignore: deprecated_member_use
   List jobTags = new List();
 
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();

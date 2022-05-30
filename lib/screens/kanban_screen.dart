@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_product_recruit/bloc/kanban_bloc/kanban_bloc.dart';
@@ -23,7 +25,8 @@ class KanbanScreen extends StatelessWidget {
                 .add(KanbanInitialEvent(_listJobTag, title, jobToken));
           }
           if (state is KanbanPageState) {
-            return KanbanPageWidget(state.listJobTag, state.title,state.mapCandidateData,state.mapJobTagData);
+            return KanbanPageWidget(state.listJobTag, state.title,
+                state.mapCandidateData, state.mapJobTagData);
           }
           return Loader();
         },

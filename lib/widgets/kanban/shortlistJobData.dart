@@ -1,8 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/kanban/candiateCvInfo.dart';
 import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
 class ShortlistJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
@@ -50,11 +52,11 @@ class ShortlistJobData extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                     color: resumeData[index].unread
-                        ? AppColors.Grey
-                        : resumeData[index].candidateStar.length != 0
-                            ? AppColors.Orange
-                            : Colors.grey[350],
+                      color: resumeData[index].unread
+                          ? AppColors.Grey
+                          : resumeData[index].candidateStar.length != 0
+                              ? AppColors.Orange
+                              : Colors.grey[350],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8))),
                 child: Column(
@@ -337,7 +339,9 @@ class ShortlistJobData extends StatelessWidget {
                                                 .gender[0])
                                           ],
                                         ),
-                                        SizedBox(width: 20,),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
                                   _candidateCvInfoModel.cvParsedInfo.finalEntity
                                               .educationDegree ==
                                           null

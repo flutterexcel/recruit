@@ -5,7 +5,9 @@ import 'package:flutter_product_recruit/url_config.dart';
 import 'package:http/http.dart' as http;
 
 class JobsListServices {
+  // ignore: deprecated_member_use
   List<JobList> jobList = new List();
+
   Future<List<JobList>> getJobList(String token) async {
     String url = await UrlConfig.jobsListCalling(
             action: "jobListCalling", endPoints: "job-profile/list")
@@ -13,6 +15,7 @@ class JobsListServices {
     Map<String, String> queryParam = {'accessToken': token};
     String queryString = Uri(queryParameters: queryParam).query;
     String apiUrl = url + '?' + queryString;
+
     var res = await http.get(apiUrl);
     List<dynamic> values = json.decode(res.body);
     for (int i = 0; i < values.length; i++) {

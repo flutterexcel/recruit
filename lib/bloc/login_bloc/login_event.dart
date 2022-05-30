@@ -8,8 +8,10 @@ abstract class LoginEvent extends Equatable {
 }
 
 class LoginInitialEvent extends LoginEvent {}
-class LogOutEvent extends LoginEvent{}
 
+class LogOutEvent extends LoginEvent {}
+
+// ignore: must_be_immutable
 class LoginWithEmail extends LoginEvent {
   String email, password;
   LoginWithEmail(this.email, this.password);

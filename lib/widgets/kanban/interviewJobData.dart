@@ -4,8 +4,9 @@ import 'package:flutter_product_recruit/model/kanban/jobdatamodel.dart';
 import 'package:intl/intl.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
+// ignore: must_be_immutable
 class InterviewJobData extends StatelessWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   List<Datum> resumeData;
@@ -53,11 +54,11 @@ class InterviewJobData extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                     color: resumeData[index].unread
-                        ? AppColors.Grey
-                        : resumeData[index].candidateStar.length != 0
-                            ? AppColors.Orange
-                            : Colors.grey[350],
+                      color: resumeData[index].unread
+                          ? AppColors.Grey
+                          : resumeData[index].candidateStar.length != 0
+                              ? AppColors.Orange
+                              : Colors.grey[350],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8))),
                 child: Column(
@@ -209,8 +210,7 @@ class InterviewJobData extends StatelessWidget {
                                                 .contains("Second Round")
                                             ? 1
                                             : 2;
-                                    if (step ==
-                                        _step) {
+                                    if (step == _step) {
                                       return AppColors.Voilet;
                                     } else
                                       return AppColors.LIght_Voilet;
@@ -317,7 +317,6 @@ class InterviewJobData extends StatelessWidget {
                                                 fontFamily: 'RobotRegular',
                                                 color: AppColors.Blue,
                                                 fontSize: 12)))
-                                   
                                   ],
                                 )
                               ],

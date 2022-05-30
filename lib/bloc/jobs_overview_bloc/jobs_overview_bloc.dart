@@ -33,6 +33,7 @@ class JobsOverviewBlocBloc
     List<JobsOverviewModel> _jobsOverViewModel;
     List<HiringTeamModel> _hirinTeam;
 
+    // ignore: deprecated_member_use
     List<ListJobTag> _jobTagList = new List();
 
     try {
@@ -57,6 +58,7 @@ class JobsOverviewBlocBloc
           }
         });
       });
+
       yield JobsOvervViewPageState(
           getData: _getData,
           jobsOverViewModel: _jobsOverViewModel,

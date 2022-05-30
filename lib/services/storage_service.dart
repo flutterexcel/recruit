@@ -49,6 +49,16 @@ class StorageUtil {
     return _preferences.getString('password') ?? defValue;
   }
 
+  static Future<bool> setId(String value) async {
+    if (_preferences == null) return null;
+    return _preferences.setString('id', value);
+  }
+
+  static String getId({String defValue = ''}) {
+    if (_preferences == null) return defValue;
+    return _preferences.getString('id') ?? defValue;
+  }
+
   static Future<bool> setToken(String value) async {
     if (_preferences == null) return null;
     return _preferences.setString('token', value);
@@ -89,6 +99,28 @@ class StorageUtil {
     return _preferences.getString('userimage') ?? defValue;
   }
 
+  static Future<bool> setUserPhone(String value) async {
+    if (_preferences == null) return null;
+    return _preferences.setString('userPhone', value);
+  }
+
+  static String getUserPhone({String defValue = ''}) {
+    if (_preferences == null) return defValue;
+    return _preferences.getString('userPhone') ?? defValue;
+  }
+
+//sign in
+  static Future<bool> setUserSign(String value) async {
+    if (_preferences == null) return null;
+    return _preferences.setString('userSign', value);
+  }
+
+  static String getUserSign({String defValue = ''}) {
+    if (_preferences == null) return defValue;
+    return _preferences.getString('userSign') ?? defValue;
+  }
+
+  // ignore: missing_return
   static Future<bool> clearCredentials() async {
     if (StorageUtil.getUserEmail() == null) {
       throw Exception();

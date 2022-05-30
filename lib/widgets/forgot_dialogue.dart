@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_product_recruit/app_colors.dart';
+import 'package:flutter_product_recruit/UiConstant/app_colors.dart';
 
+// ignore: must_be_immutable
 class ForgotDialogue extends StatelessWidget {
   TextEditingController textEditingController;
   ForgotDialogue({this.textEditingController});
@@ -51,16 +52,17 @@ class ForgotDialogue extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.bottomRight,
+            // ignore: deprecated_member_use
             child: FlatButton(
-              height: 24,
-              minWidth: 6,
-                    color: AppColors.Orange,
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(fontSize: 13),
-                    ),
-                    textColor: Colors.white,
-                    onPressed: () {}),
+                height: 24,
+                minWidth: 6,
+                color: AppColors.Orange,
+                child: Text(
+                  'Submit',
+                  style: TextStyle(fontSize: 13),
+                ),
+                textColor: Colors.white,
+                onPressed: () {}),
           ),
         ],
       ),

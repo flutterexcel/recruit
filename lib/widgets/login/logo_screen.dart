@@ -9,7 +9,8 @@ class LogoScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: Center(
           child: Container(
-        child: SvgPicture.network(StorageUtil.getLogo(),
+        child: SvgPicture.network(
+          StorageUtil.getLogo(),
           height: 50,
           fit: BoxFit.fill,
         ),

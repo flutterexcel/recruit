@@ -10,8 +10,9 @@ import 'package:flutter_product_recruit/widgets/kanban/newJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/rejectJobData.dart';
 import 'package:flutter_product_recruit/widgets/kanban/shortlistJobData.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
+// ignore: must_be_immutable
 class KanbanPageWidget extends StatefulWidget {
   Map<String, CandidateCvInfoModel> mapCandidateData = new Map();
   Map<String, JobTagData> mapJobTagData = new Map();
@@ -79,15 +80,14 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
       darkColor = AppColors.Voilet;
       lightColor = AppColors.LIght_Voilet;
     } else if (left == 3) {
-     darkColor = AppColors.Green;
+      darkColor = AppColors.Green;
       lightColor = AppColors.Light_Green;
     } else if (left == 4) {
       darkColor = AppColors.Grey;
       lightColor = AppColors.Light_Grey;
     } else {
-       darkColor = AppColors.Red;
+      darkColor = AppColors.Red;
       lightColor = AppColors.Light_Red;
-      
     }
     print(left);
     return Scaffold(
@@ -132,7 +132,7 @@ class _KanbanPageWidgetState extends State<KanbanPageWidget> {
                                 resumeData: generateCandidateList(left),
                                 mapCandidateData: mapCandidateData)
                             : left == 5
-                                ?  RejectJobData(
+                                ? RejectJobData(
                                     resumeData: generateCandidateList(left),
                                     mapCandidateData: mapCandidateData)
                                 : CheckJobData(

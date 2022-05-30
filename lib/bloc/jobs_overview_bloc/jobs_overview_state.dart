@@ -9,11 +9,13 @@ abstract class JobsOverviewState extends Equatable {
 
 class JobsOverviewBlocInitial extends JobsOverviewState {}
 
+// ignore: must_be_immutable
 class JobsOvervViewPageState extends JobsOverviewState {
   List<JobList> getData;
   List<JobsOverviewModel> jobsOverViewModel;
   List<HiringTeamModel> hirinTeam;
   List<ListJobTag> listJobTag;
   JobsOvervViewPageState(
-      {this.getData, this.jobsOverViewModel, this.hirinTeam,this.listJobTag});
+      {this.getData, this.jobsOverViewModel, this.hirinTeam, this.listJobTag});
+  List<Object> get props => [getData, jobsOverViewModel, hirinTeam, listJobTag];
 }

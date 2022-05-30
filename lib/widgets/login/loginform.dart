@@ -5,9 +5,9 @@ import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/TextInput.dart';
 import 'package:flutter_product_recruit/widgets/forgot_dialogue.dart';
 
-import '../../app_colors.dart';
+import '../../UiConstant/app_colors.dart';
 
-final _loginFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> _loginFormKey1 = GlobalKey<FormState>();
 
 class LoginForm extends StatefulWidget {
   @override
@@ -16,9 +16,9 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   TextEditingController emailController =
-      new TextEditingController(text: "kartik@excellencetechnologies.info");
+      new TextEditingController(text: "testing1@gmail.com");
   TextEditingController passwordController =
-      new TextEditingController(text: "Kartik");
+      new TextEditingController(text: "testing1");
 
   bool _rememberme = false;
 
@@ -37,7 +37,7 @@ class _LoginFormState extends State<LoginForm> {
         return Column(
           children: [
             Form(
-              key: _loginFormKey,
+              key: _loginFormKey1,
               child: Column(
                 children: <Widget>[
                   Container(
@@ -74,7 +74,6 @@ class _LoginFormState extends State<LoginForm> {
                         StorageUtil.setUserEmail(emailController.text);
                         StorageUtil.setPassword(passwordController.text);
                       } else if (!value) {
-                        
                         StorageUtil.setUserEmail("");
                         StorageUtil.setPassword("");
                       }
@@ -92,6 +91,7 @@ class _LoginFormState extends State<LoginForm> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   alignment: Alignment.centerRight,
+                  // ignore: deprecated_member_use
                   child: FlatButton(
                       onPressed: () {
                         _popupDialog(context);
@@ -106,6 +106,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
+              // ignore: deprecated_member_use
               child: FlatButton(
                   minWidth: MediaQuery.of(context).size.width,
                   color: Color(0xFF7CACFB),
@@ -115,7 +116,8 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   textColor: Colors.white,
                   onPressed: () {
-                    if (_loginFormKey.currentState.validate()) {
+                    if (_loginFormKey1.currentState.validate()) {
+                      // ignore: deprecated_member_use
                       context.bloc<LoginBloc>().add(LoginWithEmail(
                           emailController.text, passwordController.text));
                     }

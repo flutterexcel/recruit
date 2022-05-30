@@ -8,16 +8,16 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 25),
-                LogoScreen(),
-                WelcomeScreen(),
-                LoginForm(),
-              ],
-            ),
-          ));
+        body: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 25),
+          LogoScreen(),
+          WelcomeScreen(),
+          LoginForm(),
+        ],
+      ),
+    ));
   }
 }

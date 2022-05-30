@@ -7,9 +7,10 @@ abstract class KanbanEvent extends Equatable {
   List<Object> get props => [];
 }
 
+// ignore: must_be_immutable
 class KanbanInitialEvent extends KanbanEvent {
   String title;
   String jobToken;
   List<JobTag> _listJobTag;
-  KanbanInitialEvent(this._listJobTag, this.title,this.jobToken);
+  KanbanInitialEvent(this._listJobTag, this.title, this.jobToken);
 }

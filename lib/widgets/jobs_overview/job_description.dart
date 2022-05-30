@@ -1,11 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/joblist.dart';
 import 'package:flutter_product_recruit/model/jobs_overview/jobtag.dart';
 // ignore: unused_import
 import 'package:flutter_product_recruit/services/storage_service.dart';
 import 'package:flutter_product_recruit/widgets/jobbar.dart';
-
-import '../../app_colors.dart';
 
 class JobDescription extends StatelessWidget {
   JobList jobList;
@@ -36,7 +36,7 @@ class JobDescription extends StatelessWidget {
                 height: 24,
                 width: 24,
               ),
-              Image.asset("assets/icons/jobanalytic.svg"),
+              // Image.asset("assets/icons/jobanalytic.svg"),
               JobBar(
                 jobList: jobList,
                 listJobTag: _listJobTag,
